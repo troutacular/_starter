@@ -1,0 +1,350 @@
+/**
+	
+	Colors
+	======
+	
+	1.0 - Imports
+	2.0 - Globals
+	3.0 - Headers
+	4.0 - Navigaton
+		4.1 - Main Navigation
+		4.2 - Secondary Navigation
+	5.0 - Content
+		5.1 - Text
+			5.1.1 - Code / Pre
+			5.1.2 - iframes
+		5.2 - Links
+		5.3 - Blockquotes / Cites
+		5.4 - Forms
+			5.4.1 - Inputs
+			5.4.2 - Buttons
+		5.5 - Figure
+			5.5.1 - Image
+			5.5.2 - Figcaption
+		5.6 - Tables
+		5.7 - Content Types
+	6.0 - Sidebar
+	7.0 - Footer
+		7.1 - Site Credit
+	8.0 - Widgets
+	9.0 - Print
+	
+	=========
+	
+	Note: any gradients will need to be applied to the class 
+	element in the individual partial file.  This file is intended
+	to set default colors to the site in one central file.
+
+**/
+
+
+/*--------------------------------------------------------------
+1.0 - Imports
+--------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------
+2.0 - Globals
+--------------------------------------------------------------*/
+
+$color-base-background: #fff;
+$color-base-background-alt: #777;
+$color-base-highlight: #777;
+$color-base-highlight-alt: #777;
+
+$color-shadow: rgba(black, .125);
+$color-body-background: #fff;
+$color-body-text: #5b514a;
+$color-body-text-icon: #777;
+
+
+
+/*--------------------------------------------------------------
+3.0 - Headers
+--------------------------------------------------------------*/
+
+$color-header-background: #ebede6;
+$color-header-site-title: $color-body-text;
+$color-header-site-title-sub: $color-header-site-title;
+
+// content
+$color-content-heading: #5b514a;
+
+
+
+/*--------------------------------------------------------------
+4.0 - Navigaton
+--------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------
+4.1 - Main Navigaton
+--------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------
+4.2 - Secondary Navigaton
+--------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------
+5.0 - Content
+--------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------
+5.1 - Text
+--------------------------------------------------------------*/
+
+$color-content-text: $color-body-text;
+$color-content-text-meta: lighten($color-content-text, 15);
+
+
+
+/*--------------------------------------------------------------
+5.1.1 - Code / Pre
+--------------------------------------------------------------*/
+
+$color-background-pre: #eee;
+$color-text-pre: $color-content-text;
+
+
+
+/*--------------------------------------------------------------
+5.1.2 - iframes
+--------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------
+5.2 - Links
+--------------------------------------------------------------*/
+
+$color-content-link: #777;
+$color-content-link-hover: $color-content-link;
+
+
+
+
+/*--------------------------------------------------------------
+5.3 - Blockquotes / Cites
+--------------------------------------------------------------*/
+
+$color-blockquote-background: #555;
+$color-blockquote-text: $color-body-text;
+$color-blockquote-icon: darken($color-blockquote-background,7);
+
+
+
+/*--------------------------------------------------------------
+5.4 - Forms
+--------------------------------------------------------------*/
+
+// Set to 'true' to use different input colors in the widgets
+$color-form-widget-header: false;
+$color-form-widget-sidebar: true;
+$color-form-widget-footer: false;
+
+
+
+/*--------------------------------------------------------------
+5.4.1 - Inputs
+--------------------------------------------------------------*/
+
+// see _variables.scss for padding and border radius
+$color-input-background: #ccc;
+$color-input-border: #000;
+$color-input-focus: #111;
+$color-input-text: darken($color-content-text,25);
+$color-input-icon: #777;
+$color-input-placeholder: lighten($color-content-text,5);
+
+// sets values of inputs in sidebar widget if $color-form-widget-header is set to true
+$color-input-background-widget-header: #fff;
+$color-input-border-widget-header: #000;
+$color-input-focus-widget-header: $color-input-focus;
+$color-input-text-widget-header: $color-input-text;
+$color-input-icon-widget-header: $color-input-icon;
+$color-input-placeholder-widget-header: $color-content-text;
+
+// sets values of inputs in sidebar widget if $color-form-widget-sidebar is set to true
+$color-input-background-widget-sidebar: #fff;
+$color-input-border-widget-sidebar: #000;
+$color-input-focus-widget-sidebar: #111;
+$color-input-text-widget-sidebar: #000;
+$color-input-icon-widget-sidebar: #777;
+$color-input-placeholder-widget-sidebar: $color-content-text;
+
+// sets values of inputs in footer widget if $color-form-widget-footer is set to true
+$color-input-background-widget-footer: #ccc;
+$color-input-border-widget-footer: #000;
+$color-input-focus-widget-footer: #111;
+$color-input-text-widget-footer: darken($color-content-text,25);
+$color-input-icon-widget-footer: #777;
+$color-input-placeholder-widget-footer: $color-content-text;
+
+
+
+/*--------------------------------------------------------------
+5.4.2 - Buttons
+--------------------------------------------------------------*/
+
+// default content colors
+$color-button-background: #777;
+$color-button-text: #fff;
+$button-border: transparent;
+
+$color-button-background-hover: darken($color-button-background,5);
+$color-button-text-hover: #fff;
+$button-border-hover: transparent;
+
+$color-button-background-active: lighten($color-button-background,5);
+$color-button-text-active: #fff;
+$button-border-active: transparent;
+
+// sets values of buttons in widget if $color-form-widget-sidebar is set to true
+$color-button-background-widget-sidebar: #000;
+$color-button-text-widget-sidebar: #fff;
+$button-border-widget-sidebar: transparent;
+
+$color-button-background-widget-sidebar-hover: darken($color-button-background-widget-sidebar,5);
+$color-button-text-widget-sidebar-hover: #fff;
+$button-border-widget-sidebar-hover: transparent;
+
+$color-button-background-widget-sidebar-active: lighten($color-button-background-widget-sidebar,5);
+$color-button-text-widget-sidebar-active: #fff;
+$button-border-widget-sidebar-active: transparent;
+
+// sets values of buttons in widget if $color-form-widget-footer is set to true
+$color-button-background-widget-footer: #777;
+$color-button-text-widget-footer: #fff;
+$button-border-widget-footer: transparent;
+
+$color-button-background-widget-footer-hover: darken($color-button-background-widget-footer,5);
+$color-button-text-widget-footer-hover: #fff;
+$button-border-widget-footer-hover: transparent;
+
+$color-button-background-widget-footer-active: lighten($color-button-background-widget-footer,5);
+$color-button-text-widget-footer-active: #fff;
+$button-border-widget-footer-active: transparent;
+
+
+
+/*--------------------------------------------------------------
+5.5 - Figure
+--------------------------------------------------------------*/
+
+$color-border-figure-single: #dcded7;
+
+
+
+/*--------------------------------------------------------------
+5.5.1 - Image
+--------------------------------------------------------------*/
+
+// see _media.scss for images
+
+
+
+/*--------------------------------------------------------------
+5.5.2 - Figcaption
+--------------------------------------------------------------*/
+
+$color-figcaption-background: transparent;
+$color-figcaption-text: lighten($color-content-text, 40);
+
+
+
+/*--------------------------------------------------------------
+5.6 - Tables
+--------------------------------------------------------------*/
+
+$color-table-head-background: #dcded7;
+$color-table-head-text: #5b514a;
+$color-table-cell-background: #ebede6;
+$color-table-cell-text: #5b514a;
+$table-cell-border: 1px solid #dcded7;
+
+
+
+/*--------------------------------------------------------------
+5.7 - Content Types
+--------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------
+6.0 - Sidebar
+--------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------
+7.0 - Footer
+--------------------------------------------------------------*/
+
+/* See 8.0 - Widgets for Footer Widgets */
+
+
+
+/*--------------------------------------------------------------
+7.1 - Site Credit
+--------------------------------------------------------------*/
+
+$color-background-site-credit: #dcded7;
+$color-text-site-credit: #000;
+
+$color-link-website-by: $color-content-link;
+$color-link-website-by-hover: $color-content-link-hover;
+
+$color-link-feedback: $color-body-text;
+$color-link-feedback-hover: $color-body-text;
+
+
+
+/*--------------------------------------------------------------
+8.0 - Widgets
+--------------------------------------------------------------*/
+
+// see 4.2 for secondary navigation
+
+$color-widget-background: #777;
+$color-widget-divider: #820909;
+$color-widget-content-heading: #fff;
+$color-widget-content-text: #fff;
+$color-widget-content-link: #fff;
+$color-widget-content-link-hover: #fff;
+$color-widget-content-icon: #fff;
+
+$color-widget-background-alt: #e5b805;
+$color-widget-divider-alt: darken($color-widget-background-alt, 10);
+$color-widget-content-heading-alt: #5b514a;
+$color-widget-content-text-alt: #5b514a;
+$color-widget-content-link-alt: #5b514a;
+$color-widget-content-link-hover-alt: #5b514a;
+$color-widget-content-icon-alt: #5b514a;
+
+$widget-border-footer: 1px solid #2f2a26;
+$color-widget-background-footer: transparent;
+$color-widget-content-heading-footer: #2f2a26;
+$color-widget-content-text-footer: #2f2a26;
+$color-widget-content-link-footer: #2f2a26;
+$color-widget-content-link-hover-footer: #2f2a26;
+$color-widget-content-icon-footer: #2f2a26;
+
+
+
+/*--------------------------------------------------------------
+9.0 - Print
+--------------------------------------------------------------*/
+
+$color-content-heading-print: #000 !default;
+$color-content-text-print: #000 !default;
+$color-content-link-print: #999 !default;
+
+$color-blockquote-background-print: #ccc;

@@ -1,0 +1,124 @@
+/**
+	
+	Variables
+	=========
+	
+	1.0 - Site Variables
+	2.0 - Vendor Defaults
+	3.0 - Theme Settings
+		3.1 - Logos
+		3.2 - Forms
+		3.3 - Fonts
+			3.3.1 - Fonts
+			3.3.2 - Icon Fonts
+		3.4 - Images
+		3.5 - Widgets
+	
+**/
+
+
+/*--------------------------------------------------------------
+1.0 - Site Variables
+--------------------------------------------------------------*/
+
+/**
+	
+	No Print URL
+	This is set in the _print.scss file to display all links when
+	prinint EXCEPT the links containing the value below.
+
+**/
+$no-print-url: 'usc.edu';
+
+
+// Theme specific variables in pixels - default is [16]
+$base-font: 16;
+
+
+/**
+	
+	Support for ie8 - set this to 'false' after 7/1/2014
+	If set to [false] then the compiled CSS will eliminate certain
+	inclusions to support IE8 and therefore make the file smaller.
+	Example is the use of REM fonts with PX defaults for IE8 support.
+
+**/
+$ie8: true;
+
+
+
+/*--------------------------------------------------------------
+2.0 - Vendor Defaults
+--------------------------------------------------------------*/
+
+$default-box-shadow-color: rgba(black, .125) !default;
+
+
+
+/*--------------------------------------------------------------
+3.0 - Theme Settings
+--------------------------------------------------------------*/
+
+// common padding that can be used between block elements
+$padding-element: 1rem;
+
+$padding-body-mobile: 5%;
+$padding-body-desktop: 1%;
+
+
+
+/*--------------------------------------------------------------
+3.1 - Logos
+--------------------------------------------------------------*/
+
+// use the file name of the svg/png
+$logo-usc: logo-usc;
+$logo-usc-print: logo-usc;
+
+
+
+/*--------------------------------------------------------------
+3.2 - Forms
+--------------------------------------------------------------*/
+
+// see _colors-[name].scss for setting of $color-form-widget
+$input-padding: .5em;
+$input-border-radius: .1875rem;
+
+
+
+/*--------------------------------------------------------------
+3.3 - Fonts
+--------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------
+3.3.1 - Fonts
+--------------------------------------------------------------*/
+
+// see styleguide/_fonts.scss
+
+
+
+/*--------------------------------------------------------------
+3.3.2 - Icon Fonts
+--------------------------------------------------------------*/
+
+// see styleguide/_icons.scss
+
+
+
+/*--------------------------------------------------------------
+3.4 - Images
+--------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------
+3.5 - Widgets
+--------------------------------------------------------------*/
+
+$widget-padding: 1rem;
+$widget-padding-sidebar: 2.1875rem;
+$widget-padding-footer: 1rem;
