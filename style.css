@@ -1,0 +1,17 @@
+/*!
+Theme Name: _starter
+Theme URI: http://usc.edu
+Author: USC Web Services
+Author URI: http://itservices.usc.edu/webservices
+Description: _starter theme is based off of the _s (underscores) theme and is intended to clone and use as you see fit.  It is not intended to be used as a Parent or Child theme.
+Version: 1.0
+License: GNU General Public License
+License URI: license.txt
+Text Domain: _starter
+Domain Path: /languages/
+Tags: starter, _starter, sass
+*/
+
+/*
+ * Style information is now stored in SASS files @ /sass/theme-name.css and compiles to /css/theme-name.css
+ */

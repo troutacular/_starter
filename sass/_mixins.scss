@@ -1,0 +1,30 @@
+/**
+	
+	Mixins
+	======
+
+	1.0 - Global Mixins
+	
+	=========
+	
+	Mixins should be included individually.  
+	
+	Please use Compass (http://compass-style.org/) for common mixins.
+	
+**/
+
+
+
+/*--------------------------------------------------------------
+1.0 - Global Mixins
+--------------------------------------------------------------*/
+
+@import 'mixins/breakpoints';
+@import 'mixins/font-icon';
+@import 'mixins/font-size';
+@import 'mixins/font-style';
+@import 'mixins/horizontal-align';
+@import 'mixins/media-queries';
+@import 'mixins/sass-heading-sizes';
+@import 'mixins/svg-background-image';
+@import 'mixins/vertical-align';

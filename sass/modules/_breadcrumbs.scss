@@ -1,0 +1,60 @@
+/**
+	
+	Breadcrumbs
+	===========
+	
+	1.0 - Breadcrumbs Wrapper
+	2.0 - Breadcrumbs Title
+	3.0 - Breadcrumbs List
+
+**/
+
+
+
+/*--------------------------------------------------------------
+1.0 - Breadcrumbs Wrapper
+--------------------------------------------------------------*/
+
+.breadcrumbs {}
+
+.nav-breadcrumbs {}
+
+
+
+/*--------------------------------------------------------------
+2.0 - Breadcrumbs Title
+--------------------------------------------------------------*/
+
+.breadcrumbs-title {}
+
+
+
+/*--------------------------------------------------------------
+3.0 - Breadcrumbs List
+--------------------------------------------------------------*/
+
+ul.breadcrumbs {
+	margin: 0;
+	padding: 0;
+	list-style: none;	
+	li {
+		position: relative;
+		float: left;
+		padding-left: 2em;
+		&:before {
+			position: absolute;
+			display: block;
+			content: '>';
+			width: 1em;
+			height: 1em;
+			left: 1em;
+		}
+		&:first-child {
+			padding-left: 0;
+			&:before {
+				content: '';
+				display: none;
+			}
+		}
+	}
+}
