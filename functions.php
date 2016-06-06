@@ -187,12 +187,6 @@
 						usage: (see full documentation in '/inc/support-page-setup.php'
 						_starter_page_additions( [ page title ], [ page template ], [ post status ], [ password ], [ set as homepage ], [ parent slug ] );
 					**/
-					
-					// create homepage
-					_starter_page_additions('Welcome','page-template-homepage.php','publish',false,true,false);
-					
-					// create directory page
-					_starter_page_additions( 'Directory', 'page-template-directory.php', 'publish', false, false, false );
 										
 				}
 			}
