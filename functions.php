@@ -144,14 +144,14 @@
 			add_action( 'after_setup_theme', '_starter_page_add' );
 			
 			// get the support page function
-			require_once get_template_directory() . '/functions/support-page-setup.php';
+			require_once get_template_directory() . '/inc/support-page-setup.php';
 			
 			// run the function if it doesn't already exist
 			if ( ! function_exists( '_starter_page_add' ) ) {
 				function _starter_page_add() {
 					
 					/**
-						usage: (see full documentation in '/functions/support-page-setup.php'
+						usage: (see full documentation in '/inc/support-page-setup.php'
 						_starter_page_additions( [ page title ], [ page template ], [ post status ], [ password ], [ set as homepage ], [ parent slug ] );
 						
 						sample:
@@ -184,7 +184,7 @@
 				function _starter_page_add_once() {
 					
 					/**
-						usage: (see full documentation in '/functions/support-page-setup.php'
+						usage: (see full documentation in '/inc/support-page-setup.php'
 						_starter_page_additions( [ page title ], [ page template ], [ post status ], [ password ], [ set as homepage ], [ parent slug ] );
 					**/
 					
@@ -419,7 +419,7 @@
 --------------------------------------------------------------*/
 
 	// Tree Navigation
-		require get_template_directory() . '/functions/is-tree.php';
+		require get_template_directory() . '/inc/is-tree.php';
 	// end
 
 
@@ -429,7 +429,7 @@
 --------------------------------------------------------------*/
 
 	// Section Navigation
-		require get_template_directory() . '/functions/navigation-section.php';
+		require get_template_directory() . '/inc/navigation-section.php';
 	// end
 
 
@@ -439,7 +439,7 @@
 --------------------------------------------------------------*/
 
 	// Navigation with Descriptions
-		require get_template_directory() . '/functions/navigation-descriptions.php';
+		require get_template_directory() . '/inc/navigation-descriptions.php';
 	// end
 
 
@@ -455,7 +455,7 @@
 --------------------------------------------------------------*/
 
 	// Breadcrumbes
-		require get_template_directory() . '/functions/breadcrumbs.php';
+		require get_template_directory() . '/inc/breadcrumbs.php';
 	// end
 
 
@@ -596,7 +596,7 @@
 --------------------------------------------------------------*/
 
 	// Dynamic Footer Columns
-		require get_template_directory() . '/functions/footer-columns.php';
+		require get_template_directory() . '/inc/footer-columns.php';
 	// end
 	
 	// Set the link url for student affairs
@@ -807,11 +807,11 @@
 --------------------------------------------------------------*/
 	
 	// Customizer additions.
-		require get_template_directory() . '/functions/customizer.php';
+		require get_template_directory() . '/inc/customizer.php';
 	// end
 	
 	// Customizer additions - Site Contact.
-		require get_template_directory() . '/functions/customize-site-contact.php';
+		require get_template_directory() . '/inc/customize-site-contact.php';
 	// end
 
 
