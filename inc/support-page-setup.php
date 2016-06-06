@@ -8,7 +8,7 @@
 	 * _starter_page_additions( [ page name ], [ page template ], [ post status ], [ password ], [ set as homepage ] );
 	 * 
 	 * page name: [ 'string' ] Set the name of the Page Title.  The slug will be generated from this also.
-	 * page template: [ 'string' ] Use the filename of a page template - [ 'page-template-[name].php' ].  This must be in existence first to apply it's use to the new page. Default [false]
+	 * page template: [ 'string' ] Use the filename of a page template - [ 'templates/tpl-[name].php' ].  This must be in existence first to apply it's use to the new page. Default [false]
 	 * post status: [ 'draft' | 'publish' | 'pending'| 'future' | 'private' | custom registered status ]. Defult [false]
 	 * password: [ 'string' ] Set a password to protect the page under the visibility section.
 	 * set as homepage: [ true | false ] Set the page to be the homepage under Settings > Reading. Note: if more than one is set to [true] then .  Default [false]
@@ -24,7 +24,7 @@
 			// set the content of the page
 			$new_page_content = 'Update this area with your own content.';
 			
-			// set the template name to be used.  example: page-template-name.php.  leave blank '' to not use a page template.
+			// set the template name to be used.  example: templates/tpl-name.php.  leave blank '' to not use a page template.
 			$new_page_template = $template;
 			
 			// get the new page by it's title

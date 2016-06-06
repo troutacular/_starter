@@ -155,17 +155,17 @@
 						_starter_page_additions( [ page title ], [ page template ], [ post status ], [ password ], [ set as homepage ], [ parent slug ] );
 						
 						sample:
-						_starter_page_additions( 'Site Help', 'page-template-help.php', 'private', false, false, false, false );
+						_starter_page_additions( 'Site Help', 'templates/tpl-help.php', 'private', false, false, false, false );
 					**/
 					
 					// create admin page
-					_starter_page_additions( 'Site Admin', 'page-template-admin.php', 'private', false, false, false, false );
+					_starter_page_additions( 'Site Admin', 'templates/tpl-admin.php', 'private', false, false, false, false );
 					
 					// create help page
-					_starter_page_additions( 'Site Help', 'page-template-help.php', 'private', false, false, false, false );
+					_starter_page_additions( 'Site Help', 'templates/tpl-help.php', 'private', false, false, false, false );
 					
 					// create styleguide page
-					_starter_page_additions( 'Site Styleguide', 'page-template-styleguide.php', 'private', false, false, false, false );
+					_starter_page_additions( 'Site Styleguide', 'templates/tpl-styleguide.php', 'private', false, false, false, false );
 										
 				}
 			}
@@ -482,7 +482,7 @@
 		
 		/** 
 			This will set up sidebars in the admin for each page template type in the admin.
-			A page template will need to be created for each type (page-template-[slug].php).
+			A page template will need to be created for each type (templates/tpl-[slug].php).
 			The [slug] will be used in the sidebar to check if that template type exists.
 		**/
 		
@@ -503,17 +503,22 @@
 				array(
 					'name' => 'Category',
 					'slug' => 'template-category',
-					'description' => 'Items placed here will only appear on categories and above the Global Items.'
+					'description' => 'Items placed here will only appear on Categories and above the Global Items.'
+				),
+				array(
+					'name' => 'Archive',
+					'slug' => 'template-archive',
+					'description' => 'Items placed here will only appear in the Archives and above the Global Items.'
 				),
 				array(
 					'name' => 'Article',
 					'slug' => 'template-article',
-					'description' => 'Items placed here will only appear on single posts and above the Global Items.'
+					'description' => 'Items placed here will only appear on Single Posts and above the Global Items.'
 				),
 				array(
 					'name' => 'Default Page',
 					'slug' => 'template-default-content',
-					'description' => 'Items placed here will only appear on pages with the Template \'Default Page\' selected and above the Global Items.'
+					'description' => 'Items placed here will only appear on Pages with the Template \'Default Page\' selected and above the Global Items.'
 				)
 			);
 			foreach ( $sidebars as $sidebar ) {
