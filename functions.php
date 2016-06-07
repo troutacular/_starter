@@ -67,78 +67,80 @@
 
 	// Set the content width based on the theme's design and stylesheet.
 		if ( ! isset( $content_width ) ) {
-			$content_width = 640; /* pixels */
+			$content_width = 1120; /* pixels */
 		}
-	// end
-    
-    // remove inline styles from <head> for comments
-		add_action( 'widgets_init', '_starter_remove_recent_comments_style' );
 	    
-	    /**
-	     * 
-	     * @return [type] [description]
-	     */
-	    function _starter_remove_recent_comments_style() {
-			global $wp_widget_factory;
-			remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
-		}
-    // end
+    /**
+     * Starter Remove Recent Comments
+     *
+     * Removes inline styles from <head> for comments
+     *
+     * @since 1.0.0
+     * @return	boolean 	widget factory removal of css
+     */
+    function _starter_remove_recent_comments_style() {
+		global $wp_widget_factory;
+		remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
+	}
+	add_action( 'widgets_init', '_starter_remove_recent_comments_style' );
 	
-	// check if setup already exists, then run the setup
-		add_action( 'after_setup_theme', '_starter_setup' );
-		if ( ! function_exists( '_starter_setup' ) ) {
-		
+
+	if ( ! function_exists( '_starter_setup' ) ) {
+
 		/**
-			Sets up theme defaults and registers support for various WordPress features.
+		 * Starter Theme Setup
+		 *
+		 * Sets up theme defaults and registers support for various WordPress features.
+		 *
+		 * Note that this function is hooked into the after_setup_theme hook, which runs before the init hook. The init hook is too late for some features, such as indicating support for post thumbnails.
+		 * 
+		 * @since 1.0.0
+		 */
+		function _starter_theme_setup() {
+		
+			/**
+				Make theme available for translation.
+				Translations can be filed in the /languages/ directory.
+				If you're building a theme based on usc-starter, use a find and replace
+				to change '_starter' to the name of your theme in all the template files
+			**/
+			load_theme_textdomain( '_starter', get_template_directory() . '/languages' );
+		
+			/**
+				Enable support for Post Thumbnails on posts and pages.
+				
+				@link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
+			**/
+		
+			// This theme uses wp_nav_menu() in one location.
+			register_nav_menus( array(
+				'primary' => __( 'Primary Menu', '_starter' ),
+			) );
+		
 			
-			Note that this function is hooked into the after_setup_theme hook, which
-			runs before the init hook. The init hook is too late for some features, such
-			as indicating support for post thumbnails.
-		**/
-			function _starter_setup() {
-			
-				/**
-					Make theme available for translation.
-					Translations can be filed in the /languages/ directory.
-					If you're building a theme based on usc-starter, use a find and replace
-					to change '_starter' to the name of your theme in all the template files
-				**/
-				load_theme_textdomain( '_starter', get_template_directory() . '/languages' );
-			
-				/**
-					Enable support for Post Thumbnails on posts and pages.
-					
-					@link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
-				**/
-			
-				// This theme uses wp_nav_menu() in one location.
-				register_nav_menus( array(
-					'primary' => __( 'Primary Menu', '_starter' ),
+			// Check if 'add_theme_support' is supported
+			if ( function_exists( 'add_theme_support' ) ) {
+				
+				// Enable post thumbnails
+				add_theme_support( 'post-thumbnails' );
+				
+				// Enable support for Post Formats.
+				add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
+				
+				// Enable support for HTML5 markup.
+				add_theme_support( 'html5', array(
+					'comment-list',
+					'search-form',
+					'comment-form',
+					'gallery',
+					'caption'
 				) );
 			
-				
-				// Check if 'add_theme_support' is supported
-				if ( function_exists( 'add_theme_support' ) ) {
-					
-					// Enable post thumbnails
-					add_theme_support( 'post-thumbnails' );
-					
-					// Enable support for Post Formats.
-					add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
-					
-					// Enable support for HTML5 markup.
-					add_theme_support( 'html5', array(
-						'comment-list',
-						'search-form',
-						'comment-form',
-						'gallery',
-						'caption'
-					) );
-				
-				}
 			}
-		} // _starter_setup
-	// end
+		}
+
+	}
+	add_action( 'after_setup_theme', '_starter_theme_setup' );
 
 
 
@@ -151,11 +153,6 @@
 		// only run this in the admin section
 		if ( is_admin() ) {
 			
-			/**
-			 * Run this function after theme setup.  Did not use 'after_switch_theme'
-			 * to allow for future automatic additions to existing sites.
-			**/
-			add_action( 'after_setup_theme', '_starter_page_add' );	
 			
 			// run the function if it doesn't already exist
 			if ( ! function_exists( '_starter_page_add' ) ) {
@@ -165,17 +162,21 @@
 
 				/**
 				 * Starter Page Add
-				 * @return [type] [description]
+				 *
+				 * Uses _starter_page_additions function to add pages to the site.
+				 *
+				 * @since 1.0.0
+				 * @return 	function 	Adds pages to the site if they do no exist.
 				 */
 				
 				function _starter_page_add() {
 					
 					/**
-						usage: (see full documentation in '/inc/support-page-setup.php'
-						_starter_page_additions( [ page title ], [ page template ], [ post status ], [ password ], [ set as homepage ], [ parent slug ] );
-						
-						sample:
-						_starter_page_additions( 'Site Help', 'templates/tpl-help.php', 'private', false, false, false, false );
+					 * usage: (see full documentation in '/inc/support-page-setup.php'
+					 * _starter_page_additions( [ page title ], [ page template ], [ post status ], [ password ], [ set as homepage ], [ parent slug ] );
+					 * 
+					 * sample:
+					 * _starter_page_additions( 'Site Help', 'templates/tpl-help.php', 'private', false, false, false, false );
 					**/
 					
 					// create admin page
@@ -189,18 +190,23 @@
 										
 				}
 			}
-			
+
 			/**
-				Set up the following pages only once on theme switch.
-				Does not require updates each time the admin is accessed.
-				Does not override settings, particularly for the selection
-				of the homepage designation.
+			 * Run this function after theme setup.  Did not use 'after_switch_theme'
+			 * to allow for future automatic additions to existing sites.
 			**/
-			
-			add_action( 'after_switch_theme', '_starter_page_add_once' );
+			add_action( 'after_setup_theme', '_starter_page_add' );	
 			
 			// run the function if it doesn't already exist
 			if ( ! function_exists( '_starter_page_add_once' ) ) {
+				
+				/**
+				 * Starter Page Add Once
+				 *
+				 * Adds a page to the site once.
+				 * 
+				 * @return 	function 	Adds pages only once to the site after theme switch.
+				 */
 				function _starter_page_add_once() {
 					
 					/**
@@ -210,6 +216,14 @@
 										
 				}
 			}
+
+			/**
+			 * Set up the following pages only once on theme switch.
+			 * Does not require updates each time the admin is accessed.
+			 * Does not override settings, particularly for the selection of the homepage designation.
+			**/
+			
+			add_action( 'after_switch_theme', '_starter_page_add_once' );
 		}
 	// end
 
