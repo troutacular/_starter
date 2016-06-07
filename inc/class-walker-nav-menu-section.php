@@ -4,6 +4,8 @@
  * 
  * Walker Class for sidebar menus to display menu items for the current page.
  *
+ * @link https://codex.wordpress.org/Class_Reference/Walker
+ *
  * @since 		1.0.0
  * @package 	_starter
  * @subpackage 	_starter/inc
