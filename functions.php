@@ -9,28 +9,28 @@
 	Table of Contents
 
 	1.0 - Global Functions
-		1.1 - Theme Init
-			1.1.1 - Page Creation
-			1.1.2 - Taxonomy Creation
-		1.2 - Header
-			1.2.1 - CSS
-		1.2 - Navigation
-			1.2.1 - Menus
-			1.2.2 - Pagination
-			1.2.3 - Post Navigation
-			1.2.4 - Search
-			1.2.5 - Tree Navigation
-			1.2.6 - Section Navigation
-			1.2.7 - Navigation with Descriptions
-		1.3 - Content
-			1.3.1 - Breadcrumbs
-			1.3.2 - Excerpt
-		1.4 - Sidebars
-		1.5 - Media
-			1.5.1 - Images
-			1.5.2 - Video
-		1.6 - Footer
-		1.7 - Scripts
+		1.1 - Dependencies
+		1.2 - Theme Init
+			1.2.1 - Page Creation
+			1.2.3 - Taxonomy Creation
+		1.3 - Header
+			1.3.1 - CSS
+		1.4 - Navigation
+			1.4.1 - Menus
+			1.4.2 - Pagination
+			1.4.3 - Post Navigation
+			1.4.4 - Search
+			1.4.5 - Section Navigation
+			1.4.6 - Navigation with Descriptions
+		1.5 - Content
+			1.5.1 - Breadcrumbs
+			1.5.2 - Excerpt
+		1.6 - Sidebars
+		1.7 - Media
+			1.7.1 - Images
+			1.7.2 - Video
+		1.8 - Footer
+		1.9 - Scripts
 	2.0 - Category
 	3.0 - Archive
 	4.0 - Tags
@@ -53,7 +53,16 @@
 
 
 /*--------------------------------------------------------------
-1.1 - Theme Init
+1.1 - Dependencies
+--------------------------------------------------------------*/
+
+	// Check if we are in a local environment
+		require get_template_directory() . '/inc/is-localhost.php';
+	// end
+
+
+/*--------------------------------------------------------------
+1.2 - Theme Init
 --------------------------------------------------------------*/
 
 	// Set the content width based on the theme's design and stylesheet.
@@ -63,8 +72,13 @@
 	// end
     
     // remove inline styles from <head> for comments
-		add_action( 'widgets_init', 'starter_remove_recent_comments_style' );
-	    function starter_remove_recent_comments_style() {
+		add_action( 'widgets_init', '_starter_remove_recent_comments_style' );
+	    
+	    /**
+	     * 
+	     * @return [type] [description]
+	     */
+	    function _starter_remove_recent_comments_style() {
 			global $wp_widget_factory;
 			remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
 		}
@@ -129,7 +143,7 @@
 
 
 /*--------------------------------------------------------------
-1.1.1 - Page Creation
+1.2.1 - Page Creation
 --------------------------------------------------------------*/
 
 	// Support Pages Setup
@@ -138,16 +152,22 @@
 		if ( is_admin() ) {
 			
 			/**
-				Run this function after theme setup.  Did not use 'after_switch_theme'
-				to allow for future automatic additions to existing sites.
+			 * Run this function after theme setup.  Did not use 'after_switch_theme'
+			 * to allow for future automatic additions to existing sites.
 			**/
-			add_action( 'after_setup_theme', '_starter_page_add' );
-			
-			// get the support page function
-			require_once get_template_directory() . '/inc/support-page-setup.php';
+			add_action( 'after_setup_theme', '_starter_page_add' );	
 			
 			// run the function if it doesn't already exist
 			if ( ! function_exists( '_starter_page_add' ) ) {
+				
+				// get the support page function
+				require_once get_template_directory() . '/inc/support-page-setup.php';
+
+				/**
+				 * Starter Page Add
+				 * @return [type] [description]
+				 */
+				
 				function _starter_page_add() {
 					
 					/**
@@ -195,7 +215,7 @@
 
 
 /*--------------------------------------------------------------
-1.1.2 - Taxonomy Creation
+1.2.3 - Taxonomy Creation
 --------------------------------------------------------------*/
 
 	// Add Categories automatically to theme
@@ -226,7 +246,7 @@
 
 
 /*--------------------------------------------------------------
-1.2 - Header
+1.3 - Header
 --------------------------------------------------------------*/
 
 	// remove some metadata from the <head> of each page
@@ -305,7 +325,7 @@
 
 
 /*--------------------------------------------------------------
-1.2.1 - CSS
+1.3.1 - CSS
 --------------------------------------------------------------*/
 
 	// Add CSS files to the header
@@ -318,26 +338,26 @@
 
 
 /*--------------------------------------------------------------
-1.2 - Navigation
+1.4 - Navigation
 --------------------------------------------------------------*/
 
 	/**
 		To add preset mobile navigation:
 		
 		1. add the navigation css option in sass partial sass/_modules - @import 'modules/site-navigation-mobile';
-		2. add javascript options for modernizr and mobile navigation js in section '1.7 - Scripts'	
+		2. add javascript options for modernizr and mobile navigation js in section '1.8 - Scripts'	
 	**/
 
 
 
 /*--------------------------------------------------------------
-1.2.1 - Menus
+1.4.1 - Menus
 --------------------------------------------------------------*/
 
 
 
 /*--------------------------------------------------------------
-1.2.2 - Pagination
+1.4.2 - Pagination
 --------------------------------------------------------------*/
 
 	// Display navigation to next/previous set of posts when applicable.
@@ -371,7 +391,7 @@
 
 
 /*--------------------------------------------------------------
-1.2.3 - Post Navigation
+1.4.3 - Post Navigation
 --------------------------------------------------------------*/
 
 	// Display navigation to next/previous post when applicable.
@@ -403,33 +423,23 @@
 
 
 /*--------------------------------------------------------------
-1.2.4 - Search
+1.4.4 - Search
 --------------------------------------------------------------*/
 
 
 
 /*--------------------------------------------------------------
-1.2.5 - Tree Navigation
---------------------------------------------------------------*/
-
-	// Tree Navigation
-		require get_template_directory() . '/inc/is-tree.php';
-	// end
-
-
-
-/*--------------------------------------------------------------
-1.2.6 - Section Navigation
+1.4.5 - Section Navigation
 --------------------------------------------------------------*/
 
 	// Section Navigation
-		require get_template_directory() . '/inc/navigation-section.php';
+		require get_template_directory() . '/inc/class-walker-nav-menu-section.php';
 	// end
 
 
 
 /*--------------------------------------------------------------
-1.2.7 - Navigation with Descriptions
+1.4.6 - Navigation with Descriptions
 --------------------------------------------------------------*/
 
 	// Navigation with Descriptions
@@ -439,13 +449,13 @@
 
 
 /*--------------------------------------------------------------
-1.3 - Content
+1.5 - Content
 --------------------------------------------------------------*/
 
 
 
 /*--------------------------------------------------------------
-1.3.1 - Breadcrumbs
+1.5.1 - Breadcrumbs
 --------------------------------------------------------------*/
 
 	// Breadcrumbes
@@ -455,7 +465,7 @@
 
 
 /*--------------------------------------------------------------
-1.3.2 - Exerpt
+1.5.2 - Exerpt
 --------------------------------------------------------------*/
 
 	// set a custom length (truncation point) for excerpts
@@ -475,7 +485,7 @@
 
 
 /*--------------------------------------------------------------
-1.4 - Sidebars
+1.6 - Sidebars
 --------------------------------------------------------------*/
 
 	// Register widgetized area and update sidebar with default widgets.
@@ -538,13 +548,13 @@
 
 
 /*--------------------------------------------------------------
-1.5 - Media
+1.7 - Media
 --------------------------------------------------------------*/
 
 
 
 /*--------------------------------------------------------------
-1.5.1 - Images
+1.7.1 - Images
 --------------------------------------------------------------*/
 	
 	// Add custom image sizes
@@ -585,13 +595,13 @@
 
 
 /*--------------------------------------------------------------
-1.5.2 - Video
+1.7.2 - Video
 --------------------------------------------------------------*/
 
 
 
 /*--------------------------------------------------------------
-1.6 - Footer
+1.8 - Footer
 --------------------------------------------------------------*/
 
 	// Dynamic Footer Columns
@@ -605,7 +615,7 @@
 
 
 /*--------------------------------------------------------------
-1.7 - Scripts
+1.9 - Scripts
 --------------------------------------------------------------*/
 	
 	// Enqueue scripts and styles.
@@ -647,7 +657,7 @@
 2.0 - Category
 --------------------------------------------------------------*/
 
-	// See 1.1.2 - Taxonomy Creation for categories created on theme activation
+	// See 1.1.3 - Taxonomy Creation for categories created on theme activation
 
 
 
