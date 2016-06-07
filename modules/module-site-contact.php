@@ -4,7 +4,7 @@
 	$footer_class = array();
 	
 	// get the option to show the footer graphic
-	$graphic_option = get_option('_starter_theme_options');
+	$graphic_option = get_option('_starter_options');
 	$graphic_option = $graphic_option['checkbox_bottom_graphic'];
 	
 	// check if the graphic option is selected
@@ -18,7 +18,7 @@
 		<h1 class="section-title"><?php _e('Feedback',''); ?></h1>
 		<?php
 			
-			$text_options = get_option('_starter_theme_options');
+			$text_options = get_option('_starter_options');
 			
 			// Feedback
 			if ( $text_options['text_feedback']!='' || $text_options['text_feedback_link']!='' || $text_options['text_feedback_link_text']!='' ) {

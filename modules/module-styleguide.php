@@ -76,14 +76,14 @@
 	<h3>Figure</h3>
 		<p>Example of &lt;figure&gt;</p>
 		<figure>
-			<img src="<?php echo get_bloginfo('template_directory');?>/images//admin/tommy-trojan.jpg" alt="An awesome picture">
+			<img src="<?php echo get_template_directory_uri();?>/images//admin/tommy-trojan.jpg" alt="An awesome picture">
 		</figure>
 		<p>Content after &lt;figure&gt;</p>
 			
 		<h4>Figure with Caption</h4>
 			<p>Example of &lt;figure&gt; with &lt;figcaption&gt;</p>
 			<figure>
-				<img src="<?php echo get_bloginfo('template_directory');?>/images//admin/tommy-trojan.jpg" alt="An awesome picture">	
+				<img src="<?php echo get_template_directory_uri();?>/images//admin/tommy-trojan.jpg" alt="An awesome picture">	
 				<figcaption>Caption for the awesome picture</figcaption>
 			</figure>
 			<p>Content after &lt;figure&gt;</p>
@@ -91,8 +91,8 @@
 		<h4>Figure with Caption - Align Center</h4>
 			<p>Example of &lt;figure&gt; with &lt;figcaption&gt; and align center. Content before &lt;figure&gt;.</p>
 			<figure class="wp-caption aligncenter" style="width: 300px;">
-				<a href="<?php echo get_bloginfo('template_directory');?>/images//admin/tommy-trojan.jpg">
-					<img src="<?php echo get_bloginfo('template_directory');?>/images//admin/tommy-trojan.jpg" alt="This is an example of an image that is aligned to the center." class="size-medium">
+				<a href="<?php echo get_template_directory_uri();?>/images//admin/tommy-trojan.jpg">
+					<img src="<?php echo get_template_directory_uri();?>/images//admin/tommy-trojan.jpg" alt="This is an example of an image that is aligned to the center." class="size-medium">
 				</a>
 				<figcaption class="wp-caption-text">This is an example of an image that is aligned to the center.</figcaption>
 			</figure>
@@ -103,7 +103,7 @@
 			<p>Example of &lt;figure&gt; with &lt;figcaption&gt; and align Right. Content before &lt;figure&gt;.</p>
 			<figure class="wp-caption alignright" style="width: 300px;">
 				<a href="/">
-					<img src="<?php echo get_bloginfo('template_directory');?>/images//admin/tommy-trojan.jpg" alt="This is an example of an image that is aligned to the right." class="size-medium">
+					<img src="<?php echo get_template_directory_uri();?>/images//admin/tommy-trojan.jpg" alt="This is an example of an image that is aligned to the right." class="size-medium">
 				</a>
 				<figcaption class="wp-caption-text">This is an example of an image that is aligned to the right.</figcaption>
 			</figure>
@@ -114,7 +114,7 @@
 			<p>Example of &lt;figure&gt; with &lt;figcaption&gt; and align left. Content before &lt;figure&gt;.</p>
 			<figure class="wp-caption alignleft" style="width: 300px;">
 				<a href="/">
-					<img src="<?php echo get_bloginfo('template_directory');?>/images//admin/tommy-trojan.jpg" alt="This is an example of an image that is aligned to the left." class="size-medium">
+					<img src="<?php echo get_template_directory_uri();?>/images//admin/tommy-trojan.jpg" alt="This is an example of an image that is aligned to the left." class="size-medium">
 				</a>
 				<figcaption class="wp-caption-text">This is an example of an image that is aligned to the left.</figcaption>
 			</figure>

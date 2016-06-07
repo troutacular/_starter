@@ -21,9 +21,9 @@
 // add footer sidebars
 	
 	register_sidebars( 4, array(
-		'name' => __( 'Footer Column %d', 'theme-starter' ),
+		'name' => __( 'Footer Column %d', '_starter' ),
 		'id' => 'footer-column',
-		'description' => __( 'Drag widgets here to show in the corresponding column of the footer. The columns are dynamic and they will split their width\'s evenly between Footer Column areas that have active widgets.', 'theme-starter' ),
+		'description' => __( 'Drag widgets here to show in the corresponding column of the footer. The columns are dynamic and they will split their width\'s evenly between Footer Column areas that have active widgets.', '_starter' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
 		'before_title' => '<h1 class="widget-title">',

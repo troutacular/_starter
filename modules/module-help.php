@@ -15,7 +15,7 @@
 		<p>The Customizer has several options for you to control your site's display and settings.  You can access the Customizer from the <a href="/wp-admin/customize.php?return=%2Fwp-admin%2F">Admin Panel</a> or from the public facing side using the Admin Bar under the Site Name (fig 1.0).</p>
 	
 		<figure>
-			<img src="<?php echo get_bloginfo('template_directory');?>/images/admin/customizer.png" alt="Customizer access from admin bar.">	
+			<img src="<?php echo get_template_directory_uri();?>/images/admin/customizer.png" alt="Customizer access from admin bar.">	
 			<figcaption><strong>Fig 1.0</strong> Accessing the Customizer from the Admin Bar</figcaption>
 		</figure>
 		
@@ -89,7 +89,7 @@ https://web-app.usc.edu/web/ecal/calendar/headlines/32
 				<p>By default, when you activated this theme, a page called <a href="/events">Events</a> was created and set to use the <strong>Events</strong> Template.  In order to display the Events, you must have the <strong>Events</strong> Template selected from the Page Attributes for that page (Fig 1.1).</p>
 				
 				<figure>
-					<img src="<?php echo get_bloginfo('template_directory');?>/images/admin/events-template.jpg" alt="Events Template">	
+					<img src="<?php echo get_template_directory_uri();?>/images/admin/events-template.jpg" alt="Events Template">	
 					<figcaption><strong>Fig 1.1</strong> <strong>Events</strong> as Page Template</figcaption>
 				</figure>
 				
@@ -106,7 +106,7 @@ https://web-app.usc.edu/web/ecal/calendar/headlines/32
 			<p>The Feedback and Website By sections can be used to help users contact you for additional support.</p>
 			
 			<figure>
-				<img src="<?php echo get_bloginfo('template_directory');?>/images/admin/customizer-website-footer.jpg" alt="Feedback">	
+				<img src="<?php echo get_template_directory_uri();?>/images/admin/customizer-website-footer.jpg" alt="Feedback">	
 				<figcaption><strong>Fig 1.2</strong> Example of the footer feedback text input</figcaption>
 			</figure>
 			
@@ -137,7 +137,7 @@ https://web-app.usc.edu/web/ecal/calendar/headlines/32
 			<p>In order to use the functions of the Homepage, you must set the page to use the Template <strong>Homepage</strong> from Page Attributes (Fig 1.3).</p>
 			
 			<figure>
-				<img src="<?php echo get_bloginfo('template_directory');?>/images/admin/homepage-template.jpg" alt="Homepage Template">	
+				<img src="<?php echo get_template_directory_uri();?>/images/admin/homepage-template.jpg" alt="Homepage Template">	
 				<figcaption><strong>Fig 1.3</strong> <strong>Homepage</strong> as Page Template</figcaption>
 			</figure>
 				
@@ -152,7 +152,7 @@ https://web-app.usc.edu/web/ecal/calendar/headlines/32
 		<p>Drag the widget to the desired section and complete the options (Fig 1.6)</p>
 		
 		<figure>
-			<img src="<?php echo get_bloginfo('template_directory');?>/images/admin/usc-events-calendar-widget.jpg" alt="USC Event Calendar Widget">	
+			<img src="<?php echo get_template_directory_uri();?>/images/admin/usc-events-calendar-widget.jpg" alt="USC Event Calendar Widget">	
 			<figcaption><strong>Fig 1.6</strong> Options for the USC Event Calendar widget</figcaption>
 		</figure>
 		
@@ -185,7 +185,7 @@ https://web-app.usc.edu/web/ecal/calendar/headlines/32
 		<p>There are several icons that can be used with menus or inline content.  Add the class next to the icon in the menu section (Fig 1.8).</p>
 		
 		<figure>
-			<img src="<?php echo get_bloginfo('template_directory');?>/images/admin/classes-menu.jpg" alt="Menu Classes">	
+			<img src="<?php echo get_template_directory_uri();?>/images/admin/classes-menu.jpg" alt="Menu Classes">	
 			<figcaption><strong>Fig 1.8</strong> Adding classes to menus.</figcaption>
 		</figure>
 		
