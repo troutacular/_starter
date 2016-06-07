@@ -9,7 +9,7 @@
 
 <?php if ( function_exists('bread_crumbs') ) { ?>
 	<nav class="nav-breadcrumbs">
-		<h1 class="breadcrumbs-title"><?php _e('Breadcrumb Navigation',''); ?></h1>
+		<h1 class="breadcrumbs-title"><?php _e('Breadcrumb Navigation','_starter'); ?></h1>
 		<?php bread_crumbs(); ?>
 	</nav>
 <?php } ?>

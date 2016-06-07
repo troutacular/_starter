@@ -15,7 +15,7 @@
 
 <div class="site-contact-wrapper<?php if ($footer_class!='') { echo ' '.implode($footer_class,' '); } ?>">
 	<section class="site-contact">
-		<h1 class="section-title"><?php _e('Feedback',''); ?></h1>
+		<h1 class="section-title"><?php _e('Feedback','_starter'); ?></h1>
 		<?php
 			
 			$text_options = get_option('_starter_options');
@@ -29,9 +29,9 @@
 						if ( $text_options['text_feedback_link']!='' ) {
 							echo ' <a href="'.$text_options['text_feedback_link'].'">';
 							if ( $text_options['text_feedback_link_text']!='' ) {
-								echo $text_options['text_feedback_link_text'];
+								_e($text_options['text_feedback_link_text'], '_starter');
 							} else {
-								echo $text_options['text_feedback_link'];
+								_e($text_options['text_feedback_link'], '_starter');
 							}
 							echo '</a>';
 						}
@@ -49,9 +49,9 @@
 						if ( $text_options['text_website_by_link']!='' ) {
 							echo ' <a href="'.$text_options['text_website_by_link'].'">';
 							if ( $text_options['text_website_by_link_text']!='' ) {
-								echo $text_options['text_website_by_link_text'];
+								_e($text_options['text_website_by_link_text'], '_starter');
 							} else {
-								echo $text_options['text_website_by_link'];
+								_e($text_options['text_website_by_link'], '_starter');
 							}
 							echo '</a>';
 						}

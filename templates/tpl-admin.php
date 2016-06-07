@@ -29,10 +29,10 @@ get_header(); ?>
 					$help_uri = get_page_uri( $help_page->ID );
 					
 				?>
-				<p><?php _e( 'This section is intended to help Editors use and manage their site.', '' ); ?></p>
+				<p><?php _e( 'This section is intended to help Editors use and manage their site.', '_starter' ); ?></p>
 				
 				<?php  if ( $help_uri ) { ?>
-					<p><?php _e( 'For information about managing the site, please see the', '' ); ?> <a href="/<?php echo $help_uri; ?>"><?php _e( 'Help Section', '' ); ?></a>.</p>
+					<p><?php _e( 'For information about managing the site, please see the', '_starter' ); ?> <a href="/<?php echo $help_uri; ?>"><?php _e( 'Help Section', '_starter' ); ?></a>.</p>
 				<?php } ?>
 				
 				<?php
