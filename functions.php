@@ -92,27 +92,28 @@
 		 *
 		 * Sets up theme defaults and registers support for various WordPress features.
 		 *
-		 * Note that this function is hooked into the after_setup_theme hook, which runs before the init hook. The init hook is too late for some features, such as indicating support for post thumbnails.
+		 * Note that this function is hooked into the after_setup_theme hook, which runs 
+		 * before the init hook. The init hook is too late for some features, such as 
+		 * indicating support for post thumbnails.
 		 * 
 		 * @since 1.0.0
 		 */
 		function _starter_theme_setup() {
 		
 			/**
-				Make theme available for translation.
-				Translations can be filed in the /languages/ directory.
-				If you're building a theme based on usc-starter, use a find and replace
-				to change '_starter' to the name of your theme in all the template files
+			 * Make theme available for translation.
+			 * Translations can be filed in the /languages/ directory.
+			 * If you're building a theme based on usc-starter, use a find and replace
+			 * to change '_starter' to the name of your theme in all the template files
+			 *
+			 * @link https://codex.wordpress.org/Function_Reference/load_theme_textdomain
 			**/
 			load_theme_textdomain( '_starter', get_template_directory() . '/languages' );
 		
 			/**
-				Enable support for Post Thumbnails on posts and pages.
-				
-				@link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
-			**/
-		
-			// This theme uses wp_nav_menu() in one location.
+			 * Enable wp_nav_menu() in one location.
+			 * @link https://codex.wordpress.org/Function_Reference/register_nav_menu
+			 */
 			register_nav_menus( array(
 				'primary' => __( 'Primary Menu', '_starter' ),
 			) );
@@ -121,13 +122,22 @@
 			// Check if 'add_theme_support' is supported
 			if ( function_exists( 'add_theme_support' ) ) {
 				
-				// Enable post thumbnails
+				/**
+				 * Enable support for Post Thumbnails on posts and pages.
+				 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
+				**/
 				add_theme_support( 'post-thumbnails' );
 				
-				// Enable support for Post Formats.
+				/**
+				 * Enable support for Post Formats.
+				 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Formats
+				**/
 				add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
 				
-				// Enable support for HTML5 markup.
+				/**
+				 * Enable support for HTML5 elements.
+				 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#HTML5
+				**/
 				add_theme_support( 'html5', array(
 					'comment-list',
 					'search-form',
@@ -148,114 +158,146 @@
 1.2.1 - Page Creation
 --------------------------------------------------------------*/
 
-	// Support Pages Setup
+	/**
+	 * Run this function after theme setup.  Did not use 'after_switch_theme'
+	 * to allow for future automatic additions to existing sites.
+	**/
+	add_action( 'after_setup_theme', '_starter_page_add' );	
+	
+	// run the function if it doesn't already exist
+	if ( ! function_exists( '_starter_page_add' ) ) {
 		
-		// only run this in the admin section
-		if ( is_admin() ) {
-			
-			
-			// run the function if it doesn't already exist
-			if ( ! function_exists( '_starter_page_add' ) ) {
-				
-				// get the support page function
-				require_once get_template_directory() . '/inc/support-page-setup.php';
+		// get the support page function
+		require_once get_template_directory() . '/inc/support-page-setup.php';
 
-				/**
-				 * Starter Page Add
-				 *
-				 * Uses _starter_page_additions function to add pages to the site.
-				 *
-				 * @since 1.0.0
-				 * @return 	function 	Adds pages to the site if they do no exist.
-				 */
-				
-				function _starter_page_add() {
-					
-					/**
-					 * usage: (see full documentation in '/inc/support-page-setup.php'
-					 * _starter_page_additions( [ page title ], [ page template ], [ post status ], [ password ], [ set as homepage ], [ parent slug ] );
-					 * 
-					 * sample:
-					 * _starter_page_additions( 'Site Help', 'templates/tpl-help.php', 'private', false, false, false, false );
-					**/
-					
-					// create admin page
-					_starter_page_additions( 'Site Admin', 'templates/tpl-admin.php', 'private', false, false, false, false );
-					
-					// create help page
-					_starter_page_additions( 'Site Help', 'templates/tpl-help.php', 'private', false, false, false, false );
-					
-					// create styleguide page
-					_starter_page_additions( 'Site Styleguide', 'templates/tpl-styleguide.php', 'private', false, false, false, false );
-										
-				}
-			}
-
+		/**
+		 * Starter Page Add
+		 *
+		 * Uses _starter_page_additions function to add pages to the site.
+		 *
+		 * @since 1.0.0
+		 * @return 	function 	Adds pages to the site if they do no exist.
+		 */
+		
+		function _starter_page_add() {
+			
 			/**
-			 * Run this function after theme setup.  Did not use 'after_switch_theme'
-			 * to allow for future automatic additions to existing sites.
-			**/
-			add_action( 'after_setup_theme', '_starter_page_add' );	
-			
-			// run the function if it doesn't already exist
-			if ( ! function_exists( '_starter_page_add_once' ) ) {
-				
-				/**
-				 * Starter Page Add Once
-				 *
-				 * Adds a page to the site once.
-				 * 
-				 * @return 	function 	Adds pages only once to the site after theme switch.
-				 */
-				function _starter_page_add_once() {
-					
-					/**
-						usage: (see full documentation in '/inc/support-page-setup.php'
-						_starter_page_additions( [ page title ], [ page template ], [ post status ], [ password ], [ set as homepage ], [ parent slug ] );
-					**/
-										
-				}
-			}
-
-			/**
-			 * Set up the following pages only once on theme switch.
-			 * Does not require updates each time the admin is accessed.
-			 * Does not override settings, particularly for the selection of the homepage designation.
+			 * usage: (see full documentation in '/inc/support-page-setup.php'
+			 * _starter_page_additions( [ page title ], [ page template ], [ post status ], [ password ], [ set as homepage ], [ parent slug ] );
+			 * 
+			 * sample:
+			 * _starter_page_additions( 'Site Help', 'templates/tpl-help.php', 'private', false, false, false, false );
 			**/
 			
-			add_action( 'after_switch_theme', '_starter_page_add_once' );
+			// create admin page
+			_starter_page_additions( 'Site Admin', 'templates/tpl-admin.php', 'private', false, false, false, false );
+			
+			// create help page
+			_starter_page_additions( 'Site Help', 'templates/tpl-help.php', 'private', false, false, false, false );
+			
+			// create styleguide page
+			_starter_page_additions( 'Site Styleguide', 'templates/tpl-styleguide.php', 'private', false, false, false, false );
+								
 		}
-	// end
+	}
+			
+
+
+	/**
+	 * Set up the following pages only once on theme switch.
+	 * Does not require updates each time the admin is accessed.
+	 * Does not override settings, particularly for the selection of the homepage designation.
+	**/
+	add_action( 'after_switch_theme', '_starter_page_add_once' );
+
+	// run the function if it doesn't already exist
+	if ( ! function_exists( '_starter_page_add_once' ) ) {
+		
+		/**
+		 * Starter Page Add Once
+		 *
+		 * Adds a page to the site once.
+		 * 
+		 * @return 	function 	Adds pages only once to the site after theme switch.
+		 */
+		function _starter_page_add_once() {
+			
+			/**
+			 * usage: (see full documentation in '/inc/support-page-setup.php'
+			 * _starter_page_additions( [ page title ], [ page template ], [ post status ], [ password ], [ set as homepage ], [ parent slug ] );
+			**/
+								
+		}
+	}
 
 
 /*--------------------------------------------------------------
 1.2.3 - Taxonomy Creation
 --------------------------------------------------------------*/
 
-	// Add Categories automatically to theme
 		
-		/* Uncomment to add Categories automatically on Theme initiation
 		
-		if ( is_admin() ) {
-			add_action( 'after_setup_theme', 'create_new_categories' );
-			function create_new_categories() {
-				$taxonomy = 'category';
-				$categories = array(
-					array( 'name' => 'News', 'taxonomy' => $taxonomy, 'args' => array ( 'slug' => 'news', 'description'=> 'News posts that will display on the Homepage and News Category.' ) ),
-					array( 'name' => 'Featured', 'taxonomy' => $taxonomy, 'args' => array ( 'slug' => 'featured', 'description'=> 'Posts that will display at the top of the Homepage.' ) ),
-				);
-				foreach ( $categories as $category ) {
-					$category_id = get_cat_ID( $category['name'] );
-					$term = term_exists($category['name'], $category['taxonomy']);
-					if ($term == 0 || $term == null) {
-						wp_insert_term( $category['name'], $category['taxonomy'], $category['args'] );
-					}
+	/**
+	 * Run this function after theme setup.  Did not use 'after_switch_theme'
+	 * to allow for future automatic additions to existing sites.
+	**/
+	add_action( 'after_setup_theme', '_starter_create_new_taxonomies' );
+	
+	/**
+	 * Create New Taxonomies
+	 *
+	 * Add specified taxonomies to the site.
+	 *
+	 * @link https://codex.wordpress.org/Taxonomies#Default_Taxonomies
+	 *
+	 * @since 1.0.0
+	 * @return  array|WP Error 	Inserts taxonomy or returens WP Error message
+	 */
+	function _starter_create_new_taxonomies() {
+
+		/**
+		 * Set an array of taxonomies to add
+		 *
+		 * @link https://codex.wordpress.org/Function_Reference/wp_insert_term
+		 *
+		 * usage:
+		 * 	$taxonomies = array(
+		 * 		array( 
+		 * 			'name' => 'Featured',
+		 * 			'taxonomy' => 'category',
+		 * 			'args' => array ( 
+		 * 				'slug' => 'featured', 
+		 * 				'description'=> 'Featured Category Posts'
+		 * 			)
+		 * 		)
+		 * 	);
+		 */
+		
+		$taxonomies = array();
+		
+		// check that we have taxonomies to process
+		if ( ! empty( $taxonomies ) ) {
+
+			// loop through the taxonomies array and add them to the site
+			foreach ( $taxonomies as $taxonomy ) {
+
+				// check if the taxonomy already exists
+				$term = term_exists($taxonomy['name'], $taxonomy['taxonomy']);
+				
+				// if the term doesn't exist, add it
+				if ($term == 0 || $term == null) {
+					wp_insert_term( 
+						$taxonomy['name'], 
+						$taxonomy['taxonomy'], 
+						$taxonomy['args'] 
+					);
 				}
+
 			}
+
 		}
-		
-		*/
-	// end
+
+	}
 
 
 
