@@ -69,7 +69,7 @@
 		if ( ! isset( $content_width ) ) {
 			$content_width = 1120; /* pixels */
 		}
-	
+
     /**
      * Starter Remove Recent Comments
      *
@@ -108,15 +108,19 @@
 			 *
 			 * @link https://codex.wordpress.org/Function_Reference/load_theme_textdomain
 			**/
-			load_theme_textdomain( '_starter', get_template_directory() . '/languages' );
+			if ( function_exists( 'load_theme_textdomain' ) ) {
+				load_theme_textdomain( '_starter', get_template_directory() . '/languages' );
+			}
 		
 			/**
 			 * Enable wp_nav_menu() in one location.
 			 * @link https://codex.wordpress.org/Function_Reference/register_nav_menu
 			 */
-			register_nav_menus( array(
-				'primary' => __( 'Primary Menu', '_starter' ),
-			) );
+			if ( function_exists( 'register_nav_menus' ) ) {
+				register_nav_menus( array(
+					'primary' => __( 'Primary Menu', '_starter' ),
+				) );
+			}
 		
 			
 			// Check if 'add_theme_support' is supported
