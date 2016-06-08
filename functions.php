@@ -1,9 +1,11 @@
 <?php
 /**
-	usc-starter functions and definitions
-	
-	@package usc-starter
-**/
+ * _starter functions and definitions.
+ *
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ *
+ * @package _starter
+ */
   
 /**
 	Table of Contents
@@ -160,6 +162,11 @@
 		}
 
 	}
+
+	/**
+	 * Run this function after theme setup.  
+	 * Allows for future automatic additions to existing sites.
+	**/
 	add_action( 'after_setup_theme', '_starter_theme_setup' );
 
 
@@ -168,28 +175,23 @@
 1.2.1 - Page Creation
 --------------------------------------------------------------*/
 
-	/**
-	 * Run this function after theme setup.  Did not use 'after_switch_theme'
-	 * to allow for future automatic additions to existing sites.
-	**/
-	add_action( 'after_setup_theme', '_starter_page_add' );	
 	
-	// run the function if it doesn't already exist
 	if ( ! function_exists( '_starter_page_add' ) ) {
 		
 		// get the support page function
 		require_once get_template_directory() . '/inc/support-page-setup.php';
 
 		/**
-		 * Starter Page Add
-		 *
-		 * Uses _starter_page_additions function to add pages to the site.
+		 * Uses _starter_page_additions function to add page(s) to the site.
 		 *
 		 * @since 1.0.0
-		 * @return 	function 	Adds pages to the site if they do no exist.
+		 * @return 	function 	Creates page(s) and (optionally) assigns template.
 		 */
 		
 		function _starter_page_add() {
+
+			// get the support page function
+			require_once get_template_directory() . '/inc/support-page-setup.php';
 			
 			/**
 			 * usage: (see full documentation in '/inc/support-page-setup.php'
@@ -208,27 +210,24 @@
 			// create styleguide page
 			_starter_page_additions( 'Site Styleguide', 'templates/tpl-styleguide.php', 'private', false, false, false, false );
 								
-		}
+		}	
 	}
-			
-
-
+	
 	/**
-	 * Set up the following pages only once on theme switch.
-	 * Does not require updates each time the admin is accessed.
-	 * Does not override settings, particularly for the selection of the homepage designation.
+	 * Run this function after theme setup.
+	 * Allow for future automatic additions to existing sites.
 	**/
-	add_action( 'after_switch_theme', '_starter_page_add_once' );
+	add_action( 'after_setup_theme', '_starter_page_add' );
 
-	// run the function if it doesn't already exist
+
+	
 	if ( ! function_exists( '_starter_page_add_once' ) ) {
 		
 		/**
-		 * Starter Page Add Once
+		 * Uses _starter_page_additions function to add page(s) to the site one time only.
 		 *
-		 * Adds a page to the site once.
-		 * 
-		 * @return 	function 	Adds pages only once to the site after theme switch.
+		 * @since 1.0.0
+		 * @return 	function 	Creates page(s) and (optionally) assigns template.
 		 */
 		function _starter_page_add_once() {
 			
@@ -240,23 +239,20 @@
 		}
 	}
 
+	/**
+	 * Set up the following pages only once on theme switch.
+	 * Does not require updates each time the admin is accessed.
+	 * Does not override settings, particularly for the selection of the homepage designation.
+	**/
+	add_action( 'after_switch_theme', '_starter_page_add_once' );
+
 
 /*--------------------------------------------------------------
 1.2.3 - Taxonomy Creation
 --------------------------------------------------------------*/
-
-		
-		
-	/**
-	 * Run this function after theme setup.  Did not use 'after_switch_theme'
-	 * to allow for future automatic additions to existing sites.
-	**/
-	add_action( 'after_setup_theme', '_starter_create_new_taxonomies' );
 	
 	/**
-	 * Create New Taxonomies
-	 *
-	 * Add specified taxonomies to the site.
+	 * Creates new taxonomies to the site.
 	 *
 	 * @link https://codex.wordpress.org/Taxonomies#Default_Taxonomies
 	 *
@@ -282,7 +278,6 @@
 		 * 		)
 		 * 	);
 		 */
-		
 		$taxonomies = array();
 		
 		// check that we have taxonomies to process
@@ -316,9 +311,9 @@
 --------------------------------------------------------------*/
 
 	// remove some metadata from the <head> of each page
-		if ( ! function_exists( 'remheadlink' ) ) {
-		    add_action('init', 'remheadlink');
-			function remheadlink() {
+		if ( ! function_exists( '_starter_remove_head_links' ) ) {
+		    add_action('init', '_starter_remove_head_links');
+			function _starter_remove_head_links() {
 				//remove_action('wp_head', 'rel_canonical');  // Display a link for the URL to help search engines
 				remove_action( 'wp_head', 'feed_links_extra', 3 ); // Display the links to the extra feeds such as category feeds
 				remove_action( 'wp_head', 'feed_links', 2 ); // Display the links to the general feeds: Post and Comment Feed
@@ -333,52 +328,55 @@
 	    }
     // end
     
-    // Filters wp_title to print a neat <title> tag based on what is being viewed.
-		
-		/**
-			@param string $title Default title text for current view.
-			@param string $sep Optional separator.
-			@return string The filtered title.
-		**/
-		add_filter( 'wp_title', '_starter_wp_title', 10, 2 );
-		function _starter_wp_title( $title, $sep ) {
-			if ( is_feed() ) {
-				return $title;
-			}
-			
-			global $page, $paged;
-			
-			// Get the Site Title from the settings
-			$site_title = get_bloginfo( 'name', 'display' );
-			
-			// Set a custom element for the end of the <title> output
-			$title_last = 'USC';
-			
-			// Add the blog name
-			$title .= $site_title;
-			
-			// Add the blog description for the home/front page.
-			$site_description = get_bloginfo( 'description', 'display' );
-			if ( $site_description && ( is_home() || is_front_page() ) ) {
-				$title .= " $sep $site_description";
-			}
-			
-			// Add a page number if necessary:
-			if ( $paged >= 2 || $page >= 2 ) {
-				$title .= " $sep " . sprintf( __( 'Page %s', '_starter' ), max( $paged, $page ) );
-			}
-			
-			// Check if $title_last exists in the main site name
-			$title_check = strpos($site_title, $title_last);
-			
-			// If $title_last is not in the site title, then add it to the end of the <title>
-			if ($title_check === false) {
-				$title .= " $sep $title_last";
-			}
-			
+	
+	/**
+	 * Creates a nicely formatted and more specific title element text
+	 * for output in head of document, based on current view.
+	 *
+	 * @since 1.0.0
+	 * 
+	 * @param 	string 	$title 	Default title text for current view.
+	 * @param 	string 	$sep 	Optional separator
+	 * @return 	string 			Filtered Title
+	 */
+	function _starter_wp_title( $title, $sep ) {
+		if ( is_feed() ) {
 			return $title;
 		}
-	// end
+		
+		global $page, $paged;
+		
+		// Get the Site Title from the settings
+		$site_title = get_bloginfo( 'name', 'display' );
+		
+		// Set a custom element for the end of the <title> output
+		$title_last = 'USC';
+		
+		// Add the blog name
+		$title .= $site_title;
+		
+		// Add the blog description for the home/front page.
+		$site_description = get_bloginfo( 'description', 'display' );
+		if ( $site_description && ( is_home() || is_front_page() ) ) {
+			$title .= " $sep $site_description";
+		}
+		
+		// Add a page number if necessary:
+		if ( $paged >= 2 || $page >= 2 ) {
+			$title .= " $sep " . sprintf( __( 'Page %s', '_starter' ), max( $paged, $page ) );
+		}
+		
+		// Check if $title_last exists in the main site name
+		$title_check = strpos($site_title, $title_last);
+		
+		// If $title_last is not in the site title, then add it to the end of the <title>
+		if ($title_check === false) {
+			$title .= " $sep $title_last";
+		}
+		
+		return $title;
+	}
+	add_filter( 'wp_title', '_starter_wp_title', 10, 2 );
 
 
 
