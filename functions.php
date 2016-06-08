@@ -69,7 +69,7 @@
 		if ( ! isset( $content_width ) ) {
 			$content_width = 1120; /* pixels */
 		}
-	    
+	
     /**
      * Starter Remove Recent Comments
      *
@@ -327,14 +327,6 @@
 				remove_action( 'wp_head', 'wp_generator' ); // Display the XHTML generator that is generated on the wp_head hook, WP version
 		    }
 	    }
-    // end
-    
-    // remove inline styles from <head> for comments
-		add_action( 'widgets_init', 'twentyten_remove_recent_comments_style' );
-	    function twentyten_remove_recent_comments_style() {
-			global $wp_widget_factory;
-			remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
-		}
     // end
     
     // Filters wp_title to print a neat <title> tag based on what is being viewed.
