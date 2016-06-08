@@ -6,7 +6,7 @@
  *
  * @package _starter
  */
-  
+
 /**
 	Table of Contents
 
@@ -85,7 +85,7 @@
 		remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
 	}
 	add_action( 'widgets_init', '_starter_remove_recent_comments_style' );
-	
+
 
 	if ( ! function_exists( '_starter_setup' ) ) {
 
@@ -94,14 +94,14 @@
 		 *
 		 * Sets up theme defaults and registers support for various WordPress features.
 		 *
-		 * Note that this function is hooked into the after_setup_theme hook, which runs 
-		 * before the init hook. The init hook is too late for some features, such as 
+		 * Note that this function is hooked into the after_setup_theme hook, which runs
+		 * before the init hook. The init hook is too late for some features, such as
 		 * indicating support for post thumbnails.
-		 * 
+		 *
 		 * @since 1.0.0
 		 */
 		function _starter_theme_setup() {
-		
+
 			/**
 			 * Make theme available for translation.
 			 * Translations can be filed in the /languages/ directory.
@@ -113,7 +113,7 @@
 			if ( function_exists( 'load_theme_textdomain' ) ) {
 				load_theme_textdomain( '_starter', get_template_directory() . '/languages' );
 			}
-		
+
 			/**
 			 * Enable wp_nav_menu() in one location.
 			 * @link https://codex.wordpress.org/Function_Reference/register_nav_menu
@@ -123,23 +123,23 @@
 					'primary' => __( 'Primary Menu', '_starter' ),
 				) );
 			}
-		
-			
+
+
 			// Check if 'add_theme_support' is supported
 			if ( function_exists( 'add_theme_support' ) ) {
-				
+
 				/**
 				 * Enable support for Post Thumbnails on posts and pages.
 				 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 				**/
 				add_theme_support( 'post-thumbnails' );
-				
+
 				/**
 				 * Enable support for Post Formats.
 				 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Formats
 				**/
 				add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
-				
+
 				/**
 				 * Enable support for HTML5 elements.
 				 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#HTML5
@@ -164,7 +164,7 @@
 	}
 
 	/**
-	 * Run this function after theme setup.  
+	 * Run this function after theme setup.
 	 * Allows for future automatic additions to existing sites.
 	**/
 	add_action( 'after_setup_theme', '_starter_theme_setup' );
@@ -175,9 +175,9 @@
 1.2.1 - Page Creation
 --------------------------------------------------------------*/
 
-	
+
 	if ( ! function_exists( '_starter_page_add' ) ) {
-		
+
 		// get the support page function
 		require_once get_template_directory() . '/inc/support-page-setup.php';
 
@@ -187,32 +187,32 @@
 		 * @since 1.0.0
 		 * @return 	function 	Creates page(s) and (optionally) assigns template.
 		 */
-		
+
 		function _starter_page_add() {
 
 			// get the support page function
 			require_once get_template_directory() . '/inc/support-page-setup.php';
-			
+
 			/**
 			 * usage: (see full documentation in '/inc/support-page-setup.php'
 			 * _starter_page_additions( [ page title ], [ page template ], [ post status ], [ password ], [ set as homepage ], [ parent slug ] );
-			 * 
+			 *
 			 * sample:
 			 * _starter_page_additions( 'Site Help', 'templates/tpl-help.php', 'private', false, false, false, false );
 			**/
-			
+
 			// create admin page
 			_starter_page_additions( 'Site Admin', 'templates/tpl-admin.php', 'private', false, false, false, false );
-			
+
 			// create help page
 			_starter_page_additions( 'Site Help', 'templates/tpl-help.php', 'private', false, false, false, false );
-			
+
 			// create styleguide page
 			_starter_page_additions( 'Site Styleguide', 'templates/tpl-styleguide.php', 'private', false, false, false, false );
-								
-		}	
+
+		}
 	}
-	
+
 	/**
 	 * Run this function after theme setup.
 	 * Allow for future automatic additions to existing sites.
@@ -220,9 +220,9 @@
 	add_action( 'after_setup_theme', '_starter_page_add' );
 
 
-	
+
 	if ( ! function_exists( '_starter_page_add_once' ) ) {
-		
+
 		/**
 		 * Uses _starter_page_additions function to add page(s) to the site one time only.
 		 *
@@ -230,12 +230,12 @@
 		 * @return 	function 	Creates page(s) and (optionally) assigns template.
 		 */
 		function _starter_page_add_once() {
-			
+
 			/**
 			 * usage: (see full documentation in '/inc/support-page-setup.php'
 			 * _starter_page_additions( [ page title ], [ page template ], [ post status ], [ password ], [ set as homepage ], [ parent slug ] );
 			**/
-								
+
 		}
 	}
 
@@ -250,7 +250,7 @@
 /*--------------------------------------------------------------
 1.2.3 - Taxonomy Creation
 --------------------------------------------------------------*/
-	
+
 	/**
 	 * Creates new taxonomies to the site.
 	 *
@@ -268,18 +268,18 @@
 		 *
 		 * usage:
 		 * 	$taxonomies = array(
-		 * 		array( 
+		 * 		array(
 		 * 			'name' => 'Featured',
 		 * 			'taxonomy' => 'category',
-		 * 			'args' => array ( 
-		 * 				'slug' => 'featured', 
+		 * 			'args' => array (
+		 * 				'slug' => 'featured',
 		 * 				'description'=> 'Featured Category Posts'
 		 * 			)
 		 * 		)
 		 * 	);
 		 */
 		$taxonomies = array();
-		
+
 		// check that we have taxonomies to process
 		if ( ! empty( $taxonomies ) ) {
 
@@ -288,13 +288,13 @@
 
 				// check if the taxonomy already exists
 				$term = term_exists($taxonomy['name'], $taxonomy['taxonomy']);
-				
+
 				// if the term doesn't exist, add it
 				if ($term == 0 || $term == null) {
-					wp_insert_term( 
-						$taxonomy['name'], 
-						$taxonomy['taxonomy'], 
-						$taxonomy['args'] 
+					wp_insert_term(
+						$taxonomy['name'],
+						$taxonomy['taxonomy'],
+						$taxonomy['args']
 					);
 				}
 
@@ -327,14 +327,14 @@
 		    }
 	    }
     // end
-    
-	
+
+
 	/**
 	 * Creates a nicely formatted and more specific title element text
 	 * for output in head of document, based on current view.
 	 *
 	 * @since 1.0.0
-	 * 
+	 *
 	 * @param 	string 	$title 	Default title text for current view.
 	 * @param 	string 	$sep 	Optional separator
 	 * @return 	string 			Filtered Title
@@ -343,37 +343,37 @@
 		if ( is_feed() ) {
 			return $title;
 		}
-		
+
 		global $page, $paged;
-		
+
 		// Get the Site Title from the settings
 		$site_title = get_bloginfo( 'name', 'display' );
-		
+
 		// Set a custom element for the end of the <title> output
 		$title_last = 'USC';
-		
+
 		// Add the blog name
 		$title .= $site_title;
-		
+
 		// Add the blog description for the home/front page.
 		$site_description = get_bloginfo( 'description', 'display' );
 		if ( $site_description && ( is_home() || is_front_page() ) ) {
 			$title .= " $sep $site_description";
 		}
-		
+
 		// Add a page number if necessary:
 		if ( $paged >= 2 || $page >= 2 ) {
 			$title .= " $sep " . sprintf( __( 'Page %s', '_starter' ), max( $paged, $page ) );
 		}
-		
+
 		// Check if $title_last exists in the main site name
 		$title_check = strpos($site_title, $title_last);
-		
+
 		// If $title_last is not in the site title, then add it to the end of the <title>
 		if ($title_check === false) {
 			$title .= " $sep $title_last";
 		}
-		
+
 		return $title;
 	}
 	add_filter( 'wp_title', '_starter_wp_title', 10, 2 );
@@ -399,9 +399,9 @@
 
 	/**
 		To add preset mobile navigation:
-		
+
 		1. add the navigation css option in sass partial sass/_modules - @import 'modules/site-navigation-mobile';
-		2. add javascript options for modernizr and mobile navigation js in section '1.8 - Scripts'	
+		2. add javascript options for modernizr and mobile navigation js in section '1.8 - Scripts'
 	**/
 
 
@@ -428,15 +428,15 @@
 				<nav class="navigation paging-navigation" role="navigation">
 					<h1 class="screen-reader-text"><?php _e( 'Posts navigation', '_starter' ); ?></h1>
 					<div class="nav-links">
-			
+
 						<?php if ( get_next_posts_link() ) : ?>
 						<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', '_starter' ) ); ?></div>
 						<?php endif; ?>
-			
+
 						<?php if ( get_previous_posts_link() ) : ?>
 						<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', '_starter' ) ); ?></div>
 						<?php endif; ?>
-			
+
 					</div><!-- .nav-links -->
 				</nav><!-- .navigation -->
 				<?php
@@ -457,7 +457,7 @@
 				// Don't print empty markup if there's nowhere to navigate.
 				$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
 				$next     = get_adjacent_post( false, '', false );
-			
+
 				if ( ! $next && ! $previous ) {
 					return;
 				}
@@ -525,12 +525,12 @@
 --------------------------------------------------------------*/
 
 	// set a custom length (truncation point) for excerpts
-		add_filter( 'excerpt_length', 'custom_excerpt_length' );	
+		add_filter( 'excerpt_length', 'custom_excerpt_length' );
 		function custom_excerpt_length( $length ) {
 			return 55; //Change this number to any integer you like - default is 55.
 		}
 	// end
-	
+
 	// set a custom 'more' for excerpts
 		add_filter( 'excerpt_more', 'custom_excerpt_more' );
 		function custom_excerpt_more( $more ) {
@@ -545,13 +545,13 @@
 --------------------------------------------------------------*/
 
 	// Register widgetized area and update sidebar with default widgets.
-		
-		/** 
+
+		/**
 			This will set up sidebars in the admin for each page template type in the admin.
 			A page template will need to be created for each type (templates/tpl-[slug].php).
 			The [slug] will be used in the sidebar to check if that template type exists.
 		**/
-		
+
 		add_action( 'widgets_init', '_starter_widgets_init' );
 		function _starter_widgets_init() {
 			// set the names to use for the page templates
@@ -612,29 +612,29 @@
 /*--------------------------------------------------------------
 1.7.1 - Images
 --------------------------------------------------------------*/
-	
+
 	// Add custom image sizes
 		if ( function_exists( 'add_image_size' ) ) {
-			
+
 			/* Example
 			 * add_image_size( 'image-name', 1440, 900, true ); //width, height, cropping boolean - 1.6:1 ratio
 			 */
-			
+
 			add_image_size( 'starter-full-width', 1440, 900, true ); // 1.6:1
 			add_image_size( 'featured-image', 825, 550, true ); // 1.5:1
-			
+
 			add_image_size( 'single-post-image', 585, 1200, false ); // 1.5:1
 			add_image_size( 'category-post-image', 330, 675, false ); // 1.5:1
-			
+
 		}
 	// end
-	
+
 	// Standard Image output for posts
 		function _starter_post_image( $image_size = 'sinle-post-image', $caption = false ){
 			if ( has_post_thumbnail() ) { ?>
 			<figure class="entry-image">
 				<?php the_post_thumbnail($image_size); ?>
-				<?php 
+				<?php
 					if ( $caption ) {
 						$image_caption = get_post(get_post_thumbnail_id())->post_excerpt;
 						if ( $image_caption ) { ?>
@@ -663,7 +663,7 @@
 	// Dynamic Footer Columns
 		require get_template_directory() . '/inc/footer-columns.php';
 	// end
-	
+
 	// Set the link url for student affairs
 		$footer_logo_link = 'https://studentaffairs.usc.edu/';
 	// end
@@ -673,36 +673,36 @@
 /*--------------------------------------------------------------
 1.9 - Scripts
 --------------------------------------------------------------*/
-	
+
 	// Enqueue scripts and styles.
 		if( !is_login_page() && !is_admin() ) {
 			add_action( 'wp_enqueue_scripts', '_starter_scripts' );
 			function _starter_scripts() {
-				
+
 				/* jQuery - By default jQuery should not be enabled.
 				   Try to solve the need with CSS and native javascript first.
 				 */
 				$jquery = false;
-				
+
 				// jquery include from CDN
-				
+
 				//turn off for development
 				wp_deregister_script('jquery');
-				
+
 				if ($jquery) {
 					wp_enqueue_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', false, null, true );
 					wp_enqueue_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-1.2.1.min.js', 'jquery', null, true );
 				}
-				
+
 				wp_enqueue_script( 'starter', get_stylesheet_directory_uri() . '/js/starter.js', array(), null, true );
-			
+
 				if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 					wp_enqueue_script( 'comment-reply' );
 				}
-				
+
 				// let future child themes know the parent scripts are loaded
 				do_action('starter_scripts_loaded');
-				
+
 			}
 		}
 	// end
@@ -734,13 +734,13 @@
 				$all_the_cool_cats = get_categories( array(
 					'hide_empty' => 1,
 				) );
-		
+
 				// Count the number of categories that are attached to the posts.
 				$all_the_cool_cats = count( $all_the_cool_cats );
-		
+
 				set_transient( 'all_the_cool_cats', $all_the_cool_cats );
 			}
-		
+
 			if ( '1' != $all_the_cool_cats ) {
 				// This blog has more than 1 category so _starter_categorized_blog should return true.
 				return true;
@@ -750,7 +750,7 @@
 			}
 		}
 	// end
-	
+
 	// Flush out the transients used in _starter_categorized_blog.
 		function _starter_category_transient_flusher() {
 			// Like, beat it. Dig?
@@ -771,7 +771,7 @@
 /*--------------------------------------------------------------
 6.0 - Post
 --------------------------------------------------------------*/
-	
+
 	// add page order to posts
 		add_post_type_support ( 'post', 'page-attributes' );
 	// end
@@ -785,20 +785,20 @@
 	// Prints HTML with meta information for the current post-date/time and author.
 		if ( ! function_exists( '_starter_posted_on' ) ) {
 			function _starter_posted_on() {
-				
+
 				$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
-				
+
 				if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
 					$time_string .= ' [Updated: <time class="updated" datetime="%3$s">%4$s</time>]';
 				}
-				
+
 				$time_string = sprintf( $time_string,
 					esc_attr( get_the_date( 'c' ) ),
 					esc_html( get_the_date() ),
 					esc_attr( get_the_modified_date( 'c' ) ),
 					esc_html( get_the_modified_date() )
 				);
-			
+
 				printf( __( '<span class="posted-on">Posted on %1$s</span><span class="byline"> by %2$s</span>', '_starter' ),
 					sprintf( '<a href="%1$s" rel="bookmark">%2$s</a>',
 						esc_url( get_permalink() ),
@@ -839,7 +839,7 @@
 		add_action( 'wp', '_starter_setup_author' );
 		function _starter_setup_author() {
 			global $wp_query;
-		
+
 			if ( $wp_query->is_author() && isset( $wp_query->post ) ) {
 				$GLOBALS['authordata'] = get_userdata( $wp_query->post->post_author );
 			}
@@ -851,7 +851,7 @@
 8.0 - Index/Home
 --------------------------------------------------------------*/
 
-	// See 1.1.1 - Page Creation for pages created on theme activation 
+	// See 1.1.1 - Page Creation for pages created on theme activation
 
 
 
@@ -859,7 +859,7 @@
 9.0 - Login
 --------------------------------------------------------------*/
 
-	// set function for testing if on login page 
+	// set function for testing if on login page
 		function is_login_page() {
 			return !strncmp($_SERVER['REQUEST_URI'], '/wp-login.php', strlen('/wp-login.php'));
 		}
@@ -870,11 +870,11 @@
 /*--------------------------------------------------------------
 10.0 - Customizations
 --------------------------------------------------------------*/
-	
+
 	// Customizer additions.
 		require get_template_directory() . '/inc/customizer.php';
 	// end
-	
+
 	// Customizer additions - Site Contact.
 		require get_template_directory() . '/inc/customize-site-contact.php';
 	// end
