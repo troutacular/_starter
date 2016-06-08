@@ -145,7 +145,13 @@
 					'gallery',
 					'caption'
 				) );
-			
+
+				/**
+				 * Enable Theme Title.
+				 * @link https://codex.wordpress.org/Function_Reference/add_theme_support#Title_Tag
+				 */
+				add_theme_support( 'title-tag' );
+
 			}
 		}
 
