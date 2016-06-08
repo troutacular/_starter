@@ -53,3 +53,4 @@
 	<?php get_template_part('modules/module-breadcrumbs'); ?>
 	
 	<div id="content" class="site-content-wrapper"><?php /* closes in footer.php */ ?>
+	<?php _starter_post_image()
