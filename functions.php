@@ -297,10 +297,10 @@
 			foreach ( $taxonomies as $taxonomy ) {
 
 				// check if the taxonomy already exists
-				$term = term_exists($taxonomy['name'], $taxonomy['taxonomy']);
+				$term = term_exists( $taxonomy['name'], $taxonomy['taxonomy'] );
 
 				// if the term doesn't exist, add it
-				if ($term == 0 || $term == null) {
+				if ( $term == 0 || $term == null ) {
 					wp_insert_term(
 						$taxonomy['name'],
 						$taxonomy['taxonomy'],
@@ -320,30 +320,32 @@
 1.3 - Header
 --------------------------------------------------------------*/
 
-	// remove some metadata from the <head> of each page
-		if ( ! function_exists( '_starter_remove_head_links' ) ) {
-		    add_action('init', '_starter_remove_head_links');
-			function _starter_remove_head_links() {
+	if ( ! function_exists( '_starter_remove_head_links' ) ) {
 
-				// remove emojis
-				remove_action( 'wp_head', 'print_emoji_styles' ); // Remove the emoji's
-				remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-				remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-				remove_action( 'wp_print_styles', 'print_emoji_styles' );
-				remove_action( 'admin_print_styles', 'print_emoji_styles' );
+		/**
+		 * Remove links and metadata from the <head>.
+		 */
+		function _starter_remove_head_links() {
 
-				remove_action( 'wp_head', 'feed_links_extra', 3 ); // Display the links to the extra feeds such as category feeds
-				remove_action( 'wp_head', 'feed_links', 2 ); // Display the links to the general feeds: Post and Comment Feed
-				remove_action( 'wp_head', 'rsd_link' ); // Display the link to the Really Simple Discovery service endpoint, EditURI link
-				remove_action( 'wp_head', 'wlwmanifest_link' ); // Display the link to the Windows Live Writer manifest file.
-				remove_action( 'wp_head', 'index_rel_link' ); // index link
-				remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 ); // prev link
-				remove_action( 'wp_head', 'start_post_rel_link', 10, 0 ); // start link
-				remove_action( 'wp_head', 'adjacent_posts_rel_link', 10, 0 ); // Display relational links for the posts adjacent to the current post.
-				remove_action( 'wp_head', 'wp_generator' ); // Display the XHTML generator that is generated on the wp_head hook, WP version
-		    }
+			// remove emojis
+			remove_action( 'wp_head', 'print_emoji_styles' ); // Remove the emoji's
+			remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+			remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+			remove_action( 'wp_print_styles', 'print_emoji_styles' );
+			remove_action( 'admin_print_styles', 'print_emoji_styles' );
+
+			remove_action( 'wp_head', 'feed_links_extra', 3 ); // Display the links to the extra feeds such as category feeds
+			remove_action( 'wp_head', 'feed_links', 2 ); // Display the links to the general feeds: Post and Comment Feed
+			remove_action( 'wp_head', 'rsd_link' ); // Display the link to the Really Simple Discovery service endpoint, EditURI link
+			remove_action( 'wp_head', 'wlwmanifest_link' ); // Display the link to the Windows Live Writer manifest file.
+			remove_action( 'wp_head', 'index_rel_link' ); // index link
+			remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 ); // prev link
+			remove_action( 'wp_head', 'start_post_rel_link', 10, 0 ); // start link
+			remove_action( 'wp_head', 'adjacent_posts_rel_link', 10, 0 ); // Display relational links for the posts adjacent to the current post.
+			remove_action( 'wp_head', 'wp_generator' ); // Display the XHTML generator that is generated on the wp_head hook, WP version
 	    }
-    // end
+		add_action( 'init', '_starter_remove_head_links' );
+    }
 
 
 
@@ -352,7 +354,7 @@
 --------------------------------------------------------------*/
 
 	// Add CSS files to the header
-	add_action( 'wp_enqueue_scripts', '_starter_css' );
+	add_action('wp_enqueue_scripts', '_starter_css');
 		function _starter_css() {
 			wp_enqueue_style( 'usc-starter-style', get_stylesheet_directory_uri().'/css/stylesheet.css', false, null, 'screen,print'  ); // $handle, $src, $deps, $ver, $media
 		}
@@ -384,7 +386,7 @@
 --------------------------------------------------------------*/
 
 	// Display navigation to next/previous set of posts when applicable.
-		if ( ! function_exists( '_starter_paging_nav' ) ) :
+		if ( ! function_exists( '_starter_paging_nav' ) ) {
 		// @return void
 			function _starter_paging_nav() {
 				// Don't print empty markup if there's only one page.
@@ -408,7 +410,7 @@
 				</nav><!-- .navigation -->
 				<?php
 			}
-		endif;
+		}
 	// end
 
 
@@ -502,7 +504,7 @@
 		add_filter( 'excerpt_more', 'custom_excerpt_more' );
 		function custom_excerpt_more( $more ) {
 			global $post;
-			return ' <a class="read-more" href="'. get_permalink($post->ID) . '">Read more</a>';
+			return ' <a class="read-more" href="'. get_permalink( $post->ID ) . '">Read more</a>';
 		}
 	//
 
@@ -597,13 +599,13 @@
 	// end
 
 	// Standard Image output for posts
-		function _starter_post_image( $image_size = 'sinle-post-image', $caption = false ){
+		function _starter_post_image( $image_size = 'sinle-post-image', $caption = false ) {
 			if ( has_post_thumbnail() ) { ?>
 			<figure class="entry-image">
-				<?php the_post_thumbnail($image_size); ?>
+				<?php the_post_thumbnail( $image_size ); ?>
 				<?php
 					if ( $caption ) {
-						$image_caption = get_post(get_post_thumbnail_id())->post_excerpt;
+						$image_caption = get_post( get_post_thumbnail_id() )->post_excerpt;
 						if ( $image_caption ) { ?>
 					<figcaption>
 						<?php echo $image_caption; ?>
@@ -642,7 +644,7 @@
 --------------------------------------------------------------*/
 
 	// Enqueue scripts and styles.
-		if( !is_login_page() && !is_admin() ) {
+		if ( ! is_login_page() && ! is_admin() ) {
 			add_action( 'wp_enqueue_scripts', '_starter_scripts' );
 			function _starter_scripts() {
 
@@ -654,9 +656,9 @@
 				// jquery include from CDN
 
 				//turn off for development
-				wp_deregister_script('jquery');
+				wp_deregister_script( 'jquery' );
 
-				if ($jquery) {
+				if ( $jquery ) {
 					wp_enqueue_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', false, null, true );
 					wp_enqueue_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-1.2.1.min.js', 'jquery', null, true );
 				}
@@ -668,7 +670,7 @@
 				}
 
 				// let future child themes know the parent scripts are loaded
-				do_action('starter_scripts_loaded');
+				do_action( 'starter_scripts_loaded' );
 
 			}
 		}
@@ -828,7 +830,7 @@
 
 	// set function for testing if on login page
 		function is_login_page() {
-			return !strncmp($_SERVER['REQUEST_URI'], '/wp-login.php', strlen('/wp-login.php'));
+			return ! strncmp( $_SERVER['REQUEST_URI'], '/wp-login.php', strlen( '/wp-login.php' ) );
 		}
 	// end
 
