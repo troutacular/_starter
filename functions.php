@@ -73,11 +73,11 @@
 		}
 
     /**
-     * Starter Remove Recent Comments
-     *
      * Removes inline styles from <head> for comments
      *
      * @since 1.0.0
+     *
+     * @global 	object 		$wp_widget_factory
      * @return	boolean 	widget factory removal of css
      */
     function _starter_remove_recent_comments_style() {
@@ -90,8 +90,6 @@
 	if ( ! function_exists( '_starter_setup' ) ) {
 
 		/**
-		 * Starter Theme Setup
-		 *
 		 * Sets up theme defaults and registers support for various WordPress features.
 		 *
 		 * Note that this function is hooked into the after_setup_theme hook, which runs
