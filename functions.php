@@ -314,7 +314,14 @@
 		if ( ! function_exists( '_starter_remove_head_links' ) ) {
 		    add_action('init', '_starter_remove_head_links');
 			function _starter_remove_head_links() {
-				//remove_action('wp_head', 'rel_canonical');  // Display a link for the URL to help search engines
+
+				// remove emojis
+				remove_action( 'wp_head', 'print_emoji_styles' ); // Remove the emoji's
+				remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+				remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+				remove_action( 'wp_print_styles', 'print_emoji_styles' );
+				remove_action( 'admin_print_styles', 'print_emoji_styles' );
+
 				remove_action( 'wp_head', 'feed_links_extra', 3 ); // Display the links to the extra feeds such as category feeds
 				remove_action( 'wp_head', 'feed_links', 2 ); // Display the links to the general feeds: Post and Comment Feed
 				remove_action( 'wp_head', 'rsd_link' ); // Display the link to the Really Simple Discovery service endpoint, EditURI link
@@ -327,56 +334,6 @@
 		    }
 	    }
     // end
-
-
-	/**
-	 * Creates a nicely formatted and more specific title element text
-	 * for output in head of document, based on current view.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param 	string 	$title 	Default title text for current view.
-	 * @param 	string 	$sep 	Optional separator
-	 * @return 	string 			Filtered Title
-	 */
-	function _starter_wp_title( $title, $sep ) {
-		if ( is_feed() ) {
-			return $title;
-		}
-
-		global $page, $paged;
-
-		// Get the Site Title from the settings
-		$site_title = get_bloginfo( 'name', 'display' );
-
-		// Set a custom element for the end of the <title> output
-		$title_last = 'USC';
-
-		// Add the blog name
-		$title .= $site_title;
-
-		// Add the blog description for the home/front page.
-		$site_description = get_bloginfo( 'description', 'display' );
-		if ( $site_description && ( is_home() || is_front_page() ) ) {
-			$title .= " $sep $site_description";
-		}
-
-		// Add a page number if necessary:
-		if ( $paged >= 2 || $page >= 2 ) {
-			$title .= " $sep " . sprintf( __( 'Page %s', '_starter' ), max( $paged, $page ) );
-		}
-
-		// Check if $title_last exists in the main site name
-		$title_check = strpos($site_title, $title_last);
-
-		// If $title_last is not in the site title, then add it to the end of the <title>
-		if ($title_check === false) {
-			$title .= " $sep $title_last";
-		}
-
-		return $title;
-	}
-	add_filter( 'wp_title', '_starter_wp_title', 10, 2 );
 
 
 
@@ -589,9 +546,9 @@
 			);
 			foreach ( $sidebars as $sidebar ) {
 				register_sidebar( array(
-					'name'          => __( $sidebar['name'], '_starter' ),
+					'name'          => $sidebar['name'],
 					'id'            => $sidebar['slug'],
-					'description'	=> __( $sidebar['description'], '_starter' ),
+					'description'	=> $sidebar['description'],
 					'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 					'after_widget'  => '</aside>',
 					'before_title'  => '<h1 class="widget-title">',
@@ -833,7 +790,7 @@
 		 * It removes the need to call the_post() and rewind_posts() in an author
 		 * template to print information about the author.
 		 *
-		 * @global WP_Query $wp_query WordPress Query object.
+		 * @global WP_Query 	$wp_query 	WordPress Query object.
 		 * @return void
 		 */
 		add_action( 'wp', '_starter_setup_author' );
