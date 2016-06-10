@@ -15,7 +15,7 @@
 
 	<div class="site-footer-wrapper">
 		<footer id="colophon" class="site-footer<?php footer_column_class(); ?>" role="contentinfo">
-			
+
 			<?php if ( is_active_sidebar( 'footer-column' ) ) { ?>
 				<div class="footer-column footer-column-1"><?php dynamic_sidebar( 'footer-column' );?></div>
 			<?php } ?>
@@ -28,12 +28,12 @@
 			<?php if ( is_active_sidebar( 'footer-column-4' ) ) { ?>
 				<div class="footer-column footer-columm-4"><?php dynamic_sidebar( 'footer-column-4' );?></div>
 			<?php } ?>
-			
-			<?php if ( function_exists('site_credit') ) { site_credit(); } ?>
-			
+
+			<?php get_template_part( 'modules/module', 'site-contact' ); ?>
+
 		</footer><!-- .site-footer -->
 	</div><!-- .site-footer-wrapper -->
-	
+
 </div><!-- .site-wrapper --><?php /* opens in header.php */ ?>
 
 <?php wp_footer(); ?>
