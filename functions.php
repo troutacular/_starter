@@ -136,16 +136,22 @@
 				 * Enable support for Post Formats.
 				 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Formats
 				**/
-				add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
+				add_theme_support( 'post-formats', array(
+					'aside',
+					'image',
+					'video',
+					'quote',
+					'link'
+				) );
 
 				/**
 				 * Enable support for HTML5 elements.
 				 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#HTML5
 				**/
 				add_theme_support( 'html5', array(
-					'comment-list',
 					'search-form',
 					'comment-form',
+					'comment-list',
 					'gallery',
 					'caption'
 				) );
@@ -155,6 +161,12 @@
 				 * @link https://codex.wordpress.org/Function_Reference/add_theme_support#Title_Tag
 				 */
 				add_theme_support( 'title-tag' );
+
+				/**
+				 * Enable automatic feed links
+				 * @link https://codex.wordpress.org/Function_Reference/add_theme_support#Feed_Links
+				 */
+				add_theme_support( 'automatic-feed-links' );
 
 			}
 		}
