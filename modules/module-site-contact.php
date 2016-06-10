@@ -29,9 +29,9 @@
 						if ( $text_options['text_feedback_link']!='' ) {
 							echo ' <a href="'.$text_options['text_feedback_link'].'">';
 							if ( $text_options['text_feedback_link_text']!='' ) {
-								_e($text_options['text_feedback_link_text'], '_starter');
+								echo $text_options['text_feedback_link_text'];
 							} else {
-								_e($text_options['text_feedback_link'], '_starter');
+								echo $text_options['text_feedback_link'];
 							}
 							echo '</a>';
 						}
@@ -49,9 +49,9 @@
 						if ( $text_options['text_website_by_link']!='' ) {
 							echo ' <a href="'.$text_options['text_website_by_link'].'">';
 							if ( $text_options['text_website_by_link_text']!='' ) {
-								_e($text_options['text_website_by_link_text'], '_starter');
+								echo $text_options['text_website_by_link_text'];
 							} else {
-								_e($text_options['text_website_by_link'], '_starter');
+								echo $text_options['text_website_by_link'];
 							}
 							echo '</a>';
 						}
