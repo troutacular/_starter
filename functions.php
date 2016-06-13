@@ -54,17 +54,16 @@
 --------------------------------------------------------------*/
 
     // Check if we are in a local environment
-        require get_template_directory().'/inc/is-localhost.php';
-    // end
+    require get_template_directory().'/inc/is-localhost.php';
 
 /*--------------------------------------------------------------
 1.2 - Theme Init
 --------------------------------------------------------------*/
 
     // Set the content width based on the theme's design and stylesheet.
-        if ( ! isset( $content_width ) ) {
-            $content_width = 1120; /* pixels */
-        }
+    if ( ! isset( $content_width ) ) {
+        $content_width = 1120; /* pixels */
+    }
 
     /**
      * Removes inline styles from <head> for comments.
@@ -82,7 +81,6 @@
     add_action( 'widgets_init', '_starter_remove_recent_comments_style' );
 
     if ( ! function_exists( '_starter_setup' ) ) {
-
         /**
          * Sets up theme defaults and registers support for various WordPress features.
          *
@@ -217,7 +215,6 @@
     add_action( 'after_setup_theme', '_starter_page_add' );
 
     if ( ! function_exists( '_starter_page_add_once' ) ) {
-
         /**
          * Uses _starter_page_additions function to add page(s) to the site one time only.
          *
@@ -300,7 +297,6 @@
 --------------------------------------------------------------*/
 
     if ( ! function_exists( '_starter_remove_head_links' ) ) {
-
         /**
          * Remove links and metadata from the <head>.
          */
@@ -330,12 +326,15 @@
 1.3.1 - CSS
 --------------------------------------------------------------*/
 
-    // Add CSS files to the header
-    add_action( 'wp_enqueue_scripts', '_starter_css' );
-        function _starter_css() {
-            wp_enqueue_style( 'usc-starter-style', get_stylesheet_directory_uri().'/css/stylesheet.css', false, null, 'screen,print' ); // $handle, $src, $deps, $ver, $media
-        }
-    // end
+    /**
+     * Enqueue CSS file(s)
+     *
+     * @since 1.0.0
+     */
+    function _starter_enqueue_css() {
+        wp_enqueue_style( 'usc-starter-style', get_stylesheet_directory_uri().'/css/_starter.css', false, null, 'screen,print' ); // $handle, $src, $deps, $ver, $media
+    }
+	add_action( 'wp_enqueue_scripts', '_starter_enqueue_css' );
 
 /*--------------------------------------------------------------
 1.4 - Navigation
@@ -426,6 +425,8 @@
 1.4.4 - Search
 --------------------------------------------------------------*/
 
+
+
 /*--------------------------------------------------------------
 1.4.5 - Section Navigation
 --------------------------------------------------------------*/
@@ -445,6 +446,8 @@
 /*--------------------------------------------------------------
 1.5 - Content
 --------------------------------------------------------------*/
+
+
 
 /*--------------------------------------------------------------
 1.5.1 - Breadcrumbs
@@ -539,6 +542,8 @@
 1.7 - Media
 --------------------------------------------------------------*/
 
+
+
 /*--------------------------------------------------------------
 1.7.1 - Images
 --------------------------------------------------------------*/
@@ -588,6 +593,8 @@
 1.7.2 - Video
 --------------------------------------------------------------*/
 
+
+
 /*--------------------------------------------------------------
 1.8 - Footer
 --------------------------------------------------------------*/
@@ -609,18 +616,17 @@
             add_action( 'wp_enqueue_scripts', '_starter_scripts' );
             function _starter_scripts() {
 
-                /* jQuery - By default jQuery should not be enabled.
-                   Try to solve the need with CSS and native javascript first.
+                /**
+                 * Try to solve the need with CSS and native javascript first.
                  */
                 $jquery = false;
 
-                // jquery include from CDN
-
-                //turn off for development
+                // turn off jQuery
                 wp_deregister_script( 'jquery' );
 
                 if ( $jquery ) {
-                    wp_enqueue_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', false, null, true );
+					// include jquery from a CDN for faster delivery
+					wp_enqueue_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', false, null, true );
                     wp_enqueue_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-1.2.1.min.js', 'jquery', null, true );
                 }
 
