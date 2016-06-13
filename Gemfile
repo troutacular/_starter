@@ -1,6 +1,8 @@
-# USC Theme Starter 2015 Gem File
+# Student Affairs Department Gemfile
 source "https://rubygems.org"
 
+# Sass update for Susy
+gem 'sass-rails', '~> 5.0.0.beta1'
 
 # Require Susy
 gem 'susy'
