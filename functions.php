@@ -340,16 +340,13 @@
 1.4 - Navigation
 --------------------------------------------------------------*/
 
-    /*
-        To add preset mobile navigation:
 
-        1. add the navigation css option in sass partial sass/_modules - @import 'modules/site-navigation-mobile';
-        2. add javascript options for modernizr and mobile navigation js in section '1.8 - Scripts'
-    **/
 
 /*--------------------------------------------------------------
 1.4.1 - Menus
 --------------------------------------------------------------*/
+
+
 
 /*--------------------------------------------------------------
 1.4.2 - Pagination
@@ -357,7 +354,14 @@
 
     // Display navigation to next/previous set of posts when applicable.
         if ( ! function_exists( '_starter_paging_nav' ) ) {
-            // @return void
+            /**
+             * Paging Navigation
+             *
+             * Display previous and next links on post types 'page' to navigate between siblings in page hierarchy.
+             *
+             * @global 	$wp_query 	WP Query
+             * @return 	string      HTML output of sibling links
+             */
             function _starter_paging_nav() {
                 // Don't print empty markup if there's only one page.
                 if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
