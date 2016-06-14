@@ -352,46 +352,37 @@
 1.4.2 - Pagination
 --------------------------------------------------------------*/
 
-    // Display navigation to next/previous set of posts when applicable.
-        if ( ! function_exists( '_starter_paging_nav' ) ) {
-            /**
-             * Paging Navigation
-             *
-             * Display previous and next links on post types 'page' to navigate between siblings in page hierarchy.
-             *
-             * @global 	$wp_query 	WP Query
-             * @return 	string      HTML output of sibling links
-             */
-            function _starter_paging_nav() {
-                // Don't print empty markup if there's only one page.
-                if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
-                    return;
-                }
-                ?>
-				<nav class="navigation paging-navigation" role="navigation">
-					<h1 class="screen-reader-text"><?php _e( 'Posts navigation', '_starter' );
-                ?></h1>
-					<div class="nav-links">
+if ( ! function_exists( '_starter_paging_nav' ) ) {
+    /**
+     * Paging Navigation
+     *
+     * Display navigation to next/previous set of posts when applicable.
+     *
+     * @global  $wp_query  WP Query
+     * @return  string      HTML output of sibling links
+     */
+    function _starter_paging_nav() {
+        // Don't print empty markup if there's only one page.
+        if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
+            return;
+        } ?>
+        <nav class="navigation paging-navigation" role="navigation">
+            <h1 class="screen-reader-text"><?php _e( 'Posts navigation', '_starter' ); ?></h1>
+            <div class="nav-links">
 
-						<?php if ( get_next_posts_link() ) : ?>
-						<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', '_starter' ) );
-                ?></div>
-						<?php endif;
-                ?>
+            <?php if ( get_next_posts_link() ) { ?>
+                <div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', '_starter' ) ); ?></div>
+            <?php } ?>
 
-						<?php if ( get_previous_posts_link() ) : ?>
-						<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', '_starter' ) );
-                ?></div>
-						<?php endif;
-                ?>
+            <?php if ( get_previous_posts_link() ) { ?>
+                <div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', '_starter' ) ); ?></div>
+            <?php } ?>
 
-					</div><!-- .nav-links -->
-				</nav><!-- .navigation -->
-				<?php
+            </div><!-- .nav-links -->
+        </nav><!-- .navigation --><?php
 
-            }
-        }
-    // end
+    }
+}
 
 /*--------------------------------------------------------------
 1.4.3 - Post Navigation
