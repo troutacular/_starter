@@ -200,9 +200,6 @@
             // create admin page
             _starter_page_additions( 'Site Admin', 'templates/tpl-admin.php', 'private', false, false, false, false );
 
-            // create help page
-            _starter_page_additions( 'Site Help', 'templates/tpl-help.php', 'private', false, false, false, false );
-
             // create styleguide page
             _starter_page_additions( 'Site Styleguide', 'templates/tpl-styleguide.php', 'private', false, false, false, false );
         }
