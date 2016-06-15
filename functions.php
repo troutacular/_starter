@@ -556,20 +556,25 @@
 6.1 - Excerpt
 --------------------------------------------------------------*/
 
-    // set a custom length (truncation point) for excerpts
-        add_filter( 'excerpt_length', 'custom_excerpt_length' );
-        function custom_excerpt_length( $length ) {
-            return 55; //Change this number to any integer you like - default is 55.
-        }
-    // end
+    /**
+     * Custom excerpt length
+     *
+     * Customize the excerpt length for the theme.
+     *
+     * @return integer              Charachter length for excerpt
+     */
+    function _starter_custom_excerpt_length() {
+        return 55;
+    }
+    add_filter( 'excerpt_length', '_starter_custom_excerpt_length' );
 
     // set a custom 'more' for excerpts
-        add_filter( 'excerpt_more', 'custom_excerpt_more' );
         function custom_excerpt_more( $more ) {
             global $post;
 
             return ' <a class="read-more" href="'.get_permalink( $post->ID ).'">Read more</a>';
         }
+        add_filter( 'excerpt_more', 'custom_excerpt_more' );
     //
 
 
