@@ -6,79 +6,97 @@
  */
 
 /*--------------------------------------------------------------
+
     Table of Contents
 
-    1.0 - Global Functions
-        1.1 - Dependencies
-        1.2 - Theme Init
-            1.2.1 - Page Creation
-            1.2.3 - Taxonomy Creation
-        1.3 - Header
-            1.3.1 - CSS
-        1.4 - Navigation
-            1.4.1 - Menus
-            1.4.2 - Pagination
-            1.4.3 - Post Navigation
-            1.4.4 - Search
-            1.4.5 - Section Navigation
-            1.4.6 - Navigation with Descriptions
-        1.5 - Content
-            1.5.1 - Breadcrumbs
-            1.5.2 - Excerpt
-        1.6 - Sidebars
-        1.7 - Media
-            1.7.1 - Images
-            1.7.2 - Video
-        1.8 - Footer
-        1.9 - Scripts
-    2.0 - Category
-    3.0 - Archive
-    4.0 - Tags
-    5.0 - Page
-    6.0 - Post
-        6.1 - Post Meta
-        6.2 - Custom Post Types
-    7.0 - Author
-    8.0 - Index/Home
-    9.0 - Login
-    10.0 - Customizations
-    11.0 - Admin
+    1.0 - Globals
+        1.1 - Version
+        1.2 - Environment
+        1.3 - Dependencies
+        1.4 - Theme
+            1.4.1 - Setup
+            1.4.2 - Customizations
+            1.4.3 - Page Creation
+            1.4.4 - Taxonomy Creation
+            1.4.5 - Custom Post Types
+    2.0 - Scripts
+        2.1. - CSS
+        2.2 - Javascript
+    3.0 - Header
+    4.0 - Footer
+    5.0 - Navigation
+        5.1 - Menus
+        5.2 - Search
+        5.3 - Breadcrumbs
+        5.4 - Section Navigation
+        5.5 - Pagination
+        5.6 - Adjacent Post Navigation
+        5.7 - Navigation with Descriptions
+    6.0 - Content
+        6.1 - Excerpt
+    7.0 - Secondary
+        7.1 - Sidebars
+    8.0 - Media
+        8.1 - Images
+        8.2 - Video
+    9.0 - Taxonomy
+        9.1 - Category
+        9.2 - Tags
+    10.0 - Templates
+        10.1 - Archive
+        10.2 - Author
+        10.3 - Home
+        10.4 - Page
+        10.5 - Post
+
+            10.5.1 - Custom Post Types
+
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
-1 - Global Functions
+1.0 - Globals
 --------------------------------------------------------------*/
 
+
+
 /*--------------------------------------------------------------
-1.1 - Dependencies
+1.1 - Version
+--------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------
+1.2 - Environment
 --------------------------------------------------------------*/
 
     // Check if we are in a local environment
     require get_template_directory().'/inc/is-localhost.php';
 
+    // set function for testing if on login page
+        function is_login_page() {
+            return ! strncmp( $_SERVER['REQUEST_URI'], '/wp-login.php', strlen( '/wp-login.php' ) );
+        }
+    // end
+
+
 /*--------------------------------------------------------------
-1.2 - Theme Init
+1.3 - Dependencies
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+1.3 - Theme
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+1.4.1 - Setup
 --------------------------------------------------------------*/
 
     // Set the content width based on the theme's design and stylesheet.
     if ( ! isset( $content_width ) ) {
         $content_width = 1120; /* pixels */
     }
-
-    /**
-     * Removes inline styles from <head> for comments.
-     *
-     * @since 1.0.0
-     *
-     * @global 	object 		$wp_widget_factory
-     *
-     * @return bool widget factory removal of css
-     */
-    function _starter_remove_recent_comments_style() {
-        global $wp_widget_factory;
-        remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
-    }
-    add_action( 'widgets_init', '_starter_remove_recent_comments_style' );
 
     if ( ! function_exists( '_starter_setup' ) ) {
         /**
@@ -168,8 +186,21 @@
     **/
     add_action( 'after_setup_theme', '_starter_theme_setup' );
 
+
+
 /*--------------------------------------------------------------
-1.2.1 - Page Creation
+1.4.2 - Customizations
+--------------------------------------------------------------*/
+
+    // Customizer additions.
+    require get_template_directory().'/inc/customizer.php';
+
+    // Customizer additions - Site Contact.
+    require get_template_directory().'/inc/customize-site-contact.php';
+
+
+/*--------------------------------------------------------------
+1.4.3 - Page Creation
 --------------------------------------------------------------*/
 
     if ( ! function_exists( '_starter_page_add' ) ) {
@@ -235,8 +266,9 @@
     **/
     add_action( 'after_switch_theme', '_starter_page_add_once' );
 
+
 /*--------------------------------------------------------------
-1.2.3 - Taxonomy Creation
+1.4.4 - Taxonomy Creation
 --------------------------------------------------------------*/
 
     /**
@@ -289,9 +321,89 @@
         }
     }
 
+
 /*--------------------------------------------------------------
-1.3 - Header
+1.4.5 - Custom Post Types
 --------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------
+2.0 - Scripts
+--------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------
+2.1. - CSS
+--------------------------------------------------------------*/
+
+    /**
+     * Enqueue CSS file(s)
+     *
+     * @since 1.0.0
+     */
+    function _starter_enqueue_css() {
+        wp_enqueue_style( 'usc-starter-style', get_stylesheet_directory_uri().'/css/_starter.css', false, null, 'screen,print' ); // $handle, $src, $deps, $ver, $media
+    }
+    add_action( 'wp_enqueue_scripts', '_starter_enqueue_css' );
+
+
+/*--------------------------------------------------------------
+2.2 - Javascript
+--------------------------------------------------------------*/
+
+    // Enqueue scripts and styles.
+        if ( ! is_login_page() && ! is_admin() ) {
+            add_action( 'wp_enqueue_scripts', '_starter_scripts' );
+            function _starter_scripts() {
+
+                /**
+                 * Try to solve the need with CSS and native javascript first.
+                 */
+                $jquery = false;
+
+                // turn off jQuery
+                wp_deregister_script( 'jquery' );
+
+                if ( $jquery ) {
+                    // include jquery from a CDN for faster delivery
+                    wp_enqueue_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', false, null, true );
+                    wp_enqueue_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-1.2.1.min.js', 'jquery', null, true );
+                }
+
+                wp_enqueue_script( 'starter', get_stylesheet_directory_uri().'/js/starter.js', array(), null, true );
+
+                if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+                    wp_enqueue_script( 'comment-reply' );
+                }
+
+                // let future child themes know the parent scripts are loaded
+                do_action( 'starter_scripts_loaded' );
+            }
+        }
+    // end
+
+
+/*--------------------------------------------------------------
+3.0 - Header
+--------------------------------------------------------------*/
+
+    /**
+     * Removes inline styles from <head> for comments.
+     *
+     * @since 1.0.0
+     *
+     * @global 	object 		$wp_widget_factory
+     *
+     * @return bool widget factory removal of css
+     */
+    function _starter_remove_recent_comments_style() {
+        global $wp_widget_factory;
+        remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
+    }
+    add_action( 'widgets_init', '_starter_remove_recent_comments_style' );
+
 
     if ( ! function_exists( '_starter_remove_head_links' ) ) {
         /**
@@ -319,70 +431,88 @@
         add_action( 'init', '_starter_remove_head_links' );
     }
 
+
+
 /*--------------------------------------------------------------
-1.3.1 - CSS
+4.0 - Footer
 --------------------------------------------------------------*/
 
-    /**
-     * Enqueue CSS file(s)
-     *
-     * @since 1.0.0
-     */
-    function _starter_enqueue_css() {
-        wp_enqueue_style( 'usc-starter-style', get_stylesheet_directory_uri().'/css/_starter.css', false, null, 'screen,print' ); // $handle, $src, $deps, $ver, $media
+    // Dynamic Footer Columns
+    require get_template_directory().'/inc/footer-columns.php';
+
+/*--------------------------------------------------------------
+5.0 - Navigation
+--------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------
+5.1 - Menus
+--------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------
+5.2 - Search
+--------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------
+5.3 - Breadcrumbs
+--------------------------------------------------------------*/
+
+    // Breadcrumbes
+    require get_template_directory().'/inc/breadcrumbs.php';
+
+
+/*--------------------------------------------------------------
+5.4 - Section Navigation
+--------------------------------------------------------------*/
+
+    // Section Navigation
+    require get_template_directory().'/inc/class-walker-nav-menu-section.php';
+
+
+/*--------------------------------------------------------------
+5.5 - Pagination
+--------------------------------------------------------------*/
+
+    if ( ! function_exists( '_starter_paging_nav' ) ) {
+        /**
+         * Paging Navigation
+         *
+         * Display navigation to next/previous set of posts when applicable.
+         *
+         * @global  $wp_query   WordPress Query Object
+         * @return  string      HTML output of pagination links
+         */
+        function _starter_paging_nav() {
+
+            global $wp_query;
+
+            // Don't print empty markup if there's only one page.
+            if ( $wp_query->max_num_pages < 2 ) {
+                return;
+            } ?>
+            <nav class="navigation navigation-paging" role="navigation">
+                <h1 class="screen-reader-text"><?php _e( 'Posts navigation', '_starter' ); ?></h1>
+                <div class="nav-links"><?php
+                if ( get_next_posts_link() ) { ?>
+                    <div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', '_starter' ) ); ?></div>
+                <?php } ?>
+                <?php if ( get_previous_posts_link() ) { ?>
+                    <div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', '_starter' ) ); ?></div>
+                <?php } ?>
+                </div><!-- .nav-links -->
+            </nav><!-- .navigation --><?php
+
+        }
     }
-	add_action( 'wp_enqueue_scripts', '_starter_enqueue_css' );
-
-/*--------------------------------------------------------------
-1.4 - Navigation
---------------------------------------------------------------*/
-
 
 
 /*--------------------------------------------------------------
-1.4.1 - Menus
---------------------------------------------------------------*/
-
-
-
-/*--------------------------------------------------------------
-1.4.2 - Pagination
---------------------------------------------------------------*/
-
-if ( ! function_exists( '_starter_paging_nav' ) ) {
-    /**
-     * Paging Navigation
-     *
-     * Display navigation to next/previous set of posts when applicable.
-     *
-     * @global  $wp_query   WordPress Query Object
-     * @return  string      HTML output of pagination links
-     */
-    function _starter_paging_nav() {
-
-        global $wp_query;
-
-        // Don't print empty markup if there's only one page.
-        if ( $wp_query->max_num_pages < 2 ) {
-            return;
-        } ?>
-        <nav class="navigation navigation-paging" role="navigation">
-            <h1 class="screen-reader-text"><?php _e( 'Posts navigation', '_starter' ); ?></h1>
-            <div class="nav-links"><?php
-            if ( get_next_posts_link() ) { ?>
-                <div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', '_starter' ) ); ?></div>
-            <?php } ?>
-            <?php if ( get_previous_posts_link() ) { ?>
-                <div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', '_starter' ) ); ?></div>
-            <?php } ?>
-            </div><!-- .nav-links -->
-        </nav><!-- .navigation --><?php
-
-    }
-}
-
-/*--------------------------------------------------------------
-1.4.3 - Post Navigation
+5.6 - Adjacent Post Navigation
 --------------------------------------------------------------*/
 
     // Display navigation to next/previous post when applicable.
@@ -412,45 +542,24 @@ if ( ! function_exists( '_starter_paging_nav' ) ) {
             }
         }
     // end
+//
 
 /*--------------------------------------------------------------
-1.4.4 - Search
---------------------------------------------------------------*/
-
-
-
-/*--------------------------------------------------------------
-1.4.5 - Section Navigation
---------------------------------------------------------------*/
-
-    // Section Navigation
-        require get_template_directory().'/inc/class-walker-nav-menu-section.php';
-    // end
-
-/*--------------------------------------------------------------
-1.4.6 - Navigation with Descriptions
+5.6 - Navigation with Descriptions
 --------------------------------------------------------------*/
 
     // Navigation with Descriptions
-        require get_template_directory().'/inc/navigation-descriptions.php';
-    // end
+    require get_template_directory().'/inc/navigation-descriptions.php';
+
 
 /*--------------------------------------------------------------
-1.5 - Content
+6.0 - Content
 --------------------------------------------------------------*/
 
 
 
 /*--------------------------------------------------------------
-1.5.1 - Breadcrumbs
---------------------------------------------------------------*/
-
-    // Breadcrumbes
-        require get_template_directory().'/inc/breadcrumbs.php';
-    // end
-
-/*--------------------------------------------------------------
-1.5.2 - Exerpt
+6.1 - Excerpt
 --------------------------------------------------------------*/
 
     // set a custom length (truncation point) for excerpts
@@ -469,8 +578,16 @@ if ( ! function_exists( '_starter_paging_nav' ) ) {
         }
     //
 
+
+
 /*--------------------------------------------------------------
-1.6 - Sidebars
+7.0 - Secondary
+--------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------
+7.1 - Sidebars
 --------------------------------------------------------------*/
 
     // Register widgetized area and update sidebar with default widgets.
@@ -530,14 +647,16 @@ if ( ! function_exists( '_starter_paging_nav' ) ) {
         }
     // end
 
+
+
 /*--------------------------------------------------------------
-1.7 - Media
+8.0 - Media
 --------------------------------------------------------------*/
 
 
 
 /*--------------------------------------------------------------
-1.7.1 - Images
+8.1 - Images
 --------------------------------------------------------------*/
 
     // Add custom image sizes
@@ -559,93 +678,49 @@ if ( ! function_exists( '_starter_paging_nav' ) ) {
         function _starter_post_image( $image_size = 'sinle-post-image', $caption = false ) {
             if ( has_post_thumbnail() ) {
                 ?>
-			<figure class="entry-image">
-				<?php the_post_thumbnail( $image_size );
+            <figure class="entry-image">
+                <?php the_post_thumbnail( $image_size );
                 ?>
-				<?php
+                <?php
                     if ( $caption ) {
                         $image_caption = get_post( get_post_thumbnail_id() )->post_excerpt;
                         if ( $image_caption ) {
                             ?>
-					<figcaption>
-						<?php echo $image_caption;
+                    <figcaption>
+                        <?php echo $image_caption;
                             ?>
-					</figcaption>
-					<?php
+                    </figcaption>
+                    <?php
                         }
                     }
                 ?>
-			</figure>
-			<?php
+            </figure>
+            <?php
             }
         }
     // end
 
 /*--------------------------------------------------------------
-1.7.2 - Video
+8.2 - Video
 --------------------------------------------------------------*/
 
 
 
 /*--------------------------------------------------------------
-1.8 - Footer
+9.0 - Taxonomy
 --------------------------------------------------------------*/
 
-    // Dynamic Footer Columns
-        require get_template_directory().'/inc/footer-columns.php';
-    // end
+    // See 1.4.4 - Taxonomy Creation for categories created on theme activation
 
-    // Set the link url for student affairs
-        $footer_logo_link = 'https://studentaffairs.usc.edu/';
-    // end
 
 /*--------------------------------------------------------------
-1.9 - Scripts
+9.1 - Category
 --------------------------------------------------------------*/
 
-    // Enqueue scripts and styles.
-        if ( ! is_login_page() && ! is_admin() ) {
-            add_action( 'wp_enqueue_scripts', '_starter_scripts' );
-            function _starter_scripts() {
 
-                /**
-                 * Try to solve the need with CSS and native javascript first.
-                 */
-                $jquery = false;
-
-                // turn off jQuery
-                wp_deregister_script( 'jquery' );
-
-                if ( $jquery ) {
-					// include jquery from a CDN for faster delivery
-					wp_enqueue_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', false, null, true );
-                    wp_enqueue_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-1.2.1.min.js', 'jquery', null, true );
-                }
-
-                wp_enqueue_script( 'starter', get_stylesheet_directory_uri().'/js/starter.js', array(), null, true );
-
-                if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-                    wp_enqueue_script( 'comment-reply' );
-                }
-
-                // let future child themes know the parent scripts are loaded
-                do_action( 'starter_scripts_loaded' );
-            }
-        }
-    // end
 
 /*--------------------------------------------------------------
-2.0 - Category
---------------------------------------------------------------*/
-
-    // See 1.1.3 - Taxonomy Creation for categories created on theme activation
-
-/*--------------------------------------------------------------
-3.0 - Archive
---------------------------------------------------------------*/
-
-/*--------------------------------------------------------------
-4.0 - Tags
+9.2 - Tags
 --------------------------------------------------------------*/
 
     // Returns true if a blog has more than 1 category.
@@ -682,57 +757,19 @@ if ( ! function_exists( '_starter_paging_nav' ) ) {
     // end
 
 /*--------------------------------------------------------------
-5.0 - Page
+10.0 - Templates
 --------------------------------------------------------------*/
 
+
+
 /*--------------------------------------------------------------
-6.0 - Post
+10.1 - Archive
 --------------------------------------------------------------*/
 
-    // add page order to posts
-        add_post_type_support( 'post', 'page-attributes' );
-    // end
+
 
 /*--------------------------------------------------------------
-6.1 - Post Meta
---------------------------------------------------------------*/
-
-    // Prints HTML with meta information for the current post-date/time and author.
-        if ( ! function_exists( '_starter_posted_on' ) ) {
-            function _starter_posted_on() {
-                $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
-
-                if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-                    $time_string .= ' [Updated: <time class="updated" datetime="%3$s">%4$s</time>]';
-                }
-
-                $time_string = sprintf( $time_string,
-                    esc_attr( get_the_date( 'c' ) ),
-                    esc_html( get_the_date() ),
-                    esc_attr( get_the_modified_date( 'c' ) ),
-                    esc_html( get_the_modified_date() )
-                );
-
-                printf( __( '<span class="posted-on">Posted on %1$s</span><span class="byline"> by %2$s</span>', '_starter' ),
-                    sprintf( '<a href="%1$s" rel="bookmark">%2$s</a>',
-                        esc_url( get_permalink() ),
-                        $time_string
-                    ),
-                    sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s">%2$s</a></span>',
-                        esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-                        esc_html( get_the_author() )
-                    )
-                );
-            }
-        }
-    // end
-
-/*--------------------------------------------------------------
-6.2 - Custom Post Types
---------------------------------------------------------------*/
-
-/*--------------------------------------------------------------
-7.0 - Author
+10.2 - Author
 --------------------------------------------------------------*/
 
     /**
@@ -757,34 +794,25 @@ if ( ! function_exists( '_starter_paging_nav' ) ) {
     }
     add_action( 'wp', '_starter_setup_author' );
 
+
 /*--------------------------------------------------------------
-8.0 - Index/Home
+10.3 - Home
 --------------------------------------------------------------*/
 
-    // See 1.1.1 - Page Creation for pages created on theme activation
+
 
 /*--------------------------------------------------------------
-9.0 - Login
+10.4 - Page
 --------------------------------------------------------------*/
 
-    // set function for testing if on login page
-        function is_login_page() {
-            return ! strncmp( $_SERVER['REQUEST_URI'], '/wp-login.php', strlen( '/wp-login.php' ) );
-        }
-    // end
+
 
 /*--------------------------------------------------------------
-10.0 - Customizations
+10.5 - Post
 --------------------------------------------------------------*/
 
-    // Customizer additions.
-        require get_template_directory().'/inc/customizer.php';
-    // end
 
-    // Customizer additions - Site Contact.
-        require get_template_directory().'/inc/customize-site-contact.php';
-    // end
 
 /*--------------------------------------------------------------
-11.0 - Admin
+10.5.1 - Custom Post Types
 --------------------------------------------------------------*/
