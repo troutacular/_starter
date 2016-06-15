@@ -557,25 +557,30 @@
 --------------------------------------------------------------*/
 
     /**
-     * Custom excerpt length
+     * Excerpt length
      *
      * Customize the excerpt length for the theme.
      *
      * @return integer              Charachter length for excerpt
      */
-    function _starter_custom_excerpt_length() {
+    function _starter_excerpt_length() {
         return 55;
     }
-    add_filter( 'excerpt_length', '_starter_custom_excerpt_length' );
+    add_filter( 'excerpt_length', '_starter_excerpt_length' );
 
-    // set a custom 'more' for excerpts
-        function custom_excerpt_more( $more ) {
-            global $post;
-
-            return ' <a class="read-more" href="'.get_permalink( $post->ID ).'">Read more</a>';
-        }
-        add_filter( 'excerpt_more', 'custom_excerpt_more' );
-    //
+    /**
+     * Excerpt Read More
+     *
+     * Add a customized 'Read More' link to the end of excerpts.
+     *
+     * @global  object  $post   WordPress Post Object
+     * @return  string          Permalink with text
+     */
+    function _starter_excerpt_read_more() {
+        global $post;
+        return ' <a class="read-more" href="'.get_permalink( $post->ID ).'">Read more</a>';
+    }
+    add_filter( 'excerpt_more', '_starter_excerpt_read_more' );
 
 
 
