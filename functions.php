@@ -72,12 +72,6 @@
     // Check if we are in a local environment
     require get_template_directory().'/inc/is-localhost.php';
 
-    // set function for testing if on login page
-        function is_login_page() {
-            return ! strncmp( $_SERVER['REQUEST_URI'], '/wp-login.php', strlen( '/wp-login.php' ) );
-        }
-    // end
-
 
 /*--------------------------------------------------------------
 1.3 - Dependencies
@@ -354,7 +348,7 @@
 --------------------------------------------------------------*/
 
     // Enqueue scripts and styles.
-        if ( ! is_login_page() && ! is_admin() ) {
+        if ( ! is_admin() ) {
             add_action( 'wp_enqueue_scripts', '_starter_scripts' );
             function _starter_scripts() {
 
