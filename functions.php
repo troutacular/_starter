@@ -672,12 +672,6 @@
             /* Example
              * add_image_size( 'image-name', 1440, 900, true ); //width, height, cropping boolean - 1.6:1 ratio
              */
-
-            add_image_size( 'starter-full-width', 1440, 900, true ); // 1.6:1
-            add_image_size( 'featured-image', 825, 550, true ); // 1.5:1
-
-            add_image_size( 'single-post-image', 585, 1200, false ); // 1.5:1
-            add_image_size( 'category-post-image', 330, 675, false ); // 1.5:1
         }
     // end
 
@@ -732,7 +726,9 @@
 
     // Returns true if a blog has more than 1 category.
         function _starter_categorized_blog() {
+
             if ( false === ( $all_the_cool_cats = get_transient( 'all_the_cool_cats' ) ) ) {
+
                 // Create an array of all the categories that are attached to posts.
                 $all_the_cool_cats = get_categories( array(
                     'hide_empty' => 1,
@@ -751,6 +747,7 @@
                 // This blog has only 1 category so _starter_categorized_blog should return false.
                 return false;
             }
+
         }
     // end
 
