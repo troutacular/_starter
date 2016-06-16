@@ -740,14 +740,10 @@
                 set_transient( 'all_the_cool_cats', $all_the_cool_cats );
             }
 
-            if ( '1' != $all_the_cool_cats ) {
-                // This blog has more than 1 category so _starter_categorized_blog should return true.
-                return true;
-            } else {
-                // This blog has only 1 category so _starter_categorized_blog should return false.
-                return false;
-            }
+            // check if the blog site has more than 1 category
+            $categorized = ( '1' != $all_the_cool_cats ) ? true : false;
 
+            return $categorized;
         }
     // end
 
