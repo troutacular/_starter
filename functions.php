@@ -191,7 +191,17 @@
         **/
 
         add_action( 'widgets_init', '_starter_widgets_init' );
+        /**
+         * Register Widget Areas
+         *
+         * This will set up sidebars in the admin for each page template type in the admin.
+         * A page template will need to be created for each type (templates/tpl-[slug].php).
+         * The [slug] will be used in the sidebar to check if that template type exists.
+         *
+         * @return [type] [description]
+         */
         function _starter_widgets_init() {
+
             // set the names to use for the page templates
             $sidebars = array(
                 array(
@@ -225,6 +235,8 @@
                     'description' => 'Items placed here will only appear on Pages with the Template \'Default Page\' selected and above the Global Items.',
                 ),
             );
+
+            // loop through the $sidebars array and register the widget area
             foreach ( $sidebars as $sidebar ) {
                 register_sidebar( array(
                     'name' => $sidebar['name'],
@@ -236,8 +248,8 @@
                     'after_title' => '</h1>',
                 ) );
             }
+            
         }
-    // end
 
 
 
