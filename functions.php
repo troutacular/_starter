@@ -13,14 +13,14 @@
         1.1 - Version
         1.2 - Environment
         1.3 - Dependencies
-        1.4 - Theme
-            1.4.1 - Setup
-            1.4.2 - Customizations
-            1.4.3 - Page Creation
-            1.4.4 - Taxonomy Creation
-            1.4.5 - Custom Post Types
+        1.4 - Theme Setup
+            1.4.2 - Sidebar Registration
+            1.4.3 - Customizations
+            1.4.4 - Page Creation
+            1.4.5 - Taxonomy Creation
+            1.4.6 - Custom Post Types
     2.0 - Scripts
-        2.1. - CSS
+        2.1 - CSS
         2.2 - Javascript
     3.0 - Header
     4.0 - Footer
@@ -34,25 +34,23 @@
         5.7 - Navigation with Descriptions
     6.0 - Content
         6.1 - Excerpt
-    7.0 - Secondary
-        7.1 - Sidebars
-    8.0 - Media
-        8.1 - Images
-        8.2 - Video
-    9.0 - Taxonomy
-        9.1 - Category
-        9.2 - Tags
-    10.0 - Posts
-        10.1 - Post Meta
-        10.2 - Post Types
-            10.2.1 - Posts
-            10.2.2 - Pages
-    11.0 - Templates
-        11.1 - Archive
-        11.2 - Author
-        11.3 - Home
-        11.4 - Page
-        11.5 - Post
+    7.0 - Media
+        7.1 - Images
+        7.2 - Video
+    8.0 - Taxonomy
+        8.1 - Category
+        8.2 - Tags
+    9.0 - Posts
+        9.1 - Post Meta
+        9.2 - Post Types
+            9.2.1 - Posts
+            9.2.2 - Pages
+    10.0 - Templates
+        10.1 - Archive
+        10.2 - Author
+        10.3 - Home
+        10.4 - Page
+        10.5 - Post
 
 --------------------------------------------------------------*/
 
@@ -82,12 +80,7 @@
 
 
 /*--------------------------------------------------------------
-1.3 - Theme
---------------------------------------------------------------*/
-
-
-/*--------------------------------------------------------------
-1.4.1 - Setup
+1.4 - Theme Setup
 --------------------------------------------------------------*/
 
     // Set the content width based on the theme's design and stylesheet.
@@ -186,7 +179,70 @@
 
 
 /*--------------------------------------------------------------
-1.4.2 - Customizations
+1.4.2 - Sidebar Registration
+--------------------------------------------------------------*/
+
+    // Register widgetized area and update sidebar with default widgets.
+
+        /*
+            This will set up sidebars in the admin for each page template type in the admin.
+            A page template will need to be created for each type (templates/tpl-[slug].php).
+            The [slug] will be used in the sidebar to check if that template type exists.
+        **/
+
+        add_action( 'widgets_init', '_starter_widgets_init' );
+        function _starter_widgets_init() {
+            // set the names to use for the page templates
+            $sidebars = array(
+                array(
+                    'name' => 'Global',
+                    'slug' => 'template-global',
+                    'description' => 'Items placed here will appear in the sidebar on every page at the bottom.',
+                ),
+                array(
+                    'name' => 'Homepage',
+                    'slug' => 'template-homepage',
+                    'description' => 'Items placed here will only appear in the sidebar on the Homepage and above the Global items.',
+                ),
+                array(
+                    'name' => 'Category',
+                    'slug' => 'template-category',
+                    'description' => 'Items placed here will only appear on Categories and above the Global Items.',
+                ),
+                array(
+                    'name' => 'Archive',
+                    'slug' => 'template-archive',
+                    'description' => 'Items placed here will only appear in the Archives and above the Global Items.',
+                ),
+                array(
+                    'name' => 'Article',
+                    'slug' => 'template-article',
+                    'description' => 'Items placed here will only appear on Single Posts and above the Global Items.',
+                ),
+                array(
+                    'name' => 'Default Page',
+                    'slug' => 'template-default-content',
+                    'description' => 'Items placed here will only appear on Pages with the Template \'Default Page\' selected and above the Global Items.',
+                ),
+            );
+            foreach ( $sidebars as $sidebar ) {
+                register_sidebar( array(
+                    'name' => $sidebar['name'],
+                    'id' => $sidebar['slug'],
+                    'description' => $sidebar['description'],
+                    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+                    'after_widget' => '</aside>',
+                    'before_title' => '<h1 class="widget-title">',
+                    'after_title' => '</h1>',
+                ) );
+            }
+        }
+    // end
+
+
+
+/*--------------------------------------------------------------
+1.4.3 - Customizations
 --------------------------------------------------------------*/
 
     // Customizer additions.
@@ -197,7 +253,7 @@
 
 
 /*--------------------------------------------------------------
-1.4.3 - Page Creation
+1.4.4 - Page Creation
 --------------------------------------------------------------*/
 
     if ( ! function_exists( '_starter_page_add' ) ) {
@@ -265,7 +321,7 @@
 
 
 /*--------------------------------------------------------------
-1.4.4 - Taxonomy Creation
+1.4.5 - Taxonomy Creation
 --------------------------------------------------------------*/
 
     /**
@@ -320,7 +376,7 @@
 
 
 /*--------------------------------------------------------------
-1.4.5 - Custom Post Types
+1.4.6 - Custom Post Types
 --------------------------------------------------------------*/
 
 
@@ -588,82 +644,13 @@
 
 
 /*--------------------------------------------------------------
-7.0 - Secondary
+7.0 - Media
 --------------------------------------------------------------*/
 
 
 
 /*--------------------------------------------------------------
-7.1 - Sidebars
---------------------------------------------------------------*/
-
-    // Register widgetized area and update sidebar with default widgets.
-
-        /*
-            This will set up sidebars in the admin for each page template type in the admin.
-            A page template will need to be created for each type (templates/tpl-[slug].php).
-            The [slug] will be used in the sidebar to check if that template type exists.
-        **/
-
-        add_action( 'widgets_init', '_starter_widgets_init' );
-        function _starter_widgets_init() {
-            // set the names to use for the page templates
-            $sidebars = array(
-                array(
-                    'name' => 'Global',
-                    'slug' => 'template-global',
-                    'description' => 'Items placed here will appear in the sidebar on every page at the bottom.',
-                ),
-                array(
-                    'name' => 'Homepage',
-                    'slug' => 'template-homepage',
-                    'description' => 'Items placed here will only appear in the sidebar on the Homepage and above the Global items.',
-                ),
-                array(
-                    'name' => 'Category',
-                    'slug' => 'template-category',
-                    'description' => 'Items placed here will only appear on Categories and above the Global Items.',
-                ),
-                array(
-                    'name' => 'Archive',
-                    'slug' => 'template-archive',
-                    'description' => 'Items placed here will only appear in the Archives and above the Global Items.',
-                ),
-                array(
-                    'name' => 'Article',
-                    'slug' => 'template-article',
-                    'description' => 'Items placed here will only appear on Single Posts and above the Global Items.',
-                ),
-                array(
-                    'name' => 'Default Page',
-                    'slug' => 'template-default-content',
-                    'description' => 'Items placed here will only appear on Pages with the Template \'Default Page\' selected and above the Global Items.',
-                ),
-            );
-            foreach ( $sidebars as $sidebar ) {
-                register_sidebar( array(
-                    'name' => $sidebar['name'],
-                    'id' => $sidebar['slug'],
-                    'description' => $sidebar['description'],
-                    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-                    'after_widget' => '</aside>',
-                    'before_title' => '<h1 class="widget-title">',
-                    'after_title' => '</h1>',
-                ) );
-            }
-        }
-    // end
-
-
-
-/*--------------------------------------------------------------
-8.0 - Media
---------------------------------------------------------------*/
-
-
-
-/*--------------------------------------------------------------
-8.1 - Images
+7.1 - Images
 --------------------------------------------------------------*/
 
     // Add custom image sizes
@@ -702,26 +689,26 @@
     // end
 
 /*--------------------------------------------------------------
-8.2 - Video
+7.2 - Video
 --------------------------------------------------------------*/
 
 
 
 /*--------------------------------------------------------------
-9.0 - Taxonomy
+8.0 - Taxonomy
 --------------------------------------------------------------*/
 
     // See 1.4.4 - Taxonomy Creation for categories created on theme activation
 
 
 /*--------------------------------------------------------------
-9.1 - Category
+8.1 - Category
 --------------------------------------------------------------*/
 
 
 
 /*--------------------------------------------------------------
-9.2 - Tags
+8.2 - Tags
 --------------------------------------------------------------*/
 
     // Returns true if a blog has more than 1 category.
@@ -758,13 +745,13 @@
 
 
 /*--------------------------------------------------------------
-10.0 - Posts
+9.0 - Posts
 --------------------------------------------------------------*/
 
 
 
 /*--------------------------------------------------------------
-10.1 - Post Meta
+9.1 - Post Meta
 --------------------------------------------------------------*/
 
 if ( ! function_exists( '_starter_posted_on' ) ) {
@@ -805,52 +792,52 @@ if ( ! function_exists( '_starter_posted_on' ) ) {
 
 
 /*--------------------------------------------------------------
-10.2 - Post Types
+9.2 - Post Types
 --------------------------------------------------------------*/
 
 
 
 /*--------------------------------------------------------------
-10.2.1 - Posts
+9.2.1 - Posts
 --------------------------------------------------------------*/
 
 
 
 /*--------------------------------------------------------------
-10.2.2 - Pages
+9.2.2 - Pages
 --------------------------------------------------------------*/
 
 
 
 /*--------------------------------------------------------------
-11.0 - Templates
+10.0 - Templates
 --------------------------------------------------------------*/
 
 
 
 /*--------------------------------------------------------------
-11.1 - Archive
+10.1 - Archive
 --------------------------------------------------------------*/
 
 
 
 /*--------------------------------------------------------------
-11.2 - Author
+10.2 - Author
 --------------------------------------------------------------*/
 
 
 /*--------------------------------------------------------------
-11.3 - Home
---------------------------------------------------------------*/
-
-
-
-/*--------------------------------------------------------------
-11.4 - Page
+10.3 - Home
 --------------------------------------------------------------*/
 
 
 
 /*--------------------------------------------------------------
-11.5 - Post
+10.4 - Page
+--------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------
+10.5 - Post
 --------------------------------------------------------------*/
