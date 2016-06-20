@@ -84,6 +84,12 @@ if ( ! isset( $content_width ) ) {
 	$content_width = 1120; /* pixels */
 }
 
+/*
+ * Run this function after theme setup.
+ * Allows for future automatic additions to existing sites.
+**/
+add_action( 'after_setup_theme', '_starter_theme_setup' );
+
 if ( ! function_exists( '_starter_setup' ) ) {
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -167,25 +173,19 @@ if ( ! function_exists( '_starter_setup' ) ) {
 	}
 }
 
-/*
- * Run this function after theme setup.
- * Allows for future automatic additions to existing sites.
-**/
-add_action( 'after_setup_theme', '_starter_theme_setup' );
-
 /** --------------------------------------------------------------
 1.4.2 - Sidebar Registration
 --------------------------------------------------------------*/
 
-// Register widgetized area and update sidebar with default widgets.
+/*
+	This will set up sidebars in the admin for each page template type in the admin.
+	A page template will need to be created for each type (templates/tpl-[slug].php).
+	The [slug] will be used in the sidebar to check if that template type exists.
+**/
+add_action( 'widgets_init', '_starter_widgets_init' );
 
-	/*
-		This will set up sidebars in the admin for each page template type in the admin.
-		A page template will need to be created for each type (templates/tpl-[slug].php).
-		The [slug] will be used in the sidebar to check if that template type exists.
-	**/
+if ( ! function_exists( '_starter_widgets_init' ) ) {
 
-	add_action( 'widgets_init', '_starter_widgets_init' );
 	/**
 	 * Register Widget Areas.
 	 *
@@ -193,7 +193,7 @@ add_action( 'after_setup_theme', '_starter_theme_setup' );
 	 * A page template will need to be created for each type (templates/tpl-[slug].php).
 	 * The [slug] will be used in the sidebar to check if that template type exists.
 	 *
-	 * @return [type] [description]
+	 * @return void
 	 */
 	function _starter_widgets_init() {
 
@@ -244,6 +244,7 @@ add_action( 'after_setup_theme', '_starter_theme_setup' );
 			) );
 		}
 	}
+}
 
 /** --------------------------------------------------------------
 1.4.3 - Customizations
