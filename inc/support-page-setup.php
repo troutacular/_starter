@@ -26,6 +26,7 @@
  * @param string $params[parent_title]		Sets the page as a child of the page by slug [$parent_title].
  *
  * @todo check for page template existence
+ * @todo refactor code to reduce Cyclomatic and NPath complexities.
  */
 function _starter_page_additions( $params ) {
 
