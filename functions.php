@@ -69,7 +69,7 @@ Table of Contents
 --------------------------------------------------------------*/
 
 // Check if we are in a local environment
-require get_template_directory().'/inc/is-localhost.php';
+require get_template_directory() . '/inc/is-localhost.php';
 
 /** --------------------------------------------------------------
 1.3 - Dependencies
@@ -105,7 +105,7 @@ if ( ! function_exists( '_starter_setup' ) ) {
 		 * @link https://codex.wordpress.org/Function_Reference/load_theme_textdomain
 		**/
 		if ( function_exists( 'load_theme_textdomain' ) ) {
-			load_theme_textdomain( '_starter', get_template_directory().'/languages' );
+			load_theme_textdomain( '_starter', get_template_directory() . '/languages' );
 		}
 
 		/*
@@ -250,10 +250,10 @@ add_action( 'after_setup_theme', '_starter_theme_setup' );
 --------------------------------------------------------------*/
 
 // Customizer additions.
-require get_template_directory().'/inc/customizer.php';
+require get_template_directory() . '/inc/customizer.php';
 
 // Customizer additions - Site Contact.
-require get_template_directory().'/inc/customize-site-contact.php';
+require get_template_directory() . '/inc/customize-site-contact.php';
 
 /** --------------------------------------------------------------
 1.4.4 - Page Creation
@@ -262,7 +262,7 @@ require get_template_directory().'/inc/customize-site-contact.php';
 if ( ! function_exists( '_starter_page_add' ) ) {
 
 	// get the support page function
-	require_once get_template_directory().'/inc/support-page-setup.php';
+	require_once get_template_directory() . '/inc/support-page-setup.php';
 
 	/**
 	 * Uses _starter_page_additions function to add page(s) to the site.
@@ -272,7 +272,7 @@ if ( ! function_exists( '_starter_page_add' ) ) {
 	function _starter_page_add() {
 
 		// get the support page function
-		require_once get_template_directory().'/inc/support-page-setup.php';
+		require_once get_template_directory() . '/inc/support-page-setup.php';
 
 		/*
 		 * (see full documentation in '/inc/support-page-setup.php'
@@ -397,7 +397,7 @@ function _starter_create_new_taxonomies() {
  * @since 1.0.0
  */
 function _starter_enqueue_css() {
-	wp_enqueue_style( 'usc-starter-style', get_stylesheet_directory_uri().'/css/_starter.css', false, null, 'screen,print' ); // $handle, $src, $deps, $ver, $media
+	wp_enqueue_style( 'usc-starter-style', get_stylesheet_directory_uri() . '/css/_starter.css', false, null, 'screen,print' ); // $handle, $src, $deps, $ver, $media
 }
 add_action( 'wp_enqueue_scripts', '_starter_enqueue_css' );
 
@@ -424,7 +424,7 @@ add_action( 'wp_enqueue_scripts', '_starter_enqueue_css' );
 				wp_enqueue_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-1.2.1.min.js', 'jquery', null, true );
 			}
 
-			wp_enqueue_script( 'starter', get_stylesheet_directory_uri().'/js/starter.js', array(), null, true );
+			wp_enqueue_script( 'starter', get_stylesheet_directory_uri() . '/js/starter.js', array(), null, true );
 
 			if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 				wp_enqueue_script( 'comment-reply' );
@@ -486,7 +486,7 @@ if ( ! function_exists( '_starter_remove_head_links' ) ) {
 --------------------------------------------------------------*/
 
 // Dynamic Footer Columns
-require get_template_directory().'/inc/footer-columns.php';
+require get_template_directory() . '/inc/footer-columns.php';
 
 /** --------------------------------------------------------------
 5.0 - Navigation
@@ -505,14 +505,14 @@ require get_template_directory().'/inc/footer-columns.php';
 --------------------------------------------------------------*/
 
 // Breadcrumbes
-require get_template_directory().'/inc/breadcrumbs.php';
+require get_template_directory() . '/inc/breadcrumbs.php';
 
 /** --------------------------------------------------------------
 5.4 - Section Navigation
 --------------------------------------------------------------*/
 
 // Section Navigation
-require get_template_directory().'/inc/class-walker-nav-menu-section.php';
+require get_template_directory() . '/inc/class-walker-nav-menu-section.php';
 
 /** --------------------------------------------------------------
 5.5 - Pagination
@@ -662,7 +662,7 @@ add_filter( 'excerpt_length', '_starter_excerpt_length' );
 function _starter_excerpt_read_more() {
 	global $post;
 
-	return ' <a class="read-more" href="'.get_permalink( $post->ID ).'">Read more</a>';
+	return ' <a class="read-more" href="' . get_permalink( $post->ID ) . '">Read more</a>';
 }
 add_filter( 'excerpt_more', '_starter_excerpt_read_more' );
 
