@@ -115,6 +115,7 @@ if ( ! function_exists( '_starter_setup' ) ) {
 		if ( function_exists( 'register_nav_menus' ) ) {
 			register_nav_menus( array(
 				'primary' => __( 'Primary Menu', '_starter' ),
+				'secondary' => __( 'Secondary Menu', '_starter' ),
 			) );
 		}
 
@@ -581,7 +582,7 @@ if ( ! function_exists( '_starter_paging_nav' ) ) {
 				<div class="nav-links">
 					<?php
 						previous_post_link( '<div class="nav-previous">%link</div>', _x( '<span class="meta-nav">&larr;</span> %title', 'Previous post link', '_starter' ) );
-			next_post_link( '<div class="nav-next">%link</div>',     _x( '%title <span class="meta-nav">&rarr;</span>', 'Next post link',     '_starter' ) );
+			next_post_link( '<div class="nav-next">%link</div>',	 _x( '%title <span class="meta-nav">&rarr;</span>', 'Next post link',	 '_starter' ) );
 			?>
 				</div><!-- .nav-links -->
 			</nav><!-- .navigation -->
@@ -596,8 +597,38 @@ if ( ! function_exists( '_starter_paging_nav' ) ) {
 5.6 - Navigation with Descriptions
 --------------------------------------------------------------*/
 
-// Navigation with Descriptions
-require get_template_directory().'/inc/navigation-descriptions.php';
+/**
+ * Add Menu Descriptions
+ *
+ * Add menu descriptions for each item in the 'primary' menu at the first level only.
+ *
+ * @param string $item_output The menu item's starting HTML output.
+ * @param object $item Menu item data object.
+ * @param int $depth Depth of menu item. Used for padding.
+ * @param array $args An array of wp_nav_menu() arguments.
+ */
+function _starter_add_description_to_menu( $item_output, $item, $depth, $args ) {
+
+	// Insert description for the 'primary' menu at the first level only.
+	if ( 'primary' === $args->theme_location && 0 === $depth ) {
+
+		// If the description isn't empty.
+		if ( ! empty( $item->description ) ) {
+			// Append description after link.
+			$item_output .= sprintf( '<span class="description">%s</span>', esc_html( $item->description ) );
+
+			// Insert description 'in' link at the end.
+			// $item_output = str_replace( $args->link_after . '</a>', '<span class="menu-item-description">' . $item->description . '</span>' . $args->link_after . '</a>', $item_output );
+		}
+
+		return $item_output;
+
+	}
+
+	return false;
+
+}
+add_filter( 'walker_nav_menu_start_el', '_starter_add_description_to_menu', 10, 4 );
 
 /** --------------------------------------------------------------
 6.0 - Content
@@ -726,7 +757,7 @@ add_filter( 'excerpt_more', '_starter_excerpt_read_more' );
 		delete_transient( 'all_the_cool_cats' );
 	}
 	add_action( 'edit_category', '_starter_category_transient_flusher' );
-	add_action( 'save_post',     '_starter_category_transient_flusher' );
+	add_action( 'save_post',	 '_starter_category_transient_flusher' );
 // end
 
 /** --------------------------------------------------------------
