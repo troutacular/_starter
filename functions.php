@@ -60,9 +60,11 @@ Table of Contents
 1.0 - Globals
 --------------------------------------------------------------*/
 
+
 /** --------------------------------------------------------------
 1.1 - Version
 --------------------------------------------------------------*/
+
 
 /** --------------------------------------------------------------
 1.2 - Environment
@@ -71,9 +73,11 @@ Table of Contents
 // Check if we are in a local environment
 require get_template_directory() . '/inc/is-localhost.php';
 
+
 /** --------------------------------------------------------------
 1.3 - Dependencies
 --------------------------------------------------------------*/
+
 
 /** --------------------------------------------------------------
 1.4 - Theme Setup
@@ -173,6 +177,7 @@ if ( ! function_exists( '_starter_setup' ) ) {
 	}
 }
 
+
 /** --------------------------------------------------------------
 1.4.2 - Sidebar Registration
 --------------------------------------------------------------*/
@@ -246,6 +251,7 @@ if ( ! function_exists( '_starter_widgets_init' ) ) {
 	}
 }
 
+
 /** --------------------------------------------------------------
 1.4.3 - Customizations
 --------------------------------------------------------------*/
@@ -255,6 +261,7 @@ require get_template_directory() . '/inc/customizer.php';
 
 // Customizer additions - Site Contact.
 require get_template_directory() . '/inc/customize-site-contact.php';
+
 
 /** --------------------------------------------------------------
 1.4.4 - Page Creation
@@ -323,6 +330,7 @@ if ( ! function_exists( '_starter_page_add_once' ) ) {
 	}
 }
 
+
 /** --------------------------------------------------------------
 1.4.5 - Taxonomy Creation
 --------------------------------------------------------------*/
@@ -386,13 +394,16 @@ if ( ! function_exists( '_starter_create_new_taxonomies' ) ) {
 	}
 }
 
+
 /** --------------------------------------------------------------
 1.4.6 - Custom Post Types
 --------------------------------------------------------------*/
 
+
 /** --------------------------------------------------------------
 2.0 - Scripts
 --------------------------------------------------------------*/
+
 
 /** --------------------------------------------------------------
 2.1. - CSS
@@ -453,26 +464,29 @@ if ( ! function_exists( '_starter_scripts' ) ) {
 	}
 }
 
+
 /** --------------------------------------------------------------
 3.0 - Header
 --------------------------------------------------------------*/
 
-/**
- * Removes inline styles from <head> for comments.
- *
- * @since 1.0.0
- *
- * @global 	object 		$wp_widget_factory
- *
- * @return bool widget factory removal of css
- */
-function _starter_remove_recent_comments_style() {
-	global $wp_widget_factory;
-	remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
-}
 add_action( 'widgets_init', '_starter_remove_recent_comments_style' );
+if ( ! function_exists( '_starter_remove_recent_comments_style' ) ) {
 
+	/**
+	 * Removes inline styles from <head> for comments.
+	 *
+	 * @global  object  $wp_widget_factory
+	 * @return  bool    widget factory removal of css
+	 */
+	function _starter_remove_recent_comments_style() {
+		global $wp_widget_factory;
+		remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
+	}
+}
+
+add_action( 'init', '_starter_remove_head_links' );
 if ( ! function_exists( '_starter_remove_head_links' ) ) {
+
 	/**
 	 * Remove links and metadata from the <head>.
 	 */
@@ -495,8 +509,8 @@ if ( ! function_exists( '_starter_remove_head_links' ) ) {
 		remove_action( 'wp_head', 'adjacent_posts_rel_link', 10, 0 ); // Display relational links for the posts adjacent to the current post.
 		remove_action( 'wp_head', 'wp_generator' ); // Display the XHTML generator that is generated on the wp_head hook, WP version
 	}
-	add_action( 'init', '_starter_remove_head_links' );
 }
+
 
 /** --------------------------------------------------------------
 4.0 - Footer
@@ -509,13 +523,16 @@ require get_template_directory() . '/inc/footer-columns.php';
 5.0 - Navigation
 --------------------------------------------------------------*/
 
+
 /** --------------------------------------------------------------
 5.1 - Menus
 --------------------------------------------------------------*/
 
+
 /** --------------------------------------------------------------
 5.2 - Search
 --------------------------------------------------------------*/
+
 
 /** --------------------------------------------------------------
 5.3 - Breadcrumbs
@@ -524,12 +541,14 @@ require get_template_directory() . '/inc/footer-columns.php';
 // Breadcrumbes
 require get_template_directory() . '/inc/breadcrumbs.php';
 
+
 /** --------------------------------------------------------------
 5.4 - Section Navigation
 --------------------------------------------------------------*/
 
 // Section Navigation
 require get_template_directory() . '/inc/class-walker-nav-menu-section.php';
+
 
 /** --------------------------------------------------------------
 5.5 - Pagination
@@ -577,6 +596,7 @@ if ( ! function_exists( '_starter_paging_nav' ) ) {
 	}
 }
 
+
 /** --------------------------------------------------------------
 5.6 - Adjacent Post Navigation
 --------------------------------------------------------------*/
@@ -607,8 +627,7 @@ if ( ! function_exists( '_starter_paging_nav' ) ) {
 
 		}
 	}
-// end
-//
+
 
 /** --------------------------------------------------------------
 5.6 - Navigation with Descriptions
@@ -647,9 +666,11 @@ function _starter_add_description_to_menu( $item_output, $item, $depth, $args ) 
 }
 add_filter( 'walker_nav_menu_start_el', '_starter_add_description_to_menu', 10, 4 );
 
+
 /** --------------------------------------------------------------
 6.0 - Content
 --------------------------------------------------------------*/
+
 
 /** --------------------------------------------------------------
 6.1 - Excerpt
@@ -683,9 +704,11 @@ function _starter_excerpt_read_more() {
 }
 add_filter( 'excerpt_more', '_starter_excerpt_read_more' );
 
+
 /** --------------------------------------------------------------
 7.0 - Media
 --------------------------------------------------------------*/
+
 
 /** --------------------------------------------------------------
 7.1 - Images
@@ -726,11 +749,12 @@ add_filter( 'excerpt_more', '_starter_excerpt_read_more' );
 
 		}
 	}
-// end
+
 
 /** --------------------------------------------------------------
 7.2 - Video
 --------------------------------------------------------------*/
+
 
 /** --------------------------------------------------------------
 8.0 - Taxonomy
@@ -738,9 +762,11 @@ add_filter( 'excerpt_more', '_starter_excerpt_read_more' );
 
 // See 1.4.4 - Taxonomy Creation for categories created on theme activation
 
+
 /** --------------------------------------------------------------
 8.1 - Category
 --------------------------------------------------------------*/
+
 
 /** --------------------------------------------------------------
 8.2 - Tags
@@ -775,11 +801,12 @@ add_filter( 'excerpt_more', '_starter_excerpt_read_more' );
 	}
 	add_action( 'edit_category', '_starter_category_transient_flusher' );
 	add_action( 'save_post',	 '_starter_category_transient_flusher' );
-// end
+
 
 /** --------------------------------------------------------------
 9.0 - Posts
 --------------------------------------------------------------*/
+
 
 /** --------------------------------------------------------------
 9.1 - Post Meta
@@ -821,37 +848,46 @@ function _starter_posted_on() {
 }
 }
 
+
 /** --------------------------------------------------------------
 9.2 - Post Types
 --------------------------------------------------------------*/
+
 
 /** --------------------------------------------------------------
 9.2.1 - Posts
 --------------------------------------------------------------*/
 
+
 /** --------------------------------------------------------------
 9.2.2 - Pages
 --------------------------------------------------------------*/
+
 
 /** --------------------------------------------------------------
 10.0 - Templates
 --------------------------------------------------------------*/
 
+
 /** --------------------------------------------------------------
 10.1 - Archive
 --------------------------------------------------------------*/
+
 
 /** --------------------------------------------------------------
 10.2 - Author
 --------------------------------------------------------------*/
 
+
 /** --------------------------------------------------------------
 10.3 - Home
 --------------------------------------------------------------*/
 
+
 /** --------------------------------------------------------------
 10.4 - Page
 --------------------------------------------------------------*/
+
 
 /** --------------------------------------------------------------
 10.5 - Post
