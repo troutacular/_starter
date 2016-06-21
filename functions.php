@@ -573,25 +573,17 @@ if ( ! function_exists( '_starter_paging_nav' ) ) {
 		}
 		?>
 		<nav class="navigation navigation-paging" role="navigation">
-			<h1 class="screen-reader-text"><?php _e( 'Posts navigation', '_starter' );
-		?></h1>
-			<div class="nav-links"><?php
-			if ( get_next_posts_link() ) {
-				?>
-				<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', '_starter' ) );
-				?></div>
+			<h1 class="screen-reader-text"><?php __( 'Posts navigation', '_starter' ); ?></h1>
+			<div class="nav-links">
 			<?php
-			}
-		?>
-			<?php if ( get_previous_posts_link() ) {
-?>
-				<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', '_starter' ) );
-?></div>
-			<?php
-}
-		?>
-			</div><!-- .nav-links -->
-		</nav><!-- .navigation --><?php
+			if ( get_next_posts_link() ) { ?>
+				<div class="nav-previous"><span class="meta-nav">&larr;</span> <?php next_posts_link( __( 'Older posts', '_starter' ) ); ?></div>
+			<?php } ?>
+			<?php if ( get_previous_posts_link() ) { ?>
+				<div class="nav-next"><?php previous_posts_link( __( 'Newer posts', '_starter' ) ); ?> <span class="meta-nav">&rarr;</span></div>
+			<?php } ?>
+			</div>
+		</nav><?php
 
 	}
 }
