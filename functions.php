@@ -260,6 +260,12 @@ require get_template_directory() . '/inc/customize-site-contact.php';
 1.4.4 - Page Creation
 --------------------------------------------------------------*/
 
+/*
+ * Run this function after theme setup.
+ * Allow for future automatic additions to existing sites.
+**/
+add_action( 'after_setup_theme', '_starter_page_add' );
+
 if ( ! function_exists( '_starter_page_add' ) ) {
 
 	/**
@@ -296,10 +302,11 @@ if ( ! function_exists( '_starter_page_add' ) ) {
 }
 
 /*
- * Run this function after theme setup.
- * Allow for future automatic additions to existing sites.
+ * Set up the following pages only once on theme switch.
+ * Does not require updates each time the admin is accessed.
+ * Does not override settings, particularly for the selection of the homepage designation.
 **/
-add_action( 'after_setup_theme', '_starter_page_add' );
+add_action( 'after_switch_theme', '_starter_page_add_once' );
 
 if ( ! function_exists( '_starter_page_add_once' ) ) {
 	/**
@@ -311,67 +318,62 @@ if ( ! function_exists( '_starter_page_add_once' ) ) {
 
 		/*
 		 * (see full documentation in '/inc/support-page-setup.php'
-		 * @usage: _starter_page_additions( [ page title ], [ page template ], [ post status ], [ password ], [ set as homepage ], [ parent slug ] );
+		 * @usage: _starter_page_additions( array( $args ) );
 		**/
 	}
 }
-
-/*
- * Set up the following pages only once on theme switch.
- * Does not require updates each time the admin is accessed.
- * Does not override settings, particularly for the selection of the homepage designation.
-**/
-add_action( 'after_switch_theme', '_starter_page_add_once' );
 
 /** --------------------------------------------------------------
 1.4.5 - Taxonomy Creation
 --------------------------------------------------------------*/
 
-/**
- * Creates new taxonomies to the site.
- *
- * @link https://codex.wordpress.org/Taxonomies#Default_Taxonomies
- * @since 1.0.0
- *
- * @return array|WP Error 	Inserts taxonomy or returens WP Error message
- */
-function _starter_create_new_taxonomies() {
-
+if ( ! function_exists( '_starter_create_new_taxonomies' ) ) {
 	/**
-	 * Set an array of taxonomies to add.
+	 * Creates new taxonomies to the site.
 	 *
-	 * @link https://codex.wordpress.org/Function_Reference/wp_insert_term
+	 * @link https://codex.wordpress.org/Taxonomies#Default_Taxonomies
+	 * @since 1.0.0
 	 *
-	 * usage:
-	 * 	$taxonomies = array(
-	 * 		array(
-	 * 			'name' => 'Featured',
-	 * 			'taxonomy' => 'category',
-	 * 			'args' => array (
-	 * 				'slug' => 'featured',
-	 * 				'description'=> 'Featured Category Posts'
-	 * 			)
-	 * 		)
-	 * 	);
+	 * @return array|WP Error 	Inserts taxonomy or returens WP Error message
 	 */
-	$taxonomies = array();
+	function _starter_create_new_taxonomies() {
 
-	// check that we have taxonomies to process
-	if ( ! empty( $taxonomies ) ) {
+		/**
+		 * Set an array of taxonomies to add.
+		 *
+		 * @link https://codex.wordpress.org/Function_Reference/wp_insert_term
+		 *
+		 * usage:
+		 * 	$taxonomies = array(
+		 * 		array(
+		 * 			'name' => 'Featured',
+		 * 			'taxonomy' => 'category',
+		 * 			'args' => array (
+		 * 				'slug' => 'featured',
+		 * 				'description'=> 'Featured Category Posts'
+		 * 			)
+		 * 		)
+		 * 	);
+		 */
+		$taxonomies = array();
 
-		// loop through the taxonomies array and add them to the site
-		foreach ( $taxonomies as $taxonomy ) {
+		// check that we have taxonomies to process
+		if ( ! empty( $taxonomies ) ) {
 
-			// check if the taxonomy already exists
-			$term = term_exists( $taxonomy['name'], $taxonomy['taxonomy'] );
+			// loop through the taxonomies array and add them to the site
+			foreach ( $taxonomies as $taxonomy ) {
 
-			// if the term doesn't exist, add it
-			if ( $term == 0 || $term == null ) {
-				wp_insert_term(
-					$taxonomy['name'],
-					$taxonomy['taxonomy'],
-					$taxonomy['args']
-				);
+				// check if the taxonomy already exists
+				$term = term_exists( $taxonomy['name'], $taxonomy['taxonomy'] );
+
+				// if the term doesn't exist, add it
+				if ( $term == 0 || $term == null ) {
+					wp_insert_term(
+						$taxonomy['name'],
+						$taxonomy['taxonomy'],
+						$taxonomy['args']
+					);
+				}
 			}
 		}
 	}
