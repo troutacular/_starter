@@ -630,6 +630,8 @@ if ( ! function_exists( '_starter_post_nav' ) ) {
 5.6 - Navigation with Descriptions
 --------------------------------------------------------------*/
 
+add_filter( 'walker_nav_menu_start_el', '_starter_add_description_to_menu', 10, 4 );
+
 /**
  * Add Menu Descriptions
  *
@@ -655,7 +657,6 @@ function _starter_add_description_to_menu( $item_output, $item, $depth, $args ) 
 	return $item_output;
 
 }
-add_filter( 'walker_nav_menu_start_el', '_starter_add_description_to_menu', 10, 4 );
 
 
 /** --------------------------------------------------------------
@@ -667,6 +668,7 @@ add_filter( 'walker_nav_menu_start_el', '_starter_add_description_to_menu', 10, 
 6.1 - Excerpt
 --------------------------------------------------------------*/
 
+add_filter( 'excerpt_length', '_starter_excerpt_length' );
 /**
  * Excerpt length.
  *
@@ -677,23 +679,20 @@ add_filter( 'walker_nav_menu_start_el', '_starter_add_description_to_menu', 10, 
 function _starter_excerpt_length() {
 	return 55;
 }
-add_filter( 'excerpt_length', '_starter_excerpt_length' );
 
+add_filter( 'excerpt_more', '_starter_excerpt_read_more' );
 /**
  * Excerpt Read More.
  *
  * Add a customized 'Read More' link to the end of excerpts.
  *
  * @global  object  $post   WordPress Post Object
- *
  * @return string Permalink with text
  */
 function _starter_excerpt_read_more() {
 	global $post;
-
-	return ' <a class="read-more" href="' . get_permalink( $post->ID ) . '">Read more</a>';
+	return ' <a class="read-more" href="' . get_permalink( $post->ID ) . '">' . __( 'Read more', '_starter' ) . '</a>';
 }
-add_filter( 'excerpt_more', '_starter_excerpt_read_more' );
 
 
 /** --------------------------------------------------------------
