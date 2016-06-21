@@ -350,7 +350,7 @@ if ( ! function_exists( '_starter_create_new_taxonomies' ) ) {
 		 *
 		 * @link https://codex.wordpress.org/Function_Reference/wp_insert_term
 		 *
-		 * usage:
+		 * @usage:
 		 * 	$taxonomies = array(
 		 * 		array(
 		 * 			'name' => 'Featured',
