@@ -399,14 +399,23 @@ if ( ! function_exists( '_starter_create_new_taxonomies' ) ) {
 --------------------------------------------------------------*/
 
 /**
- * Enqueue CSS file(s).
- *
- * @since 1.0.0
+ * Add action to enqueue CSS stylesheets
  */
-function _starter_enqueue_css() {
-	wp_enqueue_style( 'usc-starter-style', get_stylesheet_directory_uri() . '/css/_starter.css', false, null, 'screen,print' ); // $handle, $src, $deps, $ver, $media
-}
 add_action( 'wp_enqueue_scripts', '_starter_enqueue_css' );
+
+if ( ! function_exists( '_starter_enqueue_css' ) ) {
+
+	/**
+	 * Enqueue CSS file(s).
+	 *
+	 */
+	function _starter_enqueue_css() {
+
+		// $handle, $src, $deps, $ver, $media
+		wp_enqueue_style( 'usc-starter-style', get_stylesheet_directory_uri() . '/css/_starter.css', false, null, 'screen,print' );
+
+	}
+}
 
 /** --------------------------------------------------------------
 2.2 - Javascript
