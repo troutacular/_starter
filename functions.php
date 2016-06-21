@@ -262,13 +262,12 @@ require get_template_directory() . '/inc/customize-site-contact.php';
 
 if ( ! function_exists( '_starter_page_add' ) ) {
 
-	// get the support page function
-	require_once get_template_directory() . '/inc/support-page-setup.php';
-
 	/**
+	 * Add pages to theme.
+	 *
 	 * Uses _starter_page_additions function to add page(s) to the site.
 	 *
-	 * @since 1.0.0
+	 * @return void
 	 */
 	function _starter_page_add() {
 
@@ -277,23 +276,21 @@ if ( ! function_exists( '_starter_page_add' ) ) {
 
 		/*
 		 * (see full documentation in '/inc/support-page-setup.php'
-		 * @usage: _starter_page_additions( [ page title ], [ page template ], [ post status ], [ password ], [ set as homepage ], [ parent title ] );
+		 * @usage: _starter_page_additions( array( $args ) );
 		**/
 
 		// create admin page
 		_starter_page_additions( array(
 			'post_title' => 'Site Admin',
-			'parent_title' => 'Level-1'
+			'post_status' => 'private',
+			'_wp_page_template' => 'templates/tpl-admin.php',
 		) );
 
 		// create styleguide page
-		_starter_page_additions( 'Site Styleguide', 'templates/tpl-styleguide.php', 'private', 'passy-wordy', false, 'Level 1' );
 		_starter_page_additions( array(
 			'post_title' => 'Site Styleguide',
-			'_wp_page_template' => 'templates/tpl-styleguide.php',
 			'post_status' => 'private',
-			'post_password' => 'passy-wordy',
-			'parent_title' => 'Level-1'
+			'_wp_page_template' => 'templates/tpl-styleguide.php',
 		) );
 	}
 }
