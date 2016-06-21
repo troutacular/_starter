@@ -406,7 +406,7 @@ add_action( 'wp_enqueue_scripts', '_starter_enqueue_css' );
 if ( ! function_exists( '_starter_enqueue_css' ) ) {
 
 	/**
-	 * Enqueue CSS file(s).
+	 * Enqueue css file(s).
 	 *
 	 */
 	function _starter_enqueue_css() {
@@ -421,36 +421,37 @@ if ( ! function_exists( '_starter_enqueue_css' ) ) {
 2.2 - Javascript
 --------------------------------------------------------------*/
 
-// Enqueue scripts and styles.
-	if ( ! is_admin() ) {
-		add_action( 'wp_enqueue_scripts', '_starter_scripts' );
-		function _starter_scripts() {
+// Check that we are not in the WP Admin.
+if ( ! is_admin() ) {
 
-			/*
-			 * Try to solve the need with CSS and native javascript first.
-			 */
-			$jquery = false;
+	/**
+	 * Add action to enqueue javascript files.
+	 */
+	add_action( 'wp_enqueue_scripts', '_starter_scripts' );
 
-			// turn off jQuery
-			wp_deregister_script( 'jquery' );
+}
 
-			if ( $jquery ) {
-				// include jquery from a CDN for faster delivery
-				wp_enqueue_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', false, null, true );
-				wp_enqueue_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-1.2.1.min.js', 'jquery', null, true );
-			}
+if ( ! function_exists( '_starter_scripts' ) ) {
 
-			wp_enqueue_script( 'starter', get_stylesheet_directory_uri() . '/js/starter.js', array(), null, true );
+	/**
+	 * Enqueue javascript files
+	 *
+	 * @return void
+	 */
+	function _starter_scripts() {
 
-			if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-				wp_enqueue_script( 'comment-reply' );
-			}
+		// Dequeue jQuery if not needed
+		// wp_deregister_script( 'jquery' );
 
-			// let future child themes know the parent scripts are loaded
-			do_action( 'starter_scripts_loaded' );
+		// Load individual scripts.
+		wp_enqueue_script( 'starter', get_stylesheet_directory_uri() . '/js/starter.js', array(), null, true );
+
+		// Load comments reply script.
+		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+			wp_enqueue_script( 'comment-reply' );
 		}
 	}
-// end
+}
 
 /** --------------------------------------------------------------
 3.0 - Header
