@@ -273,7 +273,7 @@ if ( ! function_exists( '_starter_page_add' ) ) {
 	 *
 	 * Uses _starter_page_additions function to add page(s) to the site.
 	 *
-	 * @return void
+	 * @return array|WP Error 	Inserts Page or returens WP Error message.
 	 */
 	function _starter_page_add() {
 
@@ -312,7 +312,7 @@ if ( ! function_exists( '_starter_page_add_once' ) ) {
 	/**
 	 * Uses _starter_page_additions function to add page(s) to the site one time only.
 	 *
-	 * @since 1.0.0
+	 * @return array|WP Error 	Inserts Page or returens WP Error message.
 	 */
 	function _starter_page_add_once() {
 
@@ -328,13 +328,20 @@ if ( ! function_exists( '_starter_page_add_once' ) ) {
 --------------------------------------------------------------*/
 
 if ( ! function_exists( '_starter_create_new_taxonomies' ) ) {
+
+	/*
+	 * Run this function after theme setup.
+	 * Allow for future automatic additions to existing sites.
+	**/
+	add_action( 'after_setup_theme', '_starter_create_new_taxonomies' );
+
 	/**
 	 * Creates new taxonomies to the site.
 	 *
 	 * @link https://codex.wordpress.org/Taxonomies#Default_Taxonomies
 	 * @since 1.0.0
 	 *
-	 * @return array|WP Error 	Inserts taxonomy or returens WP Error message
+	 * @return array|WP Error 	Inserts taxonomy or returens WP Error message.
 	 */
 	function _starter_create_new_taxonomies() {
 
@@ -367,7 +374,7 @@ if ( ! function_exists( '_starter_create_new_taxonomies' ) ) {
 				$term = term_exists( $taxonomy['name'], $taxonomy['taxonomy'] );
 
 				// if the term doesn't exist, add it
-				if ( $term == 0 || $term == null ) {
+				if ( 0 === $term || null === $term ) {
 					wp_insert_term(
 						$taxonomy['name'],
 						$taxonomy['taxonomy'],
