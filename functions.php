@@ -594,31 +594,36 @@ if ( ! function_exists( '_starter_paging_nav' ) ) {
 --------------------------------------------------------------*/
 
 // Display navigation to next/previous post when applicable.
-	if ( ! function_exists( '_starter_post_nav' ) ) {
-		// @return void
-		function _starter_post_nav() {
-			// Don't print empty markup if there's nowhere to navigate.
-			$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
-			$next = get_adjacent_post( false, '', false );
+if ( ! function_exists( '_starter_post_nav' ) ) {
 
-			if ( ! $next && ! $previous ) {
-				return;
-			}
-			?>
-			<nav class="navigation post-navigation" role="navigation">
-				<h1 class="screen-reader-text"><?php _e( 'Post navigation', '_starter' );
-			?></h1>
-				<div class="nav-links">
-					<?php
-						previous_post_link( '<div class="nav-previous">%link</div>', _x( '<span class="meta-nav">&larr;</span> %title', 'Previous post link', '_starter' ) );
-			next_post_link( '<div class="nav-next">%link</div>',	 _x( '%title <span class="meta-nav">&rarr;</span>', 'Next post link',	 '_starter' ) );
-			?>
-				</div><!-- .nav-links -->
-			</nav><!-- .navigation -->
-			<?php
+	/**
+	 * Post Navigation
+	 *
+	 * Show the 'Previous' and 'Next' links for the adjacent posts.
+	 *
+	 * @return  string  HTML output
+	 */
+	function _starter_post_nav() {
+		// Don't print empty markup if there's nowhere to navigate.
+		$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
+		$next = get_adjacent_post( false, '', false );
 
+		if ( ! $next && ! $previous ) {
+			return;
 		}
+		?>
+		<nav class="navigation post-navigation" role="navigation">
+			<h1 class="screen-reader-text"><?php __( 'Post navigation', '_starter' ); ?></h1>
+			<div class="nav-links">
+			<?php
+				previous_post_link( '<div class="nav-previous">%link</div>', _x( '<span class="meta-nav">&larr;</span> %title', 'Previous post link', '_starter' ) );
+				next_post_link( '<div class="nav-next">%link</div>',	 _x( '%title <span class="meta-nav">&rarr;</span>', 'Next post link',	 '_starter' ) );
+			?>
+			</div>
+		</nav>
+		<?php
 	}
+}
 
 
 /** --------------------------------------------------------------
