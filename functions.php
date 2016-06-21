@@ -642,23 +642,17 @@ if ( ! function_exists( '_starter_post_nav' ) ) {
  */
 function _starter_add_description_to_menu( $item_output, $item, $depth, $args ) {
 
-	// Insert description for the 'primary' menu at the first level only.
-	if ( 'primary' === $args->theme_location && 0 === $depth ) {
+	// Insert description for the 'primary' menu at the first level only and we have a description.
+	if ( 'primary' === $args->theme_location && 0 === $depth && ! empty( $item->description ) ) {
 
-		// If the description isn't empty.
-		if ( ! empty( $item->description ) ) {
-			// Append description after link.
-			$item_output .= sprintf( '<span class="description">%s</span>', esc_html( $item->description ) );
+		// Append description after link.
+		$item_output .= sprintf( '<span class="description">%s</span>', esc_html( $item->description ) );
 
-			// Insert description 'in' link at the end.
-			// $item_output = str_replace( $args->link_after . '</a>', '<span class="menu-item-description">' . $item->description . '</span>' . $args->link_after . '</a>', $item_output );
-		}
-
-		return $item_output;
-
+		// Insert description 'in' link at the end.
+		// $item_output = str_replace( $args->link_after . '</a>', '<span class="menu-item-description">' . $item->description . '</span>' . $args->link_after . '</a>', $item_output );
 	}
 
-	return false;
+	return $item_output;
 
 }
 add_filter( 'walker_nav_menu_start_el', '_starter_add_description_to_menu', 10, 4 );
