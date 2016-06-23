@@ -704,42 +704,56 @@ function _starter_excerpt_read_more() {
 7.1 - Images
 --------------------------------------------------------------*/
 
-// Add custom image sizes
-	if ( function_exists( 'add_image_size' ) ) {
-
-		/* Example
-		 * add_image_size( 'image-name', 1440, 900, true ); //width, height, cropping boolean - 1.6:1 ratio
-		 */
-	}
-// end
+/**
+ * Add custom image sizes.
+ */
+// Uncomment to use
+// if ( function_exists( 'add_image_size' ) ) {
+// 	add_image_size( 'image-name', 1440, 900, true ); //width, height, cropping boolean - 1.6:1 ratio
+// }
 
 // Standard Image output for posts
+if ( ! function_exists( '_starter_post_image' ) ) {
+	/**
+	 * Post Image
+	 *
+	 * Returns a common structure for images and captions.
+	 *
+	 * @todo Add WP Core 4.4+ responsive image handling.
+	 * @link https://make.wordpress.org/core/2015/11/10/responsive-images-in-wordpress-4-4/
+	 *
+	 * @param   string  $image_size  [description]
+	 * @param   boolean  $caption     [description]
+	 * @return  [type]               [description]
+	 */
 	function _starter_post_image( $image_size = 'sinle-post-image', $caption = false ) {
-		if ( has_post_thumbnail() ) {
-			?>
-		<figure class="entry-image">
-			<?php the_post_thumbnail( $image_size );
-			?>
-			<?php
-				if ( $caption ) {
-					$image_caption = get_post( get_post_thumbnail_id() )->post_excerpt;
-					if ( $image_caption ) {
-						?>
-				<figcaption>
-					<?php echo $image_caption;
-						?>
-				</figcaption>
-				<?php
 
-					}
+		// Check that a post thumbnail exists.
+		if ( has_post_thumbnail() ) {
+
+			// Wrapper open.
+			echo '<figure class="entry-image">';
+
+			// The image.
+			the_post_thumbnail( $image_size );
+
+			// Check if the caption is enabled.
+			if ( $caption ) {
+
+				// Get the image caption (excerpt).
+				$image_caption = get_post( get_post_thumbnail_id() )->post_excerpt;
+
+				// If we have a caption, print out language supported caption.
+				if ( $image_caption ) {
+					printf( '<figcaption>' . esc_html__( '%s', '_starter' ) . '</figcaption>', $image_caption ); // WPCS: XSS OK.
 				}
-			?>
-		</figure>
-		<?php
+			}
+
+			echo '</figure>';
 
 		}
 	}
-
+}
 
 /** --------------------------------------------------------------
 7.2 - Video
