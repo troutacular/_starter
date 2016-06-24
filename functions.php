@@ -777,6 +777,15 @@ if ( ! function_exists( '_starter_post_image' ) ) {
 --------------------------------------------------------------*/
 
 // Returns true if a blog has more than 1 category.
+if ( ! function_exists( '_starter_categorized_blog' ) ) {
+
+	/**
+	 * Categorized Blog
+	 *
+	 * Returns true if a blog has more than 1 category.
+	 *
+	 * @return  bool  Bool value for blog having cateogries.
+	 */
 	function _starter_categorized_blog() {
 		if ( false === ( $all_the_cool_cats = get_transient( 'all_the_cool_cats' ) ) ) {
 
@@ -796,13 +805,15 @@ if ( ! function_exists( '_starter_post_image' ) ) {
 
 		return $categorized;
 	}
-// end
+}
 
 // Flush out the transients used in _starter_categorized_blog.
+if ( ! function_exists( '_starter_category_transient_flusher' ) ) {
 	function _starter_category_transient_flusher() {
 		// Like, beat it. Dig?
 		delete_transient( 'all_the_cool_cats' );
 	}
+}
 	add_action( 'edit_category', '_starter_category_transient_flusher' );
 	add_action( 'save_post',	 '_starter_category_transient_flusher' );
 
