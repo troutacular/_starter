@@ -807,15 +807,26 @@ if ( ! function_exists( '_starter_categorized_blog' ) ) {
 	}
 }
 
-// Flush out the transients used in _starter_categorized_blog.
+// Add action to flush category transient on category edit.
+add_action( 'edit_category', '_starter_category_transient_flusher' );
+
+// Add action to flush category transient on post save.
+add_action( 'save_post',	 '_starter_category_transient_flusher' );
+
 if ( ! function_exists( '_starter_category_transient_flusher' ) ) {
+
+	/**
+	 * Transient Flush
+	 *
+	 * Flush out the transients used in _starter_categorized_blog.
+	 *
+	 * @return  void
+	 */
 	function _starter_category_transient_flusher() {
 		// Like, beat it. Dig?
 		delete_transient( 'all_the_cool_cats' );
 	}
 }
-	add_action( 'edit_category', '_starter_category_transient_flusher' );
-	add_action( 'save_post',	 '_starter_category_transient_flusher' );
 
 
 /** --------------------------------------------------------------
