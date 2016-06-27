@@ -31,7 +31,7 @@
 		 * with the matching value.  Get the widgets in the
 		 * corresponding sidebar.
 		 **/
-		elseif ( $template != '' && is_dynamic_sidebar( $template ) ) {
+		elseif ( '' !== $template && is_dynamic_sidebar( $template ) ) {
 			dynamic_sidebar( $template );
 		}
 
@@ -41,7 +41,7 @@
 		 * 2. is a single page;
 		 * 3. has widgets in 'template-default-content'
 		 **/
-		elseif ( !$template && is_page() && is_dynamic_sidebar( 'template-default-content' ) ) {
+		elseif ( ! $template && is_page() && is_dynamic_sidebar( 'template-default-content' ) ) {
 			dynamic_sidebar( 'template-default-content' );
 		}
 
@@ -78,7 +78,7 @@
 		/**
 		 * Set Global Sidebar section to be used on all pages.
 		**/
-		if ( is_dynamic_sidebar('global') ) {
+		if ( is_dynamic_sidebar( 'global' ) ) {
 			dynamic_sidebar( 'global' );
 		}
 
