@@ -1,17 +1,28 @@
 <?php
 
+/**
+ * The Site Contact modules
+ *
+ * @package _starter
+ */
 
-// get the option to show the footer graphic
-$graphic_option = $text_options = get_option( '_starter_options' );
-$graphic_option = $graphic_option['checkbox_bottom_graphic'];
-
-// class wrapper
+/**
+ * Footer Class Wrapper
+ *
+ * Get the footer classes as an array and return as single string.
+ *
+ * @param   array   $classes  Classes
+ * @return  string            Classes delimited with spaces
+ */
 function get_site_contact_footer_class( $classes = array() ) {
 	if ( isset( $classes ) ) {
 		echo ' ' . esc_attr( implode( $classes, ' ' ) );
 	}
 	return false;
 }
+
+// get the option to show the footer graphic
+$text_options = get_option( '_starter_options' );
 
 // feedback options
 $feedback = $text_options['text_feedback'];
