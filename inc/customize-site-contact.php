@@ -6,9 +6,9 @@
  *  - Feedback Text
  *  - Feedback Link
  *  - Feedback Link Text
- *  - Website by Text
- *  - Website by Link
- *  - Website by Link Text
+ *  - Created by Text
+ *  - Created by Link
+ *  - Created by Link Text
  *
  * @param  object 	$wp_customize 	WP Class for the Customizer
  * @return object
@@ -93,21 +93,21 @@ function _starter_site_contact_register( $wp_customize ) {
 	);
 
 	// ----------------
-	// Website by Section
+	// Created by Section
 	// ----------------
 	$wp_customize->add_section(
-		'_starter_website_by',
+		'_starter_created_by',
 		array(
-			'title'    => __( 'Website By', '_starter' ),
+			'title'    => __( 'Created By', '_starter' ),
 			'priority' => 140,
 		)
 	);
 
 	// ----------------
-	// Website by Text
+	// Created by Text
 	// ----------------
 	$wp_customize->add_setting(
-		'_starter_options[text_website_by]',
+		'_starter_options[text_created_by]',
 		array(
 			'default'           => '',
 			'capability'        => 'edit_theme_options',
@@ -117,19 +117,19 @@ function _starter_site_contact_register( $wp_customize ) {
 	);
 
 	$wp_customize->add_control(
-		'_starter_text_website_by',
+		'_starter_text_created_by',
 		array(
-			'label'    => __( 'Website By Text', '_starter' ),
-			'section'  => '_starter_website_by',
-			'settings' => '_starter_options[text_website_by]',
+			'label'    => __( 'Created By Text', '_starter' ),
+			'section'  => '_starter_created_by',
+			'settings' => '_starter_options[text_created_by]',
 		)
 	);
 
 	// ----------------
-	//  Website by Link
+	//  Created by Link
 	// ----------------
 	$wp_customize->add_setting(
-		'_starter_options[text_website_by_link]',
+		'_starter_options[text_created_by_link]',
 		array(
 			'default'           => '',
 			'capability'        => 'edit_theme_options',
@@ -139,19 +139,19 @@ function _starter_site_contact_register( $wp_customize ) {
 	);
 
 	$wp_customize->add_control(
-		'_starter_text_website_by_link',
+		'_starter_text_created_by_link',
 		array(
-			'label'    => __( 'Website By Link', '_starter' ),
-			'section'  => '_starter_website_by',
-			'settings' => '_starter_options[text_website_by_link]',
+			'label'    => __( 'Created By Link', '_starter' ),
+			'section'  => '_starter_created_by',
+			'settings' => '_starter_options[text_created_by_link]',
 		)
 	);
 
 	// ----------------
-	//  Website by Link Text
+	//  Created by Link Text
 	// ----------------
 	$wp_customize->add_setting(
-		'_starter_options[text_website_by_link_text]',
+		'_starter_options[text_created_by_link_text]',
 		array(
 			'default'           => '',
 			'capability'        => 'edit_theme_options',
@@ -161,11 +161,11 @@ function _starter_site_contact_register( $wp_customize ) {
 	);
 
 	$wp_customize->add_control(
-		'_starter_text_website_by_link_text',
+		'_starter_text_created_by_link_text',
 		array(
-			'label'    => __( 'Website By Link Text', '_starter' ),
-			'section'  => '_starter_website_by',
-			'settings' => '_starter_options[text_website_by_link_text]',
+			'label'    => __( 'Created By Link Text', '_starter' ),
+			'section'  => '_starter_created_by',
+			'settings' => '_starter_options[text_created_by_link_text]',
 		)
 	);
 }
