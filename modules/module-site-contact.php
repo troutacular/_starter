@@ -6,9 +6,9 @@ $graphic_option = $text_options = get_option( '_starter_options' );
 $graphic_option = $graphic_option['checkbox_bottom_graphic'];
 
 // class wrapper
-function get_site_contact_footer_class( $footer_class ) {
-	if ( '' !== $footer_class ) {
-		echo ' ' . esc_attr( implode( $footer_class, ' ' ) );
+function get_site_contact_footer_class( $classes = array() ) {
+	if ( isset( $classes ) ) {
+		echo ' ' . esc_attr( implode( $classes, ' ' ) );
 	}
 	return false;
 }
