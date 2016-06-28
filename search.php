@@ -14,7 +14,7 @@ get_header(); ?>
 	if ( have_posts() ) { ?>
 
 		<header class="page-header">
-			<h1 class="page-title"><?php printf( __( 'Search Results for: %s', '_starter' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+			<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', '_s' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 		</header><!-- .page-header -->
 
 		<?php
@@ -24,7 +24,7 @@ get_header(); ?>
 			the_post();
 			get_template_part( 'template-parts/content', 'search' );
 
-		}
+		} // End of the loop.
 
 		_starter_paging_nav();
 

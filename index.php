@@ -6,6 +6,7 @@
  * It is used to display a page when nothing more specific matches a query.
  *
  * E.g., it puts together the home page when no home.php file exists.
+ *
  * @link http://codex.wordpress.org/Template_Hierarchy
  *
  * @package usc-starter
@@ -27,7 +28,7 @@ get_header(); ?>
 				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 				 */
 				get_template_part( 'template-parts/content', get_post_format() );
-			}
+			} // End of the loop.
 
 			_starter_paging_nav();
 

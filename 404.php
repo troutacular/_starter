@@ -29,7 +29,7 @@ get_header(); ?>
 						if ( _starter_categorized_blog() ) {
 					?>
 
-					<div class="widget widget-categories">
+					<div class="widget widget_categories">
 						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', '_starter' ); ?></h2>
 						<ul>
 						<?php
