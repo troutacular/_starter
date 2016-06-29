@@ -1,8 +1,8 @@
 /**
-	
+
 	Print Styleguide
 	================
-	
+
 	1.0 - Defaults
 		1.1 - Headings
 		1.2 - Content
@@ -69,11 +69,11 @@ h6 { font-size: 28px; }
 
 .brand-title {
 	border: 0 none;
-	
+
 	.site-header & {
 		@include span(12 of 12);
 	}
-	
+
 	a {
 		float: none;
 		display: block;
@@ -81,7 +81,7 @@ h6 { font-size: 28px; }
 		width: 12rem;
 		@include svg-background-image($logo-usc-print,100%,0 top,false);
 	}
-	
+
 }
 
 .site-title a {
@@ -94,7 +94,7 @@ h6 { font-size: 28px; }
 /*--------------------------------------------------------------
 1.2 - Content
 --------------------------------------------------------------*/
-.site-content-wrapper {
+.site-content {
 	clear: both;
 	margin-top: 1em;
 	padding-top: 1em;
@@ -109,12 +109,12 @@ p {
 q,
 blockquote {
 	background: $color-blockquote-background-print;
-	
+
 	&:before,
 	&:after {
 		content: '';
 	}
-	
+
 	&[cite] {
 		&:after {
 			content: ' [Source: ' attr(cite) ']';
@@ -138,7 +138,7 @@ a {
 	 * exclude any non-usc site: &:not([href*='usc.edu']):after
 	 * exclude any site starting with: &:not([href^='siteurl']):after
 	 */
-	
+
 	&:not([href*='#{$no-print-url}']):after {
 		content: ' [' attr(href) '] ';
 		color: lighten($color-content-link-print, 15);
@@ -183,4 +183,3 @@ object,
 /*--------------------------------------------------------------
 3.0 - Theme Specific
 --------------------------------------------------------------*/
-

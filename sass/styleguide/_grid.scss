@@ -1,8 +1,8 @@
 /**
-	
+
 	Grid
 	====
-	
+
 	1.0 - Grid Settings
 	1.1 - Grid Wrappers
 	1.2 - Site Header
@@ -11,10 +11,10 @@
 	1.5 - Site Footer
 		1.5.1 - Site Footer Columns
 	1.6 - Modules
-	
+
 	=========
-	
-	Note: you should use this file for setting the layout of the 
+
+	Note: you should use this file for setting the layout of the
 	page/theme for the placeholder elements for modules only.
 	Individual module elements should have their responsive structures
 	attached to themselves.
@@ -28,11 +28,11 @@
 --------------------------------------------------------------*/
 
 /**
-	
+
 	Use Susy (http://susy.oddbird.net/) for grid structures.
-	
+
 	Import for Susy resides in sass/_vendor.scss file
-	
+
 **/
 
 $susy: (
@@ -52,7 +52,7 @@ $susy: (
 .site-branding,
 .site-navigation,
 .nav-breadcrumbs,
-.site-content-wrapper,
+.site-content,
 .site-footer,
 .site-contact {
 	@include container;
@@ -69,19 +69,19 @@ $susy: (
 --------------------------------------------------------------*/
 
 .site-header {
-	
+
 	.site-branding {}
-	
+
 	.site-title {}
-	
+
 	.site-description {}
-	
+
 	.site-navigation {}
-	
+
 	.site-nav {}
-	
+
 	.menu-toggle {}
-	
+
 	.skip-link {}
 
 }
@@ -94,7 +94,7 @@ $susy: (
 1.3 - Site Content
 --------------------------------------------------------------*/
 
-.site-content-wrapper {}
+.site-content {}
 
 .content-area {}
 
@@ -123,60 +123,60 @@ $susy: (
 --------------------------------------------------------------*/
 
 .site-footer {
-	
+
 	&.columns-1 {
-		
+
 		.footer-column {
 			@include span(12 of 12);
 		}
 	}
-	
+
 	&.columns-2 {
-		
+
 		.footer-column {
 			@include span(12 of 12);
-			
+
 			@media #{$xxsmall-up} {
 				@include span(6 of 12);
-				
+
 				&:last-of-type {
 					@include omega;
 				}
 			}
 		}
 	}
-	
+
 	&.columns-3 {
-		
+
 		.footer-column {
 			@include span(12 of 12);
-			
+
 			@media #{$small-up} {
 				@include span(4 of 12);
-				
+
 				&:last-of-type {
 					@include omega;
 				}
 			}
 		}
 	}
-	
+
 	&.columns-4 {
-		
+
 		.footer-column {
 			@include span(12 of 12);
-			
+
 			@media #{$xxsmall-up} {
 				@include span(6 of 12);
-				
+
 				&:last-of-type {
 					@include omega;
 				}
 			}
-			
+
 			@media #{$small-up} {
 				@include span(3 of 12);
-				
+
 				&:last-of-type {
 					@include omega;
 				}
