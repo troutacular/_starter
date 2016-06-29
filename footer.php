@@ -14,20 +14,34 @@
 	</div><!-- .site-content --><?php /* opens in header.php */ ?>
 
 	<div class="site-footer-wrapper">
-		<footer id="colophon" class="site-footer<?php footer_column_class(); ?>" role="contentinfo">
+		<footer id="colophon" class="site-footer<?php _starter_get_footer_column_class(); ?>" role="contentinfo">
 
-			<?php if ( is_active_sidebar( 'footer-column' ) ) { ?>
-				<div class="footer-column footer-column-1"><?php dynamic_sidebar( 'footer-column' );?></div>
-			<?php } ?>
-			<?php if ( is_active_sidebar( 'footer-column-2' ) ) { ?>
-				<div class="footer-column footer-column-2"><?php dynamic_sidebar( 'footer-column-2' );?></div>
-			<?php } ?>
-			<?php if ( is_active_sidebar( 'footer-column-3' ) ) { ?>
-				<div class="footer-column footer-column-3"><?php dynamic_sidebar( 'footer-column-3' );?></div>
-			<?php } ?>
-			<?php if ( is_active_sidebar( 'footer-column-4' ) ) { ?>
-				<div class="footer-column footer-columm-4"><?php dynamic_sidebar( 'footer-column-4' );?></div>
-			<?php } ?>
+			<?php
+			for ( $i = 0; $i <= 4; $i++ ) {
+
+				// Set default variables.
+				$column = 'footer-column';
+				$class = 'footer-column-' . $i;
+
+				// Add the column number past first instance for sidebar reference.
+				if ( $i > 0 ) {
+					$column .= '-' . $i;
+				}
+
+				// Check for the sidebar having widgets.
+				if ( is_active_sidebar( $column ) ) {
+
+					// Wrapper open.
+					echo '<div class="footer ' . esc_html( $class ) . '">';
+
+					// Get the sidebar.
+					dynamic_sidebar( $column );
+
+					// Wrapper close.
+					echo '</div>';
+				}
+			}
+			?>
 
 			<?php get_template_part( 'modules/module', 'site-contact' ); ?>
 
