@@ -21,9 +21,9 @@
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <?php
-global $noindex;
-if ( $noindex ) {
-	echo '<meta name="robots" content="noindex"/>';
+// Display a noindex meta tag if required by the blog configuration.
+if ( function_exists( 'noindex' ) ) {
+	noindex();
 }
 ?>
 
