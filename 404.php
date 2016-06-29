@@ -21,12 +21,12 @@ get_header(); ?>
 					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', '_starter' ); ?></p>
 
 					<?php
-						get_search_form();
+					get_search_form();
 
-						the_widget( 'WP_Widget_Recent_Posts' );
+					the_widget( 'WP_Widget_Recent_Posts' );
 
-						// Only show the widget if site has multiple categories.
-						if ( _starter_categorized_blog() ) {
+					// Only show the widget if site has multiple categories.
+					if ( _starter_categorized_blog() ) {
 					?>
 
 					<div class="widget widget_categories">
@@ -45,13 +45,13 @@ get_header(); ?>
 					</div><!-- .widget -->
 
 					<?php
-						}
+					}
 
-						/* translators: %1$s: smiley */
-						$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', '_starter' ), convert_smilies( ':)' ) ) . '</p>';
-						the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
+					/* translators: %1$s: smiley */
+					$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', '_starter' ), convert_smilies( ':)' ) ) . '</p>';
+					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
 
-						the_widget( 'WP_Widget_Tag_Cloud' );
+					the_widget( 'WP_Widget_Tag_Cloud' );
 					?>
 
 				</div><!-- .page-content -->
