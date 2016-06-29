@@ -18,21 +18,15 @@
 <html <?php language_attributes(); ?>>
 <!--<![endif]-->
 <head>
-
 <meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <?php
-
-	/**
-	 * Fix for validation
-	 */
-	if ( isset( $_SERVER['HTTP_USER_AGENT'] ) && ( strpos( $_SERVER['HTTP_USER_AGENT'], 'MSIE' ) !== false ) ) {
-		header( 'X-UA-Compatible: IE=edge,chrome=1' );
-	}
-
+global $noindex;
+if ( $noindex ) {
+	echo '<meta name="robots" content="noindex"/>';
+}
 ?>
-<?php global $noindex; if( $noindex ) { echo '	<meta name="robots" content="noindex"/>'; } ?>
-<link rel="icon" href="<?php echo get_template_directory_uri(); ?>/images/favicon.ico" />
+
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
@@ -44,12 +38,19 @@
 <div class="site-wrapper"><?php /* closes in footer.php */ ?>
 
 	<header id="masthead" class="site-header" role="banner">
+		<div class="site-branding">
+			<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+			<?php
+			$description = get_bloginfo( 'description', 'display' );
+			if ( $description || is_customize_preview() ) { ?>
+				<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
+			<?php } ?>
+		</div><!-- .site-branding -->
 
-		<?php get_template_part('modules/module-site-branding'); ?>
-		<?php get_template_part('modules/module-site-navigation'); ?>
+		<?php get_template_part( 'modules/module-site-navigation' ); ?>
 
 	</header><!-- #masthead -->
 
-	<?php get_template_part('modules/module-breadcrumbs'); ?>
+	<?php get_template_part( 'modules/module-breadcrumbs' ); ?>
 
-	<div id="content" class="site-content-wrapper"><?php /* closes in footer.php */ ?>
+	<div id="content" class="site-content"><?php /* closes in footer.php */ ?>
