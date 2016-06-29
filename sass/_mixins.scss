@@ -1,16 +1,16 @@
 /**
-	
+
 	Mixins
 	======
 
 	1.0 - Global Mixins
-	
+
 	=========
-	
-	Mixins should be included individually.  
-	
+
+	Mixins should be included individually.
+
 	Please use Compass (http://compass-style.org/) for common mixins.
-	
+
 **/
 
 
@@ -20,7 +20,6 @@
 --------------------------------------------------------------*/
 
 @import 'mixins/breakpoints';
-@import 'mixins/font-icon';
 @import 'mixins/font-size';
 @import 'mixins/font-style';
 @import 'mixins/horizontal-align';
