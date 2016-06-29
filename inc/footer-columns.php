@@ -1,4 +1,9 @@
 <?php
+/**
+ * The functions for adding footer columns.
+ *
+ * @package _starter
+ */
 
 /* requires the appropriate css to split the columns:
 
@@ -32,40 +37,40 @@
 // end
 
 // Count the number of footer sidebars to enable dynamic classes for the footer
-	function footer_column_class() {
-		$count = 0;
+function _starter_get_footer_column_class() {
+	$count = 0;
 
-		if ( is_active_sidebar( 'footer-column' ) )
-			$count++;
+	if ( is_active_sidebar( 'footer-column' ) )
+		$count++;
 
-		if ( is_active_sidebar( 'footer-column-2' ) )
-			$count++;
+	if ( is_active_sidebar( 'footer-column-2' ) )
+		$count++;
 
-		if ( is_active_sidebar( 'footer-column-3' ) )
-			$count++;
+	if ( is_active_sidebar( 'footer-column-3' ) )
+		$count++;
 
-		if ( is_active_sidebar( 'footer-column-4' ) )
-			$count++;
+	if ( is_active_sidebar( 'footer-column-4' ) )
+		$count++;
 
-		$class = '';
+	$class = '';
 
-		switch ( $count ) {
-			case '1':
-				$class = 'columns-1';
-				break;
-			case '2':
-				$class = 'columns-2';
-				break;
-			case '3':
-				$class = 'columns-3';
-				break;
-			case '4':
-				$class = 'columns-4';
-				break;
-		}
-
-		if ( $class )
-			echo ' '.$class;
+	switch ( $count ) {
+		case '1':
+			$class = 'columns-1';
+			break;
+		case '2':
+			$class = 'columns-2';
+			break;
+		case '3':
+			$class = 'columns-3';
+			break;
+		case '4':
+			$class = 'columns-4';
+			break;
 	}
+
+	if ( $class )
+		echo ' '.$class;
+}
 
 // end
