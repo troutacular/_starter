@@ -261,9 +261,6 @@ if ( ! function_exists( '_starter_widgets_init' ) ) {
 // Customizer additions.
 require get_template_directory() . '/inc/customizer.php';
 
-// Customizer additions - Site Contact.
-require get_template_directory() . '/inc/customize-site-contact.php';
-
 
 /** --------------------------------------------------------------
 1.4.4 - Page Creation
