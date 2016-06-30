@@ -48,7 +48,7 @@
 		</footer><!-- .site-footer -->
 	</div><!-- .site-footer-wrapper -->
 
-</div><!-- .site-wrapper --><?php /* opens in header.php */ ?>
+</div><!-- .site --><?php /* opens in header.php */ ?>
 
 <?php wp_footer(); ?>
 

@@ -27,7 +27,7 @@ if ( function_exists( 'noindex' ) ) {
 </head>
 <body <?php body_class(); ?>>
 
-<div class="site-wrapper"><?php /* closes in footer.php */ ?>
+<div class="site"><?php /* closes in footer.php */ ?>
 
 	<header id="masthead" class="site-header" role="banner">
 		<div class="site-branding">
