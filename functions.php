@@ -293,20 +293,6 @@ if ( ! function_exists( '_starter_page_add' ) ) {
 		 * (see full documentation in '/inc/support-page-setup.php'
 		 * @usage: _starter_page_additions( array( $args ) );
 		**/
-
-		// create admin page
-		_starter_page_additions( array(
-			'post_title' => 'Site Admin',
-			'post_status' => 'private',
-			'_wp_page_template' => 'templates/tpl-admin.php',
-		) );
-
-		// create styleguide page
-		_starter_page_additions( array(
-			'post_title' => 'Site Styleguide',
-			'post_status' => 'private',
-			'_wp_page_template' => 'templates/tpl-styleguide.php',
-		) );
 	}
 }
 
