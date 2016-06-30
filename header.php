@@ -28,7 +28,7 @@ if ( function_exists( 'noindex' ) ) {
 <body <?php body_class(); ?>>
 
 <div class="site"><?php /* closes in footer.php */ ?>
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', '_starter' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', '_starter' ); ?></a>
 	<a class="skip-link screen-reader-text" href="#secondary"><?php esc_html_e( 'Skip to secondary content', '_starter' ); ?></a>
 
 	<header id="masthead" class="site-header" role="banner">
