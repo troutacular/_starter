@@ -516,7 +516,7 @@ if ( ! function_exists( '_starter_remove_head_links' ) ) {
 4.0 - Footer
 --------------------------------------------------------------*/
 
-// Dynamic Footer Columns
+// Dynamic Footer Columns.
 require get_template_directory() . '/inc/footer-columns.php';
 
 /** --------------------------------------------------------------
@@ -538,7 +538,7 @@ require get_template_directory() . '/inc/footer-columns.php';
 5.3 - Breadcrumbs
 --------------------------------------------------------------*/
 
-// Breadcrumbes
+// Breadcrumbes.
 require get_template_directory() . '/inc/breadcrumbs.php';
 
 
@@ -546,47 +546,13 @@ require get_template_directory() . '/inc/breadcrumbs.php';
 5.4 - Section Navigation
 --------------------------------------------------------------*/
 
-// Section Navigation
+// Section Navigation.
 require get_template_directory() . '/inc/class-walker-nav-menu-section.php';
 
 
 /** --------------------------------------------------------------
 5.5 - Pagination
 --------------------------------------------------------------*/
-
-if ( ! function_exists( '_starter_paging_nav' ) ) {
-	/**
-	 * Paging Navigation.
-	 *
-	 * Display navigation to next/previous set of posts when applicable.
-	 *
-	 * @global  $wp_query   WordPress Query Object
-	 *
-	 * @return string HTML output of pagination links
-	 */
-	function _starter_paging_nav() {
-		global $wp_query;
-
-		// Don't print empty markup if there's only one page.
-		if ( $wp_query->max_num_pages < 2 ) {
-			return;
-		}
-		?>
-		<nav class="navigation navigation-paging" role="navigation">
-			<h1 class="screen-reader-text"><?php __( 'Posts navigation', '_starter' ); ?></h1>
-			<div class="nav-links">
-			<?php
-			if ( get_next_posts_link() ) { ?>
-				<div class="nav-previous"><span class="meta-nav">&larr;</span> <?php next_posts_link( __( 'Older posts', '_starter' ) ); ?></div>
-			<?php } ?>
-			<?php if ( get_previous_posts_link() ) { ?>
-				<div class="nav-next"><?php previous_posts_link( __( 'Newer posts', '_starter' ) ); ?> <span class="meta-nav">&rarr;</span></div>
-			<?php } ?>
-			</div>
-		</nav><?php
-
-	}
-}
 
 
 /** --------------------------------------------------------------
