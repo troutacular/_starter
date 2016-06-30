@@ -70,17 +70,9 @@ h6 { font-size: 28px; }
 .brand-title {
 	border: 0 none;
 
-	.site-header & {
-		@include span(12 of 12);
-	}
+	.site-header & {}
 
-	a {
-		float: none;
-		display: block;
-		height: 3rem;
-		width: 12rem;
-		@include svg-background-image($logo-usc-print,100%,0 top,false);
-	}
+	a {}
 
 }
 
