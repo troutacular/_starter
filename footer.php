@@ -44,8 +44,6 @@
 			}
 			?>
 
-			<?php get_template_part( 'modules/module', 'site-contact' ); ?>
-
 		</footer><!-- .site-footer -->
 	</div><!-- .site-footer-wrapper -->
 
