@@ -66,8 +66,7 @@ if ( post_password_required() ) {
 
 			</div><!-- .nav-links -->
 		</nav><!-- #comment-nav-below -->
-		<?php
-		} // Check for comment navigation.
+		<?php } // Check for comment navigation.
 
 	} // Check for have_comments().
 
