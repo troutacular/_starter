@@ -8,6 +8,7 @@
  * @return  void
  *
  * @todo rewrite to recuce complexity
+ * @package _starter
  */
 function _starter_bread_crumbs() {
 
