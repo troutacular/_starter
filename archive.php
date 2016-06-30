@@ -24,7 +24,10 @@ get_header(); ?>
 
 			<?php
 			/* Start the Loop */
-			while ( have_posts() ) { the_post();
+			while ( have_posts() ) {
+
+				// Iterate the post index in The Loop.
+				the_post();
 
 				/*
 				 * Include the Post-Format-specific template for the content.
