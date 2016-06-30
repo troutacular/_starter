@@ -2,9 +2,11 @@
 /**
  * _starter functions and definitions.
  *
- * @package _starter
- *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ *
+ * @todo phpmd/phpcs
+ *
+ * @package _starter
  */
 
 /** --------------------------------------------------------------
