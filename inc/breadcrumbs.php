@@ -5,9 +5,11 @@
  *
  * Breadcrumb navigation for current post/page and ancestors
  *
- * @return  string  HTML output of breadcrumbs
+ * @return  void
+ *
+ * @todo rewrite to recuce complexity
  */
-function bread_crumbs() {
+function _starter_bread_crumbs() {
 
 	/* === OPTIONS === */
 	$text['home']		= 'Home'; // text for the 'Home' link
