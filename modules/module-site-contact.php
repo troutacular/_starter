@@ -3,6 +3,7 @@
 /**
  * The Site Contact modules
  *
+ * @todo make into function in /inc
  * @package _starter
  */
 
