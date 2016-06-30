@@ -72,9 +72,6 @@ Table of Contents
 1.2 - Environment
 --------------------------------------------------------------*/
 
-// Check if we are in a local environment
-require get_template_directory() . '/inc/is-localhost.php';
-
 
 /** --------------------------------------------------------------
 1.3 - Dependencies
