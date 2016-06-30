@@ -26,7 +26,7 @@ get_header(); ?>
 
 		} // End of the loop.
 
-		_starter_paging_nav();
+		the_posts_navigation();
 
 	} else {
 
