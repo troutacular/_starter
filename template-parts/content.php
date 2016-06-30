@@ -1,11 +1,13 @@
 <?php
 /**
-	
-	Main Content Template
-	
-	@package usc-starter
+ * Template part for displaying posts.
+ *
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ *
+ * @todo phpmd/phpcs
+ * @package _starter
+ */
 
-**/
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
