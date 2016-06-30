@@ -20,9 +20,8 @@ Table of Contents
 	1.4 - Theme Setup
 		1.4.2 - Sidebar Registration
 		1.4.3 - Customizations
-		1.4.4 - Page Creation
-		1.4.5 - Taxonomy Creation
-		1.4.6 - Custom Post Types
+		1.4.4 - Taxonomy Creation
+		1.4.5 - Custom Post Types
 2.0 - Scripts
 	2.1 - CSS
 	2.2 - Javascript
@@ -260,61 +259,7 @@ require get_template_directory() . '/inc/customizer.php';
 
 
 /** --------------------------------------------------------------
-1.4.4 - Page Creation
---------------------------------------------------------------*/
-
-/*
- * Run this function after theme setup.
- * Allow for future automatic additions to existing sites.
-**/
-add_action( 'after_setup_theme', '_starter_page_add' );
-
-if ( ! function_exists( '_starter_page_add' ) ) {
-
-	/**
-	 * Add pages to theme.
-	 *
-	 * Uses _starter_page_additions function to add page(s) to the site.
-	 *
-	 * @return array|WP Error 	Inserts Page or returens WP Error message.
-	 */
-	function _starter_page_add() {
-
-		// get the support page function
-		require_once get_template_directory() . '/inc/support-page-setup.php';
-
-		/*
-		 * (see full documentation in '/inc/support-page-setup.php'
-		 * @usage: _starter_page_additions( array( $args ) );
-		**/
-	}
-}
-
-/*
- * Set up the following pages only once on theme switch.
- * Does not require updates each time the admin is accessed.
- * Does not override settings, particularly for the selection of the homepage designation.
-**/
-add_action( 'after_switch_theme', '_starter_page_add_once' );
-
-if ( ! function_exists( '_starter_page_add_once' ) ) {
-	/**
-	 * Uses _starter_page_additions function to add page(s) to the site one time only.
-	 *
-	 * @return array|WP Error 	Inserts Page or returens WP Error message.
-	 */
-	function _starter_page_add_once() {
-
-		/*
-		 * (see full documentation in '/inc/support-page-setup.php'
-		 * @usage: _starter_page_additions( array( $args ) );
-		**/
-	}
-}
-
-
-/** --------------------------------------------------------------
-1.4.5 - Taxonomy Creation
+1.4.4 - Taxonomy Creation
 --------------------------------------------------------------*/
 
 if ( ! function_exists( '_starter_create_new_taxonomies' ) ) {
@@ -378,7 +323,7 @@ if ( ! function_exists( '_starter_create_new_taxonomies' ) ) {
 
 
 /** --------------------------------------------------------------
-1.4.6 - Custom Post Types
+1.4.5 - Custom Post Types
 --------------------------------------------------------------*/
 
 
