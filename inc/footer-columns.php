@@ -2,6 +2,8 @@
 /**
  * The functions for adding footer columns.
  *
+ * @todo rewrite for simplicity
+ * @todo add for loop from footer.php as function
  * @package _starter
  */
 

@@ -6,6 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
+ * @todo add for loop to /inc/footer-columns.php as function
  * @package _starter
  */
 
