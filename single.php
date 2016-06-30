@@ -15,7 +15,7 @@ get_header(); ?>
 		<?php
 		while ( have_posts() ) {
 
-			// Setup the post data.
+			// Iterate the post index in The Loop.
 			the_post();
 
 			get_template_part( 'template-parts/content', 'single' );
