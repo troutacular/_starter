@@ -48,11 +48,4 @@ if ( function_exists( 'noindex' ) ) {
 
 	</header><!-- #masthead -->
 
-	<?php if ( function_exists( '_starter_bread_crumbs' ) ) { ?>
-		<nav class="nav-breadcrumbs nocontent" role="navigation" aria-label="Current section">
-			<h1 class="breadcrumbs-title"><?php esc_html_e( 'Current Section', '_starter' ); ?></h1>
-			<?php _starter_bread_crumbs(); ?>
-		</nav>
-	<?php } ?>
-
 	<div id="content" class="site-content"><?php /* closes in footer.php */ ?>
