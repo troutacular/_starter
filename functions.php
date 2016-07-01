@@ -30,11 +30,8 @@ Table of Contents
 5.0 - Navigation
 	5.1 - Menus
 	5.2 - Search
-	5.3 - Breadcrumbs
-	5.4 - Section Navigation
-	5.5 - Pagination
-	5.6 - Adjacent Post Navigation
-	5.7 - Navigation with Descriptions
+	5.3 - Pagination
+	5.4 - Adjacent Post Navigation
 6.0 - Content
 	6.1 - Excerpt
 7.0 - Media
@@ -462,28 +459,12 @@ require get_template_directory() . '/inc/footer-columns.php';
 
 
 /** --------------------------------------------------------------
-5.3 - Breadcrumbs
---------------------------------------------------------------*/
-
-// Breadcrumbes.
-require get_template_directory() . '/inc/breadcrumbs.php';
-
-
-/** --------------------------------------------------------------
-5.4 - Section Navigation
---------------------------------------------------------------*/
-
-// Section Navigation.
-require get_template_directory() . '/inc/class-walker-nav-menu-section.php';
-
-
-/** --------------------------------------------------------------
-5.5 - Pagination
+5.3 - Pagination
 --------------------------------------------------------------*/
 
 
 /** --------------------------------------------------------------
-5.6 - Adjacent Post Navigation
+5.4 - Adjacent Post Navigation
 --------------------------------------------------------------*/
 
 // Display navigation to next/previous post when applicable.
@@ -516,39 +497,6 @@ if ( ! function_exists( '_starter_post_nav' ) ) {
 		</nav>
 		<?php
 	}
-}
-
-
-/** --------------------------------------------------------------
-5.6 - Navigation with Descriptions
---------------------------------------------------------------*/
-
-add_filter( 'walker_nav_menu_start_el', '_starter_add_description_to_menu', 10, 4 );
-
-/**
- * Add Menu Descriptions
- *
- * Add menu descriptions for each item in the 'primary' menu at the first level only.
- *
- * @param string $item_output The menu item's starting HTML output.
- * @param object $item Menu item data object.
- * @param int $depth Depth of menu item. Used for padding.
- * @param array $args An array of wp_nav_menu() arguments.
- */
-function _starter_add_description_to_menu( $item_output, $item, $depth, $args ) {
-
-	// Insert description for the 'primary' menu at the first level only and we have a description.
-	if ( 'primary' === $args->theme_location && 0 === $depth && ! empty( $item->description ) ) {
-
-		// Append description after link.
-		$item_output .= sprintf( '<span class="description">%s</span>', esc_html( $item->description ) );
-
-		// Insert description 'in' link at the end.
-		// $item_output = str_replace( $args->link_after . '</a>', '<span class="menu-item-description">' . $item->description . '</span>' . $args->link_after . '</a>', $item_output );
-	}
-
-	return $item_output;
-
 }
 
 
