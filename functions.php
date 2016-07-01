@@ -25,8 +25,8 @@ Table of Contents
 2.0 - Scripts
 	2.1 - CSS
 	2.2 - Javascript
-3.0 - Header
-4.0 - Footer
+3.0 - Site Header
+4.0 - Site Footer
 5.0 - Navigation
 	5.1 - Menus
 	5.2 - Search
@@ -390,7 +390,7 @@ if ( ! function_exists( '_starter_scripts' ) ) {
 
 
 /** --------------------------------------------------------------
-3.0 - Header
+3.0 - Site Header
 --------------------------------------------------------------*/
 
 add_action( 'widgets_init', '_starter_remove_recent_comments_style' );
@@ -437,7 +437,7 @@ if ( ! function_exists( '_starter_remove_head_links' ) ) {
 
 
 /** --------------------------------------------------------------
-4.0 - Footer
+4.0 - Site Footer
 --------------------------------------------------------------*/
 
 // Dynamic Footer Columns.
