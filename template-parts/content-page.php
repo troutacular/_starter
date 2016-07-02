@@ -1,27 +1,41 @@
 <?php
 /**
-	
-	The template used for displaying page content in page.php
-	
-	@package usc-starter
-	
-**/
+ * Template part for displaying page content in page.php.
+ *
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package _starter
+ */
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<h1 class="entry-title"><?php the_title(); ?></h1>
+		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
-		<?php _starter_post_image('single-post-image',true); ?>
-		<?php the_content(); ?>
 		<?php
+			the_content();
+
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . __( 'Pages:', '_starter' ),
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', '_s' ),
 				'after'  => '</div>',
 			) );
 		?>
 	</div><!-- .entry-content -->
-	<?php edit_post_link( __( 'Edit', '_starter' ), '<footer class="entry-footer"><span class="edit-link">', '</span></footer>' ); ?>
+
+	<footer class="entry-footer">
+		<?php
+			edit_post_link(
+				sprintf(
+					/* translators: %s: Name of current post */
+					esc_html__( 'Edit %s', '_s' ),
+					the_title( '<span class="screen-reader-text">"', '"</span>', false )
+				),
+				'<span class="edit-link">',
+				'</span>'
+			);
+		?>
+	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
