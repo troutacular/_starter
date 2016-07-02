@@ -100,9 +100,9 @@ if ( ! function_exists( '_starter_setup' ) ) {
 	 * @since 1.0.0
 	 */
 	function _starter_theme_setup() {
-
 		/*
 		 * Make theme available for translation.
+		 *
 		 * Translations can be filed in the /languages/ directory.
 		 * If you're building a theme based on usc-starter, use a find and replace
 		 * to change '_starter' to the name of your theme in all the template files
@@ -124,9 +124,8 @@ if ( ! function_exists( '_starter_setup' ) ) {
 			) );
 		}
 
-		// Check if 'add_theme_support' is supported
+		// Check if 'add_theme_support' is supported.
 		if ( function_exists( 'add_theme_support' ) ) {
-
 			/*
 			 * Enable support for Post Thumbnails on posts and pages.
 			 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
@@ -196,8 +195,11 @@ if ( ! function_exists( '_starter_widgets_init' ) ) {
 	 * @return void
 	 */
 	function _starter_widgets_init() {
-
-		// set the names to use for the page templates
+		/**
+		 * Set the names to use for the page templates.
+		 *
+		 * @var  array
+		 */
 		$sidebars = array(
 			array(
 				'name' => 'Global',
@@ -231,7 +233,9 @@ if ( ! function_exists( '_starter_widgets_init' ) ) {
 			),
 		);
 
-		// loop through the $sidebars array and register the widget area
+		/**
+		 * Loop through the $sidebars array and register the widget area.
+		 */
 		foreach ( $sidebars as $sidebar ) {
 			register_sidebar( array(
 				'name' => $sidebar['name'],
@@ -251,7 +255,9 @@ if ( ! function_exists( '_starter_widgets_init' ) ) {
 1.4.3 - Customizations
 ----------------------------------------------------------------*/
 
-// Customizer additions.
+/**
+ * Customizer additions.
+ */
 require get_template_directory() . '/inc/customizer.php';
 
 
@@ -260,7 +266,6 @@ require get_template_directory() . '/inc/customizer.php';
 ----------------------------------------------------------------*/
 
 if ( ! function_exists( '_starter_create_new_taxonomies' ) ) {
-
 	/*
 	 * Run this function after theme setup.
 	 * Allow for future automatic additions to existing sites.
@@ -273,7 +278,7 @@ if ( ! function_exists( '_starter_create_new_taxonomies' ) ) {
 	 * @link https://codex.wordpress.org/Taxonomies#Default_Taxonomies
 	 * @since 1.0.0
 	 *
-	 * @return array|WP Error 	Inserts taxonomy or returens WP Error message.
+	 * @return void
 	 */
 	function _starter_create_new_taxonomies() {
 
@@ -296,16 +301,26 @@ if ( ! function_exists( '_starter_create_new_taxonomies' ) ) {
 		 */
 		$taxonomies = array();
 
-		// check that we have taxonomies to process
+		/**
+		 * Check that we have taxonomies to process.
+		 */
 		if ( ! empty( $taxonomies ) ) {
 
-			// loop through the taxonomies array and add them to the site
+			/**
+			 * Loop through the taxonomies array and add them to the site.
+			 */
 			foreach ( $taxonomies as $taxonomy ) {
 
-				// check if the taxonomy already exists
+				/**
+				 * Check if the taxonomy already exists.
+				 *
+				 * @var  bool
+				 */
 				$term = term_exists( $taxonomy['name'], $taxonomy['taxonomy'] );
 
-				// if the term doesn't exist, add it
+				/**
+				 * If the term doesn't exist, add it.
+				 */
 				if ( 0 === $term || null === $term ) {
 					wp_insert_term(
 						$taxonomy['name'],
@@ -342,11 +357,9 @@ if ( ! function_exists( '_starter_enqueue_css' ) ) {
 
 	/**
 	 * Enqueue css file(s).
-	 *
 	 */
 	function _starter_enqueue_css() {
 
-		// $handle, $src, $deps, $ver, $media
 		wp_enqueue_style( 'usc-starter-style', get_stylesheet_directory_uri() . '/css/_starter.css', false, null, 'screen,print' );
 
 	}
@@ -356,7 +369,9 @@ if ( ! function_exists( '_starter_enqueue_css' ) ) {
 2.2 - Javascript
 ----------------------------------------------------------------*/
 
-// Check that we are not in the WP Admin.
+/**
+ * Check that we are not in the WP Admin.
+ */
 if ( ! is_admin() ) {
 
 	/**
@@ -375,13 +390,20 @@ if ( ! function_exists( '_starter_scripts' ) ) {
 	 */
 	function _starter_scripts() {
 
-		// Dequeue jQuery if not needed
-		// wp_deregister_script( 'jquery' );
+		/**
+		 * Dequeue jQuery if not needed
+		 *
+		 * @usage wp_deregister_script( 'jquery' );
+		 */
 
-		// Load individual scripts.
+		/**
+		 * Load individual scripts.
+		 */
 		wp_enqueue_script( 'starter', get_stylesheet_directory_uri() . '/js/starter.js', array(), null, true );
 
-		// Load comments reply script.
+		/**
+		 * Load comments reply script.
+		 */
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
 		}
@@ -400,7 +422,7 @@ if ( ! function_exists( '_starter_remove_recent_comments_style' ) ) {
 	 * Removes inline styles from <head> for comments.
 	 *
 	 * @global  object  $wp_widget_factory
-	 * @return  bool    widget factory removal of css
+	 * @return  void
 	 */
 	function _starter_remove_recent_comments_style() {
 		global $wp_widget_factory;
@@ -416,8 +438,10 @@ if ( ! function_exists( '_starter_remove_head_links' ) ) {
 	 */
 	function _starter_remove_head_links() {
 
-		// remove emojis
-		remove_action( 'wp_head', 'print_emoji_styles' ); // Remove the emoji's
+		/**
+		 * Remove emojis
+		 */
+		remove_action( 'wp_head', 'print_emoji_styles' ); // Remove the emoji's.
 		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 		remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 		remove_action( 'wp_print_styles', 'print_emoji_styles' );
@@ -431,7 +455,7 @@ if ( ! function_exists( '_starter_remove_head_links' ) ) {
 		remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 ); // prev link
 		remove_action( 'wp_head', 'start_post_rel_link', 10, 0 ); // start link
 		remove_action( 'wp_head', 'adjacent_posts_rel_link', 10, 0 ); // Display relational links for the posts adjacent to the current post.
-		remove_action( 'wp_head', 'wp_generator' ); // Display the XHTML generator that is generated on the wp_head hook, WP version
+		remove_action( 'wp_head', 'wp_generator' ); // Display the XHTML generator that is generated on the wp_head hook, WP version.
 	}
 }
 
@@ -440,7 +464,9 @@ if ( ! function_exists( '_starter_remove_head_links' ) ) {
 4.0 - Site Footer
 ----------------------------------------------------------------*/
 
-// Dynamic Footer Columns.
+/**
+ * Dynamic Footer Columns.
+ */
 require get_template_directory() . '/inc/footer-columns.php';
 
 /** --------------------------------------------------------------
@@ -467,7 +493,9 @@ require get_template_directory() . '/inc/footer-columns.php';
 5.4 - Adjacent Post Navigation
 ----------------------------------------------------------------*/
 
-// Display navigation to next/previous post when applicable.
+/**
+ * Display navigation to next/previous post when applicable.
+ */
 if ( ! function_exists( '_starter_post_nav' ) ) {
 
 	/**
@@ -478,7 +506,11 @@ if ( ! function_exists( '_starter_post_nav' ) ) {
 	 * @return  string  HTML output
 	 */
 	function _starter_post_nav() {
-		// Don't print empty markup if there's nowhere to navigate.
+		/**
+		 * Don't print empty markup if there's nowhere to navigate.
+		 *
+		 * @var  object
+		 */
 		$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
 		$next = get_adjacent_post( false, '', false );
 
@@ -545,7 +577,9 @@ function _starter_excerpt_read_more() {
 7.1 - Images
 ----------------------------------------------------------------*/
 
-// Standard Image output for posts
+/**
+ * Standard Image output for posts.
+ */
 if ( ! function_exists( '_starter_post_image' ) ) {
 	/**
 	 * Post Image
@@ -555,8 +589,8 @@ if ( ! function_exists( '_starter_post_image' ) ) {
 	 * @todo Add WP Core 4.4+ responsive image handling.
 	 * @link https://make.wordpress.org/core/2015/11/10/responsive-images-in-wordpress-4-4/
 	 *
-	 * @param   string  $image_size  [description]
-	 * @param   boolean  $caption     [description]
+	 * @param   string	$image_size		The registered image size.
+	 * @param   boolean	$caption		Bool to insert caption below image.
 	 * @return  void
 	 */
 	function _starter_post_image( $image_size = 'sinle-post-image', $caption = false ) {
@@ -597,7 +631,9 @@ if ( ! function_exists( '_starter_post_image' ) ) {
 8.0 - Taxonomy
 ----------------------------------------------------------------*/
 
-// See 1.4.4 - Taxonomy Creation for categories created on theme activation.
+/**
+ * See 1.4.4 - Taxonomy Creation for categories created on theme activation.
+ */
 
 
 /** --------------------------------------------------------------
