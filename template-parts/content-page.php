@@ -16,6 +16,8 @@
 
 	<div class="entry-content">
 		<?php
+			_starter_post_image( 'medium', true );
+
 			the_content();
 
 			wp_link_pages( array(
