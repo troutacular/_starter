@@ -1,8 +1,8 @@
 <?php
 /**
- * usc-starter Theme Customizer
+ * Theme Customizer
  *
- * @package usc-starter
+ * @package _starter
  */
 
 /**
