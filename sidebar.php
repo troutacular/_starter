@@ -23,7 +23,7 @@ $template = str_replace( array( 'page-', 'templates/tpl-', '.php' ), '', get_pag
  * the dynamic sidebar 'Homepage'.
  */
 if ( is_home() || is_front_page() && is_dynamic_sidebar( 'homepage' ) ) {
-	dynamic_sidebar( 'homepage' );
+    dynamic_sidebar( 'homepage' );
 }
 
 /**
@@ -33,7 +33,7 @@ if ( is_home() || is_front_page() && is_dynamic_sidebar( 'homepage' ) ) {
  * corresponding sidebar.
  */
 elseif ( '' !== $template && is_dynamic_sidebar( $template ) ) {
-	dynamic_sidebar( $template );
+    dynamic_sidebar( $template );
 }
 
 /**
@@ -43,7 +43,7 @@ elseif ( '' !== $template && is_dynamic_sidebar( $template ) ) {
  * 3. has widgets in 'template-default-content'
  */
 elseif ( ! $template && is_page() && is_dynamic_sidebar( 'template-default-content' ) ) {
-	dynamic_sidebar( 'template-default-content' );
+    dynamic_sidebar( 'template-default-content' );
 }
 
 /**
@@ -53,7 +53,7 @@ elseif ( ! $template && is_page() && is_dynamic_sidebar( 'template-default-conte
  * 3. has widgets in 'template-article'
 */
 elseif ( is_single() && is_dynamic_sidebar( 'template-article' ) ) {
-	dynamic_sidebar( 'template-article' );
+    dynamic_sidebar( 'template-article' );
 }
 
 /**
@@ -63,7 +63,7 @@ elseif ( is_single() && is_dynamic_sidebar( 'template-article' ) ) {
  * 3. has widgets in 'template-category'
  */
 elseif ( is_category() && is_dynamic_sidebar( 'template-category' ) ) {
-	dynamic_sidebar( 'template-category' );
+    dynamic_sidebar( 'template-category' );
 }
 
 /**
@@ -73,14 +73,14 @@ elseif ( is_category() && is_dynamic_sidebar( 'template-category' ) ) {
  * 3. has widgets in 'template-archive'
  */
 elseif ( is_archive() && is_dynamic_sidebar( 'template-archive' ) ) {
-	dynamic_sidebar( 'template-archive' );
+    dynamic_sidebar( 'template-archive' );
 }
 
 /**
  * Set Global Sidebar section to be used on all pages.
  */
 if ( is_dynamic_sidebar( 'global' ) ) {
-	dynamic_sidebar( 'global' );
+    dynamic_sidebar( 'global' );
 }
 
 ?>
