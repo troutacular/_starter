@@ -17,7 +17,7 @@
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info">
 
-			<?php _starter_footer_columns(); echo 'hi';?>
+			<?php _starter_footer_columns(); ?>
 
 		</div><!-- .site-info -->
 	</footer><!-- .site-footer -->
