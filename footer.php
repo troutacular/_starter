@@ -14,38 +14,13 @@
 
 	</div><!-- .site-content --><?php /* opens in header.php */ ?>
 
-	<div class="site-footer-wrapper">
-		<footer id="colophon" class="site-footer<?php _starter_get_footer_column_class(); ?>" role="contentinfo">
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
 
-			<?php
-			for ( $i = 0; $i <= 4; $i++ ) {
+			<?php _starter_footer_columns(); echo 'hi';?>
 
-				// Set default variables.
-				$column = 'footer-column';
-				$class = 'footer-column-' . $i;
-
-				// Add the column number past first instance for sidebar reference.
-				if ( $i > 0 ) {
-					$column .= '-' . $i;
-				}
-
-				// Check for the sidebar having widgets.
-				if ( is_active_sidebar( $column ) ) {
-
-					// Wrapper open.
-					echo '<div class="footer ' . esc_html( $class ) . '">';
-
-					// Get the sidebar.
-					dynamic_sidebar( $column );
-
-					// Wrapper close.
-					echo '</div>';
-				}
-			}
-			?>
-
-		</footer><!-- .site-footer -->
-	</div><!-- .site-footer-wrapper -->
+		</div><!-- .site-info -->
+	</footer><!-- .site-footer -->
 
 </div><!-- .site --><?php /* opens in header.php */ ?>
 

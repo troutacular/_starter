@@ -2,77 +2,136 @@
 /**
  * The functions for adding footer columns.
  *
- * @todo rewrite for simplicity
  * @todo add for loop from footer.php as function
  * @package _starter
  */
 
-/* requires the appropriate css to split the columns:
+if ( ! class_exists( 'Starter_Footer_Columns' ) ) {
 
-	static css:
-		.site-footer .footer-column { float: left; margin: 0 1%; }
-		.site-footer.columns-1 .footer-column { width: 98.0%; }
-		.site-footer.columns-2 .footer-column { width: 48.0%; }
-		.site-footer.columns-3 .footer-column { width: 31.333%; }
-		.site-footer.columns-4 .footer-column { width: 23.0%; }
+	/**
+	 * Starter Footer columns
+	 *
+	 * Registers sidebars for the footer
+	 *
+	 * @since 1.0.0
+	 * @package _starter
+	 * @subpackage inc
+	 */
+	class Starter_Footer_Columns {
 
-		.site-footer .widget { clear: both; }
-		.site-footer.columns-3 .footer-column:nth-child(2) .widget { margin: 0 auto; }
+		/**
+		 * Number of columns to register
+		 *
+		 * @var  integer
+		 */
+		public $column_register = 4;
 
-	scss:
-		customize per project with susy grids
-		sass/styleguide/_grid.scss - grids
-		sass/styleguide/_footer.scss - default footer
-*/
+		/**
+		 * Constructor to run when class is initiated.
+		 */
+		public function __construct() {
 
-// add footer sidebars
+			/**
+			 * Register the sidebars
+			 */
+			register_sidebars( $this->column_register, array(
+				'name' => __( 'Footer Column %d', '_starter' ),
+				'id' => 'footer-column',
+				'description' => __( 'Drag widgets here to show in the corresponding column of the footer. The columns are dynamic and they will split their width\'s evenly between Footer Column areas that have active widgets.', '_starter' ),
+				'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+				'after_widget' => '</aside>',
+				'before_title' => '<h1 class="widget-title">',
+				'after_title' => '</h1>',
+			) );
 
-	register_sidebars( 4, array(
-		'name' => __( 'Footer Column %d', '_starter' ),
-		'id' => 'footer-column',
-		'description' => __( 'Drag widgets here to show in the corresponding column of the footer. The columns are dynamic and they will split their width\'s evenly between Footer Column areas that have active widgets.', '_starter' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>'
-	) );
-// end
+		}
 
-// Count the number of footer sidebars to enable dynamic classes for the footer
-function _starter_get_footer_column_class() {
-	$count = 0;
+		/**
+		 * Footer column class
+		 *
+		 * Counts the number of footer sidebars that have widgets and returns a class.
+		 *
+		 * @return  string		Column class
+		 */
+		public function footer_column_class() {
 
-	if ( is_active_sidebar( 'footer-column' ) )
-		$count++;
+			// Set the default to 0.
+			$count = 0;
 
-	if ( is_active_sidebar( 'footer-column-2' ) )
-		$count++;
+			if ( is_active_sidebar( 'footer-column' ) ) {
+				$count++;
+			}
 
-	if ( is_active_sidebar( 'footer-column-3' ) )
-		$count++;
+			if ( is_active_sidebar( 'footer-column-2' ) ) {
+				$count++;
+			}
 
-	if ( is_active_sidebar( 'footer-column-4' ) )
-		$count++;
+			if ( is_active_sidebar( 'footer-column-3' ) ) {
+				$count++;
+			}
+			if ( is_active_sidebar( 'footer-column-4' ) ) {
+				$count++;
+			}
 
-	$class = '';
+			return 'footer-columns-' . esc_attr( $count );
+		}
 
-	switch ( $count ) {
-		case '1':
-			$class = 'columns-1';
-			break;
-		case '2':
-			$class = 'columns-2';
-			break;
-		case '3':
-			$class = 'columns-3';
-			break;
-		case '4':
-			$class = 'columns-4';
-			break;
+		/**
+		 * Footer Column Output
+		 *
+		 * @return  string 	Output of Widget HTML
+		 */
+		public function footer_columns() {
+
+			$count = $this->column_register;
+			$output = '';
+
+			for ( $i = 0; $i <= $count; $i++ ) {
+
+				// Set default variables.
+				$column = 'footer-column';
+				$class = 'footer-column-' . $i;
+
+				// Add the column number past first instance for sidebar reference.
+				if ( $i > 0 ) {
+					$column .= '-' . $i;
+				}
+
+				// Check for the sidebar having widgets.
+				if ( is_active_sidebar( $column ) ) {
+
+					// Wrapper open.
+					$output .= '<div class="footer ' . esc_html( $class ) . '">';
+
+					// Get the sidebar.
+					dynamic_sidebar( $column );
+
+					// Wrapper close.
+					$output .= '</div>';
+				}
+			}
+
+			// Start the object collection.
+			ob_start();
+
+			// Output the html.
+			echo esc_html( $output );
+
+			// Return the clean object.
+			return ob_get_clean();
+
+		}
 	}
-
-	if ( $class )
-		echo ' '.$class;
 }
 
-// end
+new Starter_Footer_Columns();
+
+/**
+ * Function for footer columns
+ *
+ * @return  void
+ */
+function _starter_footer_columns() {
+	$function = new Starter_Footer_Columns;
+	$function->footer_columns();
+}
