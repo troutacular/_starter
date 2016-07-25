@@ -579,6 +579,19 @@ function _starter_excerpt_read_more() {
 ----------------------------------------------------------------*/
 
 /**
+ * Add image sizes
+ */
+if ( function_exists( 'add_image_size' ) ) {
+
+	/**
+	 * Add images with width, height, cropping boolean.
+	 * Keep ratios the same between size.
+	 */
+	add_image_size( 'single-post-image', 300, 300, false ); // 1:1
+
+}
+
+/**
  * Standard Image output for posts.
  */
 if ( ! function_exists( '_starter_post_image' ) ) {
@@ -590,9 +603,8 @@ if ( ! function_exists( '_starter_post_image' ) ) {
 	 * @todo Add WP Core 4.4+ responsive image handling.
 	 * @link https://make.wordpress.org/core/2015/11/10/responsive-images-in-wordpress-4-4/
 	 *
-	 * @param   string	$image_size		The registered image size.
-	 * @param   boolean	$caption		Bool to insert caption below image.
-	 * @return  void
+	 * @param  array $params  [image_size {sting}] and [caption {boolean}].
+	 * @return void
 	 */
 	function _starter_post_image( $params ) {
 
@@ -612,18 +624,21 @@ if ( ! function_exists( '_starter_post_image' ) ) {
 			// Check if the caption is enabled.
 			if ( $caption ) {
 
+				echo '<figcaption class="entry-figcaption">';
+
 				// Get the image caption (excerpt).
 				$image_caption = get_post( get_post_thumbnail_id() )->post_excerpt;
 
 				// If we have a caption, print out language supported caption.
 				if ( $image_caption ) {
-					// printf( '<figcaption>' . esc_html__( '%s', '_starter' ) . '</figcaption>', $image_caption ); // WPCS: XSS OK.
-
 					printf(
-						esc_html__( 'Your city is %s', '_starter' ),
-						$image_caption
+						esc_html__( '%s', '_starter' ),
+						esc_html( $image_caption )
 					);
 				}
+
+				echo '</figcaption>';
+
 			}
 
 			echo '</figure>';
