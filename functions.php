@@ -594,7 +594,11 @@ if ( ! function_exists( '_starter_post_image' ) ) {
 	 * @param   boolean	$caption		Bool to insert caption below image.
 	 * @return  void
 	 */
-	function _starter_post_image( $image_size = 'sinle-post-image', $caption = false ) {
+	function _starter_post_image( $params ) {
+
+		// Defaults.
+		$image_size = isset( $params['image_size'] ) ? $params['image_size'] : 'single-post-image';
+		$caption = isset( $params['caption'] ) ? $params['caption'] : false;
 
 		// Check that a post thumbnail exists.
 		if ( has_post_thumbnail() ) {
@@ -613,7 +617,12 @@ if ( ! function_exists( '_starter_post_image' ) ) {
 
 				// If we have a caption, print out language supported caption.
 				if ( $image_caption ) {
-					printf( '<figcaption>' . esc_html__( '%s', '_starter' ) . '</figcaption>', $image_caption ); // WPCS: XSS OK.
+					// printf( '<figcaption>' . esc_html__( '%s', '_starter' ) . '</figcaption>', $image_caption ); // WPCS: XSS OK.
+
+					printf(
+						esc_html__( 'Your city is %s', '_starter' ),
+						$image_caption
+					);
 				}
 			}
 

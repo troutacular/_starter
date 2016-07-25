@@ -18,6 +18,11 @@
 		<?php
 			_starter_post_image( 'medium', true );
 
+			_starter_post_image( array(
+				'image_size' => 'medium',
+				'caption' => true,
+			) );
+
 			the_content();
 
 			wp_link_pages( array(
