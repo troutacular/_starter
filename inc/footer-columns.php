@@ -20,21 +20,32 @@ if ( ! class_exists( 'Starter_Footer_Columns' ) ) {
 	class Starter_Footer_Columns {
 
 		/**
-		 * Number of columns to register
+		 * Parameters for columns, wrapper and css style.
 		 *
-		 * @var  integer
+		 * @var array
 		 */
-		public $column_register = 4;
+		public $params;
+
+		public $count;
 
 		/**
 		 * Constructor to run when class is initiated.
 		 */
-		public function __construct() {
+		public function __construct( $params ) {
+
+			$this->params = $params;
+
+		}
+
+		public function register( $params ) {
+
+			// Default Column count if none passed.
+			$count = isset( $params['columns'] ) ? $params['columns'] : 4;
 
 			/**
 			 * Register the sidebars
 			 */
-			register_sidebars( $this->column_register, array(
+			register_sidebars( $count, array(
 				'name' => __( 'Footer Column %d', '_starter' ),
 				'id' => 'footer-column',
 				'description' => __( 'Drag widgets here to show in the corresponding column of the footer. The columns are dynamic and they will split their width\'s evenly between Footer Column areas that have active widgets.', '_starter' ),
@@ -43,7 +54,10 @@ if ( ! class_exists( 'Starter_Footer_Columns' ) ) {
 				'before_title' => '<h1 class="widget-title">',
 				'after_title' => '</h1>',
 			) );
+		}
 
+		public function count(){
+			return $this->count;
 		}
 
 		/**
@@ -83,8 +97,13 @@ if ( ! class_exists( 'Starter_Footer_Columns' ) ) {
 		 */
 		public function footer_columns() {
 
-			$count = $this->column_register;
+			// Defaults.
+			$element = isset( $wrapper['element'] ) ? $wrapper['element'] : 'div';
+			$class = isset( $wrapper['class'] ) ? $wrapper['class'] : false;
 			$output = '';
+
+			// Number of Columns registered.
+			//$count = $this->column_register;
 
 			for ( $i = 0; $i <= $count; $i++ ) {
 
@@ -124,14 +143,54 @@ if ( ! class_exists( 'Starter_Footer_Columns' ) ) {
 	}
 }
 
-new Starter_Footer_Columns();
+if ( ! function_exists( '_starter_footer_arguments' ) ) {
+	/**
+	 * Footer Column Arguments
+	 *
+	 * Sets the default values for the:
+	 *  - number of [columns]
+	 *  - HTML5 element [wrapper]
+	 *  - CSS [class] for the wrapper
+	 *
+	 * @return  array  Values for [columns], [wrapper], [class]
+	 */
+	function _starter_footer_arguments() {
+		$args = array(
+			'columns' => 4,
+			'wrapper' => 'div',
+			'class' => 'site-test',
+		);
+		return $args;
+	}
+}
+
+if ( ! function_exists( '_starter_footer_register' ) ) {
+
+	/**
+	 * Register the amount of footer columns.
+	 *
+	 * @param   array $params Settings for registering columns.
+	 * @return  void
+	 */
+	function _starter_footer_register( $params ) {
+		$footer_columns = new Starter_Footer_Columns( $params );
+		$footer_columns->register( $params );
+	}
+}
+
+if ( ! function_exists( '_starter_footer_columns' ) ) {
+	/**
+	 * Register the amount of footer columns.
+	 *
+	 * @param   array $params Settings for registering columns.
+	 * @return  void
+	 */
+	function _starter_footer_columns() {
+		$footer = new Starter_Footer_Columns( _starter_footer_arguments() );
+	}
+}
 
 /**
- * Function for footer columns
- *
- * @return  void
+ * Register the Footer Columns
  */
-function _starter_footer_columns() {
-	$function = new Starter_Footer_Columns;
-	$function->footer_columns();
-}
+_starter_footer_register( _starter_footer_arguments() );
