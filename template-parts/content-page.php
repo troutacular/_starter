@@ -16,8 +16,6 @@
 
 	<div class="entry-content">
 		<?php
-			_starter_post_image( 'medium', true );
-
 			_starter_post_image( array(
 				'image_size' => 'medium',
 				'caption' => true,
