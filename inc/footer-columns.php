@@ -53,7 +53,7 @@ if ( ! class_exists( 'Starter_Footer_Columns' ) ) {
 		 *
 		 * @return  string		Column class
 		 */
-		public function footer_column_class() {
+		public function footer_columns_class() {
 
 			// Set the default to 0.
 			$count = 0;
