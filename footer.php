@@ -15,11 +15,7 @@
 	</div><!-- .site-content --><?php /* opens in header.php */ ?>
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-
-			<?php _starter_footer_columns(); ?>
-
-		</div><!-- .site-info -->
+		<?php _starter_footer_columns(); ?>
 	</footer><!-- .site-footer -->
 
 </div><!-- .site --><?php /* opens in header.php */ ?>
