@@ -466,21 +466,10 @@ if ( ! function_exists( '_starter_remove_head_links' ) ) {
 ----------------------------------------------------------------*/
 
 /**
- * Footer Arguments
- *
- * Theme overrides for the function from class in include file.
- *
- * @return  array  Values for [columns], [wrapper], [class]
+ * See Starter_Footer_Columns->_starter_footer_arguments for
+ * setting a theme specific function to set values different than
+ * the defaults.
  */
-function _starter_footer_arguments() {
-	$args = array(
-		'columns' => 10,
-		'wrapper' => 'div',
-		'class' => 'site-test',
-	);
-
-	return $args;
-}
 
 /**
  * Dynamic Footer Columns.

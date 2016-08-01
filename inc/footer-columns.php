@@ -160,6 +160,9 @@ if ( ! function_exists( '_starter_footer_arguments' ) ) {
 	 *  - HTML5 element [wrapper]
 	 *  - CSS [class] for the wrapper
 	 *
+	 * Set a local function of _starter_footer_arguments in the functions.php
+	 * file to override these default settings.
+	 *
 	 * @return  array  Values for [columns], [wrapper], [class]
 	 */
 	function _starter_footer_arguments() {
