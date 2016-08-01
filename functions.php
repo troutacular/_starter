@@ -640,7 +640,6 @@ if ( ! function_exists( '_starter_post_image' ) ) {
 				// If we have a caption, print out language supported caption.
 				if ( $image_caption ) {
 					printf(
-						esc_html__( '%s', '_starter' ),
 						esc_html( $image_caption )
 					);
 				}
