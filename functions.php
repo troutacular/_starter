@@ -466,9 +466,17 @@ if ( ! function_exists( '_starter_remove_head_links' ) ) {
 ----------------------------------------------------------------*/
 
 /**
+ * See Starter_Footer_Columns->_starter_footer_arguments for
+ * setting a theme specific function to set values different than
+ * the defaults.
+ */
+
+/**
  * Dynamic Footer Columns.
  */
 require get_template_directory() . '/inc/footer-columns.php';
+
+
 
 /** --------------------------------------------------------------
 5.0 - Navigation
@@ -632,7 +640,6 @@ if ( ! function_exists( '_starter_post_image' ) ) {
 				// If we have a caption, print out language supported caption.
 				if ( $image_caption ) {
 					printf(
-						esc_html__( '%s', '_starter' ),
 						esc_html( $image_caption )
 					);
 				}

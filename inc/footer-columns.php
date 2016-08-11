@@ -20,21 +20,33 @@ if ( ! class_exists( 'Starter_Footer_Columns' ) ) {
 	class Starter_Footer_Columns {
 
 		/**
-		 * Number of columns to register
+		 * Parameters for columns, wrapper and css style.
 		 *
-		 * @var  integer
+		 * @var array
 		 */
-		public $column_register = 4;
+		public $params;
 
 		/**
 		 * Constructor to run when class is initiated.
+		 *
+		 * @param  array $params  Parameters for [columns], [wrapper], [class].
 		 */
-		public function __construct() {
+		public function __construct( $params ) {
+			$this->params['columns'] = isset( $params['columns'] ) ? $params['columns'] : 4;
+			$this->params['wrapper'] = isset( $params['wrapper'] ) ? $params['wrapper'] : 'div';
+			$this->params['class'] = isset( $params['class'] ) ? $params['class'] : false;
+		}
 
+		/**
+		 * Register footer columns.
+		 *
+		 * @return  void
+		 */
+		public function register() {
 			/**
 			 * Register the sidebars
 			 */
-			register_sidebars( $this->column_register, array(
+			register_sidebars( $this->params['columns'], array(
 				'name' => __( 'Footer Column %d', '_starter' ),
 				'id' => 'footer-column',
 				'description' => __( 'Drag widgets here to show in the corresponding column of the footer. The columns are dynamic and they will split their width\'s evenly between Footer Column areas that have active widgets.', '_starter' ),
@@ -43,7 +55,6 @@ if ( ! class_exists( 'Starter_Footer_Columns' ) ) {
 				'before_title' => '<h1 class="widget-title">',
 				'after_title' => '</h1>',
 			) );
-
 		}
 
 		/**
@@ -56,7 +67,7 @@ if ( ! class_exists( 'Starter_Footer_Columns' ) ) {
 		public function footer_columns_class() {
 
 			// Set the default to 0.
-			$count = 0;
+			$count = $counter = 0;
 
 			if ( is_active_sidebar( 'footer-column' ) ) {
 				$count++;
@@ -73,65 +84,124 @@ if ( ! class_exists( 'Starter_Footer_Columns' ) ) {
 				$count++;
 			}
 
+			$columns = $this->params['columns'];
+
+			for ( $i = 1; $i <= $columns; $i++ ) {
+
+				$sidebar = 'footer-column';
+
+				if ( $i > 1 ) {
+					$sidebar .= '-' . $i;
+				}
+
+				if ( is_active_sidebar( $sidebar ) ) {
+					$counter++;
+				}
+			}
+
 			return 'footer-columns-' . esc_attr( $count );
 		}
 
 		/**
 		 * Footer Column Output
 		 *
-		 * @return  string 	Output of Widget HTML
+		 * @return  void
 		 */
 		public function footer_columns() {
 
-			$count = $this->column_register;
-			$output = '';
+			$params = $this->params;
 
-			for ( $i = 0; $i <= $count; $i++ ) {
+			// Defaults.
+			$columns = $params['columns'];
+			$element = $params['wrapper'];
+			$base_class = $this->footer_columns_class() . ' site-info';
+			$element_class = ! empty( $params['class'] ) ? $base_class . ' ' . $params['class'] : '';
+
+			// Begin element wrapper.
+			echo '<' . esc_html( $element ) . ' class="' . esc_html( $element_class ) . '">';
+
+			for ( $i = 1; $i <= $columns; $i++ ) {
 
 				// Set default variables.
-				$column = 'footer-column';
+				$sidebar = 'footer-column';
 				$class = 'footer-column-' . $i;
 
 				// Add the column number past first instance for sidebar reference.
-				if ( $i > 0 ) {
-					$column .= '-' . $i;
+				if ( $i > 1 ) {
+					$sidebar .= '-' . $i;
 				}
 
 				// Check for the sidebar having widgets.
-				if ( is_active_sidebar( $column ) ) {
+				if ( is_active_sidebar( $sidebar ) ) {
 
 					// Wrapper open.
-					$output .= '<div class="footer ' . esc_html( $class ) . '">';
+					echo '<div class="' . esc_html( $class ) . '">';
 
 					// Get the sidebar.
-					dynamic_sidebar( $column );
-
+					dynamic_sidebar( $sidebar );
 					// Wrapper close.
-					$output .= '</div>';
+					echo '</div>';
 				}
 			}
 
-			// Start the object collection.
-			ob_start();
-
-			// Output the html.
-			echo esc_html( $output );
-
-			// Return the clean object.
-			return ob_get_clean();
+			// End element wrapper.
+			echo '</' . esc_html( $element ) . '>';
 
 		}
 	}
 }
 
-new Starter_Footer_Columns();
+if ( ! function_exists( '_starter_footer_arguments' ) ) {
+	/**
+	 * Footer Column Arguments
+	 *
+	 * Sets the default values for the:
+	 *  - number of [columns]
+	 *  - HTML5 element [wrapper]
+	 *  - CSS [class] for the wrapper
+	 *
+	 * Set a local function of _starter_footer_arguments in the functions.php
+	 * file to override these default settings.
+	 *
+	 * @return  array  Values for [columns], [wrapper], [class]
+	 */
+	function _starter_footer_arguments() {
+		$args = array(
+			'columns' => 4,
+			'wrapper' => 'div',
+			'class' => 'site-test',
+		);
+		return $args;
+	}
+}
+
+if ( ! function_exists( '_starter_footer_register' ) ) {
+
+	/**
+	 * Register the amount of footer columns.
+	 *
+	 * @param   array $params Settings for registering columns.
+	 * @return  void
+	 */
+	function _starter_footer_register( $params ) {
+		$footer_columns = new Starter_Footer_Columns( $params );
+		$footer_columns->register();
+	}
+}
+
+if ( ! function_exists( '_starter_footer_columns' ) ) {
+	/**
+	 * Register the amount of footer columns.
+	 *
+	 * @return  void
+	 */
+	function _starter_footer_columns() {
+		$footer = new Starter_Footer_Columns( _starter_footer_arguments() );
+		$footer->footer_columns();
+	}
+}
 
 /**
- * Function for footer columns
- *
- * @return  void
+ * Register the Footer Columns
  */
-function _starter_footer_columns() {
-	$function = new Starter_Footer_Columns;
-	$function->footer_columns();
-}
+_starter_footer_register( _starter_footer_arguments() );
