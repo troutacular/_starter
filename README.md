@@ -173,4 +173,4 @@ Sass construct: [troutacular]
 [Susy]: http://susy.oddbird.net/
 [troutacular]: https://github.com/troutacular/
 [underscores]: http://www.underscores.me
-[_starter]: http://github.com/uscwebservices/_starter-2015
+[_starter]: http://github.com/troutacular/_starter

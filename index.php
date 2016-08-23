@@ -9,7 +9,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package usc-starter
+ * @package _starter
  */
 
 get_header(); ?>

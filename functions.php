@@ -104,7 +104,7 @@ if ( ! function_exists( '_starter_setup' ) ) {
 		 * Make theme available for translation.
 		 *
 		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on usc-starter, use a find and replace
+		 * If you're building a theme based on _starter, use a find and replace
 		 * to change '_starter' to the name of your theme in all the template files
 		 *
 		 * @link https://codex.wordpress.org/Function_Reference/load_theme_textdomain
@@ -361,7 +361,7 @@ if ( ! function_exists( '_starter_enqueue_css' ) ) {
 	 */
 	function _starter_enqueue_css() {
 
-		wp_enqueue_style( 'usc-starter-style', get_stylesheet_directory_uri() . '/css/starter.css', false, null, 'screen,print' );
+		wp_enqueue_style( '_starter-style', get_stylesheet_directory_uri() . '/css/starter.css', false, null, 'screen,print' );
 
 	}
 }

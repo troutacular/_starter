@@ -125,9 +125,9 @@ a {
 	color: $color-content-link-print !important;
 	text-decoration: underline;
 	/* only include the link on external sites that do not have
-	 * 'usc.edu' in the link
+	 * 'starter.com' in the link
 	 *
-	 * exclude any non-usc site: &:not([href*='usc.edu']):after
+	 * exclude any non-theme site: &:not([href*='starter.com']):after
 	 * exclude any site starting with: &:not([href^='siteurl']):after
 	 */
 
