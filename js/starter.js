@@ -1,18 +1,18 @@
 ( function() {
 
-	// wrap the first word of the site title in a span to apply highlight color
-		function uscSiteTitle() {
+	// wrap the first word of the site title matching 'string' in a span to apply highlight color
+		function starterAcronymClass(acronym) {
 
-			var strTitle = document.getElementsByClassName('site-title')[0].innerHTML;
+			var strTitle = document.getElementsByClassName('site-branding-title')[0].innerHTML;
 
-			var newStrTitle = strTitle.replace(/USC/g, '<span class="site-acronym">USC</span>');
+			var newStrTitle = strTitle.replace(acronym, '<span class="site-branding-acronym">' + acronym + '</span>');
 
 			if ( strTitle !== null ) {
-				document.getElementsByClassName('site-title')[0].innerHTML = newStrTitle;
+				document.getElementsByClassName('site-branding-title')[0].innerHTML = newStrTitle;
 			}
 		}
 
-		uscSiteTitle();
+		starterAcronymClass('Starter');
 	// end
 
 	// skip link focus fix
