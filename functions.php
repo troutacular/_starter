@@ -361,7 +361,7 @@ if ( ! function_exists( '_starter_enqueue_css' ) ) {
 	 */
 	function _starter_enqueue_css() {
 
-		wp_enqueue_style( 'usc-starter-style', get_stylesheet_directory_uri() . '/css/_starter.css', false, null, 'screen,print' );
+		wp_enqueue_style( 'usc-starter-style', get_stylesheet_directory_uri() . '/css/starter.css', false, null, 'screen,print' );
 
 	}
 }
