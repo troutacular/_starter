@@ -4,9 +4,8 @@
 	=============
 
 	1.0 - Site Branding
-	2.0 - Brand Title
-	3.0 - Site Title
-		3.1 - Site Description
+	2.0 - Site Title
+	3.0 - Site Description
 
 **/
 
@@ -16,12 +15,13 @@
 1.0 - Site Branding
 --------------------------------------------------------------*/
 
-.site-branding {}
-
+.site-branding {
+	@include horizontal-align;
+}
 
 
 /*--------------------------------------------------------------
-2.0 - Brand Title
+2.0 - Site Title
 --------------------------------------------------------------*/
 
 .site-branding-title {}

@@ -1,34 +1,32 @@
 /**
-	
+
 	Horizontal Alignment
 	====================
-	
+
 	Use this mixin to horizontally center an elment in it's container box
-	
+
 	=========
-	
+
 	Usage:
-	
+
 	.class { @include horizontal-align; }
-	
+
 	=========
-	
+
 	Note: If blurry, add the following to the parent element:
 
 	.parent-element {
 		-webkit-transform-style: preserve-3d;
 	}
-	
+
 	=========
-	
+
 	Partial Credit: [http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/]
-	
+
 **/
 
 @mixin horizontal-align {
 	position: relative;
 	left: 50%;
-	-webkit-transform: translateX(-50%);
-	-ms-transform: translateX(-50%);
-	transform: translateX(-50%);
+	@include translateX(-50%);
 }
