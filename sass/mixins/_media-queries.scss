@@ -1,38 +1,38 @@
 /**
-	
+
 	Media Queries
 	=============
-	
+
 	1.0 - Screen
 	2.0 - Orientation
 	3.0 - HDPI
 	4.0 - Print
-	
+
 	=========
-	
+
 	Usage:
-	
+
 	@include min-screen(width);
 	@include max-screen(width);
 	@include screen(min-width, max-width);
-	
+
 	@include min-screen-height(height);
 	@include max-screen-height(height);
 	@include screen-height(min-height, max-height);
-	
+
 	@include orientation(orientation);
-	
+
 	@include hdpi(ratio);
-	
+
 	=========
-	
+
 	NOTE: You CANNOT use @extend inside the media query.
-	
+
 	=========
-	
+
 	Partial Credit: Rafal Bromirski - http:paranoida.com/
 	Licensed under a MIT License
-	
+
 **/
 
 /*--------------------------------------------------------------
@@ -84,7 +84,7 @@
 @mixin screen-orientation( $orientation: landscape ) {
 	@media screen and ( orientation: #{$orientation } ) {
 		@content;
-	} 
+	}
 }
 
 

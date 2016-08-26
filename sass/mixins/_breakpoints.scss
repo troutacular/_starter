@@ -1,100 +1,71 @@
-/* Breakpoints
+/**
+ * Breakpoints
  *
  * Uses a set of breakpoints and creates ranges of between the breakpoints.
- *
- * Usage:
- *
- * @media #{$xxsmall-below} { }
- * @media #{$xxsmall-range} { }
- * @media #{$xxsmall-up} { }
- *
- * @media #{$xsmall-below} { }
- * @media #{$xsmall-range} { }
- * @media #{$xsmall-up} { }
- *
- * @media #{$small-below} { }
- * @media #{$small-range} { }
- * @media #{$small-up} { }
- *
- * @media #{$medium-below} { }
- * @media #{$medium-range} { }
- * @media #{$medium-up} { }
- *
- * @media #{$large-below} { }
- * @media #{$large-range} { }
- * @media #{$large-up} { }
- *
- * @media #{$xlarge-below} { }
- * @media #{$xlarge-range} { }
- * @media #{$xlarge-up} { }
- *
- * @media #{$xxlarge-below} { }
- * @media #{$xxlarge-range} { }
- * @media #{$xxlarge-up} { }
-*/
+ */
 
-	$screen-xxsmall: 30em !default;		/* 480px */
-	$screen-xsmall: 35em !default;		/* 560px */
-	$screen-small: 40em !default; 		/* 640px */
-	$screen-medium: 48em !default; 		/* 768px */
-	$screen-large: 64em !default; 		/* 1024px */
-	$screen-xlarge: 90em !default; 		/* 1440px */
-	$screen-xxlarge: 120em !default; 	/* 1920px */
+$screen-xxsmall: 30em !default;		/* 480px */
+$screen-xsmall: 35em !default;		/* 560px */
+$screen-small: 40em !default; 		/* 640px */
+$screen-medium: 48em !default; 		/* 768px */
+$screen-large: 64em !default; 		/* 1024px */
+$screen-xlarge: 90em !default; 		/* 1440px */
+$screen-xxlarge: 120em !default; 	/* 1920px */
 
-	// Here we define the lower and upper bounds for each media size
-	$base-font: 16 !default;
-	$increment: 1/$base-font;
+// Here we define the lower and upper bounds for each media size
+$base-font: 16 !default;
+$increment: 1 / $base-font;
 
-	$xxsmall-base: 0em;
-	$xxsmall-top: $screen-xsmall - $increment;
+$xxsmall-base: 0;
+$xxsmall-top: $screen-xsmall - $increment;
 
-	$xsmall-base: $screen-xsmall;
-	$xsmall-top: $screen-small - $increment;
+$xsmall-base: $screen-xsmall;
+$xsmall-top: $screen-small - $increment;
 
-	$small-base: $screen-small;
-	$small-top: $screen-medium - $increment;
+$small-base: $screen-small;
+$small-top: $screen-medium - $increment;
 
-	$medium-base: $screen-medium;
-	$medium-top: $screen-large - $increment;
+$medium-base: $screen-medium;
+$medium-top: $screen-large - $increment;
 
-	$large-base: $screen-large;
-	$large-top: $screen-xlarge - $increment;
+$large-base: $screen-large;
+$large-top: $screen-xlarge - $increment;
 
-	$xlarge-base: $screen-xlarge;
-	$xlarge-top: $screen-xxlarge - $increment;
+$xlarge-base: $screen-xlarge;
+$xlarge-top: $screen-xxlarge - $increment;
 
-	$xxlarge-base: $screen-xxlarge;
+$xxlarge-base: $screen-xxlarge;
 
-	// Media Queries
-	$screen: "only screen" !default;
+// Media Queries
+$screen: 'only screen' !default;
 
-	$landscape: "#{$screen} and (orientation: landscape)" !default;
-	$portrait: "#{$screen} and (orientation: portrait)" !default;
+$landscape: "#{$screen} and (orientation: landscape)" !default;
+$portrait: "#{$screen} and (orientation: portrait)" !default;
 
-	$xxsmall-range: "#{$screen} and (min-width: #{$xxsmall-base} and (max-width: #{$xxsmall-top})" !default;
-	$xxsmall-up: "#{$screen} and (min-width: #{$xxsmall-base})" !default;
+$xxsmall-range: "#{$screen} and (min-width: #{$xxsmall-base} and (max-width: #{$xxsmall-top})" !default;
+$xxsmall-up: "#{$screen} and (min-width: #{$xxsmall-base})" !default;
 
-	$xsmall-below: "#{$screen} and (max-width: #{$xxsmall-top})" !default;
-	$xsmall-range: "#{$screen} and (min-width: #{$xsmall-base} and (max-width: #{$xsmall-top})" !default;
-	$xsmall-up: "#{$screen} and (min-width: #{$xsmall-base})" !default;
+$xsmall-below: "#{$screen} and (max-width: #{$xxsmall-top})" !default;
+$xsmall-range: "#{$screen} and (min-width: #{$xsmall-base} and (max-width: #{$xsmall-top})" !default;
+$xsmall-up: "#{$screen} and (min-width: #{$xsmall-base})" !default;
 
-	$small-below: "#{$screen} and (max-width: #{$xsmall-top})" !default;
-	$small-range: "#{$screen} and (min-width: #{$small-base} and (max-width: #{$small-top})" !default;
-	$small-up: "#{$screen} and (min-width: #{$small-base})" !default;
+$small-below: "#{$screen} and (max-width: #{$xsmall-top})" !default;
+$small-range: "#{$screen} and (min-width: #{$small-base} and (max-width: #{$small-top})" !default;
+$small-up: "#{$screen} and (min-width: #{$small-base})" !default;
 
-	$medium-below: "#{$screen} and (max-width: #{$small-top})" !default;
-	$medium-range: "#{$screen} and (min-width: #{$medium-base}) and (max-width: #{$medium-top})" !default;
-	$medium-up: "#{$screen} and (min-width: #{$medium-base})" !default;
+$medium-below: "#{$screen} and (max-width: #{$small-top})" !default;
+$medium-range: "#{$screen} and (min-width: #{$medium-base}) and (max-width: #{$medium-top})" !default;
+$medium-up: "#{$screen} and (min-width: #{$medium-base})" !default;
 
-	$large-below: "#{$screen} and (max-width: #{$medium-top})" !default;
-	$large-range: "#{$screen} and (min-width: #{$large-base} and (max-width: #{$large-top})" !default;
-	$large-up: "#{$screen} and (min-width: #{$large-base})" !default;
+$large-below: "#{$screen} and (max-width: #{$medium-top})" !default;
+$large-range: "#{$screen} and (min-width: #{$large-base} and (max-width: #{$large-top})" !default;
+$large-up: "#{$screen} and (min-width: #{$large-base})" !default;
 
-	$xlarge-below: "#{$screen} and (max-width: #{$large-top})" !default;
-	$xlarge-range: "#{$screen} and (min-width: #{$xlarge-base} and (max-width: #{$xlarge-top})" !default;
-	$xlarge-up: "#{$screen} and (min-width: #{$xlarge-base})" !default;
+$xlarge-below: "#{$screen} and (max-width: #{$large-top})" !default;
+$xlarge-range: "#{$screen} and (min-width: #{$xlarge-base} and (max-width: #{$xlarge-top})" !default;
+$xlarge-up: "#{$screen} and (min-width: #{$xlarge-base})" !default;
 
-	$xxlarge-below: "#{$screen} and (max-width: #{$xlarge-top})" !default;
-	$xxlarge-up: "#{$screen} and (min-width: #{$xxlarge-base})" !default;
+$xxlarge-below: "#{$screen} and (max-width: #{$xlarge-top})" !default;
+$xxlarge-up: "#{$screen} and (min-width: #{$xxlarge-base})" !default;
 
-	$is-hidpi: "(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)";
+$is-hidpi: '(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)';

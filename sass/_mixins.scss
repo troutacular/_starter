@@ -19,10 +19,8 @@
 1.0 - Global Mixins
 --------------------------------------------------------------*/
 
+@import 'mixins/align-horizontal';
+@import 'mixins/align-vertical';
 @import 'mixins/breakpoints';
-@import 'mixins/font-size';
-@import 'mixins/font-style';
-@import 'mixins/horizontal-align';
 @import 'mixins/media-queries';
 @import 'mixins/sass-heading-sizes';
-@import 'mixins/vertical-align';
