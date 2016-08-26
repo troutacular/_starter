@@ -37,7 +37,7 @@
 
 $susy: (
 	columns: 12,
-	gutters: 1/4,
+	gutters: 1 / 4,
 	math: fluid,
 	output: float,
 	gutter-position: after,
@@ -57,6 +57,7 @@ $susy: (
 .site-contact {
 	@include container;
 	padding: 0 $padding-body-mobile;
+
 	@media #{$medium-up} {
 		padding: 0 $padding-body-desktop;
 	}
@@ -122,64 +123,61 @@ $susy: (
 1.5.1 - Site Footer Columns
 --------------------------------------------------------------*/
 
-.site-footer {
+.site-footer-columns-1 {
 
-	&.columns-1 {
-
-		.footer-column {
-			@include span(12 of 12);
-		}
+	.footer-column {
+		@include span(12 of 12);
 	}
+}
 
-	&.columns-2 {
+.site-footer-columns-2 {
 
-		.footer-column {
-			@include span(12 of 12);
+	.footer-column {
+		@include span(12 of 12);
 
-			@media #{$xxsmall-up} {
-				@include span(6 of 12);
+		@media #{$xxsmall-up} {
+			@include span(6 of 12);
 
-				&:last-of-type {
-					@include omega;
-				}
+			&:last-of-type {
+				@include omega;
 			}
 		}
 	}
+}
 
-	&.columns-3 {
+.site-footer-columns-3 {
 
-		.footer-column {
-			@include span(12 of 12);
+	.footer-column {
+		@include span(12 of 12);
 
-			@media #{$small-up} {
-				@include span(4 of 12);
+		@media #{$small-up} {
+			@include span(4 of 12);
 
-				&:last-of-type {
-					@include omega;
-				}
+			&:last-of-type {
+				@include omega;
 			}
 		}
 	}
+}
 
-	&.columns-4 {
+.site-footer-columns-4 {
 
-		.footer-column {
-			@include span(12 of 12);
+	.footer-column {
+		@include span(12 of 12);
 
-			@media #{$xxsmall-up} {
-				@include span(6 of 12);
+		@media #{$xxsmall-up} {
+			@include span(6 of 12);
 
-				&:last-of-type {
-					@include omega;
-				}
+			&:last-of-type {
+				@include omega;
 			}
+		}
 
-			@media #{$small-up} {
-				@include span(3 of 12);
+		@media #{$small-up} {
+			@include span(3 of 12);
 
-				&:last-of-type {
-					@include omega;
-				}
+			&:last-of-type {
+				@include omega;
 			}
 		}
 	}

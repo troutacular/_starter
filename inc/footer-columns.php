@@ -47,8 +47,8 @@ if ( ! class_exists( 'Starter_Footer_Columns' ) ) {
 			 * Register the sidebars
 			 */
 			register_sidebars( $this->params['columns'], array(
-				'name' => __( 'Footer Column %d', '_starter' ),
-				'id' => 'footer-column',
+				'name' => __( 'Site Footer Column %d', '_starter' ),
+				'id' => 'site-footer-column',
 				'description' => __( 'Drag widgets here to show in the corresponding column of the footer. The columns are dynamic and they will split their width\'s evenly between Footer Column areas that have active widgets.', '_starter' ),
 				'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 				'after_widget' => '</aside>',
@@ -69,18 +69,18 @@ if ( ! class_exists( 'Starter_Footer_Columns' ) ) {
 			// Set the default to 0.
 			$count = $counter = 0;
 
-			if ( is_active_sidebar( 'footer-column' ) ) {
+			if ( is_active_sidebar( 'site-footer-column' ) ) {
 				$count++;
 			}
 
-			if ( is_active_sidebar( 'footer-column-2' ) ) {
+			if ( is_active_sidebar( 'site-footer-column-2' ) ) {
 				$count++;
 			}
 
-			if ( is_active_sidebar( 'footer-column-3' ) ) {
+			if ( is_active_sidebar( 'site-footer-column-3' ) ) {
 				$count++;
 			}
-			if ( is_active_sidebar( 'footer-column-4' ) ) {
+			if ( is_active_sidebar( 'site-footer-column-4' ) ) {
 				$count++;
 			}
 
@@ -88,7 +88,7 @@ if ( ! class_exists( 'Starter_Footer_Columns' ) ) {
 
 			for ( $i = 1; $i <= $columns; $i++ ) {
 
-				$sidebar = 'footer-column';
+				$sidebar = 'site-footer-column';
 
 				if ( $i > 1 ) {
 					$sidebar .= '-' . $i;
@@ -99,7 +99,7 @@ if ( ! class_exists( 'Starter_Footer_Columns' ) ) {
 				}
 			}
 
-			return 'footer-columns-' . esc_attr( $count );
+			return 'site-footer-columns-' . esc_attr( $count );
 		}
 
 		/**
@@ -123,8 +123,8 @@ if ( ! class_exists( 'Starter_Footer_Columns' ) ) {
 			for ( $i = 1; $i <= $columns; $i++ ) {
 
 				// Set default variables.
-				$sidebar = 'footer-column';
-				$class = 'footer-column-' . $i;
+				$sidebar = 'site-footer-column';
+				$class = 'site-footer-column-' . $i;
 
 				// Add the column number past first instance for sidebar reference.
 				if ( $i > 1 ) {
