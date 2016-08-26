@@ -1,0 +1,20 @@
+/**
+
+	Font Style
+	==========
+
+	Apply font attributes family, style, weight for typekit fonts.
+
+	=========
+
+	Usage:
+
+	.class { @include font-style($font-sample-variable, italic, 700); }
+
+**/
+
+@mixin font-style($font-family: sans-serif, $font-style: normal, $font-weight: 400) {
+	font-family: $font-family;
+	font-style: $font-style;
+	font-weight: $font-weight;
+}
