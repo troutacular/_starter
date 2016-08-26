@@ -62,112 +62,112 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"] {
 	// default content colors
-	@if $button-border == transparent {
+	@if $color__button-border == transparent {
 		border: 0 none;
 	}
 	@else {
-		border: $button-border;
+		border: $color__button-border;
 	}
 	border-radius: $input-border-radius;
-	background: $color-button-background;
+	background: $color__button-background;
 	cursor: pointer; /* Improves usability and consistency of cursor style between image-type 'input' and others */
 	padding: $input-padding;
 	line-height: 1;
-	color: $color-button-text;
+	color: $color__button-text;
 
 	-webkit-appearance: button; /* Corrects inability to style clickable 'input' types in iOS */
 	&:hover {
-		background: $color-button-background-hover;
-		color: $color-button-text-hover;
-		@if $button-border-hover == transparent {
+		background: $color__button-background-hover;
+		color: $color__button-text-hover;
+		@if $color__button-border-hover == transparent {
 			border: 0 none;
 		}
 		@else {
-			border: $button-border-hover;
+			border: $color__button-border-hover;
 		}
 	}
 
 	&:focus,
 	&:active {
-		background: $color-button-background-active;
-		color: $color-button-text-active;
-		@if $button-border-active == transparent {
+		background: $color__button-background-active;
+		color: $color__button-text-active;
+		@if $color__button-border-active == transparent {
 			border: 0 none;
 		}
 		@else {
-			border: $button-border-active;
+			border: $color__button-border-active;
 		}
 	}
 
 	// sidebar colors
-	@if $color-form-widget-sidebar == true {
+	@if $color__form-widget-sidebar == true {
 		.site-sidebar .widget & {
-			background: $color-button-background-widget-sidebar;
-			color: $color-button-text-widget-sidebar;
-			@if $button-border-widget-sidebar == transparent {
+			background: $color__button-background-widget-sidebar;
+			color: $color__button-text-widget-sidebar;
+			@if $color__button-border-widget-sidebar == transparent {
 				border: 0 none;
 			}
 			@else {
-				border: $button-border-widget-sidebar;
+				border: $color__button-border-widget-sidebar;
 			}
 
 			&:hover {
-				background: $color-button-background-widget-sidebar-hover;
-				color: $color-button-text-widget-sidebar-hover;
-				@if $button-border-widget-sidebar-hover == transparent {
+				background: $color__button-background-widget-sidebar-hover;
+				color: $color__button-text-widget-sidebar-hover;
+				@if $color__button-border-widget-sidebar-hover == transparent {
 					border: 0 none;
 				}
 				@else {
-					border: $button-border-widget-sidebar-hover;
+					border: $color__button-border-widget-sidebar-hover;
 				}
 			}
 
 			&:focus,
 			&:active {
-				background: $color-button-background-widget-sidebar-active;
-				color: $color-button-text-widget-sidebar-active;
-				@if $button-border-widget-sidebar-active == transparent {
+				background: $color__button-background-widget-sidebar-active;
+				color: $color__button-text-widget-sidebar-active;
+				@if $color__button-border-widget-sidebar-active == transparent {
 					border: 0 none;
 				}
 				@else {
-					border: $button-border-widget-sidebar-active;
+					border: $color__button-border-widget-sidebar-active;
 				}
 			}
 		}
 	}
 
 	// footer colors
-	@if $color-form-widget-footer == true {
+	@if $color__form-widget-footer == true {
 		.site-footer .widget & {
-			background: $color-button-background-widget-footer;
-			color: $color-button-text-widget-footer;
-			@if $button-border-widget-footer == transparent {
+			background: $color__button-background-widget-footer;
+			color: $color__button-text-widget-footer;
+			@if $color__button-border-widget-footer == transparent {
 				border: 0 none;
 			}
 			@else {
-				border: $button-border-widget-footer;
+				border: $color__button-border-widget-footer;
 			}
 
 			&:hover {
-				background: $color-button-background-widget-footer-hover;
-				color: $color-button-text-widget-footer-hover;
-				@if $button-border-widget-footer-hover == transparent {
+				background: $color__button-background-widget-footer-hover;
+				color: $color__button-text-widget-footer-hover;
+				@if $color__button-border-widget-footer-hover == transparent {
 					border: 0 none;
 				}
 				@else {
-					border: $button-border-widget-footer-hover;
+					border: $color__button-border-widget-footer-hover;
 				}
 			}
 
 			&:focus,
 			&:active {
-				background: $color-button-background-widget-footer-active;
-				color: $color-button-text-widget-footer-active;
-				@if $button-border-widget-footer-active == transparent {
+				background: $color__button-background-widget-footer-active;
+				color: $color__button-text-widget-footer-active;
+				@if $color__button-border-widget-footer-active == transparent {
 					border: 0 none;
 				}
 				@else {
-					border: $button-border-widget-footer-active;
+					border: $color__button-border-widget-footer-active;
 				}
 			}
 		}

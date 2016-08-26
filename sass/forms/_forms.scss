@@ -90,73 +90,73 @@ textarea {
 
 	// default content colors
 	border-radius: $input-border-radius;
-	background: $color-input-background;
+	background: $color__input-background;
 	padding: $input-padding;
 	min-width: 2em;
 	line-height: 1;
-	color: $color-input-text;
-	@if $color-input-border == transparent {
+	color: $color__input-text;
+	@if $color__input-border == transparent {
 		border: 0 none;
 	}
 	@else {
-		border: 1px solid $color-input-border;
+		border: 1px solid $color__input-border;
 	}
 
 	&:focus {
-		color: $color-input-focus;
+		color: $color__input-focus;
 	}
 
 	// header colors
-	@if $color-form-widget-sidebar == true {
+	@if $color__form-widget-sidebar == true {
 		.site-header & {
-			background: $color-input-background-widget-header;
-			color: $color-input-text-widget-header;
-			@if $color-input-border-widget-header == transparent {
+			background: $color__input-background-widget-header;
+			color: $color__input-text-widget-header;
+			@if $color__input-border-widget-header == transparent {
 				border: 0 none;
 			}
 			@else {
-				border: 1px solid $color-input-border-widget-header;
+				border: 1px solid $color__input-border-widget-header;
 			}
 
 			&:focus {
-				color: $color-input-focus-widget-header;
+				color: $color__input-focus-widget-header;
 			}
 		}
 	}
 
 
 	// sidebar colors
-	@if $color-form-widget-sidebar == true {
+	@if $color__form-widget-sidebar == true {
 		.site-sidebar .widget & {
-			background: $color-input-background-widget-sidebar;
-			color: $color-input-text-widget-sidebar;
-			@if $color-input-border-widget-sidebar == transparent {
+			background: $color__input-background-widget-sidebar;
+			color: $color__input-text-widget-sidebar;
+			@if $color__input-border-widget-sidebar == transparent {
 				border: 0 none;
 			}
 			@else {
-				border: 1px solid $color-input-border-widget-sidebar;
+				border: 1px solid $color__input-border-widget-sidebar;
 			}
 
 			&:focus {
-				color: $color-input-focus-widget-sidebar;
+				color: $color__input-focus-widget-sidebar;
 			}
 		}
 	}
 
 	// footer colors
-	@if $color-form-widget-footer == true {
+	@if $color__form-widget-footer == true {
 		.site-footer .widget & {
-			background: $color-input-background-widget-footer;
-			color: $color-input-text-widget-footer;
-			@if $color-input-border-widget-footer == transparent {
+			background: $color__input-background-widget-footer;
+			color: $color__input-text-widget-footer;
+			@if $color__input-border-widget-footer == transparent {
 				border: 0 none;
 			}
 			@else {
-				border: 1px solid $color-input-border-widget-footer;
+				border: 1px solid $color__input-border-widget-footer;
 			}
 
 			&:focus {
-				color: $color-input-focus-widget-footer;
+				color: $color__input-focus-widget-footer;
 			}
 		}
 	}
@@ -183,13 +183,13 @@ textarea {
 
 // default content colors
 ::-webkit-input-placeholder {
-	color: $color-input-placeholder;
+	color: $color__input-placeholder;
 }
 ::-moz-placeholder { /* Firefox 18- */
-	color: $color-input-placeholder;
+	color: $color__input-placeholder;
 }
 :-ms-input-placeholder {
-   color: $color-input-placeholder;
+   color: $color__input-placeholder;
 }
 
 
