@@ -48,15 +48,14 @@
 2.0 - Globals
 --------------------------------------------------------------*/
 
-$color-base-background: #fff;
-$color-base-background-alt: #777;
-$color-base-highlight: #777;
-$color-base-highlight-alt: #777;
+$color__base-background: #fff;
+$color__base-highlight: #777;
+$color__base-highlight-alt: #777;
 
-$color-shadow: rgba(#000, .125);
-$color-body-background: #fff;
-$color-body-text: #5b514a;
-$color-body-text-icon: #777;
+$color__shadow: rgba(#000, .125);
+$color__body-background: #fff;
+$color__body-text: #5b514a;
+$color__body-text-icon: #777;
 
 
 
@@ -64,12 +63,12 @@ $color-body-text-icon: #777;
 3.0 - Headers
 --------------------------------------------------------------*/
 
-$color-header-background: #ebede6;
-$color-header-site-title: $color-body-text;
-$color-header-site-title-sub: $color-header-site-title;
+$color__header-background: #ebede6;
+$color__header-site-title: $color__body-text;
+$color__header-site-title-sub: $color__header-site-title;
 
 // content
-$color-content-heading: #5b514a;
+$color__content-heading: #5b514a;
 
 
 
@@ -101,8 +100,8 @@ $color-content-heading: #5b514a;
 5.1 - Text
 --------------------------------------------------------------*/
 
-$color-content-text: $color-body-text;
-$color-content-text-meta: lighten($color-content-text, 15);
+$color__content-text: $color__body-text;
+$color__content-text-meta: lighten($color__content-text, 15);
 
 
 
@@ -110,8 +109,8 @@ $color-content-text-meta: lighten($color-content-text, 15);
 5.1.1 - Code / Pre
 --------------------------------------------------------------*/
 
-$color-background-pre: #eee;
-$color-text-pre: $color-content-text;
+$color__background-pre: #eee;
+$color__text-pre: $color__content-text;
 
 
 
@@ -125,8 +124,8 @@ $color-text-pre: $color-content-text;
 5.2 - Links
 --------------------------------------------------------------*/
 
-$color-content-link: #777;
-$color-content-link-hover: $color-content-link;
+$color__content-link: #777;
+$color__content-link-hover: $color__content-link;
 
 
 
@@ -135,9 +134,9 @@ $color-content-link-hover: $color-content-link;
 5.3 - Blockquotes / Cites
 --------------------------------------------------------------*/
 
-$color-blockquote-background: #555;
-$color-blockquote-text: $color-body-text;
-$color-blockquote-icon: darken($color-blockquote-background, 7);
+$color__blockquote-background: #555;
+$color__blockquote-text: $color__body-text;
+$color__blockquote-icon: darken($color__blockquote-background, 7);
 
 
 
@@ -146,9 +145,9 @@ $color-blockquote-icon: darken($color-blockquote-background, 7);
 --------------------------------------------------------------*/
 
 // Set to 'true' to use different input colors in the widgets
-$color-form-widget-header: false;
-$color-form-widget-sidebar: true;
-$color-form-widget-footer: false;
+$color__form-widget-header: false;
+$color__form-widget-sidebar: true;
+$color__form-widget-footer: false;
 
 
 
@@ -157,12 +156,12 @@ $color-form-widget-footer: false;
 --------------------------------------------------------------*/
 
 // see _variables.scss for padding and border radius
-$color-input-background: #ccc;
-$color-input-border: #000;
-$color-input-focus: #111;
-$color-input-text: darken($color-content-text, 25);
-$color-input-icon: #777;
-$color-input-placeholder: lighten($color-content-text, 5);
+$color__input-background: #ccc;
+$color__input-border: #000;
+$color__input-focus: #111;
+$color__input-text: darken($color__content-text, 25);
+$color__input-icon: #777;
+$color__input-placeholder: lighten($color__content-text, 5);
 
 
 
@@ -171,17 +170,17 @@ $color-input-placeholder: lighten($color-content-text, 5);
 --------------------------------------------------------------*/
 
 // default content colors
-$color-button-background: #777;
-$color-button-text: #fff;
-$button-border: transparent;
+$color__button-background: #777;
+$color__button-text: #fff;
+$color__button-border: transparent;
 
-$color-button-background-hover: darken($color-button-background, 5);
-$color-button-text-hover: #fff;
-$button-border-hover: transparent;
+$color__button-background-hover: darken($color__button-background, 5);
+$color__button-text-hover: #fff;
+$color__button-border-hover: transparent;
 
-$color-button-background-active: lighten($color-button-background, 5);
-$color-button-text-active: #fff;
-$button-border-active: transparent;
+$color__button-background-active: lighten($color__button-background, 5);
+$color__button-text-active: #fff;
+$color__button-border-active: transparent;
 
 
 
@@ -189,7 +188,7 @@ $button-border-active: transparent;
 5.5 - Figure
 --------------------------------------------------------------*/
 
-$color-border-figure-single: #dcded7;
+$color__border-figure-single: #dcded7;
 
 
 
@@ -205,8 +204,8 @@ $color-border-figure-single: #dcded7;
 5.5.2 - Figcaption
 --------------------------------------------------------------*/
 
-$color-figcaption-background: transparent;
-$color-figcaption-text: lighten($color-content-text, 40);
+$color__figcaption-background: transparent;
+$color__figcaption-text: lighten($color__content-text, 40);
 
 
 
@@ -214,10 +213,10 @@ $color-figcaption-text: lighten($color-content-text, 40);
 5.6 - Tables
 --------------------------------------------------------------*/
 
-$color-table-head-background: #dcded7;
-$color-table-head-text: #5b514a;
-$color-table-cell-background: #ebede6;
-$color-table-cell-text: #5b514a;
+$color__table-head-background: #dcded7;
+$color__table-head-text: #5b514a;
+$color__table-cell-background: #ebede6;
+$color__table-cell-text: #5b514a;
 $table-cell-border: 1px solid #dcded7;
 
 
@@ -246,14 +245,14 @@ $table-cell-border: 1px solid #dcded7;
 7.1 - Site Credit
 --------------------------------------------------------------*/
 
-$color-background-site-credit: #dcded7;
-$color-text-site-credit: #000;
+$color__background-site-credit: #dcded7;
+$color__text-site-credit: #000;
 
-$color-link-website-by: $color-content-link;
-$color-link-website-by-hover: $color-content-link-hover;
+$color__link-website-by: $color__content-link;
+$color__link-website-by-hover: $color__content-link-hover;
 
-$color-link-feedback: $color-body-text;
-$color-link-feedback-hover: $color-body-text;
+$color__link-feedback: $color__body-text;
+$color__link-feedback-hover: $color__body-text;
 
 
 
@@ -263,13 +262,13 @@ $color-link-feedback-hover: $color-body-text;
 
 // see 4.2 for secondary navigation
 
-$color-widget-background: #777;
-$color-widget-divider: #820909;
-$color-widget-content-heading: #fff;
-$color-widget-content-text: #fff;
-$color-widget-content-link: #fff;
-$color-widget-content-link-hover: #fff;
-$color-widget-content-icon: #fff;
+$color__widget-background: #777;
+$color__widget-divider: #820909;
+$color__widget-content-heading: #fff;
+$color__widget-content-text: #fff;
+$color__widget-content-link: #fff;
+$color__widget-content-link-hover: #fff;
+$color__widget-content-icon: #fff;
 
 
 
@@ -277,8 +276,8 @@ $color-widget-content-icon: #fff;
 9.0 - Print
 --------------------------------------------------------------*/
 
-$color-content-heading-print: #000 !default;
-$color-content-text-print: #000 !default;
-$color-content-link-print: #999 !default;
+$color__content-heading-print: #000 !default;
+$color__content-text-print: #000 !default;
+$color__content-link-print: #999 !default;
 
-$color-blockquote-background-print: #ccc;
+$color__blockquote-background-print: #ccc;

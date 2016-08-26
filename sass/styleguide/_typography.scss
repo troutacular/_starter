@@ -33,19 +33,19 @@
 **/
 
 %heading-styles {
-	color: $color-content-heading;
+	color: $color__content-heading;
 	line-height: 1.25;
 }
 
 %content-style {
-	color: $color-content-text;
+	color: $color__content-text;
 	font-size: 16px;
 }
 
 body {
 	@extend %content-style;
-	background-color: $color-body-background;
-	color: $color-body-text;
+	background-color: $color__body-background;
+	color: $color__body-text;
 }
 
 
@@ -114,9 +114,9 @@ hr {
 --------------------------------------------------------------*/
 
 a {
-	color: $color-content-link;
+	color: $color__content-link;
 
-	&:hover { color: $color-content-link-hover; }
+	&:hover { color: $color__content-link-hover; }
 
 }
 
@@ -134,8 +134,8 @@ blockquote {
 
 	margin: 1em 0;
 	padding: 1.5em;
-	background: $color-blockquote-background;
-	color: $color-blockquote-text;
+	background: $color__blockquote-background;
+	color: $color__blockquote-text;
 }
 
 cite {}
@@ -212,8 +212,8 @@ big {
 --------------------------------------------------------------*/
 
 pre {
-	background: $color-background-pre;
-	color: $color-text-pre;
+	background: $color__background-pre;
+	color: $color__text-pre;
 	font-family: "Courier 10 Pitch", Courier, monospace;
 	font-size: 15px;
 	line-height: 1.6;
