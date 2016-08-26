@@ -1,8 +1,8 @@
 /**
-	
+
 	Forms
 	=====
-	
+
 	1.0 - Global
 	2.0 - Forms
 	3.0 - Labels
@@ -21,10 +21,9 @@
 input,
 select,
 textarea {
-	font-size: 100%; /* Corrects font size not being inherited in all browsers */
 	margin: 0; /* Addresses margins set differently in IE6/7, F3/4, S5, Chrome */
 	vertical-align: baseline; /* Improves appearance and consistency in all browsers */
-	*vertical-align: middle; /* Improves appearance and consistency in IE6/IE7 */
+	font-size: 100%; /* Corrects font size not being inherited in all browsers */
 }
 
 
@@ -45,7 +44,7 @@ fieldset {}
 
 label {
 	display: block;
-	margin: 1em 0 0 0;
+	margin: 1em 0 0;
 }
 
 
@@ -60,11 +59,11 @@ input[type="radio"] {
 }
 
 input[type="search"] {
-	-webkit-appearance: textfield; /* Addresses appearance set to searchfield in S5, Chrome */
-	-webkit-box-sizing: content-box; /* Addresses box sizing set to border-box in S5, Chrome (include -moz to future-proof) */
-	-moz-box-sizing:    content-box;
-	box-sizing:         content-box;
-	&:-webkit-search-decoration { /* Corrects inner padding displayed oddly in S5, Chrome on OSX */
+	@include box-sizing('content-box');
+	// Addresses appearance set to searchfield in S5, Chrome
+	-webkit-appearance: textfield;
+	// Corrects inner padding displayed oddly in S5, Chrome on OSX
+	&::-webkit-search-decoration {
 		-webkit-appearance: none;
 	}
 }
@@ -88,22 +87,25 @@ input[type="color"],
 input.input-datalist,
 select,
 textarea {
-	min-width: 2em;
+
 	// default content colors
+	border-radius: $input-border-radius;
 	background: $color-input-background;
+	padding: $input-padding;
+	min-width: 2em;
+	line-height: 1;
 	color: $color-input-text;
 	@if $color-input-border == transparent {
 		border: 0 none;
-	} @else {
-		border: 1px solid $color-input-border;
-	} 
-	border-radius: $input-border-radius;
-	padding: $input-padding;
-	line-height: 1;
-	&:focus {
-		color: $color-input-focus; 
 	}
-	
+	@else {
+		border: 1px solid $color-input-border;
+	}
+
+	&:focus {
+		color: $color-input-focus;
+	}
+
 	// header colors
 	@if $color-form-widget-sidebar == true {
 		.site-header & {
@@ -111,16 +113,18 @@ textarea {
 			color: $color-input-text-widget-header;
 			@if $color-input-border-widget-header == transparent {
 				border: 0 none;
-			} @else {
+			}
+			@else {
 				border: 1px solid $color-input-border-widget-header;
 			}
+
 			&:focus {
-				color: $color-input-focus-widget-header; 
+				color: $color-input-focus-widget-header;
 			}
 		}
 	}
-	
-	
+
+
 	// sidebar colors
 	@if $color-form-widget-sidebar == true {
 		.site-sidebar .widget & {
@@ -128,15 +132,17 @@ textarea {
 			color: $color-input-text-widget-sidebar;
 			@if $color-input-border-widget-sidebar == transparent {
 				border: 0 none;
-			} @else {
+			}
+			@else {
 				border: 1px solid $color-input-border-widget-sidebar;
 			}
+
 			&:focus {
-				color: $color-input-focus-widget-sidebar; 
+				color: $color-input-focus-widget-sidebar;
 			}
 		}
 	}
-	
+
 	// footer colors
 	@if $color-form-widget-footer == true {
 		.site-footer .widget & {
@@ -144,25 +150,29 @@ textarea {
 			color: $color-input-text-widget-footer;
 			@if $color-input-border-widget-footer == transparent {
 				border: 0 none;
-			} @else {
+			}
+			@else {
 				border: 1px solid $color-input-border-widget-footer;
 			}
+
 			&:focus {
-				color: $color-input-focus-widget-footer; 
+				color: $color-input-focus-widget-footer;
 			}
 		}
 	}
-	
+
 }
 
 select {
-	height: 2.2em
+	height: 2.2em;
 }
 
 textarea {
-	overflow: auto; /* Removes default vertical scrollbar in IE6/7/8/9 */
-	vertical-align: top; /* Improves readability and alignment in all browsers */
 	width: 90%;
+	// Removes default vertical scrollbar in IE6/7/8/9
+	overflow: auto;
+	// Improves readability and alignment in all browsers
+	vertical-align: top;
 }
 
 
@@ -173,70 +183,13 @@ textarea {
 
 // default content colors
 ::-webkit-input-placeholder {
+	color: $color-input-placeholder;
+}
+::-moz-placeholder { /* Firefox 18- */
+	color: $color-input-placeholder;
+}
+:-ms-input-placeholder {
    color: $color-input-placeholder;
-}
-:-moz-placeholder { /* Firefox 18- */
-   color: $color-input-placeholder;  
-}
-::-moz-placeholder {  /* Firefox 19+ */
-   color: $color-input-placeholder;  
-}
-:-ms-input-placeholder {  
-   color: $color-input-placeholder;  
-}
-
-// header colors
-@if $color-form-widget-sidebar == true {
-	.site-header {
-		::-webkit-input-placeholder {
-		   color: $color-input-placeholder-widget-header
-		}
-		:-moz-placeholder { /* Firefox 18- */
-		   color: $color-input-placeholder-widget-header;  
-		}
-		::-moz-placeholder {  /* Firefox 19+ */
-		   color: $color-input-placeholder-widget-header;  
-		}
-		:-ms-input-placeholder {  
-		   color: $color-input-placeholder-widget-header;  
-		}
-	}
-}
-
-// sidebar colors
-@if $color-form-widget-sidebar == true {
-	.site-sidebar .widget {
-		::-webkit-input-placeholder {
-		   color: $color-input-placeholder-widget-sidebar;
-		}
-		:-moz-placeholder { /* Firefox 18- */
-		   color: $color-input-placeholder-widget-sidebar;  
-		}
-		::-moz-placeholder {  /* Firefox 19+ */
-		   color: $color-input-placeholder-widget-sidebar;  
-		}
-		:-ms-input-placeholder {  
-		   color: $color-input-placeholder-widget-sidebar;  
-		}
-	}
-}
-
-// footer colors
-@if $color-form-widget-footer == true {
-	.site-footer .widget {
-		::-webkit-input-placeholder {
-		   color: $color-input-placeholder-widget-footer;
-		}
-		:-moz-placeholder { /* Firefox 18- */
-		   color: $color-input-placeholder-widget-footer;  
-		}
-		::-moz-placeholder {  /* Firefox 19+ */
-		   color: $color-input-placeholder-widget-footer;  
-		}
-		:-ms-input-placeholder {  
-		   color: $color-input-placeholder-widget-footer;  
-		}
-	}
 }
 
 

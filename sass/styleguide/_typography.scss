@@ -1,8 +1,8 @@
 /**
-	
+
 	Styleguide
 	==========
-	
+
 	1.0 - Placeholder Selectors
 	2.0 - Headings
 	3.0 - Content
@@ -26,8 +26,8 @@
 --------------------------------------------------------------*/
 
 /**
-	
-	These are used to set the styles for other elements using 
+
+	These are used to set the styles for other elements using
 	@extend but they will not export in the compiled CSS
 
 **/
@@ -39,7 +39,7 @@
 
 %content-style {
 	color: $color-content-text;
-	@include font-size(16);
+	font-size: 16px;
 }
 
 body {
@@ -115,9 +115,9 @@ hr {
 
 a {
 	color: $color-content-link;
-	
+
 	&:hover { color: $color-content-link-hover; }
-	
+
 }
 
 
@@ -127,11 +127,11 @@ a {
 --------------------------------------------------------------*/
 
 blockquote {
-	
+
 	p:last-of-type {
 		margin: 0;
 	}
-	
+
 	margin: 1em 0;
 	padding: 1.5em;
 	background: $color-blockquote-background;
@@ -215,18 +215,18 @@ pre {
 	background: $color-background-pre;
 	color: $color-text-pre;
 	font-family: "Courier 10 Pitch", Courier, monospace;
-	@include font-size(15);
+	font-size: 15px;
 	line-height: 1.6;
 	margin-bottom: 1.6em;
 	max-width: 100%;
 	overflow: auto;
 	padding: 1.6em;
-	
+
 	white-space: pre-wrap;       /* css-3 */
 	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
 	white-space: -pre-wrap;      /* Opera 4-6 */
 	white-space: -o-pre-wrap;    /* Opera 7 */
-	word-wrap: break-word; 
+	word-wrap: break-word;
 }
 
 code, kbd, tt, var {
