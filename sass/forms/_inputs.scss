@@ -71,15 +71,25 @@ select,
 textarea {
 
 	// default content colors
-	border-radius: $size__input-border-radius;
-	background: $color__input-background;
-	padding: $size__input-padding;
+	border-radius: $size__border-radius-input;
+	@if $color__border-input == transparent {
+		border: 0;
+	}
+	@else {
+		border: {
+			width: $size__border-input;
+			style: solid;
+			color: $color__border-input;
+		}
+	}
+	background: $color__background-input;
+	padding: $size__padding-input;
 	min-width: 2em;
 	line-height: 1;
-	color: $color__input-text;
+	color: $color__text-input;
 
 	&:focus {
-		color: $color__input-focus;
+		color: $color__text-input-focus;
 	}
 
 }
@@ -89,7 +99,7 @@ select {
 }
 
 textarea {
-	padding-left: $size__input-padding;
+	padding-left: $size__padding-input;
 	width: 100%;
 }
 
@@ -100,12 +110,14 @@ textarea {
 --------------------------------------------------------------*/
 
 // default content colors
-::-webkit-input-placeholder {
-	color: $color__input-placeholder;
+input::-webkit-input-placeholder {
+	color: $color__text-input-placeholder;
 }
-::-moz-placeholder { /* Firefox 18- */
-	color: $color__input-placeholder;
+
+input::-moz-placeholder { /* Firefox 19+ */
+	color: $color__text-input-placeholder;
 }
-:-ms-input-placeholder {
-   color: $color__input-placeholder;
+
+input:-ms-input-placeholder {
+	color: $color__text-input-placeholder;
 }

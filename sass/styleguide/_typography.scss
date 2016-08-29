@@ -33,12 +33,12 @@
 **/
 
 %heading-styles {
-	color: $color__content-heading;
+	color: $color__text-heading;
 	line-height: 1.25;
 }
 
 %content-style {
-	color: $color__content-text;
+	color: $color__text;
 	font-size: 16px;
 }
 
@@ -114,9 +114,9 @@ hr {
 --------------------------------------------------------------*/
 
 a {
-	color: $color__content-link;
+	color: $color__link;
 
-	&:hover { color: $color__content-link-hover; }
+	&:hover { color: $color__link-hover; }
 
 }
 
@@ -134,8 +134,8 @@ blockquote {
 
 	margin: 1em 0;
 	padding: 1.5em;
-	background: $color__blockquote-background;
-	color: $color__blockquote-text;
+	background: $color__background-blockquote;
+	color: $color__text-blockquote;
 }
 
 cite {}

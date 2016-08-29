@@ -26,8 +26,9 @@
 /*--------------------------------------------------------------
 1.2 - Borders
 --------------------------------------------------------------*/
-$size__input-border-radius: .1875em;
-
+$size__border-radius-input: .1875em;
+$size__border-button: 1px;
+$size__border-input: 1px;
 
 
 /*--------------------------------------------------------------
@@ -35,4 +36,4 @@ $size__input-border-radius: .1875em;
 --------------------------------------------------------------*/
 $size__body-padding-mobile: 5%;
 $size__body-padding-desktop: 1%;
-$size__input-padding: .5em;
+$size__padding-input: .5em;

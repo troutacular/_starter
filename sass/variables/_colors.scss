@@ -18,8 +18,8 @@
 		5.4 - Forms
 			5.4.1 - Inputs
 			5.4.2 - Buttons
-		5.5 - Figure
-			5.5.1 - Image
+		5.5 - Figures
+			5.5.1 - Figure
 			5.5.2 - Figcaption
 		5.6 - Tables
 		5.7 - Content Types
@@ -50,23 +50,15 @@
 $color__background-body: #fff;
 $color__background-screen: #f1f1f1;
 
-$color__shadow: rgba(#000, .125);
-$color__background-screen: #fff;
 $color__text-screen: #5b514a;
 
+$color__shadow: rgba(#000, .125);
+$color__background-screen: #fff;
 
 
 /*--------------------------------------------------------------
 3.0 - Headers
 --------------------------------------------------------------*/
-
-$color__header-background: #ebede6;
-$color__header-site-title: $color__text-screen;
-$color__header-site-title-sub: $color__header-site-title;
-
-// content
-$color__content-heading: #5b514a;
-
 
 
 /*--------------------------------------------------------------
@@ -74,11 +66,9 @@ $color__content-heading: #5b514a;
 --------------------------------------------------------------*/
 
 
-
 /*--------------------------------------------------------------
 4.1 - Main Navigaton
 --------------------------------------------------------------*/
-
 
 
 /*--------------------------------------------------------------
@@ -86,20 +76,18 @@ $color__content-heading: #5b514a;
 --------------------------------------------------------------*/
 
 
-
 /*--------------------------------------------------------------
 5.0 - Content
 --------------------------------------------------------------*/
-
 
 
 /*--------------------------------------------------------------
 5.1 - Text
 --------------------------------------------------------------*/
 
-$color__content-text: $color__text-screen;
-$color__content-text-meta: lighten($color__content-text, 15);
-
+$color__text-heading: #000;
+$color__text: $color__text-screen;
+$color__text-meta: lighten($color__text, 15);
 
 
 /*--------------------------------------------------------------
@@ -107,8 +95,7 @@ $color__content-text-meta: lighten($color__content-text, 15);
 --------------------------------------------------------------*/
 
 $color__background-pre: #eee;
-$color__text-pre: $color__content-text;
-
+$color__text-pre: #5b514a;
 
 
 /*--------------------------------------------------------------
@@ -121,31 +108,21 @@ $color__text-pre: $color__content-text;
 5.2 - Links
 --------------------------------------------------------------*/
 
-$color__content-link: #777;
-$color__content-link-hover: $color__content-link;
-
-
+$color__link: #777;
+$color__link-hover: $color__link;
 
 
 /*--------------------------------------------------------------
 5.3 - Blockquotes / Cites
 --------------------------------------------------------------*/
 
-$color__blockquote-background: #555;
-$color__blockquote-text: $color__text-screen;
-$color__blockquote-icon: darken($color__blockquote-background, 7);
-
+$color__background-blockquote: #555;
+$color__text-blockquote: $color__text;
 
 
 /*--------------------------------------------------------------
 5.4 - Forms
 --------------------------------------------------------------*/
-
-// Set to 'true' to use different input colors in the widgets
-$color__form-widget-header: false;
-$color__form-widget-sidebar: true;
-$color__form-widget-footer: false;
-
 
 
 /*--------------------------------------------------------------
@@ -153,13 +130,11 @@ $color__form-widget-footer: false;
 --------------------------------------------------------------*/
 
 // see _variables.scss for padding and border radius
-$color__input-background: #ccc;
-$color__input-border: #000;
-$color__input-focus: #111;
-$color__input-text: darken($color__content-text, 25);
-$color__input-icon: #777;
-$color__input-placeholder: lighten($color__content-text, 5);
-
+$color__background-input: #ccc;
+$color__border-input: transparent;
+$color__text-input: darken($color__text, 25);
+$color__text-input-focus: #111;
+$color__text-input-placeholder: lighten($color__text, 5);
 
 
 /*--------------------------------------------------------------
@@ -167,43 +142,37 @@ $color__input-placeholder: lighten($color__content-text, 5);
 --------------------------------------------------------------*/
 
 // default content colors
-$color__button-background: #777;
-$color__button-text: #fff;
-$color__button-border: transparent;
+$color__background-button: #777;
+$color__text-button: #fff;
+$color__border-button: transparent;
 
-$color__button-background-hover: darken($color__button-background, 5);
-$color__button-text-hover: #fff;
-$color__button-border-hover: transparent;
+// hover state
+$color__background-button-hover: darken($color__background-button, 5);
+$color__text-button-hover: #fff;
+$color__border-button-hover: transparent;
 
-$color__button-background-active: lighten($color__button-background, 5);
-$color__button-text-active: #fff;
-$color__button-border-active: transparent;
-
-
-
-/*--------------------------------------------------------------
-5.5 - Figure
---------------------------------------------------------------*/
-
-$color__border-figure-single: #dcded7;
-
+// active state
+$color__background-button-active: lighten($color__background-button, 5);
+$color__text-button-active: #fff;
+$color__border-button-active: transparent;
 
 
 /*--------------------------------------------------------------
-5.5.1 - Image
+5.5 - Figures
 --------------------------------------------------------------*/
 
-// see _media.scss for images
 
+/*--------------------------------------------------------------
+5.5.1 - Figure
+--------------------------------------------------------------*/
 
 
 /*--------------------------------------------------------------
 5.5.2 - Figcaption
 --------------------------------------------------------------*/
 
-$color__figcaption-background: transparent;
-$color__figcaption-text: lighten($color__content-text, 40);
-
+$color__background-figcaption: transparent;
+$color__text-figcaption: lighten($color__text, 40);
 
 
 /*--------------------------------------------------------------
@@ -212,10 +181,6 @@ $color__figcaption-text: lighten($color__content-text, 40);
 
 $color__background-table-head: #dcded7;
 $color__text-table-head: #5b514a;
-$color__table-cell-background: #ebede6;
-$color__table-cell-text: #5b514a;
-$table-cell-border: 1px solid #dcded7;
-
 
 
 /*--------------------------------------------------------------
@@ -223,11 +188,9 @@ $table-cell-border: 1px solid #dcded7;
 --------------------------------------------------------------*/
 
 
-
 /*--------------------------------------------------------------
 6.0 - Sidebar
 --------------------------------------------------------------*/
-
 
 
 /*--------------------------------------------------------------
@@ -239,24 +202,13 @@ $table-cell-border: 1px solid #dcded7;
 8.0 - Widgets
 --------------------------------------------------------------*/
 
-// see 4.2 for secondary navigation
-
-$color__widget-background: #777;
-$color__widget-divider: #820909;
-$color__widget-content-heading: #fff;
-$color__widget-content-text: #fff;
-$color__widget-content-link: #fff;
-$color__widget-content-link-hover: #fff;
-$color__widget-content-icon: #fff;
-
-
 
 /*--------------------------------------------------------------
 9.0 - Print
 --------------------------------------------------------------*/
 
-$color__content-heading-print: #000 !default;
-$color__content-text-print: #000 !default;
-$color__content-link-print: #999 !default;
+$color__text-heading-print: #000 !default;
+$color__text-print: #000 !default;
+$color__link-print: #999 !default;
 
-$color__blockquote-background-print: #ccc;
+$color__background-blockquote-print: #ccc;

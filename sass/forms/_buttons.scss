@@ -62,40 +62,48 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"] {
 	// default content colors
-	@if $color__button-border == transparent {
+	@if $color__border-button == transparent {
 		border: 0;
 	}
 	@else {
-		border: $color__button-border;
+		border: {
+			width: $size__border-button;
+			color: $color__border-button;
+			style: solid;
+		}
 	}
-	border-radius: $size__input-border-radius;
-	background: $color__button-background;
+	border-radius: $size__border-radius-input;
+	background: $color__background-button;
 	cursor: pointer; /* Improves usability and consistency of cursor style between image-type 'input' and others */
-	padding: $size__input-padding;
+	padding: $size__padding-input;
 	line-height: 1;
-	color: $color__button-text;
+	color: $color__text-button;
 
 	-webkit-appearance: button; /* Corrects inability to style clickable 'input' types in iOS */
 	&:hover {
-		background: $color__button-background-hover;
-		color: $color__button-text-hover;
-		@if $color__button-border-hover == transparent {
+		background: $color__background-button-hover;
+		color: $color__text-button-hover;
+		@if $color__border-button-hover == transparent {
 			border: 0 none;
 		}
 		@else {
-			border: $color__button-border-hover;
+			border: {
+				width: $size__border-button;
+				color: $color__border-button;
+				style: solid;
+			}
 		}
 	}
 
 	&:focus,
 	&:active {
-		background: $color__button-background-active;
-		color: $color__button-text-active;
-		@if $color__button-border-active == transparent {
+		background: $color__background-button-active;
+		color: $color__text-button-active;
+		@if $color__border-button-active == transparent {
 			border: 0 none;
 		}
 		@else {
-			border: $color__button-border-active;
+			border: $color__border-button-active;
 		}
 	}
 }
