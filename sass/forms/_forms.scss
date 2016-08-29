@@ -1,44 +1,26 @@
 /**
 
 	Forms
-	=====
+	======
 
-	1.0 - Global
-	2.0 - Forms
-	3.0 - Labels
-	4.0 - Input By Type
-		4.1 - Placeholder
+	1.0 - Form Elements
+	2.0 - Labels
+	3.0 - Forms Partials Includes
 
 **/
 
 
 
 /*--------------------------------------------------------------
-1.0 - Global
---------------------------------------------------------------*/
-
-input,
-select,
-textarea {
-	margin: 0; /* Addresses margins set differently in IE6/7, F3/4, S5, Chrome */
-	vertical-align: baseline; /* Improves appearance and consistency in all browsers */
-	font-size: 100%; /* Corrects font size not being inherited in all browsers */
-}
-
-
-
-/*--------------------------------------------------------------
-2.0 - Forms
+1.0 - Form Elements
 --------------------------------------------------------------*/
 
 form {}
 
 fieldset {}
 
-
-
 /*--------------------------------------------------------------
-3.0 - Labels
+2.0 - Labels
 --------------------------------------------------------------*/
 
 label {
@@ -46,87 +28,9 @@ label {
 	margin: 1em 0 0;
 }
 
-
-
 /*--------------------------------------------------------------
-4.0 - Input By Type
+3.0 - Forms Partials Includes
 --------------------------------------------------------------*/
 
-[type="checkbox"],
-[type="radio"] {
-	padding: 0; /* Addresses excess padding in IE8/9 */
-}
-
-[type="search"] {
-	@include box-sizing('content-box');
-	// Addresses appearance set to searchfield in S5, Chrome
-	-webkit-appearance: textfield;
-	// Corrects inner padding displayed oddly in S5, Chrome on OSX
-	&::-webkit-search-decoration {
-		-webkit-appearance: none;
-	}
-}
-
-button::-moz-focus-inner,
-input::-moz-focus-inner { /* Corrects inner padding and border displayed oddly in FF3/4 www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/ */
-	border: 0;
-	padding: 0;
-}
-
-[type="text"],
-[type="email"],
-[type="url"],
-[type="password"],
-[type="search"],
-[type="number"],
-[type="tel"],
-[type="range"],
-[type="date"],
-[type="month"],
-[type="week"],
-[type="time"],
-[type="datetime"],
-[type="datetime-local"],
-[type="color"],
-select,
-textarea {
-
-	// default content colors
-	border-radius: $size__input-border-radius;
-	background: $color__input-background;
-	padding: $size__input-padding;
-	min-width: 2em;
-	line-height: 1;
-	color: $color__input-text;
-
-	&:focus {
-		color: $color__input-focus;
-	}
-
-}
-
-select {
-	height: 2.2em;
-}
-
-textarea {
-	padding-left: $size__input-padding;
-	width: 100%;
-}
-
-
-
-/*--------------------------------------------------------------
-4.1 - Placeholder
---------------------------------------------------------------*/
-
-// default content colors
-::-webkit-input-placeholder {
-	color: $color__input-placeholder;
-}
-::-moz-placeholder { /* Firefox 18- */
-	color: $color__input-placeholder;
-}
-:-ms-input-placeholder {
-   color: $color__input-placeholder;
-}
+@import 'forms/inputs';
+@import 'forms/buttons';
