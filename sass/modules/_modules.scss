@@ -4,7 +4,6 @@
 	=======
 
 	1.0 - Site Modules Includes
-	2.0 - Content Module Includes
 
 **/
 
@@ -14,13 +13,5 @@
 1.0 - Site Modules Includes
 --------------------------------------------------------------*/
 
-@import 'modules/comments';
-@import 'modules/site-branding';
-@import 'modules/site-navigation';
-@import 'modules/site-search';
-
-
-
-/*--------------------------------------------------------------
-2.0 - Content Module Includes
---------------------------------------------------------------*/
+@import 'accessibility';
+@import 'comments';
