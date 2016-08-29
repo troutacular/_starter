@@ -1,0 +1,35 @@
+/**
+
+	Menus
+	=====
+
+	1.0 - Menus
+
+**/
+
+
+
+/*--------------------------------------------------------------
+1.0 - Menus
+--------------------------------------------------------------*/
+
+.comment-navigation,
+.posts-navigation,
+.post-navigation {
+
+	.site-main & {
+		margin: 0 0 1.5em;
+		overflow: hidden;
+	}
+
+	.nav-previous {
+		float: left;
+		width: 50%;
+	}
+
+	.nav-next {
+		float: right;
+		width: 50%;
+		text-align: right;
+	}
+}
