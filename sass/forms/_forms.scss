@@ -8,7 +8,6 @@
 	3.0 - Labels
 	4.0 - Input By Type
 		4.1 - Placeholder
-	5.0 - Buttons
 
 **/
 
@@ -53,12 +52,12 @@ label {
 4.0 - Input By Type
 --------------------------------------------------------------*/
 
-input[type="checkbox"],
-input[type="radio"] {
+[type="checkbox"],
+[type="radio"] {
 	padding: 0; /* Addresses excess padding in IE8/9 */
 }
 
-input[type="search"] {
+[type="search"] {
 	@include box-sizing('content-box');
 	// Addresses appearance set to searchfield in S5, Chrome
 	-webkit-appearance: textfield;
@@ -74,91 +73,34 @@ input::-moz-focus-inner { /* Corrects inner padding and border displayed oddly i
 	padding: 0;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="url"],
-input[type="password"],
-input[type="search"],
-input[type="number"],
-input[type="tel"],
-input[type="date"],
-input[type="datetime"],
-input[type="color"],
-input.input-datalist,
+[type="text"],
+[type="email"],
+[type="url"],
+[type="password"],
+[type="search"],
+[type="number"],
+[type="tel"],
+[type="range"],
+[type="date"],
+[type="month"],
+[type="week"],
+[type="time"],
+[type="datetime"],
+[type="datetime-local"],
+[type="color"],
 select,
 textarea {
 
 	// default content colors
-	border-radius: $input-border-radius;
+	border-radius: $size__input-border-radius;
 	background: $color__input-background;
-	padding: $input-padding;
+	padding: $size__input-padding;
 	min-width: 2em;
 	line-height: 1;
 	color: $color__input-text;
-	@if $color__input-border == transparent {
-		border: 0 none;
-	}
-	@else {
-		border: 1px solid $color__input-border;
-	}
 
 	&:focus {
 		color: $color__input-focus;
-	}
-
-	// header colors
-	@if $color__form-widget-sidebar == true {
-		.site-header & {
-			background: $color__input-background-widget-header;
-			color: $color__input-text-widget-header;
-			@if $color__input-border-widget-header == transparent {
-				border: 0 none;
-			}
-			@else {
-				border: 1px solid $color__input-border-widget-header;
-			}
-
-			&:focus {
-				color: $color__input-focus-widget-header;
-			}
-		}
-	}
-
-
-	// sidebar colors
-	@if $color__form-widget-sidebar == true {
-		.site-sidebar .widget & {
-			background: $color__input-background-widget-sidebar;
-			color: $color__input-text-widget-sidebar;
-			@if $color__input-border-widget-sidebar == transparent {
-				border: 0 none;
-			}
-			@else {
-				border: 1px solid $color__input-border-widget-sidebar;
-			}
-
-			&:focus {
-				color: $color__input-focus-widget-sidebar;
-			}
-		}
-	}
-
-	// footer colors
-	@if $color__form-widget-footer == true {
-		.site-footer .widget & {
-			background: $color__input-background-widget-footer;
-			color: $color__input-text-widget-footer;
-			@if $color__input-border-widget-footer == transparent {
-				border: 0 none;
-			}
-			@else {
-				border: 1px solid $color__input-border-widget-footer;
-			}
-
-			&:focus {
-				color: $color__input-focus-widget-footer;
-			}
-		}
 	}
 
 }
@@ -168,11 +110,8 @@ select {
 }
 
 textarea {
-	width: 90%;
-	// Removes default vertical scrollbar in IE6/7/8/9
-	overflow: auto;
-	// Improves readability and alignment in all browsers
-	vertical-align: top;
+	padding-left: $size__input-padding;
+	width: 100%;
 }
 
 
@@ -191,10 +130,3 @@ textarea {
 :-ms-input-placeholder {
    color: $color__input-placeholder;
 }
-
-
-/*--------------------------------------------------------------
-5.0 - Buttons
---------------------------------------------------------------*/
-
-// See _buttons.scss for button styles
