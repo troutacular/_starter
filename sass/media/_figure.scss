@@ -1,0 +1,35 @@
+/**
+
+	Figures
+	=====
+
+	1.0 - Figure
+	2.0 - Fig Caption
+
+**/
+
+
+
+/*--------------------------------------------------------------
+1.0 - Figure
+--------------------------------------------------------------*/
+
+figure {
+	max-width: 100%;
+
+	&.alignleft,
+	&.alignright,
+	&.aligncenter {
+		margin-top: 0;
+	}
+}
+
+
+/*--------------------------------------------------------------
+2.0 - Fig Caption
+--------------------------------------------------------------*/
+
+figcaption {
+	background-color: $color__figcaption-background;
+	color: $color__figcaption-text;
+}
