@@ -14,9 +14,9 @@
 1.0 - Specific Order Import
 --------------------------------------------------------------*/
 
-@import 'styleguide/grid';
-@import 'styleguide/fonts';
-@import 'styleguide/typography';
+@import 'grid';
+@import 'fonts';
+@import 'typography';
 
 
 
@@ -24,10 +24,10 @@
 2.0 - Remaining Files
 --------------------------------------------------------------*/
 
-@import 'styleguide/accessibility';
-@import 'styleguide/errors';
-@import 'styleguide/footer';
-@import 'styleguide/gallery';
-@import 'styleguide/header';
-@import 'styleguide/sidebars';
-@import 'styleguide/widgets';
+@import 'errors';
+@import 'footer';
+@import 'gallery';
+@import 'header';
+@import 'sidebars';
+@import 'site-branding';
+@import 'widgets';

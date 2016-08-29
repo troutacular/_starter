@@ -47,15 +47,13 @@
 /*--------------------------------------------------------------
 2.0 - Globals
 --------------------------------------------------------------*/
-
-$color__base-background: #fff;
-$color__base-highlight: #777;
-$color__base-highlight-alt: #777;
+$color__background-body: #fff;
+$color__background-screen: #f1f1f1;
 
 $color__shadow: rgba(#000, .125);
-$color__body-background: #fff;
-$color__body-text: #5b514a;
-$color__body-text-icon: #777;
+$color__background-screen: #fff;
+$color__text-screen: #5b514a;
+$color__icon-screen: #777;
 
 
 
@@ -64,7 +62,7 @@ $color__body-text-icon: #777;
 --------------------------------------------------------------*/
 
 $color__header-background: #ebede6;
-$color__header-site-title: $color__body-text;
+$color__header-site-title: $color__text-screen;
 $color__header-site-title-sub: $color__header-site-title;
 
 // content
@@ -100,7 +98,7 @@ $color__content-heading: #5b514a;
 5.1 - Text
 --------------------------------------------------------------*/
 
-$color__content-text: $color__body-text;
+$color__content-text: $color__text-screen;
 $color__content-text-meta: lighten($color__content-text, 15);
 
 
@@ -135,7 +133,7 @@ $color__content-link-hover: $color__content-link;
 --------------------------------------------------------------*/
 
 $color__blockquote-background: #555;
-$color__blockquote-text: $color__body-text;
+$color__blockquote-text: $color__text-screen;
 $color__blockquote-icon: darken($color__blockquote-background, 7);
 
 
@@ -236,24 +234,6 @@ $table-cell-border: 1px solid #dcded7;
 /*--------------------------------------------------------------
 7.0 - Footer
 --------------------------------------------------------------*/
-
-/* See 8.0 - Widgets for Footer Widgets */
-
-
-
-/*--------------------------------------------------------------
-7.1 - Site Credit
---------------------------------------------------------------*/
-
-$color__background-site-credit: #dcded7;
-$color__text-site-credit: #000;
-
-$color__link-website-by: $color__content-link;
-$color__link-website-by-hover: $color__content-link-hover;
-
-$color__link-feedback: $color__body-text;
-$color__link-feedback-hover: $color__body-text;
-
 
 
 /*--------------------------------------------------------------
