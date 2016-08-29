@@ -5,8 +5,7 @@
 
 	1.0 - Site Navigation Wrapper
 	2.0 - Site Navigation Title
-	3.0 - Site Navigation Screen/Skip
-	4.0 - Site Navigation List
+	4.0 - Site Navigation Menu
 
 **/
 
@@ -16,7 +15,7 @@
 1.0 - Site Navigation Wrapper
 --------------------------------------------------------------*/
 
-.site-navigation {
+.site-navigation {}
 
 
 
@@ -24,24 +23,11 @@
 2.0 - Site Navigation Title
 --------------------------------------------------------------*/
 
-	.site-navigation-title {}
-
-
-
-/*--------------------------------------------------------------
-3.0 - Site Navigation Screen/Skip
---------------------------------------------------------------*/
-
-	.skip-link {}
+.site-navigation-title {}
 
 
 /*--------------------------------------------------------------
-4.0 - Site Navigation List
+4.0 - Site Navigation Menu
 --------------------------------------------------------------*/
 
-	.site-navigation-list {}
-
-
-
-/*------------------------------------------------------------*/
-} // close .site-navigation
+.site-navigation-menu {}
