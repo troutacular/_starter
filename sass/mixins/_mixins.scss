@@ -3,7 +3,7 @@
 	Mixins
 	======
 
-	1.0 - Global Mixins
+	1.0 - Mixin imports
 
 	=========
 
@@ -16,13 +16,14 @@
 
 
 /*--------------------------------------------------------------
-1.0 - Global Mixins
+1.0 - Mixin imports
 --------------------------------------------------------------*/
 
-@import 'mixins/align-horizontal';
-@import 'mixins/align-vertical';
-@import 'mixins/breakpoints';
-@import 'mixins/font-size';
-@import 'mixins/font-style';
-@import 'mixins/media-queries';
-@import 'mixins/sass-heading-sizes';
+@import 'align-horizontal';
+@import 'align-vertical';
+@import 'breakpoints';
+@import 'center-block';
+@import 'font-size';
+@import 'font-style';
+@import 'media-queries';
+@import 'sass-heading-sizes/sass-heading-sizes';
