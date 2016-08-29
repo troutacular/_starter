@@ -68,10 +68,10 @@ input[type="submit"] {
 	@else {
 		border: $color__button-border;
 	}
-	border-radius: $input-border-radius;
+	border-radius: $size__input-border-radius;
 	background: $color__button-background;
 	cursor: pointer; /* Improves usability and consistency of cursor style between image-type 'input' and others */
-	padding: $input-padding;
+	padding: $size__input-padding;
 	line-height: 1;
 	color: $color__button-text;
 

@@ -56,10 +56,10 @@ $susy: (
 .site-footer,
 .site-contact {
 	@include container;
-	padding: 0 $padding-body-mobile;
+	padding: 0 $size__body-padding-mobile;
 
 	@media #{$medium-up} {
-		padding: 0 $padding-body-desktop;
+		padding: 0 $size__body-padding-desktop;
 	}
 }
 
