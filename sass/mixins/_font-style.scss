@@ -5,10 +5,9 @@
 
 	Apply font attributes family, style, weight for typekit fonts.
 
+
+	Usage
 	=========
-
-	Usage:
-
 	.class { @include font-style($font-sample-variable, italic, 700); }
 
 **/

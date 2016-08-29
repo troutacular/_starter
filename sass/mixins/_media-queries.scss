@@ -8,9 +8,9 @@
 	3.0 - HDPI
 	4.0 - Print
 
-	=========
 
-	Usage:
+	Usage
+	=========
 
 	@include min-screen(width);
 	@include max-screen(width);
@@ -24,13 +24,14 @@
 
 	@include hdpi(ratio);
 
+	Note
 	=========
+	You CANNOT use @extend inside the media query.
 
-	NOTE: You CANNOT use @extend inside the media query.
 
+	Credit
 	=========
-
-	Partial Credit: Rafal Bromirski - http:paranoida.com/
+	Rafal Bromirski - http:paranoida.com/
 	Licensed under a MIT License
 
 **/
