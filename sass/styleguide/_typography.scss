@@ -15,7 +15,6 @@
 			3.6.1 - Captions
 		3.7 - Sub/Superscripts
 		3.8 - Code
-	4.0 - Alignments
 
 **/
 
@@ -231,31 +230,4 @@ pre {
 
 code, kbd, tt, var {
 	font: 15px Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
-}
-
-
-
-/*--------------------------------------------------------------
-4.0 - Alignments
---------------------------------------------------------------*/
-
-.alignleft {
-	display: inline;
-	float: left;
-	margin-right: 1.5em;
-	text-align: left;
-}
-
-.alignright {
-	display: inline;
-	float: right;
-	margin-left: 1.5em;
-	text-align: right;
-}
-
-.aligncenter {
-	clear: both;
-	display: block;
-	margin: 0 auto;
-	text-align: center;
 }
