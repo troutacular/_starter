@@ -15,8 +15,11 @@
 --------------------------------------------------------------*/
 
 /* Do not show the outline on the skip link target. */
-#content[tabindex="-1"]:focus {
-	outline: 0;
+#content,
+#secondary {
+	&[tabindex="-1"]:focus {
+		outline: 0;
+	}
 }
 
 
@@ -26,28 +29,30 @@
 
 /* Text meant only for screen readers. */
 .screen-reader-text {
-	clip: rect(1px, 1px, 1px, 1px);
-	position: absolute !important;
-	height: 1px;
+	position: absolute;
 	width: 1px;
+	height: 1px;
 	overflow: hidden;
 
+	clip: rect(1px, 1px, 1px, 1px);
+
 	&:focus {
-		background-color: $color__background-screen;
-		border-radius: 3px;
-		box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
-		clip: auto !important;
-		color: $color__text-screen;
-		display: block;
 		@include font-size(14);
-		font-weight: bold;
-		height: auto;
-		left: 5px;
-		line-height: normal;
-		padding: 15px 23px 14px;
-		text-decoration: none;
+		display: block;
 		top: 5px;
-		width: auto;
+		left: 5px;
 		z-index: 100000; /* Above WP toolbar. */
+		border-radius: 3px;
+		box-shadow: 0 0 2px 2px $color__shadow-screen-reader;
+		background-color: $color__background-screen;
+		padding: 15px 23px 14px;
+		width: auto;
+		height: auto;
+		text-decoration: none;
+		line-height: normal;
+		color: $color__text-screen;
+		font-weight: bold;
+
+		clip: auto;
 	}
 }
