@@ -1,0 +1,17 @@
+/**
+
+	Clearfix
+	=========
+
+	Clear after (not all clearfix need this also)
+
+
+	Usage
+	=========
+	.class { @include clearfix-after; }
+
+**/
+
+@mixin clearfix-after() {
+	clear: both;
+}
