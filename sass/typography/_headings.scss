@@ -1,0 +1,49 @@
+/**
+
+	Headings
+	==========
+
+	1.0 - Headings
+	2.0 - Sidebars
+	3.0 - Footers
+
+**/
+
+
+
+/*--------------------------------------------------------------
+1.0 - Headings
+--------------------------------------------------------------*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height: 1.25;
+	color: $color__text-heading;
+}
+
+// indclude headings at different rem
+@include heading-decrement(2.5, .25, rem);
+
+
+/*--------------------------------------------------------------
+2.0 - Sidebars
+--------------------------------------------------------------*/
+
+.site-sidebar {
+	// start the sidebar headings at a different rem
+	@include heading-decrement(1.5, .25, rem);
+}
+
+
+/*--------------------------------------------------------------
+3.0 - Footers
+--------------------------------------------------------------*/
+
+.site-footer {
+	// start the footer headings at a different rem
+	@include heading-decrement(1.5, .25, rem);
+}
