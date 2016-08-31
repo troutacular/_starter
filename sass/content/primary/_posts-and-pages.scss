@@ -1,26 +1,26 @@
 /**
 
-	Layout
-	======
+	Posts and Pages
+	========
 
-	1.0 - Primary Partials Includes
-	2.0 - Secondary Partials Includes
+	1.0 - Posts
+	2.0 - Pages
 
 **/
 
 
 
 /*--------------------------------------------------------------
-1.0 - Content Partials Includes
+1.0 - Posts
 --------------------------------------------------------------*/
 
-@import 'primary/posts-and-pages';
-@import 'primary/entry';
-@import 'primary/comments';
+.single {}
+
+.group-blog {}
 
 
 /*--------------------------------------------------------------
-2.0 - Secondary Partials Includes
+2.0 - Pages
 --------------------------------------------------------------*/
 
-@import 'secondary/widgets';
+.page {}
