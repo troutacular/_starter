@@ -1,0 +1,25 @@
+/**
+
+	Layout
+	======
+
+	1.0 - Primary Partials Includes
+	2.0 - Secondary Partials Includes
+
+**/
+
+
+
+/*--------------------------------------------------------------
+1.0 - Content Partials Includes
+--------------------------------------------------------------*/
+
+@import 'primary/entry';
+@import 'primary/comments';
+
+
+/*--------------------------------------------------------------
+2.0 - Secondary Partials Includes
+--------------------------------------------------------------*/
+
+@import 'secondary/widgets';
