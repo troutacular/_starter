@@ -1,0 +1,40 @@
+/**
+
+	Layout
+	======
+
+	1.0 - Global Layout
+	2.0 - Layout Partials Includes
+
+**/
+
+
+
+/*--------------------------------------------------------------
+1.0 - Global Layout
+--------------------------------------------------------------*/
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after { /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+	box-sizing: inherit;
+}
+
+body {
+	background: $color__background-body; /* Fallback for when there is no custom background color defined. */
+}
+
+
+/*--------------------------------------------------------------
+2.0 - Layout Partials Includes
+--------------------------------------------------------------*/
+
+@import 'grid';
+@import 'header';
+@import 'main';
+@import 'sidebars';
+@import 'footer';
