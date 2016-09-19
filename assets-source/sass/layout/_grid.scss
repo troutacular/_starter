@@ -41,6 +41,9 @@ $susy: (
 	math: fluid,
 	output: float,
 	gutter-position: after,
+	use-custom: (
+		box-sizing: false,
+	),
 );
 
 
