@@ -13,7 +13,12 @@
     "gulp-ruby-sass": "^2.1.0",
     "gulp-rename": "^1.2.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-rename": "^1.2.2"
+  },
   "scripts": {
     "test": "gulp"
   },

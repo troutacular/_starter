@@ -31,6 +31,15 @@
 
 (function(){
 
+	'use strict';
+
+	var gulp = require('gulp'),
+
+		// Functions
+		del = require('del'),
+		notify = require('gulp-notify'),
+		rename = require('gulp-rename');
+
 
 /*--------------------------------------------------------------
 2.0 - Variables
