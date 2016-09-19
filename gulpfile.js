@@ -195,6 +195,7 @@
 			image: paths.images.dest,
 			require: ['susy'],
 		}))
+		.pipe(preprocess({context: {VERSION: project_version}}))
 		.on('error', function (error) {
 			console.error('Error!', error.message);
 		})
