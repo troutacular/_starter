@@ -38,7 +38,13 @@
 		// Functions
 		del = require('del'),
 		notify = require('gulp-notify'),
-		rename = require('gulp-rename');
+		rename = require('gulp-rename'),
+
+		// CSS
+		sass = require('gulp-ruby-sass'),
+		compass = require('gulp-compass'),
+		autoprefixer = require('gulp-autoprefixer'),
+		minifycss = require('gulp-clean-css');
 
 
 /*--------------------------------------------------------------
