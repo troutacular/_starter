@@ -38,13 +38,14 @@
 		// Functions
 		del = require('del'),
 		notify = require('gulp-notify'),
+		path = require('path'),
 		rename = require('gulp-rename'),
 
 		// CSS
 		sass = require('gulp-ruby-sass'),
 		compass = require('gulp-compass'),
 		autoprefixer = require('gulp-autoprefixer'),
-		minifycss = require('gulp-clean-css');
+		cleanCSS = require('gulp-clean-css');
 
 
 /*--------------------------------------------------------------
@@ -69,6 +70,10 @@
 		sass: 'assets-source/sass',
 	};
 	var paths = {
+		images: {
+			src: base_paths.src + '/images',
+			dest: base_paths.dest + '/images',
+		},
 		sass: {
 			src: base_paths.src + '/sass',
 			dest: base_paths.dest + '/css',
@@ -108,12 +113,15 @@
 	gulp.task('styles', function() {
 		gulp.src(paths.sass.src + '/*.scss')
 		.pipe(compass({
-			config_file: paths.sass.config,
+			// config_file: paths.sass.config,
+			// project: path.join(__dirname, 'assets-source'),
 			css: paths.sass.dest,
-			sass: paths.sass.src
+			sass: paths.sass.src,
+			image: paths.images.dest,
+			require: ['susy'],
 		}))
-		.on('error', function (err) {
-			console.error('Error!', err.message);
+		.on('error', function (error) {
+			console.error('Error!', error.message);
 		})
 		.pipe(autoprefixer('last 2 version'))
 		.pipe(gulp.dest(paths.sass.dest))
