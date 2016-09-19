@@ -1,0 +1,36 @@
+{
+  "name": "starter",
+  "version": "1.0.0",
+  "description": "WordPress _starter theme is based off of the _s (underscores) theme and is intended to clone and use as you see fit.  It is not intended to be used as a Parent or Child theme.",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-clean-css": "^2.0.12",
+    "gulp-compass": "^2.1.0",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-ruby-sass": "^2.1.0",
+    "gulp-rename": "^1.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/troutacular/_starter.git"
+  },
+  "keywords": [
+    "WordPress",
+    "Theme",
+    "_starter",
+    "Gulp"
+  ],
+  "author": "troutacular",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/troutacular/_starter/issues"
+  },
+  "homepage": "https://github.com/troutacular/_starter#readme"
+}
