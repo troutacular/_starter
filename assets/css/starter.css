@@ -1,1 +1,2584 @@
-/*! normalize.css v4.2.0 | MIT License | github.com/necolas/normalize.css */html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block}audio:not([controls]){display:none;height:0}progress{vertical-align:baseline}template,[hidden]{display:none}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit}b,strong{font-weight:bolder}dfn{font-style:italic}h1{font-size:2em;margin:0.67em 0}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}svg:not(:root){overflow:hidden}code,kbd,pre,samp{font-family:monospace, monospace;font-size:1em}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}button,input,optgroup,select,textarea{font:inherit;margin:0}optgroup{font-weight:bold}button,input{overflow:visible}button,select{text-transform:none}button,html [type="button"],[type="reset"],[type="submit"]{-webkit-appearance:button}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}[type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0}[type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto}[type="search"]{-webkit-appearance:textfield;outline-offset:-2px}[type="search"]::-webkit-search-cancel-button,[type="search"]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-input-placeholder{color:inherit;opacity:0.54}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}body{background:#fff}.site-branding,.site-navigation,.nav-breadcrumbs,.site-content,.site-footer,.site-contact{max-width:100%;margin-left:auto;margin-right:auto;padding:0 5%}.site-branding:after,.site-navigation:after,.nav-breadcrumbs:after,.site-content:after,.site-footer:after,.site-contact:after{content:" ";display:block;clear:both}@media only screen and (min-width: 48em){.site-branding,.site-navigation,.nav-breadcrumbs,.site-content,.site-footer,.site-contact{padding:0 1%}}.site-footer-columns-1 .footer-column{width:100%;float:left;margin-left:0;margin-right:0}.site-footer-columns-2 .footer-column{width:100%;float:left;margin-left:0;margin-right:0}@media only screen and (min-width: 0){.site-footer-columns-2 .footer-column{width:49.15254%;float:left;margin-right:1.69492%}.site-footer-columns-2 .footer-column:last-of-type{float:right;margin-right:0}}.site-footer-columns-3 .footer-column{width:100%;float:left;margin-left:0;margin-right:0}@media only screen and (min-width: 40em){.site-footer-columns-3 .footer-column{width:32.20339%;float:left;margin-right:1.69492%}.site-footer-columns-3 .footer-column:last-of-type{float:right;margin-right:0}}.site-footer-columns-4 .footer-column{width:100%;float:left;margin-left:0;margin-right:0}@media only screen and (min-width: 0){.site-footer-columns-4 .footer-column{width:49.15254%;float:left;margin-right:1.69492%}.site-footer-columns-4 .footer-column:last-of-type{float:right;margin-right:0}}@media only screen and (min-width: 40em){.site-footer-columns-4 .footer-column{width:23.72881%;float:left;margin-right:1.69492%}.site-footer-columns-4 .footer-column:last-of-type{float:right;margin-right:0}}html,body{height:100%}.site{display:table;width:100%;height:100%;table-layout:fixed}.site-footer-wrapper{display:table-row;width:100%;height:1px}.alignleft{display:inline;float:left;margin-right:1.5em;text-align:left}.alignright{display:inline;float:right;margin-left:1.5em;text-align:right}.aligncenter{display:block;margin-left:auto;margin-right:auto;text-align:center;clear:both}.clear::before,.clear::after,.entry-content::before,.entry-content::after,.comment-content::before,.comment-content::after,.site-header::before,.site-header::after,.site-content::before,.site-content::after,.site-footer::before,.site-footer::after{overflow:hidden;*zoom:1}.clear::after,.entry-content::after,.comment-content::after,.site-header::after,.site-content::after,.site-footer::after{clear:both}body,button,input,select,textarea{font-size:16px;font-size:1rem;line-height:1.5;color:#5b514a;font-family:sans-serif}p{margin-bottom:1.5em}b,strong{font-weight:bold}dfn,cite,em,i{font-style:italic}blockquote{margin:1em 0;background:#555;padding:1.5em;color:#5b514a;quotes:'" "'}blockquote::before,blockquote::after{content:''}address{margin:0 0 1.5em}sup,sub{position:relative;height:0;vertical-align:baseline;line-height:0;font-size:75%}sup{bottom:1ex}sub{top:.5ex}small{font-size:75%}big{font-size:125%}pre{font-size:15px;font-size:.9375rem;margin-bottom:1.6em;background:#eee;padding:1.6em;max-width:100%;overflow:auto;line-height:1.6;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;font-family:"Courier 10 Pitch",Courier,monospace;word-wrap:break-word}code,kbd,tt,var{font-size:15px;font-size:.9375rem;font-family:Monaco,Consolas,"Andale Mono","DejaVu Sans Mono",monospace}hr{margin-bottom:1.5em;border:0;background-color:#ccc;height:1px}abbr,acronym{border-bottom:1px dotted #666;cursor:help}mark,ins{background:#fff9c0;text-decoration:none}h1,h2,h3,h4,h5,h6{line-height:1.25;color:#000}h1{font-size:40px;font-size:2.5rem}h2{font-size:30px;font-size:1.875rem}h3{font-size:22.5px;font-size:1.40625rem}h4{font-size:16.875px;font-size:1.05469rem}h5{font-size:12.65625px;font-size:.79102rem}h6{font-size:9.49219px;font-size:.59326rem}.site-sidebar h1{font-size:24px;font-size:1.5rem}.site-sidebar h2{font-size:18px;font-size:1.125rem}.site-sidebar h3{font-size:13.5px;font-size:.84375rem}.site-sidebar h4{font-size:10.125px;font-size:.63281rem}.site-sidebar h5{font-size:7.59375px;font-size:.47461rem}.site-sidebar h6{font-size:5.69531px;font-size:.35596rem}.site-footer h1{font-size:24px;font-size:1.5rem}.site-footer h2{font-size:18px;font-size:1.125rem}.site-footer h3{font-size:13.5px;font-size:.84375rem}.site-footer h4{font-size:10.125px;font-size:.63281rem}.site-footer h5{font-size:7.59375px;font-size:.47461rem}.site-footer h6{font-size:5.69531px;font-size:.35596rem}#content[tabindex="-1"]:focus,#secondary[tabindex="-1"]:focus{outline:0}.screen-reader-text{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(1px, 1px, 1px, 1px)}.screen-reader-text:focus{font-size:14px;font-size:.875rem;display:block;top:5px;left:5px;z-index:100000;border-radius:3px;box-shadow:0 0 2px 2px rgba(0,0,0,0.6);background-color:#fff;padding:15px 23px 14px;width:auto;height:auto;text-decoration:none;line-height:normal;color:#5b514a;font-weight:bold;clip:auto}ul,ol{margin:0 0 1.5em 3em}li>ul,li>ol{margin-bottom:0;margin-left:1.5em}ul{list-style:disc}ol{list-style:decimal}dt{font-weight:bold}dd{margin:0 1.5em 1.5em}table{margin:0 0 1.5em;width:100%}th,td{padding:2%}th{background-color:#dcded7;color:#5b514a;font-weight:bold}label{display:block;margin:1em 0 0}input,select,textarea{margin:0;vertical-align:baseline;font-size:100%}[type="checkbox"],[type="radio"]{padding:0}[type="search"]{box-sizing:content-box;-webkit-appearance:textfield}[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}[type="text"],[type="email"],[type="url"],[type="password"],[type="search"],[type="number"],[type="tel"],[type="range"],[type="date"],[type="month"],[type="week"],[type="time"],[type="datetime"],[type="datetime-local"],[type="color"],select,textarea{border-radius:.1875em;border:0;background:#ccc;padding:.5em;min-width:2em;line-height:1;color:#151211}[type="text"]:focus,[type="email"]:focus,[type="url"]:focus,[type="password"]:focus,[type="search"]:focus,[type="number"]:focus,[type="tel"]:focus,[type="range"]:focus,[type="date"]:focus,[type="month"]:focus,[type="week"]:focus,[type="time"]:focus,[type="datetime"]:focus,[type="datetime-local"]:focus,[type="color"]:focus,select:focus,textarea:focus{color:#111}select{height:2.2em}textarea{padding-left:.5em;width:100%}input::-webkit-input-placeholder{color:#695e55}input::-moz-placeholder{color:#695e55}input:-ms-input-placeholder{color:#695e55}button{margin:0;vertical-align:baseline;font-size:100%}button.file-input{position:relative;overflow:hidden}button.file-input label{margin:0}button.file-input [type="file"]{position:absolute;top:0;right:0;bottom:0;left:0;opacity:.001}button,input[type="button"],input[type="reset"],input[type="submit"]{border:0;border-radius:.1875em;background:#777;cursor:pointer;padding:.5em;line-height:1;color:#fff;-webkit-appearance:button}button:hover,input[type="button"]:hover,input[type="reset"]:hover,input[type="submit"]:hover{background:#6a6a6a;color:#fff;border:0 none}button:focus,button:active,input[type="button"]:focus,input[type="button"]:active,input[type="reset"]:focus,input[type="reset"]:active,input[type="submit"]:focus,input[type="submit"]:active{background:#848484;color:#fff;border:0 none}img{max-width:100%;height:auto}img.alignleft,img.alignright,img.aligncenter{margin-top:0}figure{max-width:100%}figure.alignleft,figure.alignright,figure.aligncenter{margin-top:0}figcaption{background-color:transparent;color:#c0b7b1}.wp-caption{margin-bottom:1.5em;max-width:100%}.wp-caption img[class*="wp-image-"]{display:block;margin-left:auto;margin-right:auto}.wp-caption .wp-caption-text{margin:.8075em 0}.wp-caption-text{text-align:center}.gallery{overflow:hidden;*zoom:1;margin-bottom:1.5em}.gallery-item{display:inline-block;width:100%;vertical-align:top;text-align:center}.gallery-columns-2 .gallery-item{max-width:50%}.gallery-columns-3 .gallery-item{max-width:33.33%}.gallery-columns-4 .gallery-item{max-width:25%}.gallery-columns-5 .gallery-item{max-width:20%}.gallery-columns-6 .gallery-item{max-width:16.66%}.gallery-columns-7 .gallery-item{max-width:14.28%}.gallery-columns-8 .gallery-item{max-width:12.5%}.gallery-columns-9 .gallery-item{max-width:11.11%}.gallery-caption{display:block}embed,iframe,object{max-width:100%}a{color:#777}a:visited{color:#515151}a:hover,a:focus,a:active{color:#9d9d9d}a:focus{outline:thin dotted}a:hover,a:active{outline:0}.site-main .comment-navigation,.site-main .posts-navigation,.site-main .post-navigation{margin:0 0 1.5em;overflow:hidden}.comment-navigation .nav-previous,.posts-navigation .nav-previous,.post-navigation .nav-previous{float:left;width:50%}.comment-navigation .nav-next,.posts-navigation .nav-next,.post-navigation .nav-next{float:right;width:50%;text-align:right}.page-links{clear:both;margin:0 0 1.5em}.comment-content a{word-wrap:break-word}.bypostauthor{display:block}.widget{margin:0 0 1.5em}.widget select{max-width:100%}@media print{@page{margin:.5cm}body{background:#fff}div,article,aside,details,figcaption,figure,footer,header,main,nav,section{background:transparent !important;color:#000 !important}h1,h2,h3,h4,h5,h6{color:#000 !important;background:transparent !important;border-color:#000 !important}h1{border-bottom:1px solid #000;padding-bottom:.5em;margin-bottom:1em}.brand-title{border:0 none}.site-title a{clear:both;color:#000 !important}.site-content{clear:both;margin-top:1em;padding-top:1em;border-top:1px solid #000}p{color:#000}q,blockquote{background:#ccc}q:before,q:after,blockquote:before,blockquote:after{content:''}q[cite]:after,blockquote[cite]:after{content:" [Source: " attr(cite) "]";font-size:75%}a{color:#999 !important;text-decoration:underline}a:not([href*='']):after{content:" [" attr(href) "] ";color:#bfbfbf;text-decoration:none}p a{word-wrap:break-word}img{max-width:500px}header nav,footer,audio,video,embed,object,.site-breadcrumbs,.widget_search{display:none}}
+/**
+
+	_starter
+	========
+
+	Use this file for compiling your theme structure.
+
+	1.0 - Normalize
+	2.0 - Variables
+	3.0 - Mixins
+	4.0 - Vendor
+	5.0 - Theme
+	6.0 - Modules
+	7.0 - Content
+	8.0 - CSS Media Types
+		8.1 - Print
+
+**/
+/*--------------------------------------------------------------
+1.0 - Normalize
+--------------------------------------------------------------*/
+/** normalize.css v4.2.0 | MIT License | github.com/necolas/normalize.css */
+/**
+ * 1. Change the default font family in all browsers (opinionated).
+ * 2. Correct the line height in all browsers.
+ * 3. Prevent adjustments of font size after orientation changes in IE and iOS.
+ */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  line-height: 1.15;
+  /* 2 */
+  -ms-text-size-adjust: 100%;
+  /* 3 */
+  -webkit-text-size-adjust: 100%;
+  /* 3 */
+}
+
+/**
+ * Remove the margin in all browsers (opinionated).
+ */
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in Edge, IE, and Firefox.
+ * 2. Add the correct display in IE.
+ */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+  /* 1 */
+  display: block;
+}
+
+/**
+ * Add the correct display in IE 9-.
+ */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in iOS 4-7.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Add the correct display in IE 10-.
+ * 1. Add the correct display in IE.
+ */
+template,
+[hidden] {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+/**
+ * 1. Remove the gray background on active links in IE 10.
+ * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ */
+a {
+  background-color: transparent;
+  /* 1 */
+  -webkit-text-decoration-skip: objects;
+  /* 2 */
+}
+
+/**
+ * Remove the outline on focused links when they are also active or hovered
+ * in all browsers (opinionated).
+ */
+a:active,
+a:hover {
+  outline-width: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * 1. Remove the bottom border in Firefox 39-.
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */
+}
+
+/**
+ * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+ */
+b,
+strong {
+  font-weight: inherit;
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * Add the correct font style in Android 4.3-.
+ */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Add the correct background and color in IE 9-.
+ */
+mark {
+  background-color: #ff0;
+  color: #000;
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove the border on images inside links in IE 10-.
+ */
+img {
+  border-style: none;
+}
+
+/**
+ * Hide the overflow in IE.
+ */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/**
+ * Add the correct margin in IE 8.
+ */
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change font properties to `inherit` in all browsers (opinionated).
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font: inherit;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+}
+
+/**
+ * Restore the font weight unset by the previous rule.
+ */
+optgroup {
+  font-weight: bold;
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+button,
+input {
+  /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+
+/**
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+ *    controls in Android 4.
+ * 2. Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Change the border, margin, and padding in all browsers (opinionated).
+ */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  box-sizing: border-box;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  white-space: normal;
+  /* 1 */
+}
+
+/**
+ * Remove the default vertical scrollbar in IE.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10-.
+ * 2. Remove the padding in IE 10-.
+ */
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/**
+ * Remove the inner padding and cancel buttons in Chrome and Safari on OS X.
+ */
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Correct the text style of placeholders in Chrome, Edge, and Safari.
+ */
+::-webkit-input-placeholder {
+  color: inherit;
+  opacity: 0.54;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+/*--------------------------------------------------------------
+2.0 - Variables
+--------------------------------------------------------------*/
+/**
+
+	Variables
+	=========
+
+	1.0 - Variables Includes
+
+**/
+/*--------------------------------------------------------------
+1.0 - Variables Includes
+--------------------------------------------------------------*/
+/**
+
+	Configs
+	=========
+
+	1.0 - Config Settings
+
+**/
+/*--------------------------------------------------------------
+1.0 - Config Settings
+--------------------------------------------------------------*/
+/**
+
+	No Print URL
+	This is set in the _print.scss file to display all links when
+	prinint EXCEPT the links containing the value below.
+
+**/
+/**
+
+	Support for ie8 - set this to 'false' after 7/1/2014
+	If set to [false] then the compiled CSS will eliminate certain
+	inclusions to support IE8 and therefore make the file smaller.
+	Example is the use of REM fonts with PX defaults for IE8 support.
+
+**/
+/**
+
+	Sizes
+	=========
+
+	1.0 - Box Elements
+		1.1 - Margins
+		1.2 - Borders
+		1.3 - Padding
+
+**/
+/*--------------------------------------------------------------
+1.0 - Box Elements
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1.1 - Margins
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1.2 - Borders
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1.3 - Padding
+--------------------------------------------------------------*/
+/**
+
+	Colors
+	======
+
+	1.0 - Imports
+	2.0 - Globals
+	3.0 - Layout
+	4.0 - Typography
+		4.1 - Headings
+		4.2 - Copy
+	5.0 - Elements
+		5.1 - Lists
+		5.2 - Tables
+	6.0 - Form Elements
+		6.1 - Forms
+		6.2 - Inputs
+		6.3 - Buttons
+	7.0 - Navigation
+		7.1 - Links
+		7.2 - Menus
+		7.3 - Site Navigation
+		7.4 - Search
+	8.0 - Content Types
+		8.1 - Primary
+		8.2 - Secondary
+	9.0 - Modules
+		9.1 - Accesibility
+		9.2 - Alignments
+	11.0 - Media
+		11.1 - Images
+		11.2 - Figures
+		11.3 - Captions
+		11.4 - Galleries
+	12.0 - Print
+
+**/
+/*--------------------------------------------------------------
+1.0 - Imports
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+2.0 - Globals
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+3.0 - Layout
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+4.0 - Typography
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+4.1 - Headings
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+4.2 - Copy
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+5.0 - Elements
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+5.1 - Lists
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+5.2 - Tables
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+6.0 - Form Elements
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+6.1 - Forms
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+6.2 - Inputs
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+6.3 - Buttons
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+7.0 - Navigation
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+7.1 - Links
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+7.2 - Menus
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+7.3 - Site Navigation
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+7.4 - Search
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+8.0 - Content
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+8.1 - Primary
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+8.2 - Secondary
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+9.0 - Modules
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+9.1 - Accesibility
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+9.2 - Alignments
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+10.0 - Content
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+10.1 - Primary
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+10.2 - Secondary
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+11.0 - Media
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+11.1 - Images
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+11.2 - Figures
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+11.3 - Captions
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+11.4 - Galleries
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+12.0 - Print
+--------------------------------------------------------------*/
+/**
+
+	Typography
+	==========
+
+	1.0 - Default Fonts
+	2.0 - Theme Fonts
+
+**/
+/*--------------------------------------------------------------
+1.0 - Default Fonts
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+2.0 - Theme Fonts
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+3.0 - Mixins
+--------------------------------------------------------------*/
+/**
+
+	Mixins
+	======
+
+	1.0 - Mixin imports
+
+	=========
+
+	Mixins should be included individually.
+
+	Please use Compass (http://compass-style.org/) for common mixins.
+
+**/
+/*--------------------------------------------------------------
+1.0 - Mixin imports
+--------------------------------------------------------------*/
+/**
+
+	Horizontal Alignment
+	====================
+	Use this mixin to horizontally center an elment in it's container box
+
+
+	Usage
+	=========
+	.class { @include align-horizontal; }
+
+
+	Note
+	=========
+	If blurry, add the following to the parent element:
+
+	.parent-element {
+		-webkit-transform-style: preserve-3d;
+	}
+
+	Credit
+	=========
+	[http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/]
+
+**/
+/**
+
+	Vertical Alignment
+	==================
+
+	Use this mixin to vertically center an elment in it's container box
+
+
+	Usage
+	=========
+	.class { @include align-vertical; }
+
+
+	Note
+	=========
+	If blurry, add the following to the parent element:
+
+	.parent-element {
+		-webkit-transform-style: preserve-3d;
+	}
+
+
+	Credit
+	=========
+	[http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/]
+
+**/
+/**
+
+	Breakpoints
+	===========
+
+	Uses a set of breakpoints and creates ranges of between the breakpoints.
+
+ */
+/* 480px */
+/* 560px */
+/* 640px */
+/* 768px */
+/* 1024px */
+/* 1440px */
+/* 1920px */
+/**
+
+	Center Block
+	============
+
+	Center element in context.
+
+
+	Usage
+	=========
+	.class { @include center-block; }
+
+**/
+/**
+
+	Clearfix
+	=========
+
+	Clear the element from preceeding items.
+
+
+	Usage
+	=========
+	.class { @include clearfix; }
+
+**/
+/**
+
+	Clearfix
+	=========
+
+	Clear after (not all clearfix need this also)
+
+
+	Usage
+	=========
+	.class { @include clearfix-after; }
+
+**/
+/**
+
+	Font Size
+	=========
+
+	Apply rem equivalent to pixel font size
+
+
+	Usage
+	=========
+	.class { @include font-size(16); }
+
+**/
+/**
+
+	Font Style
+	==========
+
+	Apply font attributes family, style, weight for typekit fonts.
+
+
+	Usage
+	=========
+	.class { @include font-style($font-sample-variable, italic, 700); }
+
+**/
+/**
+
+	Media Queries
+	=============
+
+	1.0 - Screen
+	2.0 - Orientation
+	3.0 - HDPI
+	4.0 - Print
+
+
+	Usage
+	=========
+
+	@include min-screen(width);
+	@include max-screen(width);
+	@include screen(min-width, max-width);
+
+	@include min-screen-height(height);
+	@include max-screen-height(height);
+	@include screen-height(min-height, max-height);
+
+	@include orientation(orientation);
+
+	@include hdpi(ratio);
+
+	Note
+	=========
+	You CANNOT use @extend inside the media query.
+
+
+	Credit
+	=========
+	Rafal Bromirski - http:paranoida.com/
+	Licensed under a MIT License
+
+**/
+/*--------------------------------------------------------------
+1.0 - Screen
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+2.0 - Orientation
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+3.0 - HDPI
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+4.0 - Print
+--------------------------------------------------------------*/
+/**
+
+	Sass Heading Sizes
+	Developed by @troutacular (https://github.com/troutacular/sass-heading-sizes
+	Created: 2015-01-25
+	Last update: 2015-01-25
+	Version: 1.0
+	License: MIT (http://opensource.org/licenses/mit-license.html))
+
+**/
+/*--------------------------------------------------------------
+4.0 - Vendor
+--------------------------------------------------------------*/
+/**
+
+	Vendor
+	======
+
+	1.0 - Vendor Includes
+	2.0 - Vendor Variables
+
+**/
+/*--------------------------------------------------------------
+1.0 - Vendor Includes
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+2.0 - Vendor Variables
+--------------------------------------------------------------*/
+/**
+
+	Compass Variables
+	=========
+
+	1.0 - Variables
+
+**/
+/*--------------------------------------------------------------
+1.0 - Variables
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+5.0 - Theme
+--------------------------------------------------------------*/
+/**
+
+	Layout
+	======
+
+	1.0 - Global Layout
+	2.0 - Layout Partials Includes
+
+**/
+/*--------------------------------------------------------------
+1.0 - Global Layout
+--------------------------------------------------------------*/
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+  box-sizing: inherit;
+}
+
+body {
+  background: #fff;
+  /* Fallback for when there is no custom background color defined. */
+}
+
+/*--------------------------------------------------------------
+2.0 - Layout Partials Includes
+--------------------------------------------------------------*/
+/**
+
+	Grid
+	====
+
+	1.0 - Grid Settings
+	1.1 - Grid Wrappers
+	1.2 - Site Header
+	1.3 - Site Content
+	1.4 - Site Sidebar
+	1.5 - Site Footer
+		1.5.1 - Site Footer Columns
+	1.6 - Modules
+
+	=========
+
+	Note: you should use this file for setting the layout of the
+	page/theme for the placeholder elements for modules only.
+	Individual module elements should have their responsive structures
+	attached to themselves.
+
+**/
+/*--------------------------------------------------------------
+1.0 - Grid Settings
+--------------------------------------------------------------*/
+/**
+
+	Use Susy (http://susy.oddbird.net/) for grid structures.
+
+	Import for Susy resides in sass/_vendor.scss file
+
+**/
+/*--------------------------------------------------------------
+1.1 - Grid Wrappers
+--------------------------------------------------------------*/
+.site-branding,
+.site-navigation,
+.nav-breadcrumbs,
+.site-content,
+.site-footer,
+.site-contact {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5%;
+}
+.site-branding:after,
+.site-navigation:after,
+.nav-breadcrumbs:after,
+.site-content:after,
+.site-footer:after,
+.site-contact:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+@media only screen and (min-width: 48em) {
+  .site-branding,
+  .site-navigation,
+  .nav-breadcrumbs,
+  .site-content,
+  .site-footer,
+  .site-contact {
+    padding: 0 1%;
+  }
+}
+
+/*--------------------------------------------------------------
+1.2 - Site Header
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1.3 - Site Content
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1.4 - Site Sidebar
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1.5 - Site Footer
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1.5.1 - Site Footer Columns
+--------------------------------------------------------------*/
+.site-footer-columns-1 .footer-column {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.site-footer-columns-2 .footer-column {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+@media only screen and (min-width: 0) {
+  .site-footer-columns-2 .footer-column {
+    width: 49.15254%;
+    float: left;
+    margin-right: 1.69492%;
+  }
+  .site-footer-columns-2 .footer-column:last-of-type {
+    float: right;
+    margin-right: 0;
+  }
+}
+
+.site-footer-columns-3 .footer-column {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+@media only screen and (min-width: 40em) {
+  .site-footer-columns-3 .footer-column {
+    width: 32.20339%;
+    float: left;
+    margin-right: 1.69492%;
+  }
+  .site-footer-columns-3 .footer-column:last-of-type {
+    float: right;
+    margin-right: 0;
+  }
+}
+
+.site-footer-columns-4 .footer-column {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+@media only screen and (min-width: 0) {
+  .site-footer-columns-4 .footer-column {
+    width: 49.15254%;
+    float: left;
+    margin-right: 1.69492%;
+  }
+  .site-footer-columns-4 .footer-column:last-of-type {
+    float: right;
+    margin-right: 0;
+  }
+}
+@media only screen and (min-width: 40em) {
+  .site-footer-columns-4 .footer-column {
+    width: 23.72881%;
+    float: left;
+    margin-right: 1.69492%;
+  }
+  .site-footer-columns-4 .footer-column:last-of-type {
+    float: right;
+    margin-right: 0;
+  }
+}
+
+/*--------------------------------------------------------------
+1.6 - Modules
+--------------------------------------------------------------*/
+/**
+
+	Site Footer
+	===========
+
+	1.0 - Site Header
+	2.0 - Site Branding
+	3.0 - Site Search
+
+**/
+/*--------------------------------------------------------------
+1.0 - Site Header
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+2.0 - Site Branding
+--------------------------------------------------------------*/
+/* see modules/_site-branding.scss */
+/*--------------------------------------------------------------
+3.0 - Site Search
+--------------------------------------------------------------*/
+/* see modules/_site-search.scss */
+/**
+
+	Main
+	======
+
+	1.0 - Site Main Section
+
+**/
+/*--------------------------------------------------------------
+1.0 - Site Main
+--------------------------------------------------------------*/
+/**
+
+	Sidebars
+	========
+
+	1.0 - Site Sidebar
+
+**/
+/*--------------------------------------------------------------
+1.0 - Site Sidebar
+--------------------------------------------------------------*/
+/**
+
+	Site Footer
+	===========
+
+	1.0 - Sticky Footer
+	2.0 - Footer Wrapper
+	3.0 - Site Footer
+		3.1 - Footer Columns
+
+**/
+/*--------------------------------------------------------------
+1.0 - Sticky Footer
+--------------------------------------------------------------*/
+html,
+body {
+  height: 100%;
+}
+
+.site {
+  display: table;
+  width: 100%;
+  height: 100%;
+  table-layout: fixed;
+}
+
+.site-footer-wrapper {
+  display: table-row;
+  width: 100%;
+  height: 1px;
+}
+
+/*--------------------------------------------------------------
+2.0 - Footer Wrapper
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+3.0 - Site Footer
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+3.1 - Footer Columns
+--------------------------------------------------------------*/
+/* see layout/_grids.scss */
+/**
+
+	Alignments
+	========
+
+	1.0 - Alignments
+
+**/
+/*--------------------------------------------------------------
+1.0 - Alignments
+--------------------------------------------------------------*/
+.alignleft {
+  display: inline;
+  float: left;
+  margin-right: 1.5em;
+  text-align: left;
+}
+
+.alignright {
+  display: inline;
+  float: right;
+  margin-left: 1.5em;
+  text-align: right;
+}
+
+.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  clear: both;
+}
+
+/**
+
+	Clearings
+	========
+
+	1.0 - Clearings
+
+**/
+/*--------------------------------------------------------------
+1.0 - Clearings
+--------------------------------------------------------------*/
+.clear::before, .clear::after,
+.entry-content::before,
+.entry-content::after,
+.comment-content::before,
+.comment-content::after,
+.site-header::before,
+.site-header::after,
+.site-content::before,
+.site-content::after,
+.site-footer::before,
+.site-footer::after {
+  overflow: hidden;
+  *zoom: 1;
+}
+.clear::after,
+.entry-content::after,
+.comment-content::after,
+.site-header::after,
+.site-content::after,
+.site-footer::after {
+  clear: both;
+}
+
+/**
+
+	Typography
+	==========
+
+	1.0 - Typography Imports
+
+**/
+/*--------------------------------------------------------------
+1.0 - Typography Imports
+--------------------------------------------------------------*/
+/**
+
+	Fonts
+	=====
+
+	1.0 - Font Face
+	2.0 - Typekit Fonts
+
+**/
+/*--------------------------------------------------------------
+1.0 - Font Face
+--------------------------------------------------------------*/
+/**
+
+	Using Compass for Font Face
+
+	$name is required, arbitrary, and what you will use in font stacks.
+	$font-files is required using font-files('relative/location', 'format'). for best results use this order: woff, opentype/truetype, svg
+	$eot is required by IE, and is a relative location of the eot file.
+	$weight shows if the font is bold, defaults to normal
+	$style defaults to normal, might be also italic
+	For android 2.2 Compatiblity, please ensure that your web page has a meta viewport tag.
+	To support iOS < 4.2, an SVG file must be provided
+
+	@include font-face($name, $font-files, $eot, $weight, $style);
+
+	@include font-face( $font-family, font-files($font-filename + '.woff', $font-filename + '.ttf', $font-filename + '.svg'), $font-filename + '.eot', normal, normal);
+
+**/
+/*--------------------------------------------------------------
+2.0 - Typekit Fonts
+--------------------------------------------------------------*/
+/**
+
+	Including the Typekit Font will include the fonts to the site.
+
+	You can make variables to call with the 'font-style' plugin.
+
+
+	Variable Examples:
+
+	light:			$font-proxima-nova-light: 'proxima-nova-n3', 'proxima-nova';
+	regular:		$font-proxima-nova-regular: 'proxima-nova-n4', 'proxima-nova';
+	bold:			$font-proxima-nova-bold: 'proxima-nova-n7', 'proxima-nova';
+	extrabold:		$font-proxima-nova-extrabold: 'proxima-nova-n7', 'proxima-nova';
+
+
+	Usage: Proxima Nova
+
+	light:			@include font-style($font-proxima-nova-light, normal, 300);
+	regular:		@include font-style($font-proxima-nova-regular, normal, 400);
+	bold:			@include font-style($font-proxima-nova-bold, normal, 700);
+	extrabold:		@include font-style($font-proxima-nova-extrabold, normal, 800);
+
+**/
+/**
+
+	Copy
+	==========
+
+	1.0 - Global Copy
+	2.0 - Copy Elements
+		2.1 - Text
+		2.2 - Blockquotes / Cites
+		2.3 - Time
+		2.4 - Address
+		2.5 - Sub/Superscripts
+		2.6 - Code / Pre
+		2.7 - Horizontal Rule
+	4.0 - Other Elements
+
+**/
+/*--------------------------------------------------------------
+1.0 - Global Copy
+--------------------------------------------------------------*/
+body,
+button,
+input,
+select,
+textarea {
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #5b514a;
+  font-family: sans-serif;
+}
+
+/*--------------------------------------------------------------
+2.0 - Copy Elements
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+2.1 - Text
+--------------------------------------------------------------*/
+p {
+  margin-bottom: 1.5em;
+}
+
+b,
+strong {
+  font-weight: bold;
+}
+
+dfn,
+cite,
+em,
+i {
+  font-style: italic;
+}
+
+/*--------------------------------------------------------------
+2.2 - Blockquotes / Cites
+--------------------------------------------------------------*/
+blockquote {
+  margin: 1em 0;
+  background: #555;
+  padding: 1.5em;
+  color: #5b514a;
+  quotes: '" "';
+}
+blockquote::before, blockquote::after {
+  content: '';
+}
+
+/*--------------------------------------------------------------
+2.3 - Time
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+2.4 - Address
+--------------------------------------------------------------*/
+address {
+  margin: 0 0 1.5em;
+}
+
+/*--------------------------------------------------------------
+2.5 - Sub/Superscripts
+--------------------------------------------------------------*/
+sup,
+sub {
+  position: relative;
+  height: 0;
+  vertical-align: baseline;
+  line-height: 0;
+  font-size: 75%;
+}
+
+sup {
+  bottom: 1ex;
+}
+
+sub {
+  top: .5ex;
+}
+
+small {
+  font-size: 75%;
+}
+
+big {
+  font-size: 125%;
+}
+
+/*--------------------------------------------------------------
+2.6 - Code / Pre
+--------------------------------------------------------------*/
+pre {
+  font-size: 15px;
+  font-size: 0.9375rem;
+  margin-bottom: 1.6em;
+  background: #eee;
+  padding: 1.6em;
+  max-width: 100%;
+  overflow: auto;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  /* css-3 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  font-family: "Courier 10 Pitch", Courier, monospace;
+  word-wrap: break-word;
+}
+
+code,
+kbd,
+tt,
+var {
+  font-size: 15px;
+  font-size: 0.9375rem;
+  font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+}
+
+/*--------------------------------------------------------------
+2.7 - Horizontal Rule
+--------------------------------------------------------------*/
+hr {
+  margin-bottom: 1.5em;
+  border: 0;
+  background-color: #ccc;
+  height: 1px;
+}
+
+/*--------------------------------------------------------------
+3.0 - Other Elements
+--------------------------------------------------------------*/
+abbr,
+acronym {
+  border-bottom: 1px dotted #666;
+  cursor: help;
+}
+
+mark,
+ins {
+  background: #fff9c0;
+  text-decoration: none;
+}
+
+/**
+
+	Headings
+	==========
+
+	1.0 - Headings
+	2.0 - Sidebars
+	3.0 - Footers
+
+**/
+/*--------------------------------------------------------------
+1.0 - Headings
+--------------------------------------------------------------*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.25;
+  color: #000;
+}
+
+h1 {
+  font-size: 40px;
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 30px;
+  font-size: 1.875rem;
+}
+
+h3 {
+  font-size: 22.5px;
+  font-size: 1.40625rem;
+}
+
+h4 {
+  font-size: 16.875px;
+  font-size: 1.05469rem;
+}
+
+h5 {
+  font-size: 12.65625px;
+  font-size: 0.79102rem;
+}
+
+h6 {
+  font-size: 9.49219px;
+  font-size: 0.59326rem;
+}
+
+/*--------------------------------------------------------------
+2.0 - Sidebars
+--------------------------------------------------------------*/
+.site-sidebar h1 {
+  font-size: 24px;
+  font-size: 1.5rem;
+}
+.site-sidebar h2 {
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+.site-sidebar h3 {
+  font-size: 13.5px;
+  font-size: 0.84375rem;
+}
+.site-sidebar h4 {
+  font-size: 10.125px;
+  font-size: 0.63281rem;
+}
+.site-sidebar h5 {
+  font-size: 7.59375px;
+  font-size: 0.47461rem;
+}
+.site-sidebar h6 {
+  font-size: 5.69531px;
+  font-size: 0.35596rem;
+}
+
+/*--------------------------------------------------------------
+3.0 - Footers
+--------------------------------------------------------------*/
+.site-footer h1 {
+  font-size: 24px;
+  font-size: 1.5rem;
+}
+.site-footer h2 {
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+.site-footer h3 {
+  font-size: 13.5px;
+  font-size: 0.84375rem;
+}
+.site-footer h4 {
+  font-size: 10.125px;
+  font-size: 0.63281rem;
+}
+.site-footer h5 {
+  font-size: 7.59375px;
+  font-size: 0.47461rem;
+}
+.site-footer h6 {
+  font-size: 5.69531px;
+  font-size: 0.35596rem;
+}
+
+/**
+
+	Accessibility
+	========
+
+	1.0 - Skip Links
+	2.0 - Screen Reader Text
+
+**/
+/*--------------------------------------------------------------
+1.0 - Skip Links
+--------------------------------------------------------------*/
+/* Do not show the outline on the skip link target. */
+#content[tabindex="-1"]:focus,
+#secondary[tabindex="-1"]:focus {
+  outline: 0;
+}
+
+/*--------------------------------------------------------------
+2.0 - Screen Reader Text
+--------------------------------------------------------------*/
+/* Text meant only for screen readers. */
+.screen-reader-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+.screen-reader-text:focus {
+  font-size: 14px;
+  font-size: 0.875rem;
+  display: block;
+  top: 5px;
+  left: 5px;
+  z-index: 100000;
+  /* Above WP toolbar. */
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  background-color: #fff;
+  padding: 15px 23px 14px;
+  width: auto;
+  height: auto;
+  text-decoration: none;
+  line-height: normal;
+  color: #5b514a;
+  font-weight: bold;
+  clip: auto;
+}
+
+/**
+
+	Elements
+	======
+
+	1.0 - Elements Partials Includes
+
+**/
+/*--------------------------------------------------------------
+1.0 - Elements Partials Includes
+--------------------------------------------------------------*/
+/**
+
+	Lists
+	=====
+
+	1.0 - Global
+	2.0 - Unordered Lists
+	3.0 - Ordered Lists
+	4.0 - Data Lists
+
+**/
+/*--------------------------------------------------------------
+1.0 - Global
+--------------------------------------------------------------*/
+ul,
+ol {
+  margin: 0 0 1.5em 3em;
+}
+
+li > ul,
+li > ol {
+  margin-bottom: 0;
+  margin-left: 1.5em;
+}
+
+/*--------------------------------------------------------------
+2.0 - Unordered Lists
+--------------------------------------------------------------*/
+ul {
+  list-style: disc;
+}
+
+/*--------------------------------------------------------------
+3.0 - Ordered Lists
+--------------------------------------------------------------*/
+ol {
+  list-style: decimal;
+}
+
+/*--------------------------------------------------------------
+4.0 - Data Lists
+--------------------------------------------------------------*/
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin: 0 1.5em 1.5em;
+}
+
+/**
+
+	Tables
+	======
+
+	1.0 - Table
+	2.0 - Headings
+		2.1 - Caption
+	3.0 - Content
+	4.0 - Footer
+
+**/
+/*--------------------------------------------------------------
+1.0 - Table
+--------------------------------------------------------------*/
+table {
+  margin: 0 0 1.5em;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 2%;
+}
+
+/*--------------------------------------------------------------
+2.0 - Headings
+--------------------------------------------------------------*/
+th {
+  background-color: #dcded7;
+  color: #5b514a;
+  font-weight: bold;
+}
+
+/*--------------------------------------------------------------
+2.1 - Caption
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+3.0 - Content
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+4.0 - Footer
+--------------------------------------------------------------*/
+/**
+
+	Forms
+	======
+
+	1.0 - Form Elements
+	2.0 - Labels
+	3.0 - Forms Partials Includes
+
+**/
+/*--------------------------------------------------------------
+1.0 - Form Elements
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+2.0 - Labels
+--------------------------------------------------------------*/
+label {
+  display: block;
+  margin: 1em 0 0;
+}
+
+/*--------------------------------------------------------------
+3.0 - Forms Partials Includes
+--------------------------------------------------------------*/
+/**
+
+	Inputs\
+	=====
+
+	1.0 - Default Inputs
+	2.0 - Input By Type
+	3.0 - Placeholders
+
+**/
+/*--------------------------------------------------------------
+1.0 - Default Inputs
+--------------------------------------------------------------*/
+input,
+select,
+textarea {
+  margin: 0;
+  /* Addresses margins set differently in IE6/7, F3/4, S5, Chrome */
+  vertical-align: baseline;
+  /* Improves appearance and consistency in all browsers */
+  font-size: 100%;
+  /* Corrects font size not being inherited in all browsers */
+}
+
+/*--------------------------------------------------------------
+2.0 - Input By Type
+--------------------------------------------------------------*/
+[type="checkbox"],
+[type="radio"] {
+  padding: 0;
+  /* Addresses excess padding in IE8/9 */
+}
+
+[type="search"] {
+  box-sizing: content-box;
+  -webkit-appearance: textfield;
+}
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  /* Corrects inner padding and border displayed oddly in FF3/4 www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/ */
+  border: 0;
+  padding: 0;
+}
+
+[type="text"],
+[type="email"],
+[type="url"],
+[type="password"],
+[type="search"],
+[type="number"],
+[type="tel"],
+[type="range"],
+[type="date"],
+[type="month"],
+[type="week"],
+[type="time"],
+[type="datetime"],
+[type="datetime-local"],
+[type="color"],
+select,
+textarea {
+  border-radius: 0.1875em;
+  border: 0;
+  background: #ccc;
+  padding: 0.5em;
+  min-width: 2em;
+  line-height: 1;
+  color: #151211;
+}
+[type="text"]:focus,
+[type="email"]:focus,
+[type="url"]:focus,
+[type="password"]:focus,
+[type="search"]:focus,
+[type="number"]:focus,
+[type="tel"]:focus,
+[type="range"]:focus,
+[type="date"]:focus,
+[type="month"]:focus,
+[type="week"]:focus,
+[type="time"]:focus,
+[type="datetime"]:focus,
+[type="datetime-local"]:focus,
+[type="color"]:focus,
+select:focus,
+textarea:focus {
+  color: #111;
+}
+
+select {
+  height: 2.2em;
+}
+
+textarea {
+  padding-left: 0.5em;
+  width: 100%;
+}
+
+/*--------------------------------------------------------------
+3.0 - Placeholders
+--------------------------------------------------------------*/
+input::-webkit-input-placeholder {
+  color: #695e55;
+}
+
+input::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #695e55;
+}
+
+input:-ms-input-placeholder {
+  color: #695e55;
+}
+
+/**
+
+	Buttons
+	=======
+
+	1.0 - Variables
+	2.0 - Global Button
+	3.0 - Button Types
+
+	=========
+
+	See also _forms.scss for input settings
+
+**/
+/*--------------------------------------------------------------
+1.0 - Variables
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1.0 - Global Button
+--------------------------------------------------------------*/
+button {
+  margin: 0;
+  /* Addresses margins set differently in IE6/7, F3/4, S5, Chrome */
+  vertical-align: baseline;
+  /* Improves appearance and consistency in all browsers */
+  font-size: 100%;
+  /* Corrects font size not being inherited in all browsers */
+}
+button.file-input {
+  position: relative;
+  overflow: hidden;
+}
+button.file-input label {
+  margin: 0;
+}
+button.file-input [type="file"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: .001;
+}
+
+/*--------------------------------------------------------------
+2.0 - Button Types
+--------------------------------------------------------------*/
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  border: 0;
+  border-radius: 0.1875em;
+  background: #777;
+  cursor: pointer;
+  /* Improves usability and consistency of cursor style between image-type 'input' and others */
+  padding: 0.5em;
+  line-height: 1;
+  color: #fff;
+  -webkit-appearance: button;
+  /* Corrects inability to style clickable 'input' types in iOS */
+}
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+  background: #6a6a6a;
+  color: #fff;
+  border: 0 none;
+}
+button:focus, button:active,
+input[type="button"]:focus,
+input[type="button"]:active,
+input[type="reset"]:focus,
+input[type="reset"]:active,
+input[type="submit"]:focus,
+input[type="submit"]:active {
+  background: #848484;
+  color: #fff;
+  border: 0 none;
+}
+
+/**
+
+	Media
+	=======
+
+	1.0 - Site Media Includes
+	2.0 - Media Types
+		2.1 - Audio
+		2.2 - Canvas
+		2.3 - Embeds
+		2.4 - Iframes
+		2.5 - Objects
+		2.6 - Video
+
+**/
+/*--------------------------------------------------------------
+1.0 - Site Modules Includes
+--------------------------------------------------------------*/
+/**
+
+	Images
+	=====
+
+	1.0 - Images
+
+**/
+/*--------------------------------------------------------------
+1.0 - Images
+--------------------------------------------------------------*/
+img {
+  max-width: 100%;
+  height: auto;
+}
+img.alignleft, img.alignright, img.aligncenter {
+  margin-top: 0;
+}
+
+/**
+
+	Figures
+	=====
+
+	1.0 - Figure
+	2.0 - Fig Caption
+
+**/
+/*--------------------------------------------------------------
+1.0 - Figure
+--------------------------------------------------------------*/
+figure {
+  max-width: 100%;
+}
+figure.alignleft, figure.alignright, figure.aligncenter {
+  margin-top: 0;
+}
+
+/*--------------------------------------------------------------
+2.0 - Fig Caption
+--------------------------------------------------------------*/
+figcaption {
+  background-color: transparent;
+  color: #c0b7b1;
+}
+
+/**
+
+	Captions
+	=====
+
+	1.0 - Captions
+
+**/
+/*--------------------------------------------------------------
+1.0 - Captions
+--------------------------------------------------------------*/
+.wp-caption {
+  margin-bottom: 1.5em;
+  max-width: 100%;
+}
+.wp-caption img[class*="wp-image-"] {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.wp-caption .wp-caption-text {
+  margin: .8075em 0;
+}
+
+.wp-caption-text {
+  text-align: center;
+}
+
+/**
+
+	Galleries
+	=====
+
+	1.0 - Gallery
+	2.0 - Gallery Item
+	3.0 - Gallery Caption
+
+**/
+/*--------------------------------------------------------------
+1.0 - Gallery
+--------------------------------------------------------------*/
+.gallery {
+  overflow: hidden;
+  *zoom: 1;
+  margin-bottom: 1.5em;
+}
+
+/*--------------------------------------------------------------
+2.0 - Gallery Item
+--------------------------------------------------------------*/
+.gallery-item {
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
+  text-align: center;
+}
+.gallery-columns-2 .gallery-item {
+  max-width: 50%;
+}
+.gallery-columns-3 .gallery-item {
+  max-width: 33.33%;
+}
+.gallery-columns-4 .gallery-item {
+  max-width: 25%;
+}
+.gallery-columns-5 .gallery-item {
+  max-width: 20%;
+}
+.gallery-columns-6 .gallery-item {
+  max-width: 16.66%;
+}
+.gallery-columns-7 .gallery-item {
+  max-width: 14.28%;
+}
+.gallery-columns-8 .gallery-item {
+  max-width: 12.5%;
+}
+.gallery-columns-9 .gallery-item {
+  max-width: 11.11%;
+}
+
+/*--------------------------------------------------------------
+3.0 - Gallery Caption
+--------------------------------------------------------------*/
+.gallery-caption {
+  display: block;
+}
+
+/*--------------------------------------------------------------
+2.0 - Media Types
+--------------------------------------------------------------*/
+embed,
+iframe,
+object {
+  max-width: 100%;
+}
+
+/*--------------------------------------------------------------
+2.1 - Audio
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+2.2 - Canvas
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+2.3 - Embeds
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+2.4 - Iframes
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+2.5 - Objects
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+2.6 - Video
+--------------------------------------------------------------*/
+/**
+
+	Navigation
+	=======
+
+	1.0 - Site Navigation Includes
+
+**/
+/*--------------------------------------------------------------
+1.0 - Site Navigation Includes
+--------------------------------------------------------------*/
+/**
+
+	Links
+	=====
+
+	1.0 - Links
+	2.0 - Skip Link
+	3.0 - Edit Link
+
+**/
+/*--------------------------------------------------------------
+1.0 - Links
+--------------------------------------------------------------*/
+a {
+  color: #777;
+}
+a:visited {
+  color: #515151;
+}
+a:hover, a:focus, a:active {
+  color: #9d9d9d;
+}
+a:focus {
+  outline: thin dotted;
+}
+a:hover, a:active {
+  outline: 0;
+}
+
+/*--------------------------------------------------------------
+2.0 - Skip Link
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+3.0 - Edit Link
+--------------------------------------------------------------*/
+/**
+
+	Site Navigation
+	===============
+
+	1.0 - Site Navigation Wrapper
+	2.0 - Site Navigation Title
+	4.0 - Site Navigation Menu
+
+**/
+/*--------------------------------------------------------------
+1.0 - Site Navigation Wrapper
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+2.0 - Site Navigation Title
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+4.0 - Site Navigation Menu
+--------------------------------------------------------------*/
+/**
+
+	Site Search
+	===========
+
+	1.0 - Search Form
+	2.0 - Search in Widget
+
+**/
+/*--------------------------------------------------------------
+1.0 - Search Form
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+2.0 - Search in Widget
+--------------------------------------------------------------*/
+/**
+
+	Content Navigation
+	==================
+
+	1.0 - Comment/Post Navigation
+	2.0 - Page Links
+
+**/
+/*--------------------------------------------------------------
+1.0 - Comment/Post Navigation
+--------------------------------------------------------------*/
+.site-main .comment-navigation, .site-main
+.posts-navigation, .site-main
+.post-navigation {
+  margin: 0 0 1.5em;
+  overflow: hidden;
+}
+.comment-navigation .nav-previous,
+.posts-navigation .nav-previous,
+.post-navigation .nav-previous {
+  float: left;
+  width: 50%;
+}
+.comment-navigation .nav-next,
+.posts-navigation .nav-next,
+.post-navigation .nav-next {
+  float: right;
+  width: 50%;
+  text-align: right;
+}
+
+/*--------------------------------------------------------------
+2.0 - Page Links
+--------------------------------------------------------------*/
+.page-links {
+  clear: both;
+  margin: 0 0 1.5em;
+}
+
+/*--------------------------------------------------------------
+6.0 - Modules
+--------------------------------------------------------------*/
+/**
+
+	Modules
+	=======
+
+	1.0 - Site Modules Includes
+
+**/
+/*--------------------------------------------------------------
+1.0 - Site Modules Includes
+--------------------------------------------------------------*/
+/**
+
+	Site Branding
+	=============
+
+	1.0 - Site Branding
+	2.0 - Site Title
+	3.0 - Site Description
+
+**/
+/*--------------------------------------------------------------
+1.0 - Site Branding
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+2.0 - Site Title
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+3.1 - Site Description
+--------------------------------------------------------------*/
+/**
+
+	Error
+	=====
+
+	1.0 - Errors
+	2.0 - 404
+
+**/
+/*--------------------------------------------------------------
+1.0 - Errors
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+2.0 - 404
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+7.0 - Content
+--------------------------------------------------------------*/
+/**
+
+	Layout
+	======
+
+	1.0 - Primary Partials Includes
+	2.0 - Secondary Partials Includes
+
+**/
+/*--------------------------------------------------------------
+1.0 - Content Partials Includes
+--------------------------------------------------------------*/
+/**
+
+	Posts and Pages
+	========
+
+	1.0 - Posts
+	2.0 - Pages
+
+**/
+/*--------------------------------------------------------------
+1.0 - Posts
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+2.0 - Pages
+--------------------------------------------------------------*/
+/**
+
+	Entry
+	========
+
+	1.0 - Entry
+	1.0 - Entry Header
+		1.1 - Entry Title
+		1.2 - Entry Meta
+			1.2.1 - Posted On
+			1.2.2 - Byline
+	3.0 - Entry Content
+	4.0 - Entry Footer
+
+**/
+/*--------------------------------------------------------------
+1.0 - Entry Header
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1.0 - Entry Header
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1.1 - Entry Title
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1.2 - Entry Meta
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1.2.1 - Posted On
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1.2.2 - Byline
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+3.0 - Entry Content
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+4.0 - Entry Footer
+--------------------------------------------------------------*/
+/**
+
+	Comments
+	========
+
+	1.0 - Comments Wrapper
+	2.0 - Comments Title
+	3.0 - Comments Navigation
+	4.0 - Comments Content
+	5.0 - Comments List
+	6.0 - No Comments
+	7.0 - By Post Author
+
+**/
+/*--------------------------------------------------------------
+1.0 - Comments Wrapper
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+2.0 - Comments Title
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+3.0 - Comments Navigation
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+5.0 - Comments List
+--------------------------------------------------------------*/
+.comment-content a {
+  word-wrap: break-word;
+}
+
+/*--------------------------------------------------------------
+4.0 - Comments List
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+6.0 - No Comments
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+7.0 - By Post Author
+--------------------------------------------------------------*/
+.bypostauthor {
+  display: block;
+}
+
+/*--------------------------------------------------------------
+2.0 - Secondary Partials Includes
+--------------------------------------------------------------*/
+/**
+
+	Widgets
+	=======
+
+	1.0 - Global Widgets
+	2.0 - Widget Title
+
+	=========
+
+	Only declare global widget styles in this file.
+
+	Widget/Aside specific styles should have their own Module
+	file under the modules/ fold
+
+**/
+/*--------------------------------------------------------------
+1.0 - Global Widgets
+--------------------------------------------------------------*/
+.widget {
+  margin: 0 0 1.5em;
+  /* Make sure select elements fit in widgets. */
+}
+.widget select {
+  max-width: 100%;
+}
+
+/*--------------------------------------------------------------
+2.0 - Widget Titel
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+8.0 - CSS Media Types
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+8.1 - Print
+--------------------------------------------------------------*/
+@media print {
+  /**
+  
+  	Print Styleguide
+  	================
+  
+  	1.0 - Defaults
+  		1.1 - Headings
+  		1.2 - Content
+  		1.3 - Links
+  		1.4 - Media
+  	2.0 - Hide Elements
+  	3.0 - Theme Specific
+  
+  **/
+  /*--------------------------------------------------------------
+  1.0 - Defaults
+  --------------------------------------------------------------*/
+  @page {
+    margin: .5cm;
+  }
+  body {
+    background: #fff;
+  }
+
+  div,
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  main,
+  nav,
+  section {
+    background: transparent !important;
+    color: #000 !important;
+  }
+
+  /*--------------------------------------------------------------
+  1.1 - Headings
+  --------------------------------------------------------------*/
+  h1, h2, h3, h4, h5, h6 {
+    color: #000 !important;
+    background: transparent !important;
+    border-color: #000 !important;
+  }
+
+  h1 {
+    border-bottom: 1px solid #000;
+    padding-bottom: .5em;
+    margin-bottom: 1em;
+  }
+
+  .brand-title {
+    border: 0 none;
+  }
+
+  .site-title a {
+    clear: both;
+    color: #000 !important;
+  }
+
+  /*--------------------------------------------------------------
+  1.2 - Content
+  --------------------------------------------------------------*/
+  .site-content {
+    clear: both;
+    margin-top: 1em;
+    padding-top: 1em;
+    border-top: 1px solid #000;
+  }
+
+  p {
+    color: #000;
+  }
+
+  q,
+  blockquote {
+    background: #ccc;
+  }
+  q:before, q:after,
+  blockquote:before,
+  blockquote:after {
+    content: '';
+  }
+  q[cite]:after,
+  blockquote[cite]:after {
+    content: " [Source: " attr(cite) "]";
+    font-size: 75%;
+  }
+
+  /*--------------------------------------------------------------
+  1.3 - Links
+  --------------------------------------------------------------*/
+  a {
+    color: #999 !important;
+    text-decoration: underline;
+    /* only include the link on external sites that do not have
+     * 'starter.com' in the link
+     *
+     * exclude any non-theme site: &:not([href*='starter.com']):after
+     * exclude any site starting with: &:not([href^='siteurl']):after
+     */
+  }
+  a:not([href*='']):after {
+    content: " [" attr(href) "] ";
+    color: #bfbfbf;
+    text-decoration: none;
+  }
+
+  p a {
+    word-wrap: break-word;
+  }
+
+  /*--------------------------------------------------------------
+  1.4 - Media
+  --------------------------------------------------------------*/
+  img {
+    max-width: 500px;
+  }
+
+  /*--------------------------------------------------------------
+  2.0 - Hide Elements
+  --------------------------------------------------------------*/
+  header nav,
+  footer,
+  audio,
+  video,
+  embed,
+  object,
+  .site-breadcrumbs,
+  .widget_search {
+    display: none;
+  }
+
+  /*--------------------------------------------------------------
+  3.0 - Theme Specific
+  --------------------------------------------------------------*/
+}
