@@ -40,6 +40,7 @@
 		notify = require('gulp-notify'),
 		path = require('path'),
 		rename = require('gulp-rename'),
+		preprocess = require('gulp-preprocess'),
 
 		// CSS
 		sass = require('gulp-ruby-sass'),
