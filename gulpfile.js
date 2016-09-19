@@ -161,5 +161,19 @@
 6.4 - Watch
 --------------------------------------------------------------*/
 
+	/**
+	 * Watch functiion for changes.
+	 * $ gulp watch
+	 */
+	gulp.task('watch', function() {
+
+		// Watch .scss files.
+		gulp.watch(base_paths.src + '/**/*.scss', ['styles']);
+
+		// Watch any files in dist/, reload on change.
+		gulp.watch([base_paths.dest + '/**']).on('change', livereload.changed);
+
+	});
+
 // Close function.
 })();
