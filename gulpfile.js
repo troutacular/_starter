@@ -113,8 +113,6 @@
 	gulp.task('styles', function() {
 		gulp.src(paths.sass.src + '/*.scss')
 		.pipe(compass({
-			// config_file: paths.sass.config,
-			// project: path.join(__dirname, 'assets-source'),
 			css: paths.sass.dest,
 			sass: paths.sass.src,
 			image: paths.images.dest,
