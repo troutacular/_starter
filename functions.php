@@ -63,6 +63,8 @@ Table of Contents
 1.1 - Version
 ----------------------------------------------------------------*/
 
+const PROJECT_VERSION = '1.0.0';
+const ASSETS_PATH_CSS = '/assets/css/';
 
 /** --------------------------------------------------------------
 1.2 - Environment
@@ -361,7 +363,7 @@ if ( ! function_exists( '_starter_enqueue_css' ) ) {
 	 */
 	function _starter_enqueue_css() {
 
-		wp_enqueue_style( '_starter-style', get_stylesheet_directory_uri() . '/css/starter.css', false, null, 'screen,print' );
+		wp_enqueue_style( '_starter-style', get_stylesheet_directory_uri() . ASSETS_PATH_CSS . 'starter-v' . PROJECT_VERSION . '.css', false, null, 'screen,print' );
 
 	}
 }
