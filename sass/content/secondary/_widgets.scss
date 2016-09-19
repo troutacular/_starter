@@ -1,0 +1,38 @@
+/**
+
+	Widgets
+	=======
+
+	1.0 - Global Widgets
+	2.0 - Widget Title
+
+	=========
+
+	Only declare global widget styles in this file.
+
+	Widget/Aside specific styles should have their own Module
+	file under the modules/ fold
+
+**/
+
+
+
+/*--------------------------------------------------------------
+1.0 - Global Widgets
+--------------------------------------------------------------*/
+
+.widget {
+	margin: 0 0 1.5em;
+
+	/* Make sure select elements fit in widgets. */
+	select {
+		max-width: 100%;
+	}
+}
+
+
+/*--------------------------------------------------------------
+2.0 - Widget Titel
+--------------------------------------------------------------*/
+
+.widget-title {}

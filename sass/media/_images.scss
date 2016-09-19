@@ -1,0 +1,28 @@
+/**
+
+	Images
+	=====
+
+	1.0 - Images
+
+**/
+
+
+
+/*--------------------------------------------------------------
+1.0 - Images
+--------------------------------------------------------------*/
+
+img {
+	// Adhere to container width.
+	max-width: 100%;
+	// Make sure images are scaled correctly.
+	height: auto;
+
+	&.alignleft,
+	&.alignright,
+	&.aligncenter {
+		margin-top: 0;
+	}
+
+}

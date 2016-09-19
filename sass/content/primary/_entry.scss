@@ -1,79 +1,85 @@
 /**
 
-	_starter
+	Entry
 	========
 
-	Use this file for compiling your theme structure.
-
-	1.0 - Normalize
-	2.0 - Variables
-	3.0 - Mixins
-	4.0 - Vendor
-	5.0 - Theme
-	6.0 - Modules
-	7.0 - Content
-	8.0 - CSS Media Types
-		8.1 - Print
+	1.0 - Entry
+	1.0 - Entry Header
+		1.1 - Entry Title
+		1.2 - Entry Meta
+			1.2.1 - Posted On
+			1.2.2 - Byline
+	3.0 - Entry Content
+	4.0 - Entry Footer
 
 **/
 
 
 
 /*--------------------------------------------------------------
-1.0 - Normalize
+1.0 - Entry Header
 --------------------------------------------------------------*/
-@import 'normalize';
+
+.sticky {}
+
+.hentry {}
 
 /*--------------------------------------------------------------
-2.0 - Variables
+1.0 - Entry Header
 --------------------------------------------------------------*/
-@import 'variables/variables';
 
-
-/*--------------------------------------------------------------
-3.0 - Mixins
---------------------------------------------------------------*/
-@import 'mixins/mixins';
+.entry-header {}
 
 
 /*--------------------------------------------------------------
-4.0 - Vendor
+1.1 - Entry Title
 --------------------------------------------------------------*/
-@import 'vendor/vendor';
+
+.entry-title {}
 
 
 /*--------------------------------------------------------------
-5.0 - Theme
+1.2 - Entry Meta
 --------------------------------------------------------------*/
-@import 'layout/layout';
-@import 'typography/typography';
-@import 'elements/elements';
-@import 'forms/forms';
-@import 'media/media';
-@import 'navigation/navigation';
+
+.entry-meta {}
 
 
 /*--------------------------------------------------------------
-6.0 - Modules
+1.2.1 - Posted On
 --------------------------------------------------------------*/
-@import 'modules/modules';
+
+.posted-on {}
+
+.entry-date {}
+
+.published {}
+
+.updated {}
 
 
 /*--------------------------------------------------------------
-7.0 - Content
+1.2.2 - Byline
 --------------------------------------------------------------*/
-@import 'content/content';
 
+.byline {}
+
+.author {}
 
 
 /*--------------------------------------------------------------
-8.0 - CSS Media Types
+3.0 - Entry Content
 --------------------------------------------------------------*/
 
+.entry-content {
 
-/*--------------------------------------------------------------
-8.1 - Print
---------------------------------------------------------------*/
-@media print {
-	@import 'print';
+	&.excerpt {}
+
 }
+
+
+/*--------------------------------------------------------------
+4.0 - Entry Footer
+--------------------------------------------------------------*/
+
+.entry-footer {}

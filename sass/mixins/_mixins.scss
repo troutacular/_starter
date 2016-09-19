@@ -1,0 +1,31 @@
+/**
+
+	Mixins
+	======
+
+	1.0 - Mixin imports
+
+	=========
+
+	Mixins should be included individually.
+
+	Please use Compass (http://compass-style.org/) for common mixins.
+
+**/
+
+
+
+/*--------------------------------------------------------------
+1.0 - Mixin imports
+--------------------------------------------------------------*/
+
+@import 'align-horizontal';
+@import 'align-vertical';
+@import 'breakpoints';
+@import 'center-block';
+@import 'clearfix';
+@import 'clearfix-after';
+@import 'font-size';
+@import 'font-style';
+@import 'media-queries';
+@import 'sass-heading-sizes/sass-heading-sizes';

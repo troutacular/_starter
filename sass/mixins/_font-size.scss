@@ -1,26 +1,25 @@
 /**
-	
+
 	Font Size
 	=========
-	
+
 	Apply rem equivalent to pixel font size
-	
+
+
+	Usage
 	=========
-	
-	Usage:
-	
 	.class { @include font-size(16); }
 
 **/
 
 // Default Variables
 $ie8: false !default;
-$baseFont: 16 !default;
+$base-font: 16 !default;
 
 // Mixin
-@mixin font-size($sizeValue: $baseFont) {
+@mixin font-size($size-value: $base-font) {
 	@if $ie8 == true {
-		font-size: $sizeValue + px;
+		font-size: $size-value + px;
 	}
-	font-size: ($sizeValue / $baseFont) + rem;
+	font-size: ($size-value / $base-font) + rem;
 }

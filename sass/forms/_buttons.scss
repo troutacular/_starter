@@ -1,0 +1,109 @@
+/**
+
+	Buttons
+	=======
+
+	1.0 - Variables
+	2.0 - Global Button
+	3.0 - Button Types
+
+	=========
+
+	See also _forms.scss for input settings
+
+**/
+
+
+/*--------------------------------------------------------------
+1.0 - Variables
+--------------------------------------------------------------*/
+
+// see sass/variables/
+
+
+
+/*--------------------------------------------------------------
+1.0 - Global Button
+--------------------------------------------------------------*/
+
+button {
+	margin: 0; /* Addresses margins set differently in IE6/7, F3/4, S5, Chrome */
+	vertical-align: baseline; /* Improves appearance and consistency in all browsers */
+	font-size: 100%; /* Corrects font size not being inherited in all browsers */
+
+	&.file-input {
+		position: relative;
+		overflow: hidden;
+
+		label {
+			margin: 0;
+		}
+
+		[type="file"] {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			opacity: .001;
+		}
+	}
+
+}
+
+
+
+/*--------------------------------------------------------------
+2.0 - Button Types
+--------------------------------------------------------------*/
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	// default content colors
+	@if $color__border-button == transparent {
+		border: 0;
+	}
+	@else {
+		border: {
+			width: $size__border-button;
+			color: $color__border-button;
+			style: solid;
+		}
+	}
+	border-radius: $size__border-radius-input;
+	background: $color__background-button;
+	cursor: pointer; /* Improves usability and consistency of cursor style between image-type 'input' and others */
+	padding: $size__padding-input;
+	line-height: 1;
+	color: $color__text-button;
+
+	-webkit-appearance: button; /* Corrects inability to style clickable 'input' types in iOS */
+	&:hover {
+		background: $color__background-button-hover;
+		color: $color__text-button-hover;
+		@if $color__border-button-hover == transparent {
+			border: 0 none;
+		}
+		@else {
+			border: {
+				width: $size__border-button;
+				color: $color__border-button;
+				style: solid;
+			}
+		}
+	}
+
+	&:focus,
+	&:active {
+		background: $color__background-button-active;
+		color: $color__text-button-active;
+		@if $color__border-button-active == transparent {
+			border: 0 none;
+		}
+		@else {
+			border: $color__border-button-active;
+		}
+	}
+}

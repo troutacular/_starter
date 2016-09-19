@@ -20,7 +20,7 @@
 --------------------------------------------------------------*/
 
 @page {
-	margin: 0.5cm;
+	margin: .5cm;
 }
 
 body {
@@ -39,7 +39,7 @@ main,
 nav,
 section {
 	background: transparent !important;
-	color: $color-content-text-print !important;
+	color: $color__text-print !important;
 }
 
 
@@ -49,23 +49,16 @@ section {
 --------------------------------------------------------------*/
 
 h1,h2,h3,h4,h5,h6 {
-	color: $color-content-heading-print !important;
+	color: $color__text-heading-print !important;
 	background: transparent !important;
-	border-color: $color-content-heading-print !important;
+	border-color: $color__text-heading-print !important;
 }
 
 h1 {
-	border-bottom: 1px solid $color-content-heading-print;
+	border-bottom: 1px solid $color__text-heading-print;
 	padding-bottom: .5em;
 	margin-bottom: 1em;
 }
-
-h1 { font-size: 18px; }
-h2 { font-size: 20px; }
-h3 { font-size: 22px; }
-h4 { font-size: 24px; }
-h5 { font-size: 26px; }
-h6 { font-size: 28px; }
 
 .brand-title {
 	border: 0 none;
@@ -78,7 +71,7 @@ h6 { font-size: 28px; }
 
 .site-title a {
 	clear: both;
-	color: $color-content-heading-print !important;
+	color: $color__text-heading-print !important;
 }
 
 
@@ -90,17 +83,16 @@ h6 { font-size: 28px; }
 	clear: both;
 	margin-top: 1em;
 	padding-top: 1em;
-	border-top: 1px solid $color-content-heading-print;
+	border-top: 1px solid $color__text-heading-print;
 }
 
 p {
-	color: $color-content-text-print;
-	@include font-size(12);
+	color: $color__text-print;
 }
 
 q,
 blockquote {
-	background: $color-blockquote-background-print;
+	background: $color__background-blockquote-print;
 
 	&:before,
 	&:after {
@@ -122,7 +114,7 @@ blockquote {
 --------------------------------------------------------------*/
 
 a {
-	color: $color-content-link-print !important;
+	color: $color__link-print !important;
 	text-decoration: underline;
 	/* only include the link on external sites that do not have
 	 * 'starter.com' in the link
@@ -133,8 +125,7 @@ a {
 
 	&:not([href*='#{$no-print-url}']):after {
 		content: ' [' attr(href) '] ';
-		color: lighten($color-content-link-print, 15);
-		@include font-size(12);
+		color: lighten($color__link-print, 15);
 		text-decoration: none;
 	}
 }

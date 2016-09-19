@@ -1,5 +1,5 @@
-/** 
-	
+/**
+
 	Sass Heading Sizes
 	Developed by @troutacular (https://github.com/troutacular/sass-heading-sizes
 	Created: 2015-01-25
@@ -11,17 +11,15 @@
 
 
 // Set the default variables
-	
-	// support for ie8
-	$ie8: false !default;
-	
-	// base font size in pixels
-	$base-font: 16 !default;
 
-// end defaults
+// support for ie8
+$ie8: false !default;
+
+// base font size in pixels
+$base-font: 16 !default;
 
 
-@mixin heading-decrement($heading-size: 2.5, $decrement: 0.25, $unit: rem){
+@mixin heading-decrement($heading-size: 2.5, $decrement: .25, $unit: rem) {
 	@each $h in h1, h2, h3, h4, h5, h6 {
 		#{$h} {
 			@if $ie8 == true {
@@ -39,11 +37,12 @@
 				font-size: $heading-size + $unit;
 			}
 		}
+
 		$heading-size: $heading-size * (1 - $decrement);
 	}
 }
 
-@mixin heading-increment($heading-size: 2.5, $increment: 0.25, $unit: rem){
+@mixin heading-increment($heading-size: 2.5, $increment: .25, $unit: rem) {
 	@each $h in h6, h5, h4, h3, h2, h1 {
 		#{$h} {
 			@if $ie8 == true {
@@ -61,11 +60,12 @@
 				font-size: $heading-size + $unit;
 			}
 		}
+
 		$heading-size: $heading-size * (1 + $increment);
 	}
 }
 
-@mixin heading-decrement-fixed($heading-size: 2.5, $decrement: 0.25, $unit: rem){
+@mixin heading-decrement-fixed($heading-size: 2.5, $decrement: .25, $unit: rem) {
 	@each $h in h1, h2, h3, h4, h5, h6 {
 		#{$h} {
 			@if $ie8 == true {
@@ -83,11 +83,12 @@
 				font-size: $heading-size + $unit;
 			}
 		}
+
 		$heading-size: $heading-size - $decrement;
 	}
 }
 
-@mixin heading-increment-fixed($heading-size: 2.5, $increment: 0.25, $unit: rem){
+@mixin heading-increment-fixed($heading-size: 2.5, $increment: .25, $unit: rem) {
 	@each $h in h6, h5, h4, h3, h2, h1 {
 		#{$h} {
 			@if $ie8 == true {
@@ -105,6 +106,7 @@
 				font-size: $heading-size + $unit;
 			}
 		}
+
 		$heading-size: $heading-size + $increment;
 	}
 }
