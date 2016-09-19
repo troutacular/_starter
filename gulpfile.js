@@ -63,6 +63,19 @@
 2.2 - Paths
 --------------------------------------------------------------*/
 
+	var base_paths = {
+		src: 'assets-source',
+		dest: 'assets',
+		sass: 'assets-source/sass',
+	};
+	var paths = {
+		sass: {
+			src: base_paths.src + '/sass',
+			dest: base_paths.dest + '/css',
+			config: './config.rb',
+		},
+	};
+
 
 /*--------------------------------------------------------------
 3.1 - Images
