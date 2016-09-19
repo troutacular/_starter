@@ -124,7 +124,7 @@ if ( ! class_exists( 'Starter_Footer_Columns' ) ) {
 
 				// Set default variables.
 				$sidebar = 'site-footer-column';
-				$class = 'site-footer-column-' . $i;
+				$class = 'footer-column footer-column-' . $i;
 
 				// Add the column number past first instance for sidebar reference.
 				if ( $i > 1 ) {
