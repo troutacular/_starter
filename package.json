@@ -22,7 +22,8 @@
     "gulp-notify": "^2.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-ruby-sass": "^2.1.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "susy": "^2.2.12"
   },
   "scripts": {
     "test": "gulp"
