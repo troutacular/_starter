@@ -105,6 +105,26 @@
 5.0 - Styles
 --------------------------------------------------------------*/
 
+	gulp.task('styles', function() {
+		gulp.src(paths.sass.src + '/*.scss')
+		.pipe(compass({
+			config_file: paths.sass.config,
+			css: paths.sass.dest,
+			sass: paths.sass.src
+		}))
+		.on('error', function (err) {
+			console.error('Error!', err.message);
+		})
+		.pipe(autoprefixer('last 2 version'))
+		.pipe(gulp.dest(paths.sass.dest))
+		.pipe(rename(function (path) {
+			path.basename += '-v' + project_version;
+		}))
+		.pipe(cleanCSS())
+		.pipe(gulp.dest(base_paths.dest + '/css'))
+		.pipe(notify({ message: 'Styles task complete' }));
+	});
+
 
 
 /*--------------------------------------------------------------
