@@ -13,7 +13,6 @@
 			3.1.2 - Sprite
 			3.1.3 - SVG optimize and move
 	4.0 - Scripts
-		4.1 - Inject Scripts
 	5.0 - Styles
 	6.0 - Build
 		6.1 - Build order
@@ -91,9 +90,9 @@
 		sprite: {
 			src: base_paths.src + '/images/sprite/*',
 			dest: './',
-			// needed for running function
+			// Needed for running function.
 			src_svg: base_paths.dest + '/images/sprite-v' + project_version + '.svg',
-			// needed for css output - otherwise if using above, creates separte directory
+			// Needed for css output - otherwise if using above, creates separte directory.
 			svg: 'images/sprite-v' + project_version + '.svg',
 			scss: '../' + base_paths.sass + '/sprite/_sprite-map.scss',
 			template: base_paths.src + '/sass/sprite/templates/sprite-template.scss',
@@ -128,6 +127,7 @@
 		return gulp.src(paths.sprite.src)
 			.pipe(svg_sprite({
 				shape				: {
+					// Icon output size
 					dimension		: {
 						maxWidth	: 32,
 						maxHeight	: 32
@@ -171,7 +171,7 @@
 --------------------------------------------------------------*/
 
 	gulp.task('images_optimize_move', ['png_sprite'], function() {
-		// indclude all the images and sub-folders
+		// Indclude all the images and sub-folders.
 		return gulp.src(paths.images.src + '/**/*')
 		.pipe(imagemin(image_min_setting))
 		.pipe(gulp.dest(paths.images.dest));
