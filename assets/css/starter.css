@@ -455,20 +455,17 @@ textarea {
 1.0 - Config Settings
 --------------------------------------------------------------*/
 /**
-
-	No Print URL
-	This is set in the _print.scss file to display all links when
-	prinint EXCEPT the links containing the value below.
-
-**/
+ * Get the project version from the gulfile.js config.
+ */
 /**
-
-	Support for ie8 - set this to 'false' after 7/1/2014
-	If set to [false] then the compiled CSS will eliminate certain
-	inclusions to support IE8 and therefore make the file smaller.
-	Example is the use of REM fonts with PX defaults for IE8 support.
-
-**/
+ * This is set in the _print.scss file to display all links when
+ * prinint EXCEPT the links containing the value below.
+ */
+/**
+ * If set to [false] then the compiled CSS will eliminate certain
+ * inclusions to support IE8 and therefore make the file smaller.
+ * Example is the use of REM fonts with PX defaults for IE8 support.
+ */
 /**
 
 	Sizes
@@ -1317,7 +1314,6 @@ button,
 input,
 select,
 textarea {
-  font-size: 16px;
   font-size: 1rem;
   line-height: 1.5;
   color: #5b514a;
@@ -1402,7 +1398,6 @@ big {
 2.6 - Code / Pre
 --------------------------------------------------------------*/
 pre {
-  font-size: 15px;
   font-size: 0.9375rem;
   margin-bottom: 1.6em;
   background: #eee;
@@ -1426,7 +1421,6 @@ code,
 kbd,
 tt,
 var {
-  font-size: 15px;
   font-size: 0.9375rem;
   font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 }
@@ -1480,32 +1474,26 @@ h6 {
 }
 
 h1 {
-  font-size: 40px;
   font-size: 2.5rem;
 }
 
 h2 {
-  font-size: 30px;
   font-size: 1.875rem;
 }
 
 h3 {
-  font-size: 22.5px;
   font-size: 1.40625rem;
 }
 
 h4 {
-  font-size: 16.875px;
   font-size: 1.05469rem;
 }
 
 h5 {
-  font-size: 12.65625px;
   font-size: 0.79102rem;
 }
 
 h6 {
-  font-size: 9.49219px;
   font-size: 0.59326rem;
 }
 
@@ -1513,27 +1501,21 @@ h6 {
 2.0 - Sidebars
 --------------------------------------------------------------*/
 .site-sidebar h1 {
-  font-size: 24px;
   font-size: 1.5rem;
 }
 .site-sidebar h2 {
-  font-size: 18px;
   font-size: 1.125rem;
 }
 .site-sidebar h3 {
-  font-size: 13.5px;
   font-size: 0.84375rem;
 }
 .site-sidebar h4 {
-  font-size: 10.125px;
   font-size: 0.63281rem;
 }
 .site-sidebar h5 {
-  font-size: 7.59375px;
   font-size: 0.47461rem;
 }
 .site-sidebar h6 {
-  font-size: 5.69531px;
   font-size: 0.35596rem;
 }
 
@@ -1541,27 +1523,21 @@ h6 {
 3.0 - Footers
 --------------------------------------------------------------*/
 .site-footer h1 {
-  font-size: 24px;
   font-size: 1.5rem;
 }
 .site-footer h2 {
-  font-size: 18px;
   font-size: 1.125rem;
 }
 .site-footer h3 {
-  font-size: 13.5px;
   font-size: 0.84375rem;
 }
 .site-footer h4 {
-  font-size: 10.125px;
   font-size: 0.63281rem;
 }
 .site-footer h5 {
-  font-size: 7.59375px;
   font-size: 0.47461rem;
 }
 .site-footer h6 {
-  font-size: 5.69531px;
   font-size: 0.35596rem;
 }
 
@@ -1595,7 +1571,6 @@ h6 {
   clip: rect(1px, 1px, 1px, 1px);
 }
 .screen-reader-text:focus {
-  font-size: 14px;
   font-size: 0.875rem;
   display: block;
   top: 5px;
@@ -2240,6 +2215,224 @@ a:hover, a:active {
 .page-links {
   clear: both;
   margin: 0 0 1.5em;
+}
+
+/**
+
+	SVG Sprites
+	===========
+
+	1.0 - Maps
+	2.0 - Variables
+	3.0 - Mixins
+	4.0 - Classes
+
+	=========
+
+	NOTE
+
+	Do not modify the generated partial '_sprite.scss' - the code
+	that controls this partial is generated from the template
+	'_sprite_template.scss'
+
+
+	USAGE
+	=========
+
+	.class {
+		 &:before {
+			 @include sprite(twitter);
+			 content: '';
+			 float: left;
+			 margin-right: 0.5em;
+		 }
+
+		 &:hover {
+			 &:before {
+				 @include sprite(twitterHover, bg);
+			 }
+		 }
+	}
+
+**/
+/*--------------------------------------------------------------
+1.0 - Maps
+--------------------------------------------------------------*/
+/**
+
+	Sprite Map
+	==========
+
+	1.0 - Maps
+
+
+**/
+/*--------------------------------------------------------------
+1.0 - Maps
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+2.0 - Variables
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+3.0 - Mixins
+--------------------------------------------------------------*/
+/**
+ * @author Mike Street
+ * @group Sprite
+ */
+/**
+ *  Convert pixels to ems.
+ *
+ * @param integer $px 				Value to convert.
+ * @param integer $base-font-size   ($mq-base-font-size) - `<body>` font size.
+ *
+ * @example scss
+ *  $font-size-in-ems: mq-px2em(16px);
+ *  p { font-size: mq-px2em(16px); }
+ *
+ * @requires $mq-base-font-size
+ * @returns {Number}
+ */
+/**
+ * Add class for <IE9 sprite fallback
+ *
+ * @group sprite
+ * @type string
+ */
+/**
+ * Set the `$sprite` map.
+ * @group sprite
+ */
+/**
+ * Retrive an attributes value for a specific icon in the sprite map.
+ *
+ * @param string $icon  The name of the icon.
+ * @param string $attr  The attribute you wish to retrieve (e.g. width).
+ */
+/**
+ * Create a map with the specified icon of attributes.
+ *
+ * @param string $icon  The name of the icon.
+ */
+.icon-only-WordPress_logo::before, .icon-WordPress_logo::before {
+  display: inline-block;
+  background-image: url('../images/sprite-v1.0.0.svg');
+  background-size: 2.625em 2.625em;
+}
+
+.lt-ie9 .icon-only-WordPress_logo::before, .lt-ie9 .icon-WordPress_logo::before {
+  background-image: url('../images/sprite-v1.0.0.png');
+}
+
+/**
+ * Add a Sprite for IE support.
+ *
+ * @type  string $icon  The name of the icon.
+ * @type  string $type  The properties wanted {
+ * 					- `all` ensures the icon has the background, position and size.
+ * 					- `size` is just for dimensions.
+ * 					- `bg` just  applies the backgrounds to an element}.
+ * 				}
+ *
+ * @usage
+ * .class {
+ * 	@include ie-sprite(arrow);
+ * 	&:hover {
+ * 		@include ie-sprite(arrowDown, bg)
+ * 	}
+ * }
+ *
+ * @example css - Output
+ * .lt-ie9 .class {
+ *	 background-image: url("../img/sprite.png");
+ * }
+ * .lt-ie9 .class {
+ *	 width: 20px;
+ *	 height: 20px;
+ *	 background-position: -5px -5px;
+ * }
+ * .lt-ie9 .class:hover {
+ *	 background-position: -36px -36px;
+ * }
+ */
+/**
+ * Add an SVG sprite icon using em positioning, with a PNG icon for browsers with the `$ie-sprite` class using px positioning.
+ *
+ * @type  string $icon  The name of the icon.
+ * @type  string $type  The properties wanted {
+ * 					- `all` ensures the icon has the background, position and size.
+ * 					- `size` is just for dimensions.
+ * 					- `bg` just  applies the backgrounds to an element}.
+ * 				}
+ *
+ * @usage
+ * .class {
+ * 	@include sprite(arrow);
+ * 	&:hover {
+ * 		@include sprite(arrowDown, bg)
+ * 	}
+ * }
+ *
+ * @example css - Output
+ * .class {
+ * 	display: inline-block;
+ * 	background-image: url("../img/sprite.svg");
+ * 	background-size: 34.25em 32.1875em;
+ * }
+ *
+ * .lt-ie9 .class {
+ * 	background-image: url("../img/sprite.png");
+ * }
+ *
+ * .class {
+ * 	width: 1.3125em;
+ * 	height: 1.3125em;
+ * 	background-position: -0.3125em -0.3125em;
+ * }
+ * .lt-ie9 .class {
+ * 	width: 20px;
+ * 	height: 20px;
+ * 	background-position: -5px -5px;
+ * }
+ * .class:hover {
+ * 	background-position: -2.25em -2.25em;
+ * }
+ * .lt-ie9 .class:hover {
+ * 	background-position: -36px -36px;
+ * }
+ */
+/*--------------------------------------------------------------
+4.0 - Classes
+--------------------------------------------------------------*/
+.icon-only-WordPress_logo {
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+}
+.icon-only-WordPress_logo::before {
+  width: 2.0625em;
+  height: 2.0625em;
+  background-position: -0.3125em -0.3125em;
+  float: left;
+  margin-right: .5em;
+  content: '';
+}
+.lt-ie9 .icon-only-WordPress_logo::before {
+  width: 32px;
+  height: 32px;
+  background-position: 0px 0px;
+}
+
+.icon-WordPress_logo::before {
+  width: 2.0625em;
+  height: 2.0625em;
+  background-position: -0.3125em -0.3125em;
+  content: '';
+}
+.lt-ie9 .icon-WordPress_logo::before {
+  width: 32px;
+  height: 32px;
+  background-position: 0px 0px;
 }
 
 /*--------------------------------------------------------------
