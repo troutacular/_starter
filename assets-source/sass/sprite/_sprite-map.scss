@@ -15,23 +15,6 @@
 --------------------------------------------------------------*/
 
 $sprite-icons: (
-	sprite: (width: 42px, height: 756px, pngPath: image-url('sprite-v#{$project-version}.png', false, false), svgPath: image-url('sprite-v#{$project-version}.svg', false, false)),
-	bell: (width: 32px, height: 32px, backgroundX: 0px, backgroundY: 0px, padT: 5px, padR: 5px, padB: 5px, padL: 5px),
-	blackboard: (width: 32px, height: 32px, backgroundX: 0px, backgroundY: -42px, padT: 5px, padR: 5px, padB: 5px, padL: 5px),
-	calendar: (width: 32px, height: 32px, backgroundX: 0px, backgroundY: -84px, padT: 5px, padR: 5px, padB: 5px, padL: 5px),
-	directory: (width: 31.92px, height: 32px, backgroundX: 0px, backgroundY: -126px, padT: 5px, padR: 5px, padB: 5px, padL: 5px),
-	facebook: (width: 32px, height: 32px, backgroundX: 0px, backgroundY: -168px, padT: 5px, padR: 5px, padB: 5px, padL: 5px),
-	flickr: (width: 32px, height: 32px, backgroundX: 0px, backgroundY: -210px, padT: 5px, padR: 5px, padB: 5px, padL: 5px),
-	gmail: (width: 32px, height: 32px, backgroundX: 0px, backgroundY: -252px, padT: 5px, padR: 5px, padB: 5px, padL: 5px),
-	instagram: (width: 32px, height: 32px, backgroundX: 0px, backgroundY: -294px, padT: 5px, padR: 5px, padB: 5px, padL: 5px),
-	library: (width: 32px, height: 32px, backgroundX: 0px, backgroundY: -336px, padT: 5px, padR: 5px, padB: 5px, padL: 5px),
-	linkedin: (width: 32px, height: 32px, backgroundX: 0px, backgroundY: -378px, padT: 5px, padR: 5px, padB: 5px, padL: 5px),
-	map: (width: 32px, height: 32px, backgroundX: 0px, backgroundY: -420px, padT: 5px, padR: 5px, padB: 5px, padL: 5px),
-	my-usc: (width: 32px, height: 32px, backgroundX: 0px, backgroundY: -462px, padT: 5px, padR: 5px, padB: 5px, padL: 5px),
-	newspaper: (width: 32px, height: 32px, backgroundX: 0px, backgroundY: -504px, padT: 5px, padR: 5px, padB: 5px, padL: 5px),
-	oasis: (width: 32px, height: 32px, backgroundX: 0px, backgroundY: -546px, padT: 5px, padR: 5px, padB: 5px, padL: 5px),
-	office-365: (width: 32px, height: 32px, backgroundX: 0px, backgroundY: -588px, padT: 5px, padR: 5px, padB: 5px, padL: 5px),
-	registration: (width: 32px, height: 32px, backgroundX: 0px, backgroundY: -630px, padT: 5px, padR: 5px, padB: 5px, padL: 5px),
-	twitter: (width: 32px, height: 32px, backgroundX: 0px, backgroundY: -672px, padT: 5px, padR: 5px, padB: 5px, padL: 5px),
-	youtube: (width: 32px, height: 32px, backgroundX: 0px, backgroundY: -714px, padT: 5px, padR: 5px, padB: 5px, padL: 5px),
+	sprite: (width: 42px, height: 42px, pngPath: image-url('sprite-v#{$project-version}.png', false, false), svgPath: image-url('sprite-v#{$project-version}.svg', false, false)),
+	WordPress_logo: (width: 32px, height: 32px, backgroundX: 0px, backgroundY: 0px, padT: 5px, padR: 5px, padB: 5px, padL: 5px),
 );
