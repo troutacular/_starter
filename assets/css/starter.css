@@ -2314,13 +2314,13 @@ a:hover, a:active {
  *
  * @param string $icon  The name of the icon.
  */
-.icon-only-WordPress_logo::before, .icon-WordPress_logo::before {
+.icon-only-wordpress-logo::before, .icon-wordpress-logo::before {
   display: inline-block;
   background-image: url('../images/sprite-v1.0.0.svg');
   background-size: 2.625em 2.625em;
 }
 
-.lt-ie9 .icon-only-WordPress_logo::before, .lt-ie9 .icon-WordPress_logo::before {
+.lt-ie9 .icon-only-wordpress-logo::before, .lt-ie9 .icon-wordpress-logo::before {
   background-image: url('../images/sprite-v1.0.0.png');
 }
 
@@ -2404,12 +2404,12 @@ a:hover, a:active {
 /*--------------------------------------------------------------
 4.0 - Classes
 --------------------------------------------------------------*/
-.icon-only-WordPress_logo {
+.icon-only-wordpress-logo {
   display: inline-block;
   width: 2em;
   height: 2em;
 }
-.icon-only-WordPress_logo::before {
+.icon-only-wordpress-logo::before {
   width: 2.0625em;
   height: 2.0625em;
   background-position: -0.3125em -0.3125em;
@@ -2417,19 +2417,19 @@ a:hover, a:active {
   margin-right: .5em;
   content: '';
 }
-.lt-ie9 .icon-only-WordPress_logo::before {
+.lt-ie9 .icon-only-wordpress-logo::before {
   width: 32px;
   height: 32px;
   background-position: 0px 0px;
 }
 
-.icon-WordPress_logo::before {
+.icon-wordpress-logo::before {
   width: 2.0625em;
   height: 2.0625em;
   background-position: -0.3125em -0.3125em;
   content: '';
 }
-.lt-ie9 .icon-WordPress_logo::before {
+.lt-ie9 .icon-wordpress-logo::before {
   width: 32px;
   height: 32px;
   background-position: 0px 0px;

@@ -16,5 +16,5 @@
 
 $sprite-icons: (
 	sprite: (width: 42px, height: 42px, pngPath: image-url('sprite-v#{$project-version}.png', false, false), svgPath: image-url('sprite-v#{$project-version}.svg', false, false)),
-	WordPress_logo: (width: 32px, height: 32px, backgroundX: 0px, backgroundY: 0px, padT: 5px, padR: 5px, padB: 5px, padL: 5px),
+	wordpress-logo: (width: 32px, height: 32px, backgroundX: 0px, backgroundY: 0px, padT: 5px, padR: 5px, padB: 5px, padL: 5px),
 );
