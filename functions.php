@@ -63,8 +63,77 @@ Table of Contents
 1.1 - Version
 ----------------------------------------------------------------*/
 
-const PROJECT_VERSION = '1.0.0';
-const ASSETS_PATH_CSS = '/assets/css/';
+/**
+ * Set the configuration option value.
+ *
+ * @param   string $value    Value to test if exists.
+ * @param   string $default  Default value if test fails.
+ * @return  string           Value based on test.
+ */
+function _starter_set_config_option( $value, $default = '' ) {
+
+	if ( ! empty( $value ) ) {
+		return $value;
+	}
+
+	return $default;
+}
+
+/**
+ * _starter configuration settings.
+ *
+ * @return  array  Array of configuration settings.
+ */
+function _starter_get_config() {
+
+	// Set the default project configurations.
+	$config = array(
+		'version' => '1.0.0',
+		'path' => array(
+			'css' => '/assets/css/',
+			'js' => '/assets/js/',
+		),
+	);
+
+	// Get the package information.
+	if ( file_exists( get_template_directory() . '/package.json' ) ) {
+		$package_config = json_decode( file_get_contents( get_template_directory() . '/package.json' ) );
+
+		$config['version'] = _starter_set_config_option( $package_config->version, '' );
+	}
+	return $config;
+}
+
+/**
+ * Get the theme version from the build.
+ *
+ * @return  string  Theme version.
+ */
+function _starter_get_version() {
+	$config = _starter_get_config();
+	return $config['version'];
+}
+
+/**
+ * Get the path of the assets.
+ *
+ * @param   string $type  Type of assets to get the path.
+ * @return  string        Path to asset type.
+ */
+function _starter_get_asset_path( $type ) {
+	$config = _starter_get_config();
+	switch ( $type ) {
+		case 'js':
+			return $config['path']['js'];
+			break;
+
+		default:
+			return $config['path']['css'];
+			break;
+	}
+}
+
+
 
 /** --------------------------------------------------------------
 1.2 - Environment
@@ -363,7 +432,7 @@ if ( ! function_exists( '_starter_enqueue_css' ) ) {
 	 */
 	function _starter_enqueue_css() {
 
-		wp_enqueue_style( '_starter-style', get_stylesheet_directory_uri() . ASSETS_PATH_CSS . 'starter-v' . PROJECT_VERSION . '.css', false, null, 'screen,print' );
+		wp_enqueue_style( '_starter-style', get_stylesheet_directory_uri() . _starter_get_asset_path( 'css' ) . 'starter-v' . _starter_get_version() . '.css', false, null, 'screen,print' );
 
 	}
 }
