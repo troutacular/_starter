@@ -1,0 +1,32 @@
+/**
+
+	Configs
+	=========
+
+	1.0 - Config Settings
+
+**/
+
+
+/*--------------------------------------------------------------
+1.0 - Config Settings
+--------------------------------------------------------------*/
+
+/**
+ * Get the project version from the gulfile.js config.
+ */
+$project-version: '/* @echo VERSION */';
+
+/**
+ * This is set in the _print.scss file to display all links when
+ * prinint EXCEPT the links containing the value below.
+ */
+$no-print-url: '';
+
+
+/**
+ * If set to [false] then the compiled CSS will eliminate certain
+ * inclusions to support IE8 and therefore make the file smaller.
+ * Example is the use of REM fonts with PX defaults for IE8 support.
+ */
+$ie8: false;

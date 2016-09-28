@@ -5,38 +5,6 @@
 
 	Uses a set of breakpoints and creates ranges of between the breakpoints.
 
-
-	Usage
-	=========
-
-	@media #{$xxsmall-below} { }
-	@media #{$xxsmall-range} { }
-	@media #{$xxsmall-up} { }
-
-	@media #{$xsmall-below} { }
-	@media #{$xsmall-range} { }
-	@media #{$xsmall-up} { }
-
-	@media #{$small-below} { }
-	@media #{$small-range} { }
-	@media #{$small-up} { }
-
-	@media #{$medium-below} { }
-	@media #{$medium-range} { }
-	@media #{$medium-up} { }
-
-	@media #{$large-below} { }
-	@media #{$large-range} { }
-	@media #{$large-up} { }
-
-	@media #{$xlarge-below} { }
-	@media #{$xlarge-range} { }
-	@media #{$xlarge-up} { }
-
-	@media #{$xxlarge-below} { }
-	@media #{$xxlarge-range} { }
-	@media #{$xxlarge-up} { }
-
  */
 
 $screen-xxsmall: 30em !default;		/* 480px */

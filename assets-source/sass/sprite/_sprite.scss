@@ -1,0 +1,92 @@
+/**
+
+	SVG Sprites
+	===========
+
+	1.0 - Maps
+	2.0 - Variables
+	3.0 - Mixins
+	4.0 - Classes
+
+	=========
+
+	NOTE
+
+	Do not modify the generated partial '_sprite.scss' - the code
+	that controls this partial is generated from the template
+	'_sprite_template.scss'
+
+
+	USAGE
+	=========
+
+	.class {
+		 &:before {
+			 @include sprite(twitter);
+			 content: '';
+			 float: left;
+			 margin-right: 0.5em;
+		 }
+
+		 &:hover {
+			 &:before {
+				 @include sprite(twitterHover, bg);
+			 }
+		 }
+	}
+
+**/
+
+
+
+/*--------------------------------------------------------------
+1.0 - Maps
+--------------------------------------------------------------*/
+@import 'sprite-map';
+
+
+/*--------------------------------------------------------------
+2.0 - Variables
+--------------------------------------------------------------*/
+
+$ie-sprite: '.lt-ie9' !default;
+$sprite: map-get($sprite-icons, sprite) !default;
+$base-font-size-pixels: 16px !default;
+
+
+/*--------------------------------------------------------------
+3.0 - Mixins
+--------------------------------------------------------------*/
+@import 'sprite-mixins';
+
+
+/*--------------------------------------------------------------
+4.0 - Classes
+--------------------------------------------------------------*/
+
+@each $icon, $value in $sprite-icons {
+
+	@if $icon == sprite {
+		// don't do anything
+	}
+	@else {
+		.icon-only-#{$icon} {
+			display: inline-block;
+			width: 2em; // matches px width/font-base in px from gulp settings
+			height: 2em; // matches px width/font-base in px from gulp settings
+			&::before {
+				@include sprite($icon);
+				float: left;
+				margin-right: .5em;
+				content: '';
+			 }
+		}
+
+		.icon-#{$icon} {
+			&::before {
+				@include sprite($icon);
+				content: '';
+			}
+		}
+	}
+}
