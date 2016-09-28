@@ -112,7 +112,7 @@
 --------------------------------------------------------------*/
 
 	gulp.task('svg2png', function () {
-		gulp.src(paths.images.src + '/*.svg')
+		gulp.src(paths.images.src + '/**/*.svg')
 			.pipe(svg2png())
 			.pipe(gulp.dest(paths.images.dest));
 	});
