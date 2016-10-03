@@ -272,7 +272,11 @@
 			outputStyle: 'compressed',
 			includePaths: ['node_modules/susy/sass']
 		}))
-		.pipe(preprocess({context: {VERSION: project_info.theme.version}}))
+		.pipe(preprocess({context: {
+			VERSION: project_info.theme.version,
+			// Set the assets path in relation to the compiled css file.
+			ASSEST_RELATION_TO_CSS: '../',
+		}}))
 		.on('error', function (error) {
 			console.error('Error!', error.message);
 		})
