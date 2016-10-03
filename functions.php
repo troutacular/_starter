@@ -14,7 +14,7 @@
 Table of Contents
 
 1.0 - Globals
-	1.1 - Version
+	1.1 - Configuration Settings
 	1.2 - Environment
 	1.3 - Dependencies
 	1.4 - Theme Setup
@@ -60,7 +60,7 @@ Table of Contents
 
 
 /** --------------------------------------------------------------
-1.1 - Version
+1.1 - Configuration Settings
 ----------------------------------------------------------------*/
 
 /**
@@ -99,8 +99,9 @@ function _starter_get_config() {
 	if ( file_exists( get_template_directory() . '/package.json' ) ) {
 		$package_config = json_decode( file_get_contents( get_template_directory() . '/package.json' ) );
 
-		$config['version'] = _starter_set_config_option( $package_config->version, '' );
+		$config['version'] = _starter_set_config_option( $package_config->version, $config['version'] );
 	}
+
 	return $config;
 }
 
@@ -432,7 +433,7 @@ if ( ! function_exists( '_starter_enqueue_css' ) ) {
 	 */
 	function _starter_enqueue_css() {
 
-		wp_enqueue_style( '_starter-style', get_stylesheet_directory_uri() . _starter_get_asset_path( 'css' ) . 'starter-v' . _starter_get_version() . '.css', false, null, 'screen,print' );
+		wp_enqueue_style( '_starter-style', get_stylesheet_directory_uri() . _starter_get_asset_path( 'css' ) . 'starter.css', false, _starter_get_version(), 'screen,print' );
 
 	}
 }

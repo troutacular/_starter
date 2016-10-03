@@ -1,17 +1,13 @@
 /*!
-Theme Name: _starter
+Theme Name: 1.0.0
 Theme URI: https://github.com/troutacular/_starter
 Author: @troutacular
 Author URI: https://github.com/troutacular/
-Description: _starter theme is based off of the _s (underscores) theme and is intended to clone and use as you see fit.  It is not intended to be used as a Parent or Child theme.
+Description: WordPress _starter theme is based off of the _s (underscores) theme and is intended to clone and use as you see fit.  It is not intended to be used as a Parent or Child theme.
 Version: 1.0.0
-License: The MIT License (MIT)
-License URI: license.txt
+License: MIT
+License URI: LICENSE.txt
 Text Domain: _starter
-Domain Path: /languages/
+Domain Path: /languages
 Tags: one-column, two-columns, left-sidebar, custom-menu, editor-style, featured-images, post-formats, sticky-post
 */
-
-/*
- * Style information is now stored in SASS files @ /sass/theme-name.css and compiles to /css/theme-name.css
- */

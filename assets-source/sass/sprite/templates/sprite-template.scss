@@ -15,7 +15,7 @@
 --------------------------------------------------------------*/
 
 $sprite-icons: (
-	sprite: (width: {{spriteWidth}}px, height: {{spriteHeight}}px, pngPath: image-url('sprite-v#{$project-version}.png', false, false), svgPath: image-url('sprite-v#{$project-version}.svg', false, false)),
+	sprite: (width: {{spriteWidth}}px, height: {{spriteHeight}}px, pngPath: image-url('starter_sprite.png?ver=#{$project-version}', false, false), svgPath: image-url('starter_sprite.svg?ver=#{$project-version}', false, false)),
 {{#shapes}}
 	{{base}}: (width: {{width.inner}}px, height: {{height.inner}}px, backgroundX: {{position.absolute.x}}px, backgroundY: {{position.absolute.y}}px, padT: {{padding.top}}px, padR: {{padding.right}}px, padB: {{padding.bottom}}px, padL: {{padding.left}}px),
 {{/shapes}});
