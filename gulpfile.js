@@ -5,9 +5,8 @@
 
 	1.0 - Dependencies
 	2.0 - Variables
-		2.1 - Project Version
+		2.1 - Project Information
 		2.2 - Paths
-		2.3 - Inject Variables
 	3.0 - Assets
 		3.1 - Images
 			3.1.1 - SVG to PNG
@@ -67,7 +66,7 @@
 
 
 /*--------------------------------------------------------------
-2.1 - Project Version
+2.1 - Project Information
 --------------------------------------------------------------*/
 
 	var project_info = {
