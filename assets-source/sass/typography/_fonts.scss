@@ -16,19 +16,18 @@
 
 /**
 
-	Using Compass for Font Face
-
-	$name is required, arbitrary, and what you will use in font stacks.
-	$font-files is required using font-files('relative/location', 'format'). for best results use this order: woff, opentype/truetype, svg
-	$eot is required by IE, and is a relative location of the eot file.
-	$weight shows if the font is bold, defaults to normal
-	$style defaults to normal, might be also italic
 	For android 2.2 Compatiblity, please ensure that your web page has a meta viewport tag.
 	To support iOS < 4.2, an SVG file must be provided
 
-	@include font-face($name, $font-files, $eot, $weight, $style);
-
-	@include font-face( $font-family, font-files($font-filename + '.woff', $font-filename + '.ttf', $font-filename + '.svg'), $font-filename + '.eot', normal, normal);
+	@font-face {
+		font-family: 'Unicorn Font';
+		src: font-url('unicorn.eot?') format('eot'),
+			font-url('unicorn.otf') format('truetype'),
+			font-url('unicorn.woff') format('woff'),
+			font-url('unicorn.svg#unicorn') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
 
 **/
 

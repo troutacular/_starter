@@ -7,7 +7,20 @@
 
 	Usage
 	=========
-	.class { @include align-horizontal; }
+
+	.foo {
+		background-image: image-url('kittens.png');
+	}
+
+	@font-face {
+		font-family: 'Unicorn Font';
+		src: font-url('unicorn.eot?') format('eot'),
+			font-url('unicorn.otf') format('truetype'),
+			font-url('unicorn.woff') format('woff'),
+			font-url('unicorn.svg#unicorn') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
 
 
 	Credit
@@ -22,7 +35,7 @@
  * @access private
  * @param  string $type  Asset type, matching folder name.
  * @param  string $file  Asset file name, including extension.
- * @return string        A `url()` function leading to the asset.
+ * @return string		A `url()` function leading to the asset.
  */
 @function asset($type, $file) {
 	@return url($asset-base-path + '/' + $type + '/' + $file);
@@ -33,7 +46,7 @@
  *
  * @access public
  * @param  string $file  Asset file name, including extension.
- * @return string        A `url()` function leading to the image.
+ * @return string		A `url()` function leading to the image.
  * @require function asset()
  */
 @function image-url($file) {
@@ -45,7 +58,7 @@
  *
  * @access public
  * @param  string $file  Asset file name, including extension.
- * @return string        A `url()` function leading to the font.
+ * @return string		A `url()` function leading to the font.
  * @require function asset()
  */
 @function font-url($file) {
