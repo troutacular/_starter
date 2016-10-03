@@ -46,8 +46,9 @@
 		jeditor = require('gulp-json-editor'),
 
 		// CSS
-		sass = require('gulp-ruby-sass'),
-		compass = require('gulp-compass'),
+		// sass = require('gulp-ruby-sass'),
+		// compass = require('gulp-compass'),
+		sass = require('gulp-sass'),
 		autoprefixer = require('gulp-autoprefixer'),
 		cleanCSS = require('gulp-clean-css'),
 
@@ -267,11 +268,9 @@
 
 	gulp.task('styles', function() {
 		gulp.src(paths.sass.src + '/*.scss')
-		.pipe(compass({
-			css: paths.sass.dest,
-			sass: paths.sass.src,
-			image: paths.images.dest,
-			require: ['susy'],
+		.pipe(sass({
+			outputStyle: 'compressed',
+			includePaths: ['node_modules/susy/sass']
 		}))
 		.pipe(preprocess({context: {VERSION: project_info.theme.version}}))
 		.on('error', function (error) {
