@@ -37,7 +37,7 @@ textarea {
 }
 
 [type="search"] {
-	@include box-sizing('content-box');
+	box-sizing: content-box;
 	// Addresses appearance set to searchfield in S5, Chrome
 	-webkit-appearance: textfield;
 	// Corrects inner padding displayed oddly in S5, Chrome on OSX

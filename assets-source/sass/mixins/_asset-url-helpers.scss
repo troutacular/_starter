@@ -1,0 +1,66 @@
+/**
+
+	Asset URL Helpers
+	====================
+	Use these mixins to generate URL's for assets.
+
+
+	Usage
+	=========
+
+	.foo {
+		background-image: image-url('kittens.png');
+	}
+
+	@font-face {
+		font-family: 'Unicorn Font';
+		src: font-url('unicorn.eot?') format('eot'),
+			font-url('unicorn.otf') format('truetype'),
+			font-url('unicorn.woff') format('woff'),
+			font-url('unicorn.svg#unicorn') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+
+
+	Credit
+	=========
+	[https://css-tricks.com/snippets/sass/simple-asset-helper-functions/]
+
+**/
+
+/**
+ * Asset URL builder
+ *
+ * @access private
+ * @param  string $type  Asset type, matching folder name.
+ * @param  string $file  Asset file name, including extension.
+ * @return string		A `url()` function leading to the asset.
+ */
+@function asset($type, $file) {
+	@return url($asset-base-path + '/' + $type + '/' + $file);
+}
+
+/**
+ * Image asset helper
+ *
+ * @access public
+ * @param  string $file  Asset file name, including extension.
+ * @return string		A `url()` function leading to the image.
+ * @require function asset()
+ */
+@function image-url($file) {
+	@return asset('images', $file);
+}
+
+/**
+ * Font asset helper
+ *
+ * @access public
+ * @param  string $file  Asset file name, including extension.
+ * @return string		A `url()` function leading to the font.
+ * @require function asset()
+ */
+@function font-url($file) {
+	@return asset('fonts', $file);
+}

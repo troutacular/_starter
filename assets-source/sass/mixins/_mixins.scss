@@ -9,8 +9,6 @@
 
 	Mixins should be included individually.
 
-	Please use Compass (http://compass-style.org/) for common mixins.
-
 **/
 
 
@@ -21,6 +19,7 @@
 
 @import 'align-horizontal';
 @import 'align-vertical';
+@import 'asset-url-helpers';
 @import 'breakpoints';
 @import 'center-block';
 @import 'clearfix';
