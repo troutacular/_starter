@@ -46,11 +46,9 @@
 		jeditor = require('gulp-json-editor'),
 
 		// CSS
-		// sass = require('gulp-ruby-sass'),
-		// compass = require('gulp-compass'),
 		sass = require('gulp-sass'),
 		autoprefixer = require('gulp-autoprefixer'),
-		cleanCSS = require('gulp-clean-css'),
+		sourcemaps = require('gulp-sourcemaps'),
 
 		// Images
 		imagemin = require('gulp-imagemin'),
@@ -111,7 +109,7 @@
 		sass: {
 			src: base_paths.src + '/sass',
 			dest: base_paths.dest + '/css',
-			config: './config.rb',
+			maps: '/maps',
 		},
 		sprite: {
 			src: base_paths.src + '/images/sprite/*',
@@ -268,23 +266,27 @@
 
 	gulp.task('styles', function() {
 		gulp.src(paths.sass.src + '/*.scss')
-		.pipe(sass({
-			outputStyle: 'compressed',
-			includePaths: ['node_modules/susy/sass']
-		}))
+		.pipe(sourcemaps.init())
 		.pipe(preprocess({context: {
 			VERSION: project_info.theme.version,
 			// Set the assets path in relation to the compiled css file.
 			ASSEST_RELATION_TO_CSS: '../',
 		}}))
+		.pipe(sass({
+			outputStyle: 'nested',
+			includePaths: ['node_modules/susy/sass']
+		}))
 		.on('error', function (error) {
 			console.error('Error!', error.message);
 		})
-		.pipe(autoprefixer('last 2 version'))
+		.pipe(autoprefixer({
+			browsers: ['last 2 versions', '> 1% in US',],
+			cascade: false
+		}))
+		.pipe(sourcemaps.write(paths.sass.maps))
 		.pipe(gulp.dest(paths.sass.dest))
-		.pipe(cleanCSS())
-		.pipe(gulp.dest(base_paths.dest + '/css'))
-		.pipe(notify({ message: 'Styles task complete' }));
+		.pipe(notify({ message: 'Styles written to ' + paths.sass.dest }))
+		.pipe(notify({ message: 'Maps written to ' + paths.sass.maps }));
 	});
 
 
