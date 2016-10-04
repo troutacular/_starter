@@ -267,15 +267,15 @@
 	gulp.task('styles', function() {
 		gulp.src(paths.sass.src + '/*.scss')
 		.pipe(sourcemaps.init())
+		.pipe(sass({
+			outputStyle: 'nested',
+			includePaths: ['node_modules/susy/sass']
+		}))
 		.pipe(preprocess({context: {
 			VERSION: project_info.theme.version,
 			// Set the assets path in relation to the compiled css file.
 			ASSEST_RELATION_TO_CSS: '../',
 		}}))
-		.pipe(sass({
-			outputStyle: 'nested',
-			includePaths: ['node_modules/susy/sass']
-		}))
 		.on('error', function (error) {
 			console.error('Error!', error.message);
 		})

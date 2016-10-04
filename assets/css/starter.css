@@ -2206,11 +2206,11 @@ a {
  */
 .icon-only-wordpress-logo::before, .icon-wordpress-logo::before {
   display: inline-block;
-  background-image: url("/* @echo ASSEST_RELATION_TO_CSS *//images/starter_sprite.svg?ver=/* @echo VERSION */");
+  background-image: url("..//images/starter_sprite.svg?ver=1.0.0");
   background-size: 2.625em 2.625em; }
 
 .lt-ie9 .icon-only-wordpress-logo::before, .lt-ie9 .icon-wordpress-logo::before {
-  background-image: url("/* @echo ASSEST_RELATION_TO_CSS *//images/starter_sprite.png?ver=/* @echo VERSION */"); }
+  background-image: url("..//images/starter_sprite.png?ver=1.0.0"); }
 
 /**
  * Add a Sprite for IE support.
