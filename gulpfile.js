@@ -36,19 +36,24 @@
 
 	var gulp = require('gulp'),
 
-		// Functions
+		// Utilities
 		del = require('del'),
+		inject_string = require('gulp-inject-string'),
+		json_editor = require('gulp-json-editor'),
 		notify = require('gulp-notify'),
 		path = require('path'),
-		rename = require('gulp-rename'),
 		preprocess = require('gulp-preprocess'),
-		inject_string = require('gulp-inject-string'),
-		jeditor = require('gulp-json-editor'),
+		rename = require('gulp-rename'),
+		sourcemaps = require('gulp-sourcemaps'),
+
+		// Javascript
+		concat = require('gulp-concat'),
+		jshint = require('gulp-jshint'),
+		uglify = require('gulp-uglify'),
 
 		// CSS
-		sass = require('gulp-sass'),
 		autoprefixer = require('gulp-autoprefixer'),
-		sourcemaps = require('gulp-sourcemaps'),
+		sass = require('gulp-sass'),
 
 		// Images
 		imagemin = require('gulp-imagemin'),
@@ -68,6 +73,11 @@
 2.1 - Project Information
 --------------------------------------------------------------*/
 
+	/**
+	 * Set up Theme Information.  These settings control the name,
+	 * version, and pertinent information for the Gulp build.
+	 * @type  {Object}
+	 */
 	var project_info = {
 		theme: {
 			version: '1.0.0',
@@ -105,6 +115,19 @@
 		images: {
 			src: base_paths.src + '/images',
 			dest: base_paths.dest + '/images',
+		},
+		js: {
+			src: {
+				admin: base_paths.src + '/js/admin',
+				lib: base_paths.src + '/js/lib',
+				vendor: base_paths.src + '/js/vendor',
+			},
+			dest: {
+				admin: base_paths.dest + '/js/admin',
+				lib: base_paths.dest + '/js/lib',
+				vendor: base_paths.dest + '/js/vendor',
+			},
+			compiled: 'starter.js',
 		},
 		sass: {
 			src: base_paths.src + '/sass',
@@ -213,6 +236,31 @@
 4.0 - Scripts
 --------------------------------------------------------------*/
 
+	gulp.task('site_scripts', function() {
+
+		return gulp.src(paths.js.src.lib + '/**/*.js')
+		.pipe(jshint())
+		.pipe(jshint.reporter('default'))
+		.pipe(concat(paths.js.compiled))
+		.pipe(rename(function (path) {
+			path.extname = '.min.js';
+		}))
+		.pipe(uglify())
+		.pipe(gulp.dest(paths.js.dest.lib))	.pipe(notify({ message: 'Library scripts task complete' }));
+	});
+
+	gulp.task('vendor_scripts', function() {
+		return gulp.src(paths.js.src.vendor + '/**/*') // indclude all the vendor js
+		.pipe(gulp.dest(paths.js.dest.vendor))
+		.pipe(notify({ message: 'Vendor scripts task complete' }));
+	});
+
+	gulp.task('admin_scripts', function() {
+		return gulp.src(paths.js.src.admin + '/**/*') // indclude all the admin js
+		.pipe(gulp.dest(paths.js.dest.admin))
+		.pipe(notify({ message: 'Admin scripts task complete' }));
+	});
+
 
 /*--------------------------------------------------------------
 5.0 - Styles
@@ -244,7 +292,7 @@
 	gulp.task('project_version', function(){
 		var info = project_info;
 		gulp.src('./package.json')
-		.pipe(jeditor(function(json) {
+		.pipe(json_editor(function(json) {
 			json.version = info.theme.version;
 			json.description = info.theme.description;
 			json.author = info.theme.author;
@@ -309,13 +357,15 @@
 
 gulp.task('images', ['svg2png', 'images_optimize_move']);
 
+gulp.task('scripts', ['site_scripts', 'vendor_scripts', 'admin_scripts']);
+
 
 /*--------------------------------------------------------------
 6.2 - Clean
 --------------------------------------------------------------*/
 
 	gulp.task('clean', function(cb) {
-		del([base_paths.dest + '/css', base_paths.dest + '/images', base_paths.root + 'style.css'], cb);
+		del([base_paths.dest + '/js', base_paths.dest + '/css', base_paths.dest + '/images', base_paths.root + 'style.css'], cb);
 	});
 
 
@@ -327,7 +377,7 @@ gulp.task('images', ['svg2png', 'images_optimize_move']);
 	 * Default function for build.
 	 * $ gulp
 	 */
-	gulp.task('default', ['clean', 'images', 'styles', 'set_theme_info']);
+	gulp.task('default', ['clean', 'images', 'scripts', 'styles', 'set_theme_info']);
 
 
 /*--------------------------------------------------------------
@@ -339,6 +389,9 @@ gulp.task('images', ['svg2png', 'images_optimize_move']);
 	 * $ gulp watch
 	 */
 	gulp.task('watch', function() {
+
+		// Watch .js files
+		gulp.watch(base_paths.src + '/**/*.js', ['scripts']);
 
 		// Watch image files.
 		gulp.watch(base_paths.src + '/images/*', ['images']);

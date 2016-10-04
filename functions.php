@@ -90,8 +90,14 @@ function _starter_get_config() {
 	$config = array(
 		'version' => '1.0.0',
 		'path' => array(
-			'css' => '/assets/css/',
-			'js' => '/assets/js/',
+			'css' => array(
+				'site' => '/assets/css/',
+			),
+			'js' => array(
+				'lib' => '/assets/js/lib/',
+				'vendor' => '/assets/js/vendor/',
+				'admin' => '/assets/js/admin/',
+			),
 		),
 	);
 
@@ -124,12 +130,21 @@ function _starter_get_version() {
 function _starter_get_asset_path( $type ) {
 	$config = _starter_get_config();
 	switch ( $type ) {
-		case 'js':
-			return $config['path']['js'];
+		case 'js-lib':
+			return $config['path']['js']['lib'];
 			break;
 
+		case 'js-vendor':
+			return $config['path']['js']['vendor'];
+			break;
+
+		case 'js-admin':
+			return $config['path']['js']['admin'];
+			break;
+
+		// Default CSS.
 		default:
-			return $config['path']['css'];
+			return $config['path']['css']['site'];
 			break;
 	}
 }
@@ -472,7 +487,7 @@ if ( ! function_exists( '_starter_scripts' ) ) {
 		/**
 		 * Load individual scripts.
 		 */
-		wp_enqueue_script( 'starter', get_stylesheet_directory_uri() . '/js/starter.js', array(), null, true );
+		wp_enqueue_script( 'starter', get_stylesheet_directory_uri() . _starter_get_asset_path( 'js-lib' ) . 'starter.min.js', array(), _starter_get_version(), true );
 
 		/**
 		 * Load comments reply script.
