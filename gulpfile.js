@@ -73,6 +73,11 @@
 2.1 - Project Information
 --------------------------------------------------------------*/
 
+	/**
+	 * Set up Theme Information.  These settings control the name,
+	 * version, and pertinent information for the Gulp build.
+	 * @type  {Object}
+	 */
 	var project_info = {
 		theme: {
 			version: '1.0.0',
