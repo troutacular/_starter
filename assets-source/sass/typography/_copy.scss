@@ -27,7 +27,7 @@ button,
 input,
 select,
 textarea {
-	@include font-size($font__size);
+	@include font-size($site__font-size);
 	line-height: $font__line-height-body;
 	color: $color__text-main;
 	font-family: $font__main;
