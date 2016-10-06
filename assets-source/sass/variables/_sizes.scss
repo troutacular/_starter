@@ -7,6 +7,7 @@
 		1.1 - Margins
 		1.2 - Borders
 		1.3 - Padding
+	2.0 - Icons
 
 **/
 
@@ -37,3 +38,10 @@ $size__border-input: 1px;
 $size__body-padding-mobile: 5%;
 $size__body-padding-desktop: 1%;
 $size__padding-input: .5em;
+
+
+/*--------------------------------------------------------------
+2.0 - Icons
+--------------------------------------------------------------*/
+$size__icon-only: 2rem; // matches px width/font-base in px from gulp settings
+$size__padding-icon-only: .5em; // matches px width/font-base in px from gulp settings
