@@ -322,7 +322,7 @@
 		.pipe(preprocess({context: {
 			VERSION: project_info.theme.version,
 			// Set the assets path in relation to the compiled css file.
-			ASSEST_RELATION_TO_CSS: '../',
+			ASSET_RELATION_TO_CSS: '../',
 		}}))
 		.on('error', function (error) {
 			console.error('Error!', error.message);
@@ -400,7 +400,7 @@ gulp.task('scripts', ['site_scripts', 'vendor_scripts', 'admin_scripts']);
 		gulp.watch(base_paths.src + '/**/*.scss', ['styles']);
 
 		// Watch any files in dist/, reload on change.
-		gulp.watch([base_paths.dest + '/**']).on('change', livereload.changed);
+		// gulp.watch([base_paths.dest + '/**']).on('change', livereload.changed);
 
 	});
 
