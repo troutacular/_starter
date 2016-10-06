@@ -183,12 +183,12 @@
 				shape				: {
 					// Icon output size
 					dimension		: {
-						maxWidth	: 32,
-						maxHeight	: 32
+						maxWidth	: 16,
+						maxHeight	: 16
 					},
 					spacing			: {
 						// Add padding
-						padding		: 5
+						padding		: 10
 					},
 				},
 				mode: {
