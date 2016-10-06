@@ -43,5 +43,6 @@ $size__padding-input: .5em;
 /*--------------------------------------------------------------
 2.0 - Icons
 --------------------------------------------------------------*/
+$size__icon: 1rem; // matches px width/font-base in px from gulp settings
 $size__icon-only: 2rem; // matches px width/font-base in px from gulp settings
-$size__padding-icon-only: .5em; // matches px width/font-base in px from gulp settings
+$size__padding-icon-only: .25em; // matches px width/font-base in px from gulp settings
