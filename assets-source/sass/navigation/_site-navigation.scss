@@ -29,4 +29,11 @@
 4.0 - Site Navigation Menu
 --------------------------------------------------------------*/
 
-.site-navigation-menu {}
+.site-navigation-menu {
+	margin: 0;
+	padding: 0;
+
+	li {
+		list-style: none;
+	}
+}
