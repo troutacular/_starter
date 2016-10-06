@@ -432,6 +432,11 @@ textarea {
  * @type string
  */
 /**
+ * Base font size for setting typography and media queries.
+ * @access public
+ * @type string
+ */
+/**
 
 	Sizes
 	=========
@@ -440,6 +445,7 @@ textarea {
 		1.1 - Margins
 		1.2 - Borders
 		1.3 - Padding
+	2.0 - Icons
 
 **/
 /*--------------------------------------------------------------
@@ -453,6 +459,9 @@ textarea {
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 1.3 - Padding
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+2.0 - Icons
 --------------------------------------------------------------*/
 /**
 
@@ -2115,7 +2124,11 @@ a {
 	1.0 - Maps
 	2.0 - Variables
 	3.0 - Mixins
-	4.0 - Classes
+	4.0 - Placeholders
+	5.0 - Classes
+		5.1 - Icon
+		5.2 - Icon Only
+		5.3 - Individual Icons
 
 	=========
 
@@ -2144,6 +2157,11 @@ a {
 		 }
 	}
 
+	CREDIT
+	=========
+	@author Mike Street
+	@modified: @troutacular
+
 **/
 /*--------------------------------------------------------------
 1.0 - Maps
@@ -2163,25 +2181,13 @@ a {
 /*--------------------------------------------------------------
 2.0 - Variables
 --------------------------------------------------------------*/
-/*--------------------------------------------------------------
-3.0 - Mixins
---------------------------------------------------------------*/
 /**
- * @author Mike Street
- * @group Sprite
+ * Media query base font size.
+ * @type  {string}
  */
 /**
- *  Convert pixels to ems.
- *
- * @param integer $px 				Value to convert.
- * @param integer $base-font-size   ($mq-base-font-size) - `<body>` font size.
- *
- * @example scss
- *  $font-size-in-ems: mq-px2em(16px);
- *  p { font-size: mq-px2em(16px); }
- *
- * @requires $mq-base-font-size
- * @returns {Number}
+ * IE8 Support
+ * @type  {boolean}
  */
 /**
  * Add class for <IE9 sprite fallback
@@ -2194,6 +2200,30 @@ a {
  * @group sprite
  */
 /**
+ * Set the size of the icon in relation to the text.
+ * @type  {string}
+ */
+/**
+ * Set the padding for the icon only element from the text.
+ * @type  {string}
+ */
+/*--------------------------------------------------------------
+3.0 - Mixins
+--------------------------------------------------------------*/
+/**
+ *  Convert pixels to ems.
+ *
+ * @param integer $px 				Value to convert.
+ * @param integer $base-font-size   ($mq-base-font-size) - `<body>` font size.
+ *
+ * @example scss
+ *  $font-size-in-ems: mq-px2em(16px);
+ *  p { font-size: mq-px2em(16px); }
+ *
+ * @requires $mq-base-font-size
+ * @returns {integer}
+ */
+/**
  * Retrive an attributes value for a specific icon in the sprite map.
  *
  * @param string $icon  The name of the icon.
@@ -2204,14 +2234,6 @@ a {
  *
  * @param string $icon  The name of the icon.
  */
-.icon-only-wordpress-logo::before, .icon-wordpress-logo::before {
-  display: inline-block;
-  background-image: url("..//images/starter_sprite.svg?ver=1.0.0");
-  background-size: 2.625em 2.625em; }
-
-.lt-ie9 .icon-only-wordpress-logo::before, .lt-ie9 .icon-wordpress-logo::before {
-  background-image: url("..//images/starter_sprite.png?ver=1.0.0"); }
-
 /**
  * Add a Sprite for IE support.
  *
@@ -2224,23 +2246,23 @@ a {
  *
  * @usage
  * .class {
- * 	@include ie-sprite(arrow);
- * 	&:hover {
- * 		@include ie-sprite(arrowDown, bg)
- * 	}
+ * 		@include ie-sprite(arrow);
+ * 		&:hover {
+ * 			@include ie-sprite(arrowDown, bg)
+ * 		}
  * }
  *
  * @example css - Output
  * .lt-ie9 .class {
- *	 background-image: url("../img/sprite.png");
+ *	 	background-image: url("../img/sprite.png");
  * }
  * .lt-ie9 .class {
- *	 width: 20px;
- *	 height: 20px;
- *	 background-position: -5px -5px;
+ *	 	width: 20px;
+ *	 	height: 20px;
+ *	 	background-position: -5px -5px;
  * }
  * .lt-ie9 .class:hover {
- *	 background-position: -36px -36px;
+ * 		background-position: -36px -36px;
  * }
  */
 /**
@@ -2290,33 +2312,52 @@ a {
  * }
  */
 /*--------------------------------------------------------------
-4.0 - Classes
+4.0 - Placeholders
 --------------------------------------------------------------*/
-.icon-only-wordpress-logo {
+.icon-only-wordpress-logo::before, .icon-wordpress-logo::before {
   display: inline-block;
-  width: 2em;
-  height: 2em; }
-  .icon-only-wordpress-logo::before {
-    width: 2.0625em;
-    height: 2.0625em;
-    background-position: -0.3125em -0.3125em;
-    float: left;
-    margin-right: .5em;
-    content: ''; }
-    .lt-ie9 .icon-only-wordpress-logo::before {
-      width: 32px;
-      height: 32px;
-      background-position: 0px 0px; }
+  background-image: url("..//images/starter_sprite.svg?ver=1.0.0");
+  background-size: 2.625em 2.625em; }
+
+*[class*='icon-only'], *[class*='icon-only'] > a {
+  color: transparent; }
+  [class*='icon-only']:hover, *[class*='icon-only'] > a:hover, [class*='icon-only']:focus, *[class*='icon-only'] > a:focus {
+    color: transparent; }
+
+/*--------------------------------------------------------------
+5.0 - Classes
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+5.1 - Icon
+--------------------------------------------------------------*/
+*[class*='icon']::before {
+  margin-right: 0.5em;
+  content: ''; }
+
+/*--------------------------------------------------------------
+5.2 - Icon Only
+--------------------------------------------------------------*/
+*[class*='icon-only'] {
+  display: inline-block;
+  margin: 0;
+  overflow: hidden;
+  width: 2rem;
+  height: 2rem; }
+  *[class*='icon-only'] > a {
+    display: block; }
+
+/*--------------------------------------------------------------
+5.3 - Individual Icons
+--------------------------------------------------------------*/
+.icon-only-wordpress-logo::before {
+  width: 2.0625em;
+  height: 2.0625em;
+  background-position: -0.3125em -0.3125em; }
 
 .icon-wordpress-logo::before {
   width: 2.0625em;
   height: 2.0625em;
-  background-position: -0.3125em -0.3125em;
-  content: ''; }
-  .lt-ie9 .icon-wordpress-logo::before {
-    width: 32px;
-    height: 32px;
-    background-position: 0px 0px; }
+  background-position: -0.3125em -0.3125em; }
 
 /*--------------------------------------------------------------
 6.0 - Modules
