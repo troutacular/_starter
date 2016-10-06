@@ -794,6 +794,20 @@ textarea {
 **/
 /**
 
+	Fill Absolute
+	=============
+
+	Set element to fill it's parent fully.
+	Parent should have 'position: relative;' applied.
+
+
+	Usage
+	=========
+	.class { @include fill-absolute; }
+
+**/
+/**
+
 	Font Size
 	=========
 
@@ -1567,6 +1581,8 @@ h6 {
 	3.0 - Ordered Lists
 	4.0 - Data Lists
 
+	NOTE: See navigation/ for menus and site navigation.
+
 **/
 /*--------------------------------------------------------------
 1.0 - Global
@@ -2046,6 +2062,35 @@ a {
 --------------------------------------------------------------*/
 /**
 
+	Menus
+	=====
+
+	1.0 - Menus
+	2.0 - Menu Locations
+		2.1 - Sidebar
+		2.1 - Footer
+
+**/
+/*--------------------------------------------------------------
+1.0 - Menus
+--------------------------------------------------------------*/
+.menu {
+  margin: 0;
+  padding: 0; }
+  .menu li {
+    list-style: none; }
+
+/*--------------------------------------------------------------
+2.0 - Menu Locations
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+2.1 - Sidebar
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+2.1 - Footer
+--------------------------------------------------------------*/
+/**
+
 	Site Navigation
 	===============
 
@@ -2063,6 +2108,12 @@ a {
 /*--------------------------------------------------------------
 4.0 - Site Navigation Menu
 --------------------------------------------------------------*/
+.site-navigation-menu {
+  margin: 0;
+  padding: 0; }
+  .site-navigation-menu li {
+    list-style: none; }
+
 /**
 
 	Site Search
@@ -2204,6 +2255,10 @@ a {
  * @type  {string}
  */
 /**
+ * Set the size of the icon in relation to the text.
+ * @type  {string}
+ */
+/**
  * Set the padding for the icon only element from the text.
  * @type  {string}
  */
@@ -2314,15 +2369,26 @@ a {
 /*--------------------------------------------------------------
 4.0 - Placeholders
 --------------------------------------------------------------*/
-.icon-only-wordpress-logo::before, .icon-wordpress-logo::before {
+.icon-only-wordpress-logo:not(.menu-item)::before, .icon-only-wordpress-logo.menu-item > a::before, .icon-wordpress-logo:not(.menu-item)::before, .icon-wordpress-logo.menu-item > a::before {
   display: inline-block;
   background-image: url("..//images/starter_sprite.svg?ver=1.0.0");
-  background-size: 2.625em 2.625em; }
+  background-size: 2.25em 2.25em; }
 
-*[class*='icon-only'], *[class*='icon-only'] > a {
+*[class*='icon-only']:not([class*='menu']), *[class*='icon-only']:not(.menu-item), *[class*='icon-only'].menu-item > a {
   color: transparent; }
-  [class*='icon-only']:hover, *[class*='icon-only'] > a:hover, [class*='icon-only']:focus, *[class*='icon-only'] > a:focus {
+  [class*='icon-only']:hover:not([class*='menu']), [class*='icon-only']:hover:not(.menu-item), *[class*='icon-only'].menu-item > a:hover, [class*='icon-only']:focus:not([class*='menu']), [class*='icon-only']:focus:not(.menu-item), *[class*='icon-only'].menu-item > a:focus {
     color: transparent; }
+
+*[class*='icon']:not([class*='menu'])::before, *[class*='icon']:not(.menu-item)::before, *[class*='icon'].menu-item > a::before {
+  margin-right: 0.25em;
+  content: ''; }
+
+*[class*='icon-only']:not([class*='menu']), *[class*='icon-only']:not(.menu-item), *[class*='icon-only'].menu-item > a {
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  font-size: 2rem; }
 
 /*--------------------------------------------------------------
 5.0 - Classes
@@ -2330,34 +2396,37 @@ a {
 /*--------------------------------------------------------------
 5.1 - Icon
 --------------------------------------------------------------*/
-*[class*='icon']::before {
-  margin-right: 0.5em;
-  content: ''; }
-
 /*--------------------------------------------------------------
 5.2 - Icon Only
 --------------------------------------------------------------*/
-*[class*='icon-only'] {
-  display: inline-block;
-  margin: 0;
-  overflow: hidden;
-  width: 2rem;
-  height: 2rem; }
-  *[class*='icon-only'] > a {
-    display: block; }
-
 /*--------------------------------------------------------------
 5.3 - Individual Icons
 --------------------------------------------------------------*/
-.icon-only-wordpress-logo::before {
-  width: 2.0625em;
-  height: 2.0625em;
-  background-position: -0.3125em -0.3125em; }
+.icon-only-wordpress-logo:not(.menu-item) {
+  width: 1.0625em;
+  height: 1.0625em; }
+  .icon-only-wordpress-logo:not(.menu-item)::before {
+    width: 1.0625em;
+    height: 1.0625em;
+    background-position: -0.625em -0.625em; }
 
-.icon-wordpress-logo::before {
-  width: 2.0625em;
-  height: 2.0625em;
-  background-position: -0.3125em -0.3125em; }
+.icon-only-wordpress-logo.menu-item > a {
+  width: 1.0625em;
+  height: 1.0625em; }
+  .icon-only-wordpress-logo.menu-item > a::before {
+    width: 1.0625em;
+    height: 1.0625em;
+    background-position: -0.625em -0.625em; }
+
+.icon-wordpress-logo:not(.menu-item)::before {
+  width: 1.0625em;
+  height: 1.0625em;
+  background-position: -0.625em -0.625em; }
+
+.icon-wordpress-logo.menu-item > a::before {
+  width: 1.0625em;
+  height: 1.0625em;
+  background-position: -0.625em -0.625em; }
 
 /*--------------------------------------------------------------
 6.0 - Modules

@@ -88,7 +88,13 @@ $sprite: map-get($sprite-icons, sprite) !default;
  * Set the size of the icon in relation to the text.
  * @type  {string}
  */
-$size__icon-only: 2em !default;
+$size__icon: 1rem !default;
+
+/**
+ * Set the size of the icon in relation to the text.
+ * @type  {string}
+ */
+$size__icon-only: 2rem !default;
 
 /**
  * Set the padding for the icon only element from the text.
@@ -285,6 +291,15 @@ $size__padding-icon-only: .5em !default;
 
 }
 
+@mixin icon-only-size($icon) {
+
+	$icon-map: icon-attr($icon);
+
+	width: mq-px2em(map-get($icon-map, width) + 1);
+	height: mq-px2em(map-get($icon-map, height) + 1);
+
+}
+
 
 /*--------------------------------------------------------------
 4.0 - Placeholders
@@ -296,11 +311,13 @@ $size__padding-icon-only: .5em !default;
 	background-image: map-get($sprite, svgPath);
 	background-size: mq-px2em(map-get($sprite, width)) mq-px2em(map-get($sprite, height));
 }
+
 // Assign the correct PNG background image and dimensions to the element.
 %theme-sprite-ie {
 	background-image: map-get($sprite, pngPath);
 }
 
+// Set the link within an icon only class to be transparent with no interaction states visible.
 %icon-only-link {
 	color: transparent;
 
@@ -308,6 +325,22 @@ $size__padding-icon-only: .5em !default;
 	&:focus {
 		color: transparent;
 	}
+}
+
+%icon-style {
+	margin-right: $size__padding-icon-only;
+	content: '';
+}
+
+%icon-only-style {
+	@extend %icon-only-link;
+	display: inline-block;
+	position: relative;
+	margin: 0;
+	overflow: hidden;
+	font-size: $size__icon-only;
+
+
 }
 
 
@@ -320,12 +353,21 @@ $size__padding-icon-only: .5em !default;
 5.1 - Icon
 --------------------------------------------------------------*/
 
-// target icon items with classes starting with 'icon'
+// Target icon items with classes starting with 'icon'
 *[class*='icon'] {
 
-	&::before {
-		margin-right: $size__padding-icon-only;
-		content: '';
+	// Exclude menus that may have 'Icon' in it's name.
+	&:not([class*='menu']),
+	&:not(.menu-item) {
+		&::before {
+			@extend %icon-style;
+		}
+	}
+
+	&.menu-item {
+		> a::before {
+			@extend %icon-style;
+		}
 	}
 }
 
@@ -335,52 +377,17 @@ $size__padding-icon-only: .5em !default;
 
 *[class*='icon-only'] {
 
-	display: inline-block;
-	margin: 0;
-	overflow: hidden;
-	width: $size__icon-only;
-	height: $size__icon-only;
-	@extend %icon-only-link;
-
-	> a {
-		display: block;
-		@extend %icon-only-link;
+	// Exclude menus that may have 'Icon Only' in it's name.
+	&:not([class*='menu']),
+	&:not(.menu-item) {
+		@extend %icon-only-style;
 	}
-	// display: inline-block;
-	// position: relative;
-	// margin: 0;
-	// width: $size__icon-only;
-	// height: $size__icon-only;
-	// color: transparent;
-	// overflow: hidden;
-	//
-	// &:not(.menu-item) {
-	//
-	// 	.site-navigation-menu & {
-	// 		overflow: visible;
-	// 	}
-	//
-	// 	> a {
-	// 		display: block;
-	// 		float: left;
-	// 		position: relative;
-	// 		width: $size__icon-only;
-	// 		height: $size__icon-only;
-	// 		color: transparent;
-	//
-	// 		.site-navigation-menu & {
-	// 			@extend %icon-only-link;
-	// 		}
-	// 		.widget & {
-	// 			.site-sidebar & {
-	// 				@extend %icon-only-link;
-	// 			}
-	// 			.site-footer & {
-	// 				@extend %icon-only-link;
-	// 			}
-	// 		}
-	// 	}
-	// }
+
+	&.menu-item {
+		> a {
+			@extend %icon-only-style;
+		}
+	}
 }
 
 /*--------------------------------------------------------------
@@ -394,14 +401,34 @@ $size__padding-icon-only: .5em !default;
 	}
 	@else {
 		.icon-only-#{$icon} {
-			&::before {
-				@include sprite($icon);
-			 }
+			&:not(.menu-item) {
+				@include icon-only-size($icon);
+				&::before {
+					@include sprite($icon);
+				}
+			}
+
+			&.menu-item {
+				> a {
+					@include icon-only-size($icon);
+					&::before {
+						@include sprite($icon);
+					}
+				}
+			}
 		}
 
 		.icon-#{$icon} {
-			&::before {
-				@include sprite($icon);
+			&:not(.menu-item) {
+				&::before {
+					@include sprite($icon);
+				}
+			}
+
+			&.menu-item {
+				> a::before {
+					@include sprite($icon);
+				}
 			}
 		}
 	}
