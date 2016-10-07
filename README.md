@@ -19,43 +19,24 @@ OR
 -  Search for: `Text Domain: _starter` and replace with: `Text Domain: theme-name` in style.css.
 
 
-## Bundler
-
-This project uses [Bundler] to incorporate the required building elements:
-
-- [Sass]
-- [Compass]
-- [Susy]
-
-`_starter` already has a Gemfile and the requirements for the libraries above.  You will need to add new Gems to the Gemfile and
-
-Make sure you have bundler installed by running the following command in the command line (terminal):
-
-	$ gem install bundler
-
-To ensure you have the necessary components for theme development, cd to the theme folder and run the following command in the command line (terminal):
-
-	$ bundle install
-
-If you are adding a new Gem, run the install and create a new lock file
-
-	$ bundle update [gem]
-
-Now watch the file:
-
-	$ bundle exec compass watch
-
-
 
 ## Notable Elements
-
-The goal of this template was to create a markup that did not need to be changed that much (with exception to the index/home page).  That being said, feel free to remove anything or strip it down.  Most classes for elements exist in the SASS files.
 
 ### Naming Conventions
 
 #### SASS Variables
 
-	[scope]-[scope element]-[element]-[state]-[specificity]
+SASS variables use a BEM format that is structured in the `.scss-lint.yml` config settings.  The structure for these elements is as follows:
+
+```
+[block]__[element][--modifier][--state]
+```
+
+Using HTML elements and CSS Selectors:
+
+```
+[html-element]__[css-attribute][--modifier][--state]
+```
 
 
 ##### Examples:
@@ -64,26 +45,31 @@ The goal of this template was to create a markup that did not need to be changed
 
 Construct
 
-	[scope]-[element]-[specificity]-[state]
-
+```
+[html-element]__[css-attribute][--modifier][--state]
+```
 
 Examples
 
-	$color-background-site
-
-	$color-text-link-site-header-hover
+```
+$input__background-color
+$input__background-color--hover
+```
 
 ---
 
 Construct
 
-	[scope]-[element]-[specificity]-[state]
+```
+[html-element]__[css-attribute][--modifier][--state]
+```
 
 Examples
 
-	$color-text-link-site
-
-	$color-text-link-site-header-active
+```
+$link__font-color--primary
+$link__font-color--primary--hover
+```
 
 ---
 
@@ -91,7 +77,7 @@ Examples
 ### File Commenting
 
 ```
-// Single line comments
+// Single line comments.
 
 /**
  * Multi-line commenting for explanations
@@ -105,14 +91,15 @@ Use
 /**
  * [foo description]
  *
- * This is a cool function.
- *
- * @author  weber
+ * @author  l.hamiltion
  * @version [version]
- * @param   [type]     $x   [description]
+ * @param   [type] $var  [description]
  * @return  [type]
  */
-function foo ($x) {}
+function foo ($x) {
+	// Do stuff.
+	return;
+}
 ```
 
 
