@@ -355,7 +355,7 @@
  * 3. optimize and move
  */
 
-gulp.task('images', ['svg2png', 'images_optimize_move']);
+gulp.task('images', ['images_optimize_move']);
 
 gulp.task('scripts', ['site_scripts', 'vendor_scripts', 'admin_scripts']);
 
