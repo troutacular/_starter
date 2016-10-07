@@ -71,13 +71,13 @@ select,
 textarea {
 
 	// default content colors
-	border-radius: $button__border--radius;
+	border-radius: $button__border-radius;
 	@if $input__border-color == transparent {
 		border: 0;
 	}
 	@else {
 		border: {
-			width: $input__border--width;
+			width: $input__border-width;
 			style: solid;
 			color: $input__border-color;
 		}

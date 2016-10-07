@@ -100,7 +100,7 @@ $icon__size-only: 2rem !default;
  * Set the padding for the icon only element from the text.
  * @type  {string}
  */
-$icon__size--padding: .5em !default;
+$icon__margin--right: .5em !default;
 
 
 /*--------------------------------------------------------------
@@ -328,7 +328,7 @@ $icon__size--padding: .5em !default;
 }
 
 %icon-style {
-	margin-right: $icon__size--padding;
+	margin-right: $icon__margin--right;
 	content: '';
 }
 
