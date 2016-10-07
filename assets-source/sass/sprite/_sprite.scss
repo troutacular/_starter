@@ -356,9 +356,8 @@ $size__padding-icon-only: .5em !default;
 // Target icon items with classes starting with 'icon'
 *[class*='icon'] {
 
-	// Exclude menus that may have 'Icon' in it's name.
-	&:not([class*='menu']),
-	&:not(.menu-item) {
+	// Exclude menu items.
+	&:not(.menu-icon) {
 		&::before {
 			@extend %icon-style;
 		}
@@ -369,7 +368,9 @@ $size__padding-icon-only: .5em !default;
 			@extend %icon-style;
 		}
 	}
+
 }
+
 
 /*--------------------------------------------------------------
 5.2 - Icon Only
@@ -377,8 +378,7 @@ $size__padding-icon-only: .5em !default;
 
 *[class*='icon-only'] {
 
-	// Exclude menus that may have 'Icon Only' in it's name.
-	&:not([class*='menu']),
+	// Exclude menus items.
 	&:not(.menu-item) {
 		@extend %icon-only-style;
 	}

@@ -316,7 +316,7 @@
 		gulp.src(paths.sass.src + '/*.scss')
 		.pipe(sourcemaps.init())
 		.pipe(sass({
-			outputStyle: 'nested',
+			outputStyle: 'compressed',
 			includePaths: ['node_modules/susy/sass']
 		}))
 		.pipe(preprocess({context: {
