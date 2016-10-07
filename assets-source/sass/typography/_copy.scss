@@ -29,7 +29,7 @@ select,
 textarea {
 	@include font-size($site__font-size);
 	line-height: $font__line-height-body;
-	color: $color__text-main;
+	color: $body__font-color--primary;
 	font-family: $font__main;
 }
 
@@ -66,9 +66,9 @@ i {
 
 blockquote {
 	margin: 1em 0;
-	background: $color__background-blockquote;
+	background: $blockquote__background-color;
 	padding: 1.5em;
-	color: $color__text-blockquote;
+	color: $blockquote__font-color;
 	quotes: '" "';
 
 	&::before,
@@ -132,7 +132,7 @@ big {
 pre {
 	@include font-size(15);
 	margin-bottom: 1.6em;
-	background: $color__background-pre;
+	background: $pre__background-color;
 	padding: 1.6em;
 	max-width: 100%;
 	overflow: auto;
@@ -143,6 +143,7 @@ pre {
 	white-space: -pre-wrap;      /* Opera 4-6 */
 	white-space: -o-pre-wrap;    /* Opera 7 */
 
+	color: $pre__font-color;
 	font-family: $font__pre;
 
 	word-wrap: break-word;
@@ -164,7 +165,7 @@ var {
 hr {
 	margin-bottom: 1.5em;
 	border: 0;
-	background-color: $color__background-hr;
+	background-color: $hr__background-color;
 	height: 1px;
 }
 
@@ -175,12 +176,12 @@ hr {
 
 abbr,
 acronym {
-	border-bottom: 1px dotted $color__border-abbr;
+	border-bottom: 1px dotted $abbr__border-color;
 	cursor: help;
 }
 
 mark,
 ins {
-	background: $color__background-ins;
+	background: $ins__background-color;
 	text-decoration: none;
 }

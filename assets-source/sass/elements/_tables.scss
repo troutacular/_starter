@@ -36,8 +36,8 @@ td {
 thead {}
 
 th {
-	background-color: $color__background-table-head;
-	color: $color__text-table-head;
+	background-color: $thead__background-color;
+	color: $thead__font-color;
 	font-weight: bold;
 }
 
