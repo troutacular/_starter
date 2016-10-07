@@ -67,15 +67,15 @@ input[type="submit"] {
 	}
 	@else {
 		border: {
-			width: $size__border-button;
+			width: $button__border--width;
 			color: $color__border-button;
 			style: solid;
 		}
 	}
-	border-radius: $size__border-radius-input;
+	border-radius: $button__border--radius;
 	background: $color__background-button;
 	cursor: pointer; /* Improves usability and consistency of cursor style between image-type 'input' and others */
-	padding: $size__padding-input;
+	padding: $input__padding;
 	line-height: 1;
 	color: $color__text-button;
 
@@ -88,7 +88,7 @@ input[type="submit"] {
 		}
 		@else {
 			border: {
-				width: $size__border-button;
+				width: $button__border--width;
 				color: $color__border-button;
 				style: solid;
 			}

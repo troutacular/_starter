@@ -27,22 +27,27 @@
 /*--------------------------------------------------------------
 1.2 - Borders
 --------------------------------------------------------------*/
-$size__border-radius-input: .1875em;
-$size__border-button: 1px;
-$size__border-input: 1px;
+$button__border--radius: .1875em;
+$button__border--width: 1px;
+$input__border--width: 1px;
 
 
 /*--------------------------------------------------------------
 1.3 - Padding
 --------------------------------------------------------------*/
-$size__body-padding-mobile: 5%;
-$size__body-padding-desktop: 1%;
-$size__padding-input: .5em;
+$body__padding--mobile: 5%;
+$body__padding--desktop: 1%;
+$input__padding: .5em;
 
 
 /*--------------------------------------------------------------
 2.0 - Icons
 --------------------------------------------------------------*/
-$size__icon: 1rem; // matches px width/font-base in px from gulp settings
-$size__icon-only: 2rem; // matches px width/font-base in px from gulp settings
-$size__padding-icon-only: .25em; // matches px width/font-base in px from gulp settings
+// Default size of the icon when displayed with text in class wrapper.
+$icon__size: 1rem;
+
+// Default size of the icon when hiding text.
+$icon__size-only: 2rem;
+
+// Padding between the icon and it's text.
+$icon__size--padding: .25em;

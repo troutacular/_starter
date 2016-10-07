@@ -88,19 +88,19 @@ $sprite: map-get($sprite-icons, sprite) !default;
  * Set the size of the icon in relation to the text.
  * @type  {string}
  */
-$size__icon: 1rem !default;
+$icon__size: 1rem !default;
 
 /**
  * Set the size of the icon in relation to the text.
  * @type  {string}
  */
-$size__icon-only: 2rem !default;
+$icon__size-only: 2rem !default;
 
 /**
  * Set the padding for the icon only element from the text.
  * @type  {string}
  */
-$size__padding-icon-only: .5em !default;
+$icon__size--padding: .5em !default;
 
 
 /*--------------------------------------------------------------
@@ -328,7 +328,7 @@ $size__padding-icon-only: .5em !default;
 }
 
 %icon-style {
-	margin-right: $size__padding-icon-only;
+	margin-right: $icon__size--padding;
 	content: '';
 }
 
@@ -338,7 +338,7 @@ $size__padding-icon-only: .5em !default;
 	position: relative;
 	margin: 0;
 	overflow: hidden;
-	font-size: $size__icon-only;
+	font-size: $icon__size-only;
 
 
 }

@@ -71,19 +71,19 @@ select,
 textarea {
 
 	// default content colors
-	border-radius: $size__border-radius-input;
+	border-radius: $button__border--radius;
 	@if $color__border-input == transparent {
 		border: 0;
 	}
 	@else {
 		border: {
-			width: $size__border-input;
+			width: $input__border--width;
 			style: solid;
 			color: $color__border-input;
 		}
 	}
 	background: $color__background-input;
-	padding: $size__padding-input;
+	padding: $input__padding;
 	min-width: 2em;
 	line-height: 1;
 	color: $color__text-input;
@@ -99,7 +99,7 @@ select {
 }
 
 textarea {
-	padding-left: $size__padding-input;
+	padding-left: $input__padding;
 	width: 100%;
 }
 
