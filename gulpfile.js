@@ -92,7 +92,7 @@
 			license_uri: 'LICENSE.txt',
 			text_domain: '_starter',
 			domain_path: '/languages',
-			tags: 'one-column, two-columns, left-sidebar, custom-menu, editor-style, featured-images, post-formats, sticky-post',
+			tags: 'custom-menu, editor-style, featured-images, footer-widgets, full-widthe-template, one-column, post-formats, sticky-post, theme-options',
 		},
 		repository: {
 			type: 'git',
@@ -109,25 +109,25 @@
 
 	var base_paths = {
 		root: './',
-		src: 'assets-source',
-		dest: 'assets',
-		sass: 'assets-source/sass',
+		src: 'assets-source/',
+		dest: 'assets/',
+		sass: 'assets-source/sass/',
 	};
 	var paths = {
 		images: {
-			src: base_paths.src + '/images',
-			dest: base_paths.dest + '/images',
+			src: base_paths.src + 'images/',
+			dest: base_paths.dest + 'images/',
 		},
 		js: {
 			src: {
-				admin: base_paths.src + '/js/admin',
-				lib: base_paths.src + '/js/lib',
-				vendor: base_paths.src + '/js/vendor',
+				admin: base_paths.src + 'js/admin/',
+				lib: base_paths.src + 'js/lib/',
+				vendor: base_paths.src + 'js/vendor/',
 			},
 			dest: {
-				admin: base_paths.dest + '/js/admin',
-				lib: base_paths.dest + '/js/lib',
-				vendor: base_paths.dest + '/js/vendor',
+				admin: base_paths.dest + 'js/admin/',
+				lib: base_paths.dest + 'js/lib/',
+				vendor: base_paths.dest + 'js/vendor/',
 			},
 			output: {
 				basename: 'starter',
@@ -135,28 +135,28 @@
 			},
 		},
 		sass: {
-			src: base_paths.src + '/sass',
-			dest: base_paths.dest + '/css',
-			maps: '/maps',
+			src: base_paths.src + 'sass/',
+			dest: base_paths.dest + 'css/',
+			maps: 'maps/',
 			output: {
 				basename: 'starter',
 				ext: '.css',
 			},
 		},
 		sprite: {
-			src: base_paths.src + '/images/sprite/*',
+			src: base_paths.src + 'images/sprite/*',
 			dest: './',
 			// Needed for running function.
-			src_svg: base_paths.dest + '/images/starter_sprite.svg',
+			src_svg: base_paths.dest + 'images/starter_sprite.svg',
 			// Needed for css output - otherwise if using above, creates separate directory.
 			svg: 'images/starter_sprite.svg',
-			scss: '../' + base_paths.sass + '/sprite/_sprite-map.scss',
-			template: base_paths.src + '/sass/sprite/templates/sprite-template.scss',
+			scss: '../' + base_paths.sass + 'sprite/_sprite-map.scss',
+			template: base_paths.src + 'sass/sprite/templates/sprite-template.scss',
 		},
 		templates: {
-			src: base_paths.src + '/templates',
+			src: base_paths.src + 'templates/',
 			theme: {
-				src: base_paths.src + '/templates/tpl-style.css',
+				src: base_paths.src + 'templates/tpl-style.css',
 				dest: './',
 			},
 		},
@@ -175,7 +175,7 @@
 --------------------------------------------------------------*/
 
 	gulp.task('svg2png', function () {
-		gulp.src(paths.images.src + '/**/*.svg')
+		gulp.src(paths.images.src + '**/*.svg')
 			.pipe(svg2png())
 			.pipe(gulp.dest(paths.images.dest));
 	});
@@ -235,7 +235,7 @@
 
 	gulp.task('images_optimize_move', ['png_sprite'], function() {
 		// Indclude all the images and sub-folders.
-		return gulp.src(paths.images.src + '/**/*')
+		return gulp.src(paths.images.src + '**/*')
 		.pipe(imagemin(image_min_setting))
 		.pipe(gulp.dest(paths.images.dest));
 	});
@@ -245,22 +245,9 @@
 4.0 - Scripts
 --------------------------------------------------------------*/
 
-	gulp.task('compress', function(){
-		pump([
-			gulp.src(paths.js.src.lib + '/**/*.js'),
-			uglify(),
-			gulp.dest(paths.js.dest.lib)
-		]);
-	});
-
 	gulp.task('site_scripts', function() {
-
-		// return gulp.src(paths.js.src.lib + '/**/*.js')
-		// .pipe(jshint())
-		// .pipe(jshint.reporter('default'))
-		// .pipe(concat(paths.js.output.basename + paths.js.output.ext))
 		return pump([
-			gulp.src(paths.js.src.lib + '/**/*.js'),
+			gulp.src(paths.js.src.lib + '**/*.js'),
 			jshint(),
 			jshint.reporter('default'),
 			concat(paths.js.output.basename + paths.js.output.ext),
@@ -271,26 +258,21 @@
 			}),
 			gulp.dest(paths.js.dest.lib)
 		])
-		// .pipe(gulp.dest(paths.js.dest.lib))
 		.pipe(notify({ message: 'Library scripts task complete' }));
 	});
 
+
+
 	gulp.task('admin_scripts', function() {
-		// Include all admin js files.
-		return pump([
-			gulp.src(paths.js.src.admin + '/**/*'),
-			uglify(),
-			rename(function(path) {
-				path.extname = '.min.js';
-			}),
-			gulp.dest(paths.js.dest.admin)
-		])
+		// Include all admin js files as is.
+		return gulp.src(paths.js.src.admin + '**/*')
+		.pipe(gulp.dest(paths.js.dest.admin))
 		.pipe(notify({ message: 'Admin scripts task complete' }));
 	});
 
 	gulp.task('vendor_scripts', function() {
 		// Include all vendor js files as is.
-		return gulp.src(paths.js.src.vendor + '/**/*')
+		return gulp.src(paths.js.src.vendor + '**/*')
 		.pipe(gulp.dest(paths.js.dest.vendor))
 		.pipe(notify({ message: 'Vendor scripts task complete' }));
 	});
@@ -308,8 +290,8 @@
 	gulp.task('theme_info_stylesheet', function() {
 		var info = project_info.theme;
 		gulp.src(paths.templates.theme.src)
-		.pipe(inject_string.replace('@@theme_version@@', info.version))
 		.pipe(inject_string.replace('@@theme_name@@', info.name))
+		.pipe(inject_string.replace('@@theme_version@@', info.version))
 		.pipe(inject_string.replace('@@theme_uri@@', info.uri))
 		.pipe(inject_string.replace('@@theme_author@@', info.author))
 		.pipe(inject_string.replace('@@theme_author_uri@@', info.author_uri))
@@ -325,16 +307,31 @@
 
 	gulp.task('project_version', function(){
 		var info = project_info;
+		console.log(paths.sass.dest);
 		gulp.src('./package.json')
-		.pipe(json_editor(function(json) {
-			json.version = info.theme.version;
-			json.description = info.theme.description;
-			json.author = info.theme.author;
-			json.license = info.theme.license;
-			json.repository.type = info.repository.type;
-			json.repository.url = info.repository.url;
-			json.bugs.url = info.repository.bugs.url;
-			return json;
+		.pipe(json_editor({
+			'version': info.theme.version,
+			'description': info.theme.description,
+			'author': info.theme.author,
+			'license': info.theme.license,
+			'repository': {
+				'type': info.repository.type,
+				'url': info.repository.url,
+			},
+			'bugs': {
+				'url': info.repository.bugs.url
+			},
+			'paths': {
+				'assets': {
+					'css': '/' + paths.sass.dest,
+					'images': '/' + paths.images.dest,
+					'js': {
+						'admin': '/' + paths.js.dest.admin,
+						'lib': '/' + paths.js.dest.lib,
+						'vendor': '/' + paths.js.dest.vendor,
+					}
+				}
+			}
 		}))
 		.pipe(gulp.dest('./'));
 	});
@@ -349,7 +346,7 @@
 --------------------------------------------------------------*/
 
 	gulp.task('theme_styles', function() {
-		gulp.src(paths.sass.src + '/*.scss')
+		gulp.src(paths.sass.src + '*.scss')
 		.pipe(sourcemaps.init())
 		.pipe(sass({
 			outputStyle: 'compressed',
@@ -392,7 +389,7 @@
 	// Individual clean functions for streams.
 	gulp.task('clean:stylesheet', function(){
 		del([
-			base_paths.dest + '/css'
+			base_paths.dest + 'css'
 		]);
 	});
 
@@ -404,13 +401,13 @@
 
 	gulp.task('clean:images', function(){
 		del([
-			base_paths.dest + '/images'
+			base_paths.dest + 'images'
 		]);
 	});
 
 	gulp.task('clean:js', function(){
 		del([
-			base_paths.dest + '/js'
+			base_paths.dest + 'js'
 		]);
 	});
 
@@ -456,13 +453,13 @@
 	gulp.task('watch', function() {
 
 		// Watch .js files
-		gulp.watch(base_paths.src + '/**/*.js', ['scripts']);
+		gulp.watch(base_paths.src + '**/*.js', ['scripts']);
 
 		// Watch image files.
-		gulp.watch(base_paths.src + '/images/*', ['images']);
+		gulp.watch(base_paths.src + 'images/*', ['images']);
 
 		// Watch .scss files.
-		gulp.watch(base_paths.src + '/**/*.scss', ['styles']);
+		gulp.watch(base_paths.src + '**/*.scss', ['styles']);
 
 		// Watch any files in dist/, reload on change.
 		// gulp.watch([base_paths.dest + '/**']).on('change', livereload.changed);
