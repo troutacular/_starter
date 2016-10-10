@@ -21,6 +21,6 @@ add_action( 'customize_register', '_starter_customize_register' );
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function _starter_customize_preview_js() {
-	wp_enqueue_script( '_starter_customizer', get_template_directory_uri() . _starter_get_asset_path( 'js-admin' ) . 'customizer.min.js', array( 'customize-preview' ), _starter_get_version(), true );
+	wp_enqueue_script( '_starter_customizer', get_template_directory_uri() . _starter_get_asset_path( 'js-admin' ) . 'customizer.js', array( 'customize-preview' ), _starter_get_version(), true );
 }
 add_action( 'customize_preview_init', '_starter_customize_preview_js' );
