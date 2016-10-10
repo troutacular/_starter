@@ -49,13 +49,13 @@
   "homepage": "https://github.com/troutacular/_starter#readme",
   "paths": {
     "assets": {
-      "css": "",
-      "images": "",
+      "css": "assets/css",
+      "images": "assets/images",
       "js": {
-		  "admin": "",
-		  "lib": "",
-		  "vendor": ""
-	  }
+        "admin": "assets/js/admin",
+        "lib": "assets/js/lib",
+        "vendor": "assets/js/vendor"
+      }
     }
   }
 }

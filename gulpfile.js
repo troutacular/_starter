@@ -325,16 +325,31 @@
 
 	gulp.task('project_version', function(){
 		var info = project_info;
+		console.log(paths.sass.dest);
 		gulp.src('./package.json')
-		.pipe(json_editor(function(json) {
-			json.version = info.theme.version;
-			json.description = info.theme.description;
-			json.author = info.theme.author;
-			json.license = info.theme.license;
-			json.repository.type = info.repository.type;
-			json.repository.url = info.repository.url;
-			json.bugs.url = info.repository.bugs.url;
-			return json;
+		.pipe(json_editor({
+			'version': info.theme.version,
+			'description': info.theme.description,
+			'author': info.theme.author,
+			'license': info.theme.license,
+			'repository': {
+				'type': info.repository.type,
+				'url': info.repository.url,
+			},
+			'bugs': {
+				'url': info.repository.bugs.url
+			},
+			'paths': {
+				'assets': {
+					'css': paths.sass.dest,
+					'images': paths.images.dest,
+					'js': {
+						'admin': paths.js.dest.admin,
+						'lib': paths.js.dest.lib,
+						'vendor': paths.js.dest.vendor,
+					}
+				}
+			}
 		}))
 		.pipe(gulp.dest('./'));
 	});
