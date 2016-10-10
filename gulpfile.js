@@ -290,8 +290,8 @@
 	gulp.task('theme_info_stylesheet', function() {
 		var info = project_info.theme;
 		gulp.src(paths.templates.theme.src)
-		.pipe(inject_string.replace('@@theme_version@@', info.version))
 		.pipe(inject_string.replace('@@theme_name@@', info.name))
+		.pipe(inject_string.replace('@@theme_version@@', info.version))
 		.pipe(inject_string.replace('@@theme_uri@@', info.uri))
 		.pipe(inject_string.replace('@@theme_author@@', info.author))
 		.pipe(inject_string.replace('@@theme_author_uri@@', info.author_uri))
