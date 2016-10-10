@@ -6,7 +6,7 @@ This is a starting point to create a new theme template.  You should not use thi
 
 # Getting Started
 
-If you want to set things up manually, download `_starter`. You'll need to do a multi-step find and replace on the name in all the templates (yes this was based off of [underscores] at one point).
+Download `_starter` and change the project to reflect the name of the theme you will be developing. You'll need to do a multi-step find and replace on the name in all the templates (yes this was based off of [underscores] at one point).
 
 1. Search for `'_starter'` (inside single quotations) to capture the text domain.
 2. Search for `_starter_` to capture all the function names.
