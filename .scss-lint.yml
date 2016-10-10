@@ -108,7 +108,7 @@ linters:
   NameFormat:
     enabled: true
     allow_leading_underscore: true
-    convention: ^[a-z]([-]?[a-z0-9]+)*(__[a-z0-9]([-]?[a-z0-9]+)*)?((_[a-z0-9]([-]?[a-z0-9]+)*){2})?$ # or 'camel_case', or 'snake_case', or a regex pattern
+    convention: ^((u|is|has|js)-([a-z0-9]*[-a-z0-9]*)|([a-z0-9]*[-a-z0-9]*)(__([a-z0-9]*[-a-z0-9]*))?(--([a-z0-9]*[-a-z0-9]*))?)(\\@([a-z0-9]*[-a-z0-9]*))?$ # or 'camel_case', or 'snake_case', or a regex pattern
 
   NestingDepth:
     enabled: true

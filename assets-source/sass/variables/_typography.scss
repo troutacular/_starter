@@ -13,14 +13,15 @@
 /*--------------------------------------------------------------
 1.0 - Default Fonts
 --------------------------------------------------------------*/
+
+// See _config.scss for site base font size.
+$site__font-size: 16 !default;
+
 $font__main: sans-serif;
 $font__code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 $font__pre: "Courier 10 Pitch", Courier, monospace;
 $font__line-height-body: 1.5;
 $font__line-height-pre: 1.6;
-
-$font__size: 16;
-$base-font: $font__size;
 
 
 

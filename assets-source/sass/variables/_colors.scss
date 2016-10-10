@@ -46,52 +46,51 @@
 2.0 - Globals
 --------------------------------------------------------------*/
 
-$color__background-body: #fff;
-$color__background-screen: #f1f1f1;
-
-$color__text-screen: #5b514a;
-
-$color__shadow: rgba(#000, .125);
-$color__background-screen: #fff;
+$body__background-color: #fff;
 
 
 /*--------------------------------------------------------------
 3.0 - Layout
 --------------------------------------------------------------*/
+/* offset-x | offset-y | blur-radius | spread-radius */
+$box-shadow__offset: 0;
+$box-shadow__color: rgba(#000, .125);
+$box-shadow: $box-shadow__offset $box-shadow__color;
+
+$box-shadow--screen-reader: rgba(0, 0, 0, .6);
 
 
 /*--------------------------------------------------------------
 4.0 - Typography
 --------------------------------------------------------------*/
 
+$body__font-color--primary: #5b514a;
+
 
 /*--------------------------------------------------------------
 4.1 - Headings
 --------------------------------------------------------------*/
 
-$color__text-heading: #000;
+$heading__font-color--primary: #000;
 
 
 /*--------------------------------------------------------------
 4.2 - Copy
 --------------------------------------------------------------*/
 
-$color__text-main: $color__text-screen;
-$color__text-meta: lighten($color__text-main, 15);
+$meta__font-color: lighten($body__font-color--primary, 15);
 
-$color__border-abbr: #666;
+$abbr__border-color: #666;
 
-$color__background-pre: #eee;
-$color__text-pre: #5b514a;
+$pre__background-color: #eee;
+$pre__font-color: #5b514a;
 
-$color__background-hr: #ccc;
+$hr__background-color: #ccc;
 
-$color__background-blockquote: #555;
-$color__text-blockquote: $color__text-main;
+$blockquote__background-color: #555;
+$blockquote__font-color: $body__font-color--primary;
 
-$color__background-ins: #fff9c0;
-
-$color__shadow-screen-reader: rgba(0, 0, 0, .6);
+$ins__background-color: #fff9c0;
 
 
 /*--------------------------------------------------------------
@@ -108,8 +107,8 @@ $color__shadow-screen-reader: rgba(0, 0, 0, .6);
 5.2 - Tables
 --------------------------------------------------------------*/
 
-$color__background-table-head: #dcded7;
-$color__text-table-head: #5b514a;
+$thead__background-color: #dcded7;
+$thead__font-color: #5b514a;
 
 
 /*--------------------------------------------------------------
@@ -127,11 +126,11 @@ $color__text-table-head: #5b514a;
 --------------------------------------------------------------*/
 
 // see _variables.scss for padding and border radius
-$color__background-input: #ccc;
-$color__border-input: transparent;
-$color__text-input: darken($color__text-main, 25);
-$color__text-input-focus: #111;
-$color__text-input-placeholder: lighten($color__text-main, 5);
+$input__background-color: #ccc;
+$input__border-color: transparent;
+$input__font-color: darken($body__font-color--primary, 25);
+$input__font-color--focus: #111;
+$input__font-color--placeholder: lighten($body__font-color--primary, 5);
 
 
 /*--------------------------------------------------------------
@@ -139,19 +138,19 @@ $color__text-input-placeholder: lighten($color__text-main, 5);
 --------------------------------------------------------------*/
 
 // default content colors
-$color__background-button: #777;
-$color__text-button: #fff;
-$color__border-button: transparent;
+$button__background-color: #777;
+$button__font-color: #fff;
+$button__border-color: transparent;
 
 // hover state
-$color__background-button-hover: darken($color__background-button, 5);
-$color__text-button-hover: #fff;
-$color__border-button-hover: transparent;
+$button__background-color-hover: darken($button__background-color, 5);
+$button__font-color-hover: #fff;
+$button__border-color-hover: transparent;
 
 // active state
-$color__background-button-active: lighten($color__background-button, 5);
-$color__text-button-active: #fff;
-$color__border-button-active: transparent;
+$button__background-color-active: lighten($button__background-color, 5);
+$button__font-color-active: #fff;
+$button__border-color-active: transparent;
 
 
 /*--------------------------------------------------------------
@@ -163,9 +162,9 @@ $color__border-button-active: transparent;
 7.1 - Links
 --------------------------------------------------------------*/
 
-$color__link: #777;
-$color__link-hover: lighten($color__link, 15);
-$color__link-visited: darken($color__link, 15);
+$link__font-color--primary: #777;
+$link__font-color--primary--hover: lighten($link__font-color--primary, 15);
+$link__font-color--primary--visited: darken($link__font-color--primary, 15);
 
 
 /*--------------------------------------------------------------
@@ -207,6 +206,8 @@ $color__link-visited: darken($color__link, 15);
 9.1 - Accesibility
 --------------------------------------------------------------*/
 
+$body__font-color--screen-reader-text--focus: $body__font-color--primary;
+$body__background-color--screen-reader-text--focus: #f1f1f1;
 
 /*--------------------------------------------------------------
 9.2 - Alignments
@@ -242,8 +243,8 @@ $color__link-visited: darken($color__link, 15);
 11.2 - Figures
 --------------------------------------------------------------*/
 
-$color__background-figcaption: transparent;
-$color__text-figcaption: lighten($color__text-main, 40);
+$figcaption__background-color: transparent;
+$figcaption__font-color: lighten($body__font-color--primary, 40);
 
 
 /*--------------------------------------------------------------
@@ -260,8 +261,8 @@ $color__text-figcaption: lighten($color__text-main, 40);
 12.0 - Print
 --------------------------------------------------------------*/
 
-$color__text-heading-print: #000 !default;
-$color__text-print: #000 !default;
-$color__link-print: #999 !default;
+$heading__font-color--print: #000 !default;
+$body__font-color--print: #000 !default;
+$link__font-color--print: #999 !default;
 
-$color__background-blockquote-print: #ccc;
+$blockquote__background-color--print: #ccc;
