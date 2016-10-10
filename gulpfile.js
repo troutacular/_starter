@@ -334,6 +334,7 @@
 			json.repository.type = info.repository.type;
 			json.repository.url = info.repository.url;
 			json.bugs.url = info.repository.bugs.url;
+			return json;
 		}))
 		.pipe(gulp.dest('./'));
 	});
