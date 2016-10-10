@@ -282,8 +282,8 @@
 5.0 - Styles
 --------------------------------------------------------------*/
 
-	gulp.task('theme_styles', function() {
-		gulp.src([paths.sass.src + '*.scss', '!' + paths.sass.src + 'rtl.scss'])
+	function sass_build(src, dest, map, asset_relation) {
+		return gulp.src(src)
 		.pipe(sourcemaps.init())
 		.pipe(sass({
 			outputStyle: 'compressed',
@@ -292,7 +292,7 @@
 		.pipe(preprocess({context: {
 			VERSION: project_info.theme.version,
 			// Set the assets path in relation to the compiled css file.
-			ASSET_RELATION_TO_CSS: '../',
+			ASSET_RELATION_TO_CSS: asset_relation,
 		}}))
 		.on('error', function (error) {
 			console.error('Error!', error.message);
@@ -301,35 +301,81 @@
 			browsers: ['last 2 versions', '> 1% in US',],
 			cascade: false
 		}))
-		.pipe(sourcemaps.write(paths.sass.maps))
-		.pipe(gulp.dest(paths.sass.dest))
-		.pipe(notify({ message: 'Styles written to ' + paths.sass.dest }))
-		.pipe(notify({ message: 'Maps written to ' + paths.sass.maps }));
+		.pipe(sourcemaps.write(map))
+		.pipe(gulp.dest(dest))
+		.pipe(notify({ message: 'Style written to ' + dest }))
+		.pipe(notify({ message: 'Map written to ' + map }));
+	}
+
+	gulp.task('theme_styles', function() {
+		sass_build([paths.sass.src + '*.scss', '!' + paths.sass.src + 'rtl.scss'], paths.sass.dest, paths.sass.maps, '../');
 	});
 
 	gulp.task('theme_styles_rtl', function() {
-		gulp.src(paths.sass.src + 'rtl.scss')
-		.pipe(sourcemaps.init())
-		.pipe(sass({
-			outputStyle: 'compressed',
-			includePaths: ['node_modules/susy/sass']
-		}))
-		.pipe(preprocess({context: {
-			VERSION: project_info.theme.version,
-			// Set the assets path in relation to the compiled css file.
-			ASSET_RELATION_TO_CSS: '../',
-		}}))
-		.on('error', function (error) {
-			console.error('Error!', error.message);
-		})
-		.pipe(autoprefixer({
-			browsers: ['last 2 versions', '> 1% in US',],
-			cascade: false
-		}))
-		.pipe(sourcemaps.write(paths.sass.dest + paths.sass.maps))
-		.pipe(gulp.dest('./'))
-		.pipe(notify({ message: 'RTL Styles written to ' + paths.sass.dest }));
+		sass_build(paths.sass.src + 'rtl.scss', base_paths.root, paths.sass.dest + paths.sass.maps, paths.images.dest);
 	});
+
+	// gulp.task('theme_styles', function() {
+	// 	// gulp.src([paths.sass.src + '*.scss', '!' + paths.sass.src + 'rtl.scss'])
+	// 	gulp.src(paths.sass.src + '*.scss')
+	// 	.pipe(sourcemaps.init())
+	// 	.pipe(sass({
+	// 		outputStyle: 'compressed',
+	// 		includePaths: ['node_modules/susy/sass']
+	// 	}))
+	// 	.pipe(preprocess({context: {
+	// 		VERSION: project_info.theme.version,
+	// 		// Set the assets path in relation to the compiled css file.
+	// 		ASSET_RELATION_TO_CSS: '../',
+	// 	}}))
+	// 	.on('error', function (error) {
+	// 		console.error('Error!', error.message);
+	// 	})
+	// 	.pipe(autoprefixer({
+	// 		browsers: ['last 2 versions', '> 1% in US',],
+	// 		cascade: false
+	// 	}))
+	//
+	// 	.pipe(sourcemaps.write(paths.sass.maps))
+	// 	.pipe(gulp_if(paths.sass.src + 'rtl.css',
+	// 		sourcemaps.write(paths.sass.maps),
+	// 		gulp.dest('./')
+	// 	))
+	// 	.pipe(gulp_if(!paths.sass.src + 'rtl.css',
+	// 		sourcemaps.write(paths.sass.maps),
+	// 		gulp.dest(paths.sass.dest)
+	// 	))
+	//
+	//
+	// 	// .pipe(sourcemaps.write(paths.sass.maps))
+	// 	// .pipe(gulp.dest(paths.sass.dest))
+	// 	.pipe(notify({ message: 'Styles written to ' + paths.sass.dest }))
+	// 	.pipe(notify({ message: 'Maps written to ' + paths.sass.maps }));
+	// });
+
+	// gulp.task('theme_styles_rtl', function() {
+	// 	gulp.src(paths.sass.src + 'rtl.scss')
+	// 	.pipe(sourcemaps.init())
+	// 	.pipe(sass({
+	// 		outputStyle: 'compressed',
+	// 		includePaths: ['node_modules/susy/sass']
+	// 	}))
+	// 	.pipe(preprocess({context: {
+	// 		VERSION: project_info.theme.version,
+	// 		// Set the assets path in relation to the compiled css file.
+	// 		ASSET_RELATION_TO_CSS: '../',
+	// 	}}))
+	// 	.on('error', function (error) {
+	// 		console.error('Error!', error.message);
+	// 	})
+	// 	.pipe(autoprefixer({
+	// 		browsers: ['last 2 versions', '> 1% in US',],
+	// 		cascade: false
+	// 	}))
+	// 	.pipe(sourcemaps.write(paths.sass.dest + paths.sass.maps))
+	// 	.pipe(gulp.dest('./'))
+	// 	.pipe(notify({ message: 'RTL Styles written to ' + paths.sass.dest }));
+	// });
 
 
 /*--------------------------------------------------------------
@@ -401,6 +447,7 @@
 
 	// Master clean function.
 	gulp.task('clean', ['clean:stylesheet', 'clean:rtl', 'clean:images', 'clean:js', 'clean:theme_info']);
+	// gulp.task('clean', ['clean:stylesheet', 'clean:images', 'clean:js', 'clean:theme_info']);
 
 	// Individual clean functions for streams.
 	gulp.task('clean:stylesheet', function(){
@@ -448,6 +495,7 @@
 
 	gulp.task('styles', function(cb) {
 		run_sequence('clean:stylesheet', 'theme_styles', 'clean:rtl', 'theme_styles_rtl', cb);
+		// run_sequence('clean:stylesheet', 'clean:rtl', 'theme_styles', cb);
 	});
 
 
