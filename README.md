@@ -16,7 +16,7 @@ OR
 
 - Search for: `'_starter'` and replace with: `'theme-name'`
 - Search for: `_starter_` and replace with: `theme_name_`
--  Search for: `Text Domain: _starter` and replace with: `Text Domain: theme-name` in style.css.
+- Search for: `Text Domain: _starter` and replace with: `Text Domain: theme-name` in style.css.
 
 
 
@@ -91,7 +91,7 @@ Use
 /**
  * [foo description]
  *
- * @author  l.hamiltion
+ * @author  l. hamilton
  * @version [version]
  * @param   [type] $var  [description]
  * @return  [type]
@@ -150,8 +150,6 @@ Functions: See individual functions
 Sass construct: [troutacular]
 
 
-[Bundler]: http://bundler.io
-[Compass]: http://compass-style.org
 [Grunt]: http://gruntjs.com
 [Gulp]: http://gulpjs.com
 [Sass]: http://sass-lang.com
