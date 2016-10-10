@@ -89,14 +89,14 @@ function _starter_get_config() {
 	// Set the default project configurations.
 	$config = array(
 		'version' => '1.0.0',
-		'path' => array(
-			'css' => array(
-				'site' => '/assets/css/',
-			),
-			'js' => array(
-				'lib' => '/assets/js/lib/',
-				'vendor' => '/assets/js/vendor/',
-				'admin' => '/assets/js/admin/',
+		'paths' => array(
+			'assets' => array(
+				'css' => '/assets/css/',
+				'js' => array(
+					'lib' => '/assets/js/lib/',
+					'vendor' => '/assets/js/vendor/',
+					'admin' => '/assets/js/admin/',
+				),
 			),
 		),
 	);
@@ -106,6 +106,11 @@ function _starter_get_config() {
 		$package_config = json_decode( file_get_contents( get_template_directory() . '/package.json' ) );
 
 		$config['version'] = _starter_set_config_option( $package_config->version, $config['version'] );
+
+		$config['paths']['assets']['css'] = _starter_set_config_option( $package_config->paths->assets->css, $config['paths']['assets']['css'] );
+		$config['paths']['assets']['js']['admin'] = _starter_set_config_option( $package_config->paths->assets->js->admin, $config['paths']['assets']['js']['admin'] );
+		$config['paths']['assets']['js']['lib'] = _starter_set_config_option( $package_config->paths->assets->js->lib, $config['paths']['assets']['js']['lib'] );
+		$config['paths']['assets']['js']['vendor'] = _starter_set_config_option( $package_config->paths->assets->js->vendor, $config['paths']['assets']['js']['vendor'] );
 	}
 
 	return $config;
@@ -130,21 +135,22 @@ function _starter_get_version() {
 function _starter_get_asset_path( $type ) {
 	$config = _starter_get_config();
 	switch ( $type ) {
+
+		case 'js-admin':
+			return $config['paths']['assets']['js']['admin'];
+			break;
+
 		case 'js-lib':
-			return $config['path']['js']['lib'];
+			return $config['paths']['assets']['js']['lib'];
 			break;
 
 		case 'js-vendor':
-			return $config['path']['js']['vendor'];
-			break;
-
-		case 'js-admin':
-			return $config['path']['js']['admin'];
+			return $config['paths']['assets']['js']['vendor'];
 			break;
 
 		// Default CSS.
 		default:
-			return $config['path']['css']['site'];
+			return $config['paths']['assets']['css'];
 			break;
 	}
 }
