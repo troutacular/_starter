@@ -14,13 +14,12 @@
 			3.1.3 - SVG Optimize and Move
 	4.0 - Scripts
 	5.0 - Styles
-		5.1 - Theme Information
-		5.2 - Theme Stylesheet
-	6.0 - Build
-		6.1 - Clean
-		6.2 - Build Types
-		6.3 - Default
-		6.4 - Watch
+	6.0 - Theme Information
+	7.0 - Build
+		7.1 - Clean
+		7.2 - Build Types
+		7.3 - Default
+		7.4 - Watch
 
 **/
 
@@ -252,7 +251,7 @@
 			jshint.reporter('default'),
 			concat(paths.js.output.basename + paths.js.output.ext),
 			uglify(),
-			rename(function (path) {
+			rename(function(path) {
 				path.basename = paths.js.output.basename;
 				path.extname = '.min' + paths.js.output.ext;
 			}),
@@ -282,9 +281,34 @@
 5.0 - Styles
 --------------------------------------------------------------*/
 
+	gulp.task('theme_styles', function() {
+		gulp.src(paths.sass.src + '*.scss')
+		.pipe(sourcemaps.init())
+		.pipe(sass({
+			outputStyle: 'compressed',
+			includePaths: ['node_modules/susy/sass']
+		}))
+		.pipe(preprocess({context: {
+			VERSION: project_info.theme.version,
+			// Set the assets path in relation to the compiled css file.
+			ASSET_RELATION_TO_CSS: '../',
+		}}))
+		.on('error', function (error) {
+			console.error('Error!', error.message);
+		})
+		.pipe(autoprefixer({
+			browsers: ['last 2 versions', '> 1% in US',],
+			cascade: false
+		}))
+		.pipe(sourcemaps.write(paths.sass.maps))
+		.pipe(gulp.dest(paths.sass.dest))
+		.pipe(notify({ message: 'Styles written to ' + paths.sass.dest }))
+		.pipe(notify({ message: 'Maps written to ' + paths.sass.maps }));
+	});
+
 
 /*--------------------------------------------------------------
-5.1 - Theme Information
+6.0 - Theme Information
 --------------------------------------------------------------*/
 
 	gulp.task('theme_info_stylesheet', function() {
@@ -342,45 +366,12 @@
 
 
 /*--------------------------------------------------------------
-5.2 - Theme Stylesheet
---------------------------------------------------------------*/
-
-	gulp.task('theme_styles', function() {
-		gulp.src(paths.sass.src + '*.scss')
-		.pipe(sourcemaps.init())
-		.pipe(sass({
-			outputStyle: 'compressed',
-			includePaths: ['node_modules/susy/sass']
-		}))
-		.pipe(preprocess({context: {
-			VERSION: project_info.theme.version,
-			// Set the assets path in relation to the compiled css file.
-			ASSET_RELATION_TO_CSS: '../',
-		}}))
-		.on('error', function (error) {
-			console.error('Error!', error.message);
-		})
-		.pipe(autoprefixer({
-			browsers: ['last 2 versions', '> 1% in US',],
-			cascade: false
-		}))
-		.pipe(sourcemaps.write(paths.sass.maps))
-		.pipe(rename(function(path) {
-			path.basename = paths.sass.output.basename;
-		}))
-		.pipe(gulp.dest(paths.sass.dest))
-		.pipe(notify({ message: 'Styles written to ' + paths.sass.dest }))
-		.pipe(notify({ message: 'Maps written to ' + paths.sass.maps }));
-	});
-
-
-/*--------------------------------------------------------------
-6.0 - Build
+7.0 - Build
 --------------------------------------------------------------*/
 
 
 /*--------------------------------------------------------------
-6.1 - Clean
+7.1 - Clean
 --------------------------------------------------------------*/
 
 	// Master clean function.
@@ -413,7 +404,7 @@
 
 
 /*--------------------------------------------------------------
-6.2 - Build Types
+7.2 - Build Types
 --------------------------------------------------------------*/
 
 	gulp.task('images', function(cb) {
@@ -430,7 +421,7 @@
 
 
 /*--------------------------------------------------------------
-6.3 - Default
+7.3 - Default
 --------------------------------------------------------------*/
 
 	/**
@@ -443,7 +434,7 @@
 
 
 /*--------------------------------------------------------------
-6.4 - Watch
+7.4 - Watch
 --------------------------------------------------------------*/
 
 	/**
