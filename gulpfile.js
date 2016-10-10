@@ -17,8 +17,8 @@
 		5.1 - Theme Information
 		5.2 - Theme Stylesheet
 	6.0 - Build
-		6.1 - Build Order
-		6.2 - Clean
+		6.1 - Clean
+		6.2 - Build Types
 		6.3 - Default
 		6.4 - Watch
 
@@ -43,7 +43,9 @@
 		notify = require('gulp-notify'),
 		path = require('path'),
 		preprocess = require('gulp-preprocess'),
+		pump = require('pump'),
 		rename = require('gulp-rename'),
+		run_sequence = require('run-sequence'),
 		sourcemaps = require('gulp-sourcemaps'),
 
 		// Javascript
@@ -127,12 +129,19 @@
 				lib: base_paths.dest + '/js/lib',
 				vendor: base_paths.dest + '/js/vendor',
 			},
-			compiled: 'starter.js',
+			output: {
+				basename: 'starter',
+				ext: '.js',
+			},
 		},
 		sass: {
 			src: base_paths.src + '/sass',
 			dest: base_paths.dest + '/css',
 			maps: '/maps',
+			output: {
+				basename: 'starter',
+				ext: '.css',
+			},
 		},
 		sprite: {
 			src: base_paths.src + '/images/sprite/*',
@@ -236,29 +245,54 @@
 4.0 - Scripts
 --------------------------------------------------------------*/
 
-	gulp.task('site_scripts', function() {
-
-		return gulp.src(paths.js.src.lib + '/**/*.js')
-		.pipe(jshint())
-		.pipe(jshint.reporter('default'))
-		.pipe(concat(paths.js.compiled))
-		.pipe(rename(function (path) {
-			path.extname = '.min.js';
-		}))
-		.pipe(uglify())
-		.pipe(gulp.dest(paths.js.dest.lib))	.pipe(notify({ message: 'Library scripts task complete' }));
+	gulp.task('compress', function(){
+		pump([
+			gulp.src(paths.js.src.lib + '/**/*.js'),
+			uglify(),
+			gulp.dest(paths.js.dest.lib)
+		]);
 	});
 
-	gulp.task('vendor_scripts', function() {
-		return gulp.src(paths.js.src.vendor + '/**/*') // indclude all the vendor js
-		.pipe(gulp.dest(paths.js.dest.vendor))
-		.pipe(notify({ message: 'Vendor scripts task complete' }));
+	gulp.task('site_scripts', function() {
+
+		// return gulp.src(paths.js.src.lib + '/**/*.js')
+		// .pipe(jshint())
+		// .pipe(jshint.reporter('default'))
+		// .pipe(concat(paths.js.output.basename + paths.js.output.ext))
+		return pump([
+			gulp.src(paths.js.src.lib + '/**/*.js'),
+			jshint(),
+			jshint.reporter('default'),
+			concat(paths.js.output.basename + paths.js.output.ext),
+			uglify(),
+			rename(function (path) {
+				path.basename = paths.js.output.basename;
+				path.extname = '.min' + paths.js.output.ext;
+			}),
+			gulp.dest(paths.js.dest.lib)
+		])
+		// .pipe(gulp.dest(paths.js.dest.lib))
+		.pipe(notify({ message: 'Library scripts task complete' }));
 	});
 
 	gulp.task('admin_scripts', function() {
-		return gulp.src(paths.js.src.admin + '/**/*') // indclude all the admin js
-		.pipe(gulp.dest(paths.js.dest.admin))
+		// Include all admin js files.
+		return pump([
+			gulp.src(paths.js.src.admin + '/**/*'),
+			uglify(),
+			rename(function(path) {
+				path.extname = '.min.js';
+			}),
+			gulp.dest(paths.js.dest.admin)
+		])
 		.pipe(notify({ message: 'Admin scripts task complete' }));
+	});
+
+	gulp.task('vendor_scripts', function() {
+		// Include all vendor js files as is.
+		return gulp.src(paths.js.src.vendor + '/**/*')
+		.pipe(gulp.dest(paths.js.dest.vendor))
+		.pipe(notify({ message: 'Vendor scripts task complete' }));
 	});
 
 
@@ -300,19 +334,20 @@
 			json.repository.type = info.repository.type;
 			json.repository.url = info.repository.url;
 			json.bugs.url = info.repository.bugs.url;
-			return json;
 		}))
 		.pipe(gulp.dest('./'));
 	});
 
-	gulp.task('set_theme_info', ['project_version', 'theme_info_stylesheet']);
+	gulp.task('set_theme_info', function(cb) {
+		run_sequence('clean:theme_info', 'project_version', 'theme_info_stylesheet', cb);
+	});
 
 
 /*--------------------------------------------------------------
 5.2 - Theme Stylesheet
 --------------------------------------------------------------*/
 
-	gulp.task('styles', function() {
+	gulp.task('theme_styles', function() {
 		gulp.src(paths.sass.src + '/*.scss')
 		.pipe(sourcemaps.init())
 		.pipe(sass({
@@ -332,6 +367,9 @@
 			cascade: false
 		}))
 		.pipe(sourcemaps.write(paths.sass.maps))
+		.pipe(rename(function(path) {
+			path.basename = paths.sass.output.basename;
+		}))
 		.pipe(gulp.dest(paths.sass.dest))
 		.pipe(notify({ message: 'Styles written to ' + paths.sass.dest }))
 		.pipe(notify({ message: 'Maps written to ' + paths.sass.maps }));
@@ -344,28 +382,52 @@
 
 
 /*--------------------------------------------------------------
-6.1 - Build Order
+6.1 - Clean
 --------------------------------------------------------------*/
 
-/**
- * Assets
- *
- * 1. create sprite
- * 2. convert svg to png
- * 3. optimize and move
- */
+	// Master clean function.
+	gulp.task('clean', ['clean:stylesheet', 'clean:images', 'clean:js', 'clean:theme_info']);
 
-gulp.task('images', ['svg2png', 'images_optimize_move']);
+	// Individual clean functions for streams.
+	gulp.task('clean:stylesheet', function(){
+		del([
+			base_paths.dest + '/css'
+		]);
+	});
 
-gulp.task('scripts', ['site_scripts', 'vendor_scripts', 'admin_scripts']);
+	gulp.task('clean:theme_info', function(){
+		del([
+			base_paths.root + 'style.css'
+		]);
+	});
+
+	gulp.task('clean:images', function(){
+		del([
+			base_paths.dest + '/images'
+		]);
+	});
+
+	gulp.task('clean:js', function(){
+		del([
+			base_paths.dest + '/js'
+		]);
+	});
 
 
 /*--------------------------------------------------------------
-6.2 - Clean
+6.2 - Build Types
 --------------------------------------------------------------*/
 
-	gulp.task('clean', function(cb) {
-		del([base_paths.dest + '/js', base_paths.dest + '/css', base_paths.dest + '/images', base_paths.root + 'style.css'], cb);
+	gulp.task('images', function(cb) {
+		run_sequence('clean:images', 'svg2png', 'images_optimize_move', cb);
+	});
+
+	gulp.task('scripts', function(cb) {
+		run_sequence('clean:js', 'site_scripts', 'vendor_scripts', 'admin_scripts', cb);
+	});
+
+	gulp.task('styles', function(cb) {
+		run_sequence('clean:stylesheet', 'theme_styles', cb);
 	});
 
 
@@ -377,7 +439,9 @@ gulp.task('scripts', ['site_scripts', 'vendor_scripts', 'admin_scripts']);
 	 * Default function for build.
 	 * $ gulp
 	 */
-	gulp.task('default', ['clean', 'images', 'scripts', 'styles', 'set_theme_info']);
+	gulp.task('default', function(){
+		run_sequence('scripts', 'images', 'styles', 'set_theme_info');
+	});
 
 
 /*--------------------------------------------------------------
