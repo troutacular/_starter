@@ -6,7 +6,8 @@
 	1.0 - Dependencies
 	2.0 - Variables
 		2.1 - Project Information
-		2.2 - Paths
+		2.2 - Configuration
+		2.3 - Paths
 	3.0 - Assets
 		3.1 - Images
 			3.1.1 - SVG to PNG
@@ -104,15 +105,52 @@
 
 
 /*--------------------------------------------------------------
-2.2 - Paths
+2.2 - Configuration
 --------------------------------------------------------------*/
 
+	/**
+	 * Set configuration items for compiling.
+	 * @type  {Object}
+	 */
+	var config = {
+		autoprefixer: {
+			browsers: ['last 2 versions', '> 1% in US',],
+			cascade: false
+		},
+		images: {
+			minification: {
+				optimizationLevel: 3,
+				progressive: true,
+				interlaced: true,
+				multipass: true
+			}
+		},
+		sass: {
+			outputStyle: 'compressed',
+			includePaths: ['node_modules/susy/sass']
+		},
+	};
+
+
+/*--------------------------------------------------------------
+2.3 - Paths
+--------------------------------------------------------------*/
+
+	/**
+	 * Set base paths for root, source, destination and sass.
+	 * @type  {Object}
+	 */
 	var base_paths = {
 		root: './',
 		src: 'assets-source/',
 		dest: 'assets/',
 		sass: 'assets-source/sass/',
 	};
+
+	/**
+	 * Set paths for use with gulp tasks.
+	 * @type  {Object}
+	 */
 	var paths = {
 		images: {
 			src: base_paths.src + 'images/',
@@ -167,8 +205,6 @@
 3.1 - Images
 --------------------------------------------------------------*/
 
-	var image_min_setting = { optimizationLevel: 3, progressive: true, interlaced: true, multipass: true };
-
 
 /*--------------------------------------------------------------
 3.1.1 - SVG to PNG
@@ -189,15 +225,15 @@
 
 		return gulp.src(paths.sprite.src)
 			.pipe(svg_sprite({
-				shape				: {
+				shape: {
 					// Icon output size
-					dimension		: {
-						maxWidth	: 16,
-						maxHeight	: 16
+					dimension: {
+						maxWidth: 16,
+						maxHeight: 16
 					},
-					spacing			: {
+					spacing: {
 						// Add padding
-						padding		: 10
+						padding: 10
 					},
 				},
 				mode: {
@@ -215,7 +251,7 @@
 					}
 				}
 			}))
-			.pipe(imagemin(image_min_setting))
+			.pipe(imagemin(config.images.minification))
 			.pipe(gulp.dest(base_paths.dest));
 
 	});
@@ -224,7 +260,7 @@
 	gulp.task('png_sprite', ['svg_sprite'], function() {
 		return gulp.src(paths.sprite.src_svg)
 			.pipe(svg2png())
-			.pipe(imagemin(image_min_setting))
+			.pipe(imagemin(config.images.minification))
 			.pipe(gulp.dest(paths.images.dest));
 	});
 
@@ -236,7 +272,7 @@
 	gulp.task('images_optimize_move', ['png_sprite'], function() {
 		// Indclude all the images and sub-folders.
 		return gulp.src(paths.images.src + '**/*')
-		.pipe(imagemin(image_min_setting))
+		.pipe(imagemin(config.images.minification))
 		.pipe(gulp.dest(paths.images.dest));
 	});
 
@@ -283,10 +319,7 @@
 	function sass_build(src, dest, map, asset_relation) {
 		return gulp.src(src)
 		.pipe(sourcemaps.init())
-		.pipe(sass({
-			outputStyle: 'compressed',
-			includePaths: ['node_modules/susy/sass']
-		}))
+		.pipe(sass(config.sass))
 		.pipe(preprocess({context: {
 			VERSION: project_info.theme.version,
 			// Set the assets path in relation to the compiled css file.
@@ -295,10 +328,7 @@
 		.on('error', function (error) {
 			console.error('Error!', error.message);
 		})
-		.pipe(autoprefixer({
-			browsers: ['last 2 versions', '> 1% in US',],
-			cascade: false
-		}))
+		.pipe(autoprefixer(config.autoprefixer))
 		.pipe(sourcemaps.write(map))
 		.pipe(gulp.dest(dest))
 		.pipe(notify({ message: 'Style written to ' + dest }))
