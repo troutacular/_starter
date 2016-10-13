@@ -1,7 +1,7 @@
 # Version Releases
 
 
-## 2.0.0
+## 1.0.0
 
 - Remove
   - Ruby Gem Dependencies
@@ -20,6 +20,6 @@
 - BEM variable naming conventions
 - Reconfigure SCSS partials structure
 
-## 1.0.0
+## 0.1.0
 
 - Project init.
