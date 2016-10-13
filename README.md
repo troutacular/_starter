@@ -76,7 +76,9 @@ $ gulp watch
 
 ## Javascript
 
-Javascript files can be found in `assets-source/js` and have three sub directories for script types.
+Javascript files can be found in `assets-source/js` and have three sub directories for script types of Library, Vendor, and Admin.
+
+The scripts are only compiled to their respective destination directories and are _not_ auto loaded to the theme output.  This is intended to use the `functions.php` file to load the scripts with [wp_enqueue_script][] and allow for the use of dependency scripts.
 
 
 ### Library Scripts
@@ -86,18 +88,18 @@ Javascript files in `assets-source/js/lib` will run jshint on the file and compi
 These files will be combined (concatenated), minified, and renamed to the value in the `gulpfile.js` variable `paths.js.output.basename` with the extension `.min.js` attached.
 
 
-### Admin Scripts
-
-Javascript files in `assets-source/js/admin` will run jshint on the file and compile to `assets/js/admin`.  
-
-_These files will not be concatenated or minified._
-
-
 ### Vendor Scripts
 
-Javascript files in `assets-source/js/vendor` will run jshint on the file and compile to `assets/js/vendor`.  
+Javascript files in `assets-source/js/vendor` will run jshint on the file and compile to `assets/js/vendor`.  These are third party scripts maintained by other developers/organizations.
 
-_These files will not be concatenated or minified._
+_These files will not run jshint or be concatenated or minified._
+
+
+### Admin Scripts
+
+Javascript files in `assets-source/js/admin` will run jshint on the file and compile to `assets/js/admin`.  These are intended to be individual scripts for WP-Admin.
+
+_These files will not run jshint or be concatenated or minified._
 
 
 ## CSS
@@ -105,6 +107,8 @@ _These files will not be concatenated or minified._
 This project uses SCSS to compile a theme stylesheet.  SCSS files withou an underscore `_` prefix in `assets-source/sass/` will be compiled with an autoprefixer (based on project settings) to `assets/css/[filename].css`.
 
 CSS Maps will be compiled per stylesheet in `assets/css/maps`.
+
+The stylesheets are only compiled to their respective destination directories and are _not_ auto loaded to the theme output.  This is intended to use the `functions.php` file to load the scripts with [wp_enqueue_style][] and allow for the use of dependency scripts.
 
 
 ## Images
@@ -259,10 +263,13 @@ Functions: See individual functions.
 
 
 [Gulp]: http://gulpjs.com
+[Node]: https://nodejs.org/en/
+[NPM]: https://www.npmjs.com/
 [Sass]: http://sass-lang.com
 [Sass-Font-Icon]: http://github.com/troutacular/sass-font-icon
 [Sass-Heading-Sizes]: http://github.com/troutacular/sass-heading-sizes
 [Susy]: http://susy.oddbird.net/
 [troutacular]: https://github.com/troutacular/
 [underscores]: http://www.underscores.me
-[_starter]: http://github.com/troutacular/_starter
+[wp_enqueue_script]: https://developer.wordpress.org/reference/functions/wp_enqueue_script/
+[wp_enqueue_style]: https://developer.wordpress.org/reference/functions/wp_enqueue_style/
