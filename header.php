@@ -1,45 +1,51 @@
-<!DOCTYPE html>
+<?php
+/**
+ * The header for our theme.
+ *
+ * This is the template that displays all of the <head> section and everything up until <div id="content">
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package _starter
+ */
 
-<!--[if IE 9]>
-<html class="ie ie9" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if !(IE 9)  ]><!-->
+?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
-<!--<![endif]-->
 <head>
-
 <meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<?php 
-	
-	/**
-		Fix for validation
-	**/
-	if ( isset( $_SERVER['HTTP_USER_AGENT'] ) && ( strpos( $_SERVER['HTTP_USER_AGENT'], 'MSIE' ) !== false ) ) {
-		header( 'X-UA-Compatible: IE=edge,chrome=1' );
-	}
-	
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<?php
+// Display a noindex meta tag if required by the blog configuration.
+if ( function_exists( 'noindex' ) ) {
+	noindex();
+}
 ?>
-<?php global $noindex; if( $noindex ) { echo '	<meta name="robots" content="noindex"/>'; } ?>
-<title><?php wp_title( '|', true, 'right' ); ?></title>
-<link rel="icon" href="<?php echo get_bloginfo('template_directory'); ?>/images/favicon.ico" />
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
 <?php wp_head(); ?>
-	
 </head>
 <body <?php body_class(); ?>>
 
-<div class="site-wrapper"><?php /* closes in footer.php */ ?>
-	
+<div class="site"><?php /* closes in footer.php */ ?>
+	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', '_starter' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#secondary"><?php esc_html_e( 'Skip to secondary content', '_starter' ); ?></a>
+
 	<header id="masthead" class="site-header" role="banner">
-		
-		<?php get_template_part('modules/module-site-branding'); ?>
-		<?php get_template_part('modules/module-site-navigation'); ?>
-		
+		<div class="site-branding">
+			<h1 class="site-branding-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+			<?php
+			$description = get_bloginfo( 'description', 'display' );
+			if ( $description || is_customize_preview() ) { ?>
+				<p class="site-branding-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
+			<?php } ?>
+		</div><!-- .site-branding -->
+
+		<nav id="site-navigation" class="site-navigation" role="navigation">
+			<h2 class="site-navigation-title"><?php esc_html_e( 'Primary Menu', '_starter' ); ?></h2>
+			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu-id' => 'primary-menu', 'menu_class' => 'site-navigation-menu' ) ); ?>
+		</nav><!-- .site-navigation -->
+
 	</header><!-- #masthead -->
-	
-	<?php get_template_part('modules/module-breadcrumbs'); ?>
-	
-	<div id="content" class="site-content-wrapper"><?php /* closes in footer.php */ ?>
+
+	<div id="content" class="site-content"><?php /* closes in footer.php */ ?>

@@ -1,0 +1,62 @@
+{
+  "name": "starter",
+  "version": "1.0.0",
+  "description": "WordPress _starter theme is based off of the _s (underscores) theme and is intended to clone and use as you see fit.  It is not intended to be used as a Parent or Child theme.",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-if": "^2.0.1",
+    "gulp-imagemin": "^3.0.3",
+    "gulp-inject-string": "^1.1.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-json-editor": "^2.2.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-preprocess": "^2.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-svg-sprite": "^1.3.6",
+    "gulp-svg2png": "^2.0.2",
+    "gulp-svgmin": "^1.2.3",
+    "gulp-uglify": "^2.0.0",
+    "jshint": "^2.9.3",
+    "path": "^0.12.7",
+    "pump": "^1.0.1",
+    "run-sequence": "^1.2.2",
+    "susy": "^2.2.12"
+  },
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/troutacular/_starter.git"
+  },
+  "keywords": [
+    "WordPress",
+    "Theme",
+    "_starter",
+    "Gulp"
+  ],
+  "author": "@troutacular",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/troutacular/_starter/issues"
+  },
+  "homepage": "https://github.com/troutacular/_starter#readme",
+  "paths": {
+    "assets": {
+      "css": "/assets/css/",
+      "images": "/assets/images/",
+      "js": {
+        "admin": "/assets/js/admin/",
+        "lib": "/assets/js/lib/",
+        "vendor": "/assets/js/vendor/"
+      }
+    }
+  }
+}

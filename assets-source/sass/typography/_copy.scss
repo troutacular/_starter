@@ -1,0 +1,187 @@
+/**
+
+	Copy
+	==========
+
+	1.0 - Global Copy
+	2.0 - Copy Elements
+		2.1 - Text
+		2.2 - Blockquotes / Cites
+		2.3 - Time
+		2.4 - Address
+		2.5 - Sub/Superscripts
+		2.6 - Code / Pre
+		2.7 - Horizontal Rule
+	4.0 - Other Elements
+
+**/
+
+
+
+/*--------------------------------------------------------------
+1.0 - Global Copy
+--------------------------------------------------------------*/
+
+body,
+button,
+input,
+select,
+textarea {
+	@include font-size($site__font-size);
+	line-height: $font__line-height-body;
+	color: $body__font-color--primary;
+	font-family: $font__main;
+}
+
+
+/*--------------------------------------------------------------
+2.0 - Copy Elements
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+2.1 - Text
+--------------------------------------------------------------*/
+
+p {
+	margin-bottom: 1.5em;
+}
+
+b,
+strong {
+	font-weight: bold;
+}
+
+dfn,
+cite,
+em,
+i {
+	font-style: italic;
+}
+
+
+/*--------------------------------------------------------------
+2.2 - Blockquotes / Cites
+--------------------------------------------------------------*/
+
+blockquote {
+	margin: 1em 0;
+	background: $blockquote__background-color;
+	padding: 1.5em;
+	color: $blockquote__font-color;
+	quotes: '" "';
+
+	&::before,
+	&::after {
+		content: '';
+	}
+}
+
+cite {}
+
+
+/*--------------------------------------------------------------
+2.3 - Time
+--------------------------------------------------------------*/
+
+time {}
+
+
+/*--------------------------------------------------------------
+2.4 - Address
+--------------------------------------------------------------*/
+
+address {
+	margin: 0 0 1.5em;
+}
+
+/*--------------------------------------------------------------
+2.5 - Sub/Superscripts
+--------------------------------------------------------------*/
+
+sup,
+sub {
+	position: relative;
+	height: 0;
+	vertical-align: baseline;
+	line-height: 0;
+	font-size: 75%;
+}
+
+sup {
+	bottom: 1ex;
+}
+
+sub {
+	top: .5ex;
+}
+
+small {
+	font-size: 75%;
+}
+
+big {
+	font-size: 125%;
+}
+
+
+/*--------------------------------------------------------------
+2.6 - Code / Pre
+--------------------------------------------------------------*/
+
+pre {
+	@include font-size(15);
+	margin-bottom: 1.6em;
+	background: $pre__background-color;
+	padding: 1.6em;
+	max-width: 100%;
+	overflow: auto;
+	line-height: $font__line-height-pre;
+
+	white-space: pre-wrap;       /* css-3 */
+	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+	white-space: -pre-wrap;      /* Opera 4-6 */
+	white-space: -o-pre-wrap;    /* Opera 7 */
+
+	color: $pre__font-color;
+	font-family: $font__pre;
+
+	word-wrap: break-word;
+}
+
+code,
+kbd,
+tt,
+var {
+	@include font-size(15);
+	font-family: $font__code;
+}
+
+
+/*--------------------------------------------------------------
+2.7 - Horizontal Rule
+--------------------------------------------------------------*/
+
+hr {
+	margin-bottom: 1.5em;
+	border: 0;
+	background-color: $hr__background-color;
+	height: 1px;
+}
+
+
+/*--------------------------------------------------------------
+3.0 - Other Elements
+--------------------------------------------------------------*/
+
+abbr,
+acronym {
+	border-bottom: 1px dotted $abbr__border-color;
+	cursor: help;
+}
+
+mark,
+ins {
+	background: $ins__background-color;
+	text-decoration: none;
+}

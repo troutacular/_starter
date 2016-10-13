@@ -1,0 +1,48 @@
+/**
+
+	Content Navigation
+	==================
+
+	1.0 - Comment/Post Navigation
+	2.0 - Page Links
+
+**/
+
+
+
+/*--------------------------------------------------------------
+1.0 - Comment/Post Navigation
+--------------------------------------------------------------*/
+
+.comment-navigation,
+.posts-navigation,
+.post-navigation {
+
+	.nav-links {}
+
+	.site-main & {
+		margin: 0 0 1.5em;
+		overflow: hidden;
+	}
+
+	.nav-previous {
+		float: left;
+		width: 50%;
+	}
+
+	.nav-next {
+		float: right;
+		width: 50%;
+		text-align: right;
+	}
+}
+
+
+/*--------------------------------------------------------------
+2.0 - Page Links
+--------------------------------------------------------------*/
+
+.page-links {
+	clear: both;
+	margin: 0 0 1.5em;
+}

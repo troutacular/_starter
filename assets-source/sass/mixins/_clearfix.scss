@@ -1,0 +1,19 @@
+/**
+
+	Clearfix
+	=========
+
+	Clear the element from preceeding items.
+
+
+	Usage
+	=========
+	.class { @include clearfix; }
+
+**/
+
+@mixin clearfix() {
+	content: '';
+	display: table;
+	table-layout: fixed;
+}

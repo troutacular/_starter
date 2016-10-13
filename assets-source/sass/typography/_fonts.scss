@@ -1,0 +1,62 @@
+/**
+
+	Fonts
+	=====
+
+	1.0 - Font Face
+	2.0 - Typekit Fonts
+
+**/
+
+
+
+/*--------------------------------------------------------------
+1.0 - Font Face
+--------------------------------------------------------------*/
+
+/**
+
+	For android 2.2 Compatiblity, please ensure that your web page has a meta viewport tag.
+	To support iOS < 4.2, an SVG file must be provided
+
+	@font-face {
+		font-family: 'Unicorn Font';
+		src: font-url('unicorn.eot?') format('eot'),
+			font-url('unicorn.otf') format('truetype'),
+			font-url('unicorn.woff') format('woff'),
+			font-url('unicorn.svg#unicorn') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+
+**/
+
+
+
+/*--------------------------------------------------------------
+2.0 - Typekit Fonts
+--------------------------------------------------------------*/
+
+/**
+
+	Including the Typekit Font will include the fonts to the site.
+
+	You can make variables to call with the 'font-style' plugin.
+
+
+	Variable Examples:
+
+	light:			$font-proxima-nova-light: 'proxima-nova-n3', 'proxima-nova';
+	regular:		$font-proxima-nova-regular: 'proxima-nova-n4', 'proxima-nova';
+	bold:			$font-proxima-nova-bold: 'proxima-nova-n7', 'proxima-nova';
+	extrabold:		$font-proxima-nova-extrabold: 'proxima-nova-n7', 'proxima-nova';
+
+
+	Usage: Proxima Nova
+
+	light:			@include font-style($font-proxima-nova-light, normal, 300);
+	regular:		@include font-style($font-proxima-nova-regular, normal, 400);
+	bold:			@include font-style($font-proxima-nova-bold, normal, 700);
+	extrabold:		@include font-style($font-proxima-nova-extrabold, normal, 800);
+
+**/

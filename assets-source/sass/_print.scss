@@ -1,0 +1,168 @@
+/**
+
+	Print Styleguide
+	================
+
+	1.0 - Defaults
+		1.1 - Headings
+		1.2 - Content
+		1.3 - Links
+		1.4 - Media
+	2.0 - Hide Elements
+	3.0 - Theme Specific
+
+**/
+
+
+
+/*--------------------------------------------------------------
+1.0 - Defaults
+--------------------------------------------------------------*/
+
+@page {
+	margin: .5cm;
+}
+
+body {
+	background: #fff;
+}
+
+div,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section {
+	background: transparent !important;
+	color: $body__font-color--print !important;
+}
+
+
+
+/*--------------------------------------------------------------
+1.1 - Headings
+--------------------------------------------------------------*/
+
+h1,h2,h3,h4,h5,h6 {
+	color: $heading__font-color--print !important;
+	background: transparent !important;
+	border-color: $heading__font-color--print !important;
+}
+
+h1 {
+	border-bottom: 1px solid $heading__font-color--print;
+	padding-bottom: .5em;
+	margin-bottom: 1em;
+}
+
+.brand-title {
+	border: 0 none;
+
+	.site-header & {}
+
+	a {}
+
+}
+
+.site-title a {
+	clear: both;
+	color: $heading__font-color--print !important;
+}
+
+
+
+/*--------------------------------------------------------------
+1.2 - Content
+--------------------------------------------------------------*/
+.site-content {
+	clear: both;
+	margin-top: 1em;
+	padding-top: 1em;
+	border-top: 1px solid $heading__font-color--print;
+}
+
+p {
+	color: $body__font-color--print;
+}
+
+q,
+blockquote {
+	background: $blockquote__background-color--print;
+
+	&:before,
+	&:after {
+		content: '';
+	}
+
+	&[cite] {
+		&:after {
+			content: ' [Source: ' attr(cite) ']';
+			font-size: 75%;
+		}
+	}
+}
+
+
+
+/*--------------------------------------------------------------
+1.3 - Links
+--------------------------------------------------------------*/
+
+a {
+	color: $link__font-color--print !important;
+	text-decoration: underline;
+	/* only include the link on external sites that do not have
+	 * 'starter.com' in the link
+	 *
+	 * exclude any non-theme site: &:not([href*='starter.com']):after
+	 * exclude any site starting with: &:not([href^='siteurl']):after
+	 */
+
+	&:not([href*='#{$no-print-url}']):after {
+		content: ' [' attr(href) '] ';
+		color: lighten($link__font-color--print, 15);
+		text-decoration: none;
+	}
+}
+
+p a {
+	word-wrap: break-word;
+}
+
+
+
+/*--------------------------------------------------------------
+1.4 - Media
+--------------------------------------------------------------*/
+
+img {
+	max-width: 500px;
+}
+
+
+
+/*--------------------------------------------------------------
+2.0 - Hide Elements
+--------------------------------------------------------------*/
+
+header nav,
+footer,
+audio,
+video,
+embed,
+object,
+.site-breadcrumbs,
+.widget_search {
+	display: none;
+}
+
+
+
+/*--------------------------------------------------------------
+3.0 - Theme Specific
+--------------------------------------------------------------*/

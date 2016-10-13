@@ -1,0 +1,58 @@
+/**
+
+	Accessibility
+	========
+
+	1.0 - Skip Links
+	2.0 - Screen Reader Text
+
+**/
+
+
+
+/*--------------------------------------------------------------
+1.0 - Skip Links
+--------------------------------------------------------------*/
+
+/* Do not show the outline on the skip link target. */
+#content,
+#secondary {
+	&[tabindex="-1"]:focus {
+		outline: 0;
+	}
+}
+
+
+/*--------------------------------------------------------------
+2.0 - Screen Reader Text
+--------------------------------------------------------------*/
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+
+	clip: rect(1px, 1px, 1px, 1px);
+
+	&:focus {
+		@include font-size(14);
+		display: block;
+		top: 5px;
+		left: 5px;
+		z-index: 100000; /* Above WP toolbar. */
+		border-radius: 3px;
+		box-shadow: 0 0 2px 2px $box-shadow--screen-reader;
+		background-color: $body__background-color--screen-reader-text--focus;
+		padding: 15px 23px 14px;
+		width: auto;
+		height: auto;
+		text-decoration: none;
+		line-height: normal;
+		color: $body__font-color--screen-reader-text--focus;
+		font-weight: bold;
+
+		clip: auto;
+	}
+}
