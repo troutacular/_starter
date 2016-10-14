@@ -61,7 +61,7 @@ $susy: (
 	@include container;
 	padding: 0 $body__padding--mobile;
 
-	@media #{$medium-up} {
+	@include min-screen(48em) {
 		padding: 0 $body__padding--desktop;
 	}
 }
@@ -138,7 +138,7 @@ $susy: (
 	.footer-column {
 		@include span(12 of 12);
 
-		@media #{$xxsmall-up} {
+		@include min-screen(30em) {
 			@include span(6 of 12);
 
 			&:last-of-type {
@@ -153,7 +153,7 @@ $susy: (
 	.footer-column {
 		@include span(12 of 12);
 
-		@media #{$small-up} {
+		@include min-screen(48em) {
 			@include span(4 of 12);
 
 			&:last-of-type {
@@ -168,15 +168,15 @@ $susy: (
 	.footer-column {
 		@include span(12 of 12);
 
-		@media #{$xxsmall-up} {
+		@include screen(30em, 58em) {
 			@include span(6 of 12);
 
-			&:last-of-type {
+			&:nth-of-type(2n+2) {
 				@include omega;
 			}
 		}
 
-		@media #{$small-up} {
+		@include min-screen(58em) {
 			@include span(3 of 12);
 
 			&:last-of-type {
