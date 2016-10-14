@@ -8,7 +8,7 @@
 
 #### `@media #{$breakpoint-variable} ()`
 
-Replae with one of the following mixins:
+Replace with one of the following mixins:
 ```
 @include screen( $resolution-min, $resolution-max ) {}
 @include max-screen( $resolution ) {}
@@ -52,7 +52,7 @@ See `assets-source/sass/mixins/_media-queries.scss` for full documentation.
 	- Image optimization
 	- PNG creation for SVGs
     - SCSS Lint
-    - JSHint and `/lib` concat and minifcation
+    - JSHint and `/lib` concat and minify
   - WordPress Coding Standards Settings
 - Update templates for WordPress Coding Standards
 - BEM variable naming conventions
