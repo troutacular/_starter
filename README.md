@@ -251,6 +251,19 @@ There are some additional mixins included:
   - heading-increment-fixed
 
 
+## Notable Items
+
+### Accesibility
+
+If you create a template without a sidebar (`get_sidebar();`), be sure to wrap the skip to link in `header.php` with a conditional statement removing the link from output.  For example, if you remove `get_sidebar` from `404.php`:
+
+```
+if ( ! is_404() ) {
+	<a class="skip-link screen-reader-text" href="#secondary"><?php esc_html_e( 'Skip to secondary content', '_starter' ); ?></a>
+}
+```
+
+
 ## Credits
 
 Theme base: [underscores]

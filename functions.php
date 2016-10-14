@@ -212,8 +212,8 @@ if ( ! function_exists( '_starter_setup' ) ) {
 		 */
 		if ( function_exists( 'register_nav_menus' ) ) {
 			register_nav_menus( array(
-				'primary' => __( 'Primary Menu', '_starter' ),
-				'secondary' => __( 'Secondary Menu', '_starter' ),
+				'primary' => esc_html__( 'Primary Menu', '_starter' ),
+				'secondary' => esc_html__( 'Secondary Menu', '_starter' ),
 			) );
 		}
 
@@ -666,7 +666,7 @@ add_filter( 'excerpt_more', '_starter_excerpt_read_more' );
  */
 function _starter_excerpt_read_more() {
 	global $post;
-	return ' <a class="read-more" href="' . get_permalink( $post->ID ) . '">' . __( 'Read more', '_starter' ) . '</a>';
+	return ' <a class="read-more" href="' . get_permalink( $post->ID ) . '">' . esc_html__( 'Read more', '_starter' ) . '</a>';
 }
 
 
