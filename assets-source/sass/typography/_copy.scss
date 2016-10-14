@@ -75,6 +75,10 @@ blockquote {
 	&::after {
 		content: '';
 	}
+
+	a {
+		color: $link__font-color--blockquote;
+	}
 }
 
 cite {}

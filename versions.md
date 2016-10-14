@@ -1,5 +1,13 @@
 # Version Releases
 
+## 1.1.0
+
+- WAVE accessibility updates
+  - Escaped output for post navigation screen reader text
+  - Search form label wrapper for screen readers
+  - Default font color contrast update for block quotes
+- Remove 'other.css' test file
+- Gulp sass_build fix for watch function
 
 ## 1.0.0
 

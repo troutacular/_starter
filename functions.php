@@ -621,7 +621,7 @@ if ( ! function_exists( '_starter_post_nav' ) ) {
 		}
 		?>
 		<nav class="navigation post-navigation" role="navigation">
-			<h1 class="screen-reader-text"><?php __( 'Post navigation', '_starter' ); ?></h1>
+			<h1 class="screen-reader-text"><?php esc_html_e( 'Post navigation', '_starter' ); ?></h1>
 			<div class="nav-links">
 			<?php
 				previous_post_link( '<div class="nav-previous">%link</div>', _x( '<span class="meta-nav">&larr;</span> %title', 'Previous post link', '_starter' ) );
