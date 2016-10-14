@@ -1,6 +1,6 @@
 # Version Releases
 
-## 1.1.0
+## 1.0.1
 
 - WAVE accessibility updates
   - Escaped output for:
