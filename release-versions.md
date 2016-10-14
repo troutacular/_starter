@@ -6,7 +6,7 @@
 
 ### __Deprecation:__
 
-#### `@media #{$breakpoint-variable} ()`
+#### `@media #{$breakpoint-variable} {}`
 
 Replace with one of the following mixins:
 ```
