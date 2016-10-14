@@ -316,31 +316,33 @@
 5.0 - Styles
 --------------------------------------------------------------*/
 
-	function sass_build(src, dest, map, asset_relation) {
-		return gulp.src(src)
-		.pipe(sourcemaps.init())
-		.pipe(sass(config.sass))
-		.pipe(preprocess({context: {
-			VERSION: project_info.theme.version,
-			// Set the assets path in relation to the compiled css file.
-			ASSET_RELATION_TO_CSS: asset_relation,
-		}}))
-		.on('error', function (error) {
-			console.error('Error!', error.message);
-		})
-		.pipe(autoprefixer(config.autoprefixer))
-		.pipe(sourcemaps.write(map))
-		.pipe(gulp.dest(dest))
-		.pipe(notify({ message: 'Style written to ' + dest }))
-		.pipe(notify({ message: 'Map written to ' + map }));
+	function sass_build(style_name, src, dest, map, asset_relation) {
+		return pump([
+			gulp.src(src),
+			sourcemaps.init(),
+			sass(config.sass),
+			preprocess({context: {
+				VERSION: project_info.theme.version,
+				// Set the assets path in relation to the compiled css file.
+				ASSET_RELATION_TO_CSS: asset_relation,
+			}})
+			.on('error', function (error) {
+				console.error('Error!', error.message);
+			}),
+			autoprefixer(config.autoprefixer),
+			sourcemaps.write(map),
+			gulp.dest(dest),
+		])
+		.pipe(notify({ message: style_name + ' styles written to ' + dest }))
+		.pipe(notify({ message: style_name + ' map written to ' + map }));
 	}
 
 	gulp.task('theme_styles', function() {
-		sass_build([paths.sass.src + '*.scss', '!' + paths.sass.src + 'rtl.scss'], paths.sass.dest, paths.sass.maps, '../');
+		sass_build('Main Theme', [paths.sass.src + '*.scss', '!' + paths.sass.src + 'rtl.scss'], paths.sass.dest, paths.sass.maps, '../');
 	});
 
 	gulp.task('theme_styles_rtl', function() {
-		sass_build(paths.sass.src + 'rtl.scss', base_paths.root, paths.sass.dest + paths.sass.maps, paths.images.dest);
+		sass_build('RTL', paths.sass.src + 'rtl.scss', base_paths.root, paths.sass.dest + paths.sass.maps, paths.images.dest);
 	});
 
 
@@ -459,7 +461,7 @@
 	});
 
 	gulp.task('styles', function(cb) {
-		run_sequence('clean:stylesheet', 'theme_styles', 'clean:rtl', 'theme_styles_rtl', cb);
+		run_sequence('clean:stylesheet', 'clean:rtl', 'theme_styles', 'theme_styles_rtl', cb);
 	});
 
 
