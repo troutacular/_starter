@@ -3,9 +3,15 @@
 ## 1.1.0
 
 - WAVE accessibility updates
-  - Escaped output for post navigation screen reader text
+  - Escaped output for:
+    - Post navigation screen reader text
+	- `excerpt_read_more` function
+	- WP Admin: primary and secondary menus
+	- WP Admin: Footer Column text output
   - Search form label wrapper for screen readers
   - Default font color contrast update for block quotes
+  - Added `sidebar();` to 404.php for skip to secondary
+- Note about not including `sidebar();` on templates
 - Remove 'other.css' test file
 - Gulp sass_build fix for watch function
 
