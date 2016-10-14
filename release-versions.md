@@ -5,7 +5,7 @@
 - Remove `_breakpoints.scss` mixin.  Arbitrary to have _set_ breakpoints these days.
 - __Deprecation:__
   - `@media #{$breakpoint-variable} ()`
-  - Replace with one of the following:
+  - Replace with one of the following mixins (see `assets-source/sass/mixins/_media-queries.scss`):
     - `@include screen( $resolution-min, $resolution-max ) {}`
     - `@include max-screen( $resolution ) {}`
     - `@include min-screen( $resolution ) {}`
