@@ -47,9 +47,9 @@ if ( ! class_exists( 'Starter_Footer_Columns' ) ) {
 			 * Register the sidebars
 			 */
 			register_sidebars( $this->params['columns'], array(
-				'name' => __( 'Site Footer Column %d', '_starter' ),
+				'name' => esc_html__( 'Site Footer Column %d', '_starter' ),
 				'id' => 'site-footer-column',
-				'description' => __( 'Drag widgets here to show in the corresponding column of the footer. The columns are dynamic and they will split their width\'s evenly between Footer Column areas that have active widgets.', '_starter' ),
+				'description' => esc_html__( 'Drag widgets here to show in the corresponding column of the footer. The columns are dynamic and they will split their width\'s evenly between Footer Column areas that have active widgets.', '_starter' ),
 				'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 				'after_widget' => '</aside>',
 				'before_title' => '<h1 class="widget-title">',
