@@ -65,6 +65,8 @@ $ gulp
 
 This will compile the Javascript, Images, CSS, and set the Theme Information.
 
+__NOTE:__ If you encounter a `directory not empty` error running the default Gulp function: `$ gulp`, run `$ gulp clean` to clear the destination directories and then run the default Gulp task `$ gulp`.
+
 
 ### Watch Project
 
