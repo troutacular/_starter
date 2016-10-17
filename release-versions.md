@@ -1,5 +1,11 @@
 # Version Releases
 
+## 2.0.1
+
+- Fix asset path generation for images in relation to generated stylesheets.
+  - Removes double slash `..//images` for theme and rtl stylesheets
+- Fix asset path for rtl stylesheets
+
 ## 2.0.0
 
 - Remove `_breakpoints.scss` mixin.  Arbitrary to have _set_ breakpoints these days.
