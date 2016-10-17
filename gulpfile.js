@@ -342,7 +342,7 @@
 	});
 
 	gulp.task('theme_styles_rtl', function() {
-		sass_build('RTL', paths.sass.src + 'rtl.scss', base_paths.root, paths.sass.dest + paths.sass.maps, paths.images.dest);
+		sass_build('RTL', paths.sass.src + 'rtl.scss', base_paths.root, paths.sass.dest + paths.sass.maps, base_paths.dest);
 	});
 
 
