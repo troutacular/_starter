@@ -83,7 +83,7 @@
 	 */
 	var project_info = {
 		theme: {
-			version: '2.0.0',
+			version: '2.0.1',
 			name: '_starter',
 			uri: 'https://github.com/troutacular/_starter',
 			author: '@troutacular',
@@ -342,7 +342,7 @@
 	});
 
 	gulp.task('theme_styles_rtl', function() {
-		sass_build('RTL', paths.sass.src + 'rtl.scss', base_paths.root, paths.sass.dest + paths.sass.maps, paths.images.dest);
+		sass_build('RTL', paths.sass.src + 'rtl.scss', base_paths.root, paths.sass.dest + paths.sass.maps, base_paths.dest);
 	});
 
 
