@@ -197,6 +197,11 @@
 				src: base_paths.src + 'templates/tpl-style.css',
 				dest: './',
 			},
+			php: {
+				basename: 'config-paths',
+				src: base_paths.src + 'templates/config-paths.php',
+				dest: './inc/',
+			}
 		},
 	};
 
@@ -368,9 +373,21 @@
 		.pipe(gulp.dest(paths.templates.theme.dest));
 	});
 
+	gulp.task('theme_info_php', function() {
+		var info = project_info.theme;
+		gulp.src(paths.templates.php.src)
+		.pipe(inject_string.replace('@@theme_version@@', info.version))
+		.pipe(inject_string.replace('@@css@@', '/' + paths.sass.dest))
+		.pipe(inject_string.replace('@@js_lib@@', '/' + paths.js.dest.lib))
+		.pipe(inject_string.replace('@@js_vendor@@', '/' + paths.js.dest.vendor))
+		.pipe(inject_string.replace('@@js_admin@@', '/' + paths.js.dest.admin))
+		.pipe(rename(paths.templates.php.basename + '.php'))
+		.pipe(gulp.dest(paths.templates.php.dest));
+	});
+
 	gulp.task('project_version', function(){
 		var info = project_info;
-		console.log(paths.sass.dest);
+		console.log();
 		gulp.src('./package.json')
 		.pipe(json_editor({
 			'version': info.theme.version,
@@ -400,7 +417,7 @@
 	});
 
 	gulp.task('set_theme_info', function(cb) {
-		run_sequence('clean:theme_info', 'project_version', 'theme_info_stylesheet', cb);
+		run_sequence('clean:theme_info', 'clean:theme_info_php', 'project_version', 'theme_info_stylesheet', 'theme_info_php', cb);
 	});
 
 
@@ -414,7 +431,7 @@
 --------------------------------------------------------------*/
 
 	// Master clean function.
-	gulp.task('clean', ['clean:stylesheet', 'clean:rtl', 'clean:images', 'clean:js', 'clean:theme_info']);
+	gulp.task('clean', ['clean:stylesheet', 'clean:rtl', 'clean:images', 'clean:js', 'clean:theme_info', 'clean:theme_info_php']);
 
 	// Individual clean functions for streams.
 	gulp.task('clean:stylesheet', function(){
@@ -426,6 +443,12 @@
 	gulp.task('clean:theme_info', function(){
 		del([
 			base_paths.root + 'style.css'
+		]);
+	});
+
+	gulp.task('clean:theme_info_php', function(){
+		del([
+			base_paths.root + paths.templates.php.dest + paths.templates.php.basename + '.php'
 		]);
 	});
 
