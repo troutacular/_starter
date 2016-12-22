@@ -93,7 +93,7 @@
 			license_uri: 'LICENSE.txt',
 			text_domain: '_starter',
 			domain_path: '/languages',
-			tags: 'custom-menu, editor-style, featured-images, footer-widgets, full-widthe-template, one-column, post-formats, sticky-post, theme-options',
+			tags: 'custom-menu, editor-style, featured-images, footer-widgets, full-width-template, one-column, post-formats, sticky-post, theme-options',
 		},
 		repository: {
 			type: 'git',
