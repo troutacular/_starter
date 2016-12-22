@@ -4,6 +4,7 @@
 
 - Fix theme tag `full-width-template`.
 - Add `.sticky` class support.
+- Update language support to `_starter` text domain.
 
 ## 2.0.1
 
