@@ -2,7 +2,8 @@
 
 ## 2.1.0
 
-- Fix theme tag `full-width-template`
+- Fix theme tag `full-width-template`.
+- Add `.sticky` class support.
 
 ## 2.0.1
 
