@@ -5,6 +5,9 @@
 - Fix theme tag `full-width-template`.
 - Add `.sticky` class support.
 - Update language support to `_starter` text domain.
+- Move php config paths to Gulp build:
+  - Source: `assets-source/templates/config-paths.php`
+  - Destination: `inc/config-paths.php`
 
 ## 2.0.1
 
