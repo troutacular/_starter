@@ -1,5 +1,9 @@
 # Version Releases
 
+## 2.1.0
+
+- Fix theme tag `full-width-template`
+
 ## 2.0.1
 
 - Fix asset path generation for images in relation to generated stylesheets.
