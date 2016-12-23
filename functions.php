@@ -18,10 +18,10 @@ Table of Contents
 	1.2 - Environment
 	1.3 - Dependencies
 	1.4 - Theme Setup
-		1.4.2 - Sidebar Registration
-		1.4.3 - Customizations
-		1.4.4 - Taxonomy Creation
-		1.4.5 - Custom Post Types
+		1.4.1 - Sidebar Registration
+		1.4.2 - Customizations
+		1.4.3 - Taxonomy Creation
+		1.4.4 - Custom Post Types
 2.0 - Scripts
 	2.1 - CSS
 	2.2 - Javascript
@@ -51,6 +51,8 @@ Table of Contents
 	9.2.3 - Home
 	9.2.4 - Page
 	9.2.5 - Post
+11.0 - Admin
+	11.1 - TinyMCE
 
 ----------------------------------------------------------------*/
 
@@ -226,13 +228,13 @@ if ( ! function_exists( '_starter_setup' ) ) {
 			 * @link https://codex.wordpress.org/Function_Reference/add_theme_support#Feed_Links
 			 */
 			add_theme_support( 'automatic-feed-links' );
-		}
+		} // End if().
 	}
-}
+} // End if().
 
 
 /** --------------------------------------------------------------
-1.4.2 - Sidebar Registration
+1.4.1 - Sidebar Registration
 ----------------------------------------------------------------*/
 
 /*
@@ -308,11 +310,11 @@ if ( ! function_exists( '_starter_widgets_init' ) ) {
 			) );
 		}
 	}
-}
+} // End if().
 
 
 /** --------------------------------------------------------------
-1.4.3 - Customizations
+1.4.2 - Customizations
 ----------------------------------------------------------------*/
 
 /**
@@ -322,7 +324,7 @@ require get_template_directory() . '/inc/customizer.php';
 
 
 /** --------------------------------------------------------------
-1.4.4 - Taxonomy Creation
+1.4.3 - Taxonomy Creation
 ----------------------------------------------------------------*/
 
 if ( ! function_exists( '_starter_create_new_taxonomies' ) ) {
@@ -391,11 +393,11 @@ if ( ! function_exists( '_starter_create_new_taxonomies' ) ) {
 			}
 		}
 	}
-}
+} // End if().
 
 
 /** --------------------------------------------------------------
-1.4.5 - Custom Post Types
+1.4.4 - Custom Post Types
 ----------------------------------------------------------------*/
 
 
@@ -711,7 +713,7 @@ if ( ! function_exists( '_starter_post_image' ) ) {
 
 		}
 	}
-}
+} // End if().
 
 /** --------------------------------------------------------------
 7.2 - Video
@@ -768,25 +770,51 @@ require get_template_directory() . '/inc/template-tags.php';
 
 
 /** --------------------------------------------------------------
-9.2.1 - Archive
+10.0 - Templates
 ----------------------------------------------------------------*/
 
 
 /** --------------------------------------------------------------
-9.2.2 - Author
+10.1 - Acrhive
 ----------------------------------------------------------------*/
 
 
 /** --------------------------------------------------------------
-9.2.3 - Home
+10.2 - Author
 ----------------------------------------------------------------*/
 
 
 /** --------------------------------------------------------------
-9.2.4 - Page
+10.3 - Home
 ----------------------------------------------------------------*/
 
 
 /** --------------------------------------------------------------
-9.2.5 - Post
+10.4 - Page
 ----------------------------------------------------------------*/
+
+
+/** --------------------------------------------------------------
+10.5 - Post
+----------------------------------------------------------------*/
+
+
+/** --------------------------------------------------------------
+11.0 - Admin
+----------------------------------------------------------------*/
+
+
+/** --------------------------------------------------------------
+11.1 - TinyMCE
+----------------------------------------------------------------*/
+
+add_action( 'admin_init', 'wpdocs_starter_add_editor_styles' );
+if ( ! function_exists( 'wpdocs_starter_add_editor_styles' ) ) {
+
+	/**
+	 * Registers an editor stylesheet for the theme.
+	 */
+	function wpdocs_starter_add_editor_styles() {
+		add_editor_style( get_stylesheet_directory_uri() . _starter_get_asset_path( 'css' ) . 'editor-styles.css' );
+	}
+}
