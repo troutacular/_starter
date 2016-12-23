@@ -1,10 +1,23 @@
 # Version Releases
 
+## 2.1.0
+
+- Fix theme tag `full-width-template`.
+- Add `.sticky` class support.
+- Update language support to `_starter` text domain.
+- Move php config paths to Gulp build:
+  - Source: `assets-source/templates/config-paths.php`
+  - Destination: `inc/config-paths.php`
+- Add `editory-styles.css` for Admin stylesheet display.
+	- Imports typography and general content SCSS partials to display content output in the editor.
+
+
 ## 2.0.1
 
 - Fix asset path generation for images in relation to generated stylesheets.
   - Removes double slash `..//images` for theme and rtl stylesheets.
 - Fix asset path for rtl stylesheets.
+
 
 ## 2.0.0
 

@@ -1,0 +1,56 @@
+/**
+
+	_starter editor styles
+	========
+
+	This stylesheet is used in the content editor area of posts.
+
+	1.0 - Normalize
+	2.0 - Variables
+	3.0 - Mixins
+	4.0 - Vendor
+	5.0 - Theme
+
+**/
+
+
+
+/*--------------------------------------------------------------
+1.0 - Normalize
+--------------------------------------------------------------*/
+@import 'normalize';
+
+/*--------------------------------------------------------------
+2.0 - Variables
+--------------------------------------------------------------*/
+@import 'variables/variables';
+
+
+/*--------------------------------------------------------------
+3.0 - Mixins
+--------------------------------------------------------------*/
+@import 'mixins/mixins';
+
+
+/*--------------------------------------------------------------
+4.0 - Vendor
+--------------------------------------------------------------*/
+@import 'vendor/vendor';
+
+
+/*--------------------------------------------------------------
+5.0 - Theme
+--------------------------------------------------------------*/
+// Layout specific.
+@import 'layout/alignments';
+@import 'layout/grid';
+
+@import 'typography/typography';
+@import 'elements/elements';
+@import 'forms/forms';
+@import 'media/media';
+
+// Navigation specific.
+@import 'navigation/links';
+
+@import 'sprite/sprite';
