@@ -1,7 +1,7 @@
 ( function() {
 
 	// wrap the first word of the site title matching 'string' in a span to apply highlight color
-		function starterAcronymClass(acronym) {
+		function siteAcronymClass(acronym) {
 
 			var strTitle = document.getElementsByClassName('site-branding-title')[0].innerHTML;
 
@@ -12,13 +12,14 @@
 			}
 		}
 
-		starterAcronymClass('Starter');
+		// Replace string value with acronym you want to wrap with a span class.
+		siteAcronymClass('Starter');
 	// end
 
 	// skip link focus fix
 		var is_webkit = navigator.userAgent.toLowerCase().indexOf( 'webkit' ) > -1,
-		    is_opera  = navigator.userAgent.toLowerCase().indexOf( 'opera' )  > -1,
-		    is_ie     = navigator.userAgent.toLowerCase().indexOf( 'msie' )   > -1;
+			is_opera  = navigator.userAgent.toLowerCase().indexOf( 'opera' )  > -1,
+			is_ie     = navigator.userAgent.toLowerCase().indexOf( 'msie' )   > -1;
 
 		if ( ( is_webkit || is_opera || is_ie ) && 'undefined' !== typeof( document.getElementById ) ) {
 			var eventMethod = ( window.addEventListener ) ? 'addEventListener' : 'attachEvent';

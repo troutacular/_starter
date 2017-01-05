@@ -527,7 +527,7 @@ if ( ! function_exists( '_starter_remove_head_links' ) ) {
 ----------------------------------------------------------------*/
 
 /**
- * See Starter_Footer_Columns->_starter_footer_arguments for
+ * See WP_Custom_Footer_Columns->_starter_footer_arguments for
  * setting a theme specific function to set values different than
  * the defaults.
  */
