@@ -194,6 +194,7 @@
 		templates: {
 			src: base_paths.src + 'templates/',
 			theme: {
+				basename: 'style.css',
 				src: base_paths.src + 'templates/tpl-style.css',
 				dest: './',
 			},
@@ -201,11 +202,6 @@
 				basename: 'config-paths.php',
 				src: base_paths.src + 'templates/config-paths.php',
 				dest: './inc/',
-			},
-			languages: {
-				basename: project_info.theme.text_domain + '.pot',
-				src: base_paths.src + 'templates/' + project_info.theme.text_domain + '.pot',
-				dest: './languages',
 			},
 		},
 	};
@@ -362,7 +358,8 @@
 
 	gulp.task('theme_info_stylesheet', function() {
 		var info = project_info.theme;
-		gulp.src(paths.templates.theme.src)
+		var tpl = paths.templates.theme;
+		gulp.src(tpl.src)
 		.pipe(inject_string.replace('@@theme_name@@', info.name))
 		.pipe(inject_string.replace('@@theme_version@@', info.version))
 		.pipe(inject_string.replace('@@theme_uri@@', info.uri))
@@ -374,25 +371,27 @@
 		.pipe(inject_string.replace('@@theme_text_domain@@', info.text_domain))
 		.pipe(inject_string.replace('@@theme_domain_path@@', info.domain_path))
 		.pipe(inject_string.replace('@@theme_tags@@', info.tags))
-		.pipe(rename('style.css'))
-		.pipe(gulp.dest(paths.templates.theme.dest));
+		.pipe(rename(tpl.basename))
+		.pipe(gulp.dest(tpl.dest))
+		.pipe(notify({ message: 'Theme Info Stylesheet: ' + tpl.basename + ' written to ' + tpl.dest }));
 	});
 
 	gulp.task('theme_info_php', function() {
 		var info = project_info.theme;
-		gulp.src(paths.templates.php.src)
+		var tpl = paths.templates.php;
+		gulp.src(tpl.src)
 		.pipe(inject_string.replace('@@theme_version@@', info.version))
 		.pipe(inject_string.replace('@@css@@', '/' + paths.sass.dest))
 		.pipe(inject_string.replace('@@js_lib@@', '/' + paths.js.dest.lib))
 		.pipe(inject_string.replace('@@js_vendor@@', '/' + paths.js.dest.vendor))
 		.pipe(inject_string.replace('@@js_admin@@', '/' + paths.js.dest.admin))
-		.pipe(rename(paths.templates.php.basename))
-		.pipe(gulp.dest(paths.templates.php.dest));
+		.pipe(rename(tpl.basename))
+		.pipe(gulp.dest(tpl.dest))
+		.pipe(notify({ message: 'Theme Info: ' + tpl.basename + ' written to ' + tpl.dest }));
 	});
 
 	gulp.task('project_version', function(){
 		var info = project_info;
-		console.log();
 		gulp.src('./package.json')
 		.pipe(json_editor({
 			'version': info.theme.version,
@@ -421,19 +420,6 @@
 		.pipe(gulp.dest('./'));
 	});
 
-	gulp.task('theme_info_languages', function() {
-		var info = project_info.theme;
-		gulp.src(paths.templates.languages.basename)
-		.pipe(inject_string.replace('@@theme_name@@', info.name))
-		.pipe(inject_string.replace('@@theme_version@@', info.version))
-		.pipe(inject_string.replace('@@bugs@@', '/' + info.uri))
-		.pipe(inject_string.replace('@@revision@@', '/' + '2015-MO-DA HO:MI+ZONE'))
-		.pipe(inject_string.replace('@@author@@', '/' + 'Author Name'))
-		.pipe(inject_string.replace('@@email@@', '/' + 'email@email.com'))
-		.pipe(rename(paths.templates.languages.basename + '.pot'))
-		.pipe(gulp.dest(paths.templates.languages.dest));
-	});
-
 
 /*--------------------------------------------------------------
 7.0 - Build
@@ -445,7 +431,7 @@
 --------------------------------------------------------------*/
 
 	// Master clean function.
-	gulp.task('clean', ['clean:stylesheet', 'clean:rtl', 'clean:images', 'clean:js', 'clean:theme_info', 'clean:theme_info_php', 'clean:theme_info_languages']);
+	gulp.task('clean', ['clean:stylesheet', 'clean:rtl', 'clean:images', 'clean:js', 'clean:theme_info', 'clean:theme_info_php']);
 
 	// Individual clean functions for streams.
 	gulp.task('clean:stylesheet', function(){
@@ -462,13 +448,7 @@
 
 	gulp.task('clean:theme_info_php', function(){
 		del([
-			base_paths.root + paths.templates.php.dest + paths.templates.php.basename
-		]);
-	});
-
-	gulp.task('clean:theme_info_languages', function(){
-		del([
-			base_paths.root + paths.templates.languages.dest + paths.templates.languages.basename
+			paths.templates.php.dest + paths.templates.php.basename
 		]);
 	});
 
@@ -508,7 +488,7 @@
 	});
 
 	gulp.task('set_theme_info', function(cb) {
-		run_sequence('clean:theme_info', 'clean:theme_info_php', 'clean:theme_info_languages', 'project_version', 'theme_info_stylesheet', 'theme_info_php', 'theme_info_languages', cb);
+		run_sequence('clean:theme_info', 'clean:theme_info_php', 'project_version', 'theme_info_stylesheet', 'theme_info_php', cb);
 	});
 
 
