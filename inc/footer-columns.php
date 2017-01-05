@@ -6,10 +6,10 @@
  * @package _starter
  */
 
-if ( ! class_exists( 'Starter_Footer_Columns' ) ) {
+if ( ! class_exists( 'WP_Custom_Footer_Columns' ) ) {
 
 	/**
-	 * Starter Footer columns
+	 * WP Custom Footer columns
 	 *
 	 * Registers sidebars for the footer
 	 *
@@ -17,7 +17,7 @@ if ( ! class_exists( 'Starter_Footer_Columns' ) ) {
 	 * @package _starter
 	 * @subpackage inc
 	 */
-	class Starter_Footer_Columns {
+	class WP_Custom_Footer_Columns {
 
 		/**
 		 * Parameters for columns, wrapper and css style.
@@ -184,7 +184,7 @@ if ( ! function_exists( '_starter_footer_register' ) ) {
 	 * @return  void
 	 */
 	function _starter_footer_register( $params ) {
-		$footer_columns = new Starter_Footer_Columns( $params );
+		$footer_columns = new WP_Custom_Footer_Columns( $params );
 		$footer_columns->register();
 	}
 }
@@ -196,7 +196,7 @@ if ( ! function_exists( '_starter_footer_columns' ) ) {
 	 * @return  void
 	 */
 	function _starter_footer_columns() {
-		$footer = new Starter_Footer_Columns( _starter_footer_arguments() );
+		$footer = new WP_Custom_Footer_Columns( _starter_footer_arguments() );
 		$footer->footer_columns();
 	}
 }
