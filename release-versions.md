@@ -1,5 +1,13 @@
 # Version Releases
 
+## 3.0.0
+
+- Update PHP and JS functions to remove `starter` and `Starter` from function names to more generic function descriptors.
+	- `/assets-source/js/lib/starter.js`
+		- Renamed `starterAcronymClass` to `siteAcronymClass`
+	- `/inc/footer-columns.php`
+		- Renamed `Starter_Footer_Columns` to `WP_Custom_Footer_Columns`
+
 ## 2.1.0
 
 - Fix theme tag `full-width-template`.
