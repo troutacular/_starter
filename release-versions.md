@@ -1,6 +1,6 @@
 # Version Releases
 
-## 3.0.0
+## 2.2.0
 
 - Update PHP and JS functions to remove `starter` and `Starter` from function names to more generic function descriptors.
 	- `/assets-source/js/lib/starter.js`

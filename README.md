@@ -51,6 +51,7 @@ In this file is the `project_info` variable object.  This object controls and se
   - Bugs URL: `bugs:url`
   - Asset Paths Information: `css`, `images`, `js:amdin`, `js:lib`, `js:vendor`
 - Sets the stylesheet theme information in `style.css` from the template in `assets-source/templates/tpl-style.css`.
+- Sets the php information for the project version and asset paths for `css`, `js/lib`, `js/vendor`, `js/admin`.
 
 
 ## Project Compiling
@@ -68,7 +69,7 @@ This will compile the Javascript, Images, CSS, and set the Theme Information.
 __NOTE:__ If you encounter a `directory not empty` error running the default Gulp function: `$ gulp`, run `$ gulp clean` to clear the destination directories and then run the default Gulp task `$ gulp`.
 
 
-### Watch Project
+#### Watch Project
 
 If you want to see your changes while working, open the project folder in the CLI and run the following command:
 
@@ -76,35 +77,37 @@ If you want to see your changes while working, open the project folder in the CL
 $ gulp watch
 ```
 
-## Javascript
+__NOTE:__ This will only change `js`, `css`, and `images` assets.  You will need to run `$ gulp` to fully compile the project for changes to the version, language support, theme information, or updates to the paths information.
+
+### Javascript
 
 Javascript files can be found in `assets-source/js` and have three sub directories for script types of Library, Vendor, and Admin.
 
 The scripts are only compiled to their respective destination directories and are _not_ auto loaded to the theme output.  This is intended to use the `functions.php` file to load the scripts with [wp_enqueue_script][] and allow for the use of dependency scripts.
 
 
-### Library Scripts
+#### Library Scripts
 
 Javascript files in `assets-source/js/lib` will run jshint on the file and compile to `assets/js/lib/[paths.js.output.basename].min.js`.  
 
 These files will be combined (concatenated), minified, and renamed to the value in the `gulpfile.js` variable `paths.js.output.basename` with the extension `.min.js` attached.
 
 
-### Vendor Scripts
+#### Vendor Scripts
 
 Javascript files in `assets-source/js/vendor` will run jshint on the file and compile to `assets/js/vendor`.  These are third party scripts maintained by other developers/organizations.
 
 _These files will not run jshint or be concatenated or minified._
 
 
-### Admin Scripts
+#### Admin Scripts
 
 Javascript files in `assets-source/js/admin` will run jshint on the file and compile to `assets/js/admin`.  These are intended to be individual scripts for WP-Admin.
 
 _These files will not run jshint or be concatenated or minified._
 
 
-## CSS
+### CSS
 
 This project uses SCSS to compile a theme stylesheet.  SCSS files withou an underscore `_` prefix in `assets-source/sass/` will be compiled with an autoprefixer (based on project settings) to `assets/css/[filename].css`.
 
@@ -113,20 +116,20 @@ CSS Maps will be compiled per stylesheet in `assets/css/maps`.
 The stylesheets are only compiled to their respective destination directories and are _not_ auto loaded to the theme output.  This is intended to use the `functions.php` file to load the scripts with [wp_enqueue_style][] and allow for the use of dependency scripts.
 
 
-## Images
+### Images
 
-### Optimization
+#### Optimization
 Images are optimized based on project settings in `config.images.minification`.  They will be optimized and moved from `assets-source/images/` to `assets/images/` and will retain their directory.
 
 
-### Sprites
+#### Sprites
 
 SVGs in `assets-source/images/sprite` will be optimized, combined, and created into a sprite in `assets/images`.
 
 Associative classes will be created in the SCSS files and compiled for usage as CSS classes in the format `.icon-[filename]{}` and `.icon-only-[filename]{}`.
 
 
-### PNG
+#### PNG
 
 Any SVG files in `assets-source/images` will have a copy saved and converted to a PNG format in `assets/images`.
 
