@@ -3,7 +3,7 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: _starter 2.1.0\n"
+"Project-Id-Version: _starter 3.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/tags/_starter\n"
 "POT-Creation-Date: 2016-02-14 21:43:07+00:00\n"
 "MIME-Version: 1.0\n"
