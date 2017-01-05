@@ -83,13 +83,13 @@
 	 */
 	var project_info = {
 		theme: {
-			version: '2.1.0',
+			version: '2.2.0',
 			name: '_starter',
 			uri: 'https://github.com/troutacular/_starter',
 			author: '@troutacular',
 			author_uri: 'https://github.com/troutacular/',
 			description: 'WordPress _starter theme is based off of the _s (underscores) theme and is intended to clone and use as you see fit.  It is not intended to be used as a Parent or Child theme.',
-			license: 'MIT',
+			license: 'GNU General Public License v2',
 			license_uri: 'LICENSE.txt',
 			text_domain: '_starter',
 			domain_path: '/languages',
@@ -198,10 +198,15 @@
 				dest: './',
 			},
 			php: {
-				basename: 'config-paths',
+				basename: 'config-paths.php',
 				src: base_paths.src + 'templates/config-paths.php',
 				dest: './inc/',
-			}
+			},
+			languages: {
+				basename: project_info.theme.text_domain + '.pot',
+				src: base_paths.src + 'templates/' + project_info.theme.text_domain + '.pot',
+				dest: './languages',
+			},
 		},
 	};
 
@@ -381,7 +386,7 @@
 		.pipe(inject_string.replace('@@js_lib@@', '/' + paths.js.dest.lib))
 		.pipe(inject_string.replace('@@js_vendor@@', '/' + paths.js.dest.vendor))
 		.pipe(inject_string.replace('@@js_admin@@', '/' + paths.js.dest.admin))
-		.pipe(rename(paths.templates.php.basename + '.php'))
+		.pipe(rename(paths.templates.php.basename))
 		.pipe(gulp.dest(paths.templates.php.dest));
 	});
 
@@ -416,8 +421,17 @@
 		.pipe(gulp.dest('./'));
 	});
 
-	gulp.task('set_theme_info', function(cb) {
-		run_sequence('clean:theme_info', 'clean:theme_info_php', 'project_version', 'theme_info_stylesheet', 'theme_info_php', cb);
+	gulp.task('theme_info_languages', function() {
+		var info = project_info.theme;
+		gulp.src(paths.templates.languages.basename)
+		.pipe(inject_string.replace('@@theme_name@@', info.name))
+		.pipe(inject_string.replace('@@theme_version@@', info.version))
+		.pipe(inject_string.replace('@@bugs@@', '/' + info.uri))
+		.pipe(inject_string.replace('@@revision@@', '/' + '2015-MO-DA HO:MI+ZONE'))
+		.pipe(inject_string.replace('@@author@@', '/' + 'Author Name'))
+		.pipe(inject_string.replace('@@email@@', '/' + 'email@email.com'))
+		.pipe(rename(paths.templates.languages.basename + '.pot'))
+		.pipe(gulp.dest(paths.templates.languages.dest));
 	});
 
 
@@ -431,12 +445,12 @@
 --------------------------------------------------------------*/
 
 	// Master clean function.
-	gulp.task('clean', ['clean:stylesheet', 'clean:rtl', 'clean:images', 'clean:js', 'clean:theme_info', 'clean:theme_info_php']);
+	gulp.task('clean', ['clean:stylesheet', 'clean:rtl', 'clean:images', 'clean:js', 'clean:theme_info', 'clean:theme_info_php', 'clean:theme_info_languages']);
 
 	// Individual clean functions for streams.
 	gulp.task('clean:stylesheet', function(){
 		del([
-			base_paths.dest + 'css'
+			base_paths.dest + 'css/'
 		]);
 	});
 
@@ -448,7 +462,13 @@
 
 	gulp.task('clean:theme_info_php', function(){
 		del([
-			base_paths.root + paths.templates.php.dest + paths.templates.php.basename + '.php'
+			base_paths.root + paths.templates.php.dest + paths.templates.php.basename
+		]);
+	});
+
+	gulp.task('clean:theme_info_languages', function(){
+		del([
+			base_paths.root + paths.templates.languages.dest + paths.templates.languages.basename
 		]);
 	});
 
@@ -487,6 +507,10 @@
 		run_sequence('clean:stylesheet', 'clean:rtl', 'theme_styles', 'theme_styles_rtl', cb);
 	});
 
+	gulp.task('set_theme_info', function(cb) {
+		run_sequence('clean:theme_info', 'clean:theme_info_php', 'clean:theme_info_languages', 'project_version', 'theme_info_stylesheet', 'theme_info_php', 'theme_info_languages', cb);
+	});
+
 
 /*--------------------------------------------------------------
 7.3 - Default
@@ -497,7 +521,7 @@
 	 * $ gulp
 	 */
 	gulp.task('default', function(){
-		run_sequence('scripts', 'images', 'styles', 'set_theme_info');
+		run_sequence('clean', 'scripts', 'images', 'styles', 'set_theme_info');
 	});
 
 
