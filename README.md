@@ -13,12 +13,21 @@ Download `_starter` and change the project to reflect the name of the theme you 
 1. Search for `'_starter'` (inside single quotations) to capture the text domain.
 2. Search for `_starter_` to capture all the function names.
 3. Search for `Text Domain: _starter` in style.css.
+4. Search for `starter-` to capture sprite filename references.
 
 OR
 
 - Search for: `'_starter'` and replace with: `'theme-name'`
 - Search for: `_starter_` and replace with: `theme_name_`
 - Search for: `Text Domain: _starter` and replace with: `Text Domain: theme-name` in style.css.
+- Search for: `_starter-` and replace with: `theme-name-` for sprite renaming.
+
+#### Filenames
+
+- Rename the SASS partial `starter.scss` to `theme-name.scss` located `assets-source/sass/`.
+	- If you completed the search and replace options above, the reference to this file will be updated in `functions.php` under section _2.1 - CSS_.
+- Rename the JS file `starter.js` to `theme-name.js` located in `assets-source/js/lib`.
+	- If you completed the search and replace options above, the reference to this file will be updated in `functions.php` under section _2.2 - Javascript_.
 
 ### Installing Node, NPM, and Gulp
 
