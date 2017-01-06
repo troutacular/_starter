@@ -171,7 +171,7 @@
 				vendor: base_paths.dest + 'js/vendor/',
 			},
 			output: {
-				filename: project_info.assets.filename,
+				filename: project_info.assets.filename_base,
 				ext: '.js',
 			},
 		},
