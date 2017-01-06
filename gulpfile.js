@@ -325,6 +325,12 @@
 5.0 - Styles
 --------------------------------------------------------------*/
 
+	function rename_sass(filename, src) {
+		if (filename===false) {
+			return src;
+		}
+		return filename + '.css';
+	}
 	function sass_build(style_name, filename, src, dest, map, asset_relation) {
 		return pump([
 			gulp.src(src),
@@ -339,14 +345,7 @@
 				console.error('Error!', error.message);
 			}),
 			autoprefixer(config.autoprefixer),
-			rename(function(path){
-				if (filename!==false){
-					path.filename = filename;
-				} else {
-					path.filename = src;
-				}
-				path.extname = '.css';
-			}),
+			rename(rename_sass(filename, src)),
 			sourcemaps.write(map),
 			gulp.dest(dest),
 		])
@@ -359,7 +358,7 @@
 	});
 
 	gulp.task('theme_styles_additional', function() {
-		sass_build('Main Theme', false, [paths.sass.src + '*.scss', '!' + paths.sass.src + 'rtl.scss', '!' + paths.sass.src + 'theme-primary.scss'], paths.sass.dest, paths.sass.maps, '../');
+		sass_build('Additional Theme', false, [paths.sass.src + '*.scss', '!' + paths.sass.src + 'rtl.scss', '!' + paths.sass.src + 'theme-primary.scss'], paths.sass.dest, paths.sass.maps, '../');
 	});
 
 	gulp.task('theme_styles_rtl', function() {
