@@ -185,9 +185,9 @@
 			src: base_paths.src + 'images/sprite/*',
 			dest: './',
 			// Needed for running function.
-			src_svg: base_paths.dest + 'images/starter_sprite.svg',
+			src_svg: base_paths.dest + 'images/_starter-sprite.svg',
 			// Needed for css output - otherwise if using above, creates separate directory.
-			svg: 'images/starter_sprite.svg',
+			svg: 'images/_starter-sprite.svg',
 			scss: '../' + base_paths.sass + 'sprite/_sprite-map.scss',
 			template: base_paths.src + 'sass/sprite/templates/sprite-template.scss',
 		},
