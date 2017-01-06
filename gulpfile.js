@@ -101,6 +101,9 @@
 			bugs: {
 				url: 'https://github.com/troutacular/_starter/issues'},
 		},
+		assets: {
+			filename_base: '_starter',
+		},
 	};
 
 
@@ -168,7 +171,7 @@
 				vendor: base_paths.dest + 'js/vendor/',
 			},
 			output: {
-				basename: 'starter',
+				filename: project_info.assets.filename,
 				ext: '.js',
 			},
 		},
@@ -177,29 +180,29 @@
 			dest: base_paths.dest + 'css/',
 			maps: 'maps/',
 			output: {
-				basename: 'starter',
+				filename: project_info.assets.filename_base,
 				ext: '.css',
 			},
 		},
 		sprite: {
 			src: base_paths.src + 'images/sprite/*',
 			dest: './',
-			// Needed for running function.
-			src_svg: base_paths.dest + 'images/_starter-sprite.svg',
+			// Needed for running function. Rename sprite
+			src_svg: base_paths.dest + 'images/' + project_info.assets.filename_base + '-sprite.svg',
 			// Needed for css output - otherwise if using above, creates separate directory.
-			svg: 'images/_starter-sprite.svg',
+			svg: 'images/' + project_info.assets.filename_base + '-sprite.svg',
 			scss: '../' + base_paths.sass + 'sprite/_sprite-map.scss',
 			template: base_paths.src + 'sass/sprite/templates/sprite-template.scss',
 		},
 		templates: {
 			src: base_paths.src + 'templates/',
 			theme: {
-				basename: 'style.css',
+				filename: 'style.css',
 				src: base_paths.src + 'templates/tpl-style.css',
 				dest: './',
 			},
 			php: {
-				basename: 'config-paths.php',
+				filename: 'config-paths.php',
 				src: base_paths.src + 'templates/config-paths.php',
 				dest: './inc/',
 			},
@@ -292,10 +295,10 @@
 			gulp.src(paths.js.src.lib + '**/*.js'),
 			jshint(),
 			jshint.reporter('default'),
-			concat(paths.js.output.basename + paths.js.output.ext),
+			concat(paths.js.output.filename + paths.js.output.ext),
 			uglify(),
 			rename(function(path) {
-				path.basename = paths.js.output.basename;
+				path.filename = paths.js.output.filename;
 				path.extname = '.min' + paths.js.output.ext;
 			}),
 			gulp.dest(paths.js.dest.lib)
@@ -371,9 +374,9 @@
 		.pipe(inject_string.replace('@@theme_text_domain@@', info.text_domain))
 		.pipe(inject_string.replace('@@theme_domain_path@@', info.domain_path))
 		.pipe(inject_string.replace('@@theme_tags@@', info.tags))
-		.pipe(rename(tpl.basename))
+		.pipe(rename(tpl.filename))
 		.pipe(gulp.dest(tpl.dest))
-		.pipe(notify({ message: 'Theme Info Stylesheet: ' + tpl.basename + ' written to ' + tpl.dest }));
+		.pipe(notify({ message: 'Theme Info Stylesheet: ' + tpl.filename + ' written to ' + tpl.dest }));
 	});
 
 	gulp.task('theme_info_php', function() {
@@ -385,9 +388,9 @@
 		.pipe(inject_string.replace('@@js_lib@@', '/' + paths.js.dest.lib))
 		.pipe(inject_string.replace('@@js_vendor@@', '/' + paths.js.dest.vendor))
 		.pipe(inject_string.replace('@@js_admin@@', '/' + paths.js.dest.admin))
-		.pipe(rename(tpl.basename))
+		.pipe(rename(tpl.filename))
 		.pipe(gulp.dest(tpl.dest))
-		.pipe(notify({ message: 'Theme Info: ' + tpl.basename + ' written to ' + tpl.dest }));
+		.pipe(notify({ message: 'Theme Info: ' + tpl.filename + ' written to ' + tpl.dest }));
 	});
 
 	gulp.task('project_version', function(){
@@ -448,7 +451,7 @@
 
 	gulp.task('clean:theme_info_php', function(){
 		del([
-			paths.templates.php.dest + paths.templates.php.basename
+			paths.templates.php.dest + paths.templates.php.filename
 		]);
 	});
 
