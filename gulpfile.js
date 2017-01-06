@@ -83,13 +83,13 @@
 	 */
 	var project_info = {
 		theme: {
-			version: '2.1.0',
+			version: '2.2.0',
 			name: '_starter',
 			uri: 'https://github.com/troutacular/_starter',
 			author: '@troutacular',
 			author_uri: 'https://github.com/troutacular/',
 			description: 'WordPress _starter theme is based off of the _s (underscores) theme and is intended to clone and use as you see fit.  It is not intended to be used as a Parent or Child theme.',
-			license: 'MIT',
+			license: 'GNU General Public License v2',
 			license_uri: 'LICENSE.txt',
 			text_domain: '_starter',
 			domain_path: '/languages',
@@ -100,6 +100,9 @@
 			url: 'git+https://github.com/troutacular/_starter.git',
 			bugs: {
 				url: 'https://github.com/troutacular/_starter/issues'},
+		},
+		assets: {
+			filename_base: '_starter',
 		},
 	};
 
@@ -168,7 +171,7 @@
 				vendor: base_paths.dest + 'js/vendor/',
 			},
 			output: {
-				basename: 'starter',
+				filename: project_info.assets.filename,
 				ext: '.js',
 			},
 		},
@@ -177,31 +180,32 @@
 			dest: base_paths.dest + 'css/',
 			maps: 'maps/',
 			output: {
-				basename: 'starter',
+				filename: project_info.assets.filename_base,
 				ext: '.css',
 			},
 		},
 		sprite: {
 			src: base_paths.src + 'images/sprite/*',
 			dest: './',
-			// Needed for running function.
-			src_svg: base_paths.dest + 'images/starter_sprite.svg',
+			// Needed for running function. Rename sprite
+			src_svg: base_paths.dest + 'images/' + project_info.assets.filename_base + '-sprite.svg',
 			// Needed for css output - otherwise if using above, creates separate directory.
-			svg: 'images/starter_sprite.svg',
+			svg: 'images/' + project_info.assets.filename_base + '-sprite.svg',
 			scss: '../' + base_paths.sass + 'sprite/_sprite-map.scss',
 			template: base_paths.src + 'sass/sprite/templates/sprite-template.scss',
 		},
 		templates: {
 			src: base_paths.src + 'templates/',
 			theme: {
+				filename: 'style.css',
 				src: base_paths.src + 'templates/tpl-style.css',
 				dest: './',
 			},
 			php: {
-				basename: 'config-paths',
+				filename: 'config-paths.php',
 				src: base_paths.src + 'templates/config-paths.php',
 				dest: './inc/',
-			}
+			},
 		},
 	};
 
@@ -291,10 +295,10 @@
 			gulp.src(paths.js.src.lib + '**/*.js'),
 			jshint(),
 			jshint.reporter('default'),
-			concat(paths.js.output.basename + paths.js.output.ext),
+			concat(paths.js.output.filename + paths.js.output.ext),
 			uglify(),
 			rename(function(path) {
-				path.basename = paths.js.output.basename;
+				path.filename = paths.js.output.filename;
 				path.extname = '.min' + paths.js.output.ext;
 			}),
 			gulp.dest(paths.js.dest.lib)
@@ -357,7 +361,8 @@
 
 	gulp.task('theme_info_stylesheet', function() {
 		var info = project_info.theme;
-		gulp.src(paths.templates.theme.src)
+		var tpl = paths.templates.theme;
+		gulp.src(tpl.src)
 		.pipe(inject_string.replace('@@theme_name@@', info.name))
 		.pipe(inject_string.replace('@@theme_version@@', info.version))
 		.pipe(inject_string.replace('@@theme_uri@@', info.uri))
@@ -369,25 +374,27 @@
 		.pipe(inject_string.replace('@@theme_text_domain@@', info.text_domain))
 		.pipe(inject_string.replace('@@theme_domain_path@@', info.domain_path))
 		.pipe(inject_string.replace('@@theme_tags@@', info.tags))
-		.pipe(rename('style.css'))
-		.pipe(gulp.dest(paths.templates.theme.dest));
+		.pipe(rename(tpl.filename))
+		.pipe(gulp.dest(tpl.dest))
+		.pipe(notify({ message: 'Theme Info Stylesheet: ' + tpl.filename + ' written to ' + tpl.dest }));
 	});
 
 	gulp.task('theme_info_php', function() {
 		var info = project_info.theme;
-		gulp.src(paths.templates.php.src)
+		var tpl = paths.templates.php;
+		gulp.src(tpl.src)
 		.pipe(inject_string.replace('@@theme_version@@', info.version))
 		.pipe(inject_string.replace('@@css@@', '/' + paths.sass.dest))
 		.pipe(inject_string.replace('@@js_lib@@', '/' + paths.js.dest.lib))
 		.pipe(inject_string.replace('@@js_vendor@@', '/' + paths.js.dest.vendor))
 		.pipe(inject_string.replace('@@js_admin@@', '/' + paths.js.dest.admin))
-		.pipe(rename(paths.templates.php.basename + '.php'))
-		.pipe(gulp.dest(paths.templates.php.dest));
+		.pipe(rename(tpl.filename))
+		.pipe(gulp.dest(tpl.dest))
+		.pipe(notify({ message: 'Theme Info: ' + tpl.filename + ' written to ' + tpl.dest }));
 	});
 
 	gulp.task('project_version', function(){
 		var info = project_info;
-		console.log();
 		gulp.src('./package.json')
 		.pipe(json_editor({
 			'version': info.theme.version,
@@ -416,10 +423,6 @@
 		.pipe(gulp.dest('./'));
 	});
 
-	gulp.task('set_theme_info', function(cb) {
-		run_sequence('clean:theme_info', 'clean:theme_info_php', 'project_version', 'theme_info_stylesheet', 'theme_info_php', cb);
-	});
-
 
 /*--------------------------------------------------------------
 7.0 - Build
@@ -436,7 +439,7 @@
 	// Individual clean functions for streams.
 	gulp.task('clean:stylesheet', function(){
 		del([
-			base_paths.dest + 'css'
+			base_paths.dest + 'css/'
 		]);
 	});
 
@@ -448,7 +451,7 @@
 
 	gulp.task('clean:theme_info_php', function(){
 		del([
-			base_paths.root + paths.templates.php.dest + paths.templates.php.basename + '.php'
+			paths.templates.php.dest + paths.templates.php.filename
 		]);
 	});
 
@@ -487,6 +490,10 @@
 		run_sequence('clean:stylesheet', 'clean:rtl', 'theme_styles', 'theme_styles_rtl', cb);
 	});
 
+	gulp.task('set_theme_info', function(cb) {
+		run_sequence('clean:theme_info', 'clean:theme_info_php', 'project_version', 'theme_info_stylesheet', 'theme_info_php', cb);
+	});
+
 
 /*--------------------------------------------------------------
 7.3 - Default
@@ -497,7 +504,7 @@
 	 * $ gulp
 	 */
 	gulp.task('default', function(){
-		run_sequence('scripts', 'images', 'styles', 'set_theme_info');
+		run_sequence('clean', 'scripts', 'images', 'styles', 'set_theme_info');
 	});
 
 

@@ -407,7 +407,7 @@ if ( ! function_exists( '_starter_create_new_taxonomies' ) ) {
 
 
 /** --------------------------------------------------------------
-2.1. - CSS
+2.1 - CSS
 ----------------------------------------------------------------*/
 
 /**
@@ -535,7 +535,7 @@ if ( ! function_exists( '_starter_remove_head_links' ) ) {
 /**
  * Dynamic Footer Columns.
  */
-require get_template_directory() . '/inc/footer-columns.php';
+require get_template_directory() . '/inc/class-wp-custom-footer-columns.php';
 
 
 
