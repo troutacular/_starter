@@ -149,9 +149,9 @@ if ( ! class_exists( 'WP_Custom_Footer_Columns' ) ) {
 
 		}
 	}
-}
+} // End if().
 
-if ( ! function_exists( '_starter_footer_arguments' ) ) {
+if ( ! function_exists( 'wp_custom_footer_columns_arguments' ) ) {
 	/**
 	 * Footer Column Arguments
 	 *
@@ -160,12 +160,12 @@ if ( ! function_exists( '_starter_footer_arguments' ) ) {
 	 *  - HTML5 element [wrapper]
 	 *  - CSS [class] for the wrapper
 	 *
-	 * Set a local function of _starter_footer_arguments in the functions.php
+	 * Set a local function of wp_custom_footer_columns_arguments in the functions.php
 	 * file to override these default settings.
 	 *
 	 * @return  array  Values for [columns], [wrapper], [class]
 	 */
-	function _starter_footer_arguments() {
+	function wp_custom_footer_columns_arguments() {
 		$args = array(
 			'columns' => 4,
 			'wrapper' => 'div',
@@ -175,7 +175,7 @@ if ( ! function_exists( '_starter_footer_arguments' ) ) {
 	}
 }
 
-if ( ! function_exists( '_starter_footer_register' ) ) {
+if ( ! function_exists( 'wp_custom_footer_columns_register' ) ) {
 
 	/**
 	 * Register the amount of footer columns.
@@ -183,20 +183,20 @@ if ( ! function_exists( '_starter_footer_register' ) ) {
 	 * @param   array $params Settings for registering columns.
 	 * @return  void
 	 */
-	function _starter_footer_register( $params ) {
+	function wp_custom_footer_columns_register( $params ) {
 		$footer_columns = new WP_Custom_Footer_Columns( $params );
 		$footer_columns->register();
 	}
 }
 
-if ( ! function_exists( '_starter_footer_columns' ) ) {
+if ( ! function_exists( 'wp_custom_footer_columns_init' ) ) {
 	/**
 	 * Register the amount of footer columns.
 	 *
 	 * @return  void
 	 */
-	function _starter_footer_columns() {
-		$footer = new WP_Custom_Footer_Columns( _starter_footer_arguments() );
+	function wp_custom_footer_columns_init() {
+		$footer = new WP_Custom_Footer_Columns( wp_custom_footer_columns_arguments() );
 		$footer->footer_columns();
 	}
 }
@@ -204,4 +204,4 @@ if ( ! function_exists( '_starter_footer_columns' ) ) {
 /**
  * Register the Footer Columns
  */
-_starter_footer_register( _starter_footer_arguments() );
+wp_custom_footer_columns_register( wp_custom_footer_columns_arguments() );
