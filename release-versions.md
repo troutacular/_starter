@@ -7,6 +7,8 @@
 		- Renamed `starterAcronymClass` to `siteAcronymClass`
 	- `/inc/footer-columns.php`
 		- Renamed `Starter_Footer_Columns` to `WP_Custom_Footer_Columns`
+- More automated asset outputs using config settings.
+- Updated readme instructions for cloning.
 
 ## 2.1.0
 
