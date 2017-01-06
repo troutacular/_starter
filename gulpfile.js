@@ -362,7 +362,7 @@
 	});
 
 	gulp.task('theme_styles_rtl', function() {
-		sass_build('RTL', false, paths.sass.src + 'rtl.scss', base_paths.root, paths.sass.dest + paths.sass.maps, base_paths.dest);
+		sass_build('RTL', 'rtl', paths.sass.src + 'rtl.scss', base_paths.root, paths.sass.dest + paths.sass.maps, base_paths.dest);
 	});
 
 
