@@ -15,7 +15,7 @@
 	</div><!-- .site-content --><?php /* opens in header.php */ ?>
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
-		<?php wp_custom_footer_columns_init(); ?>
+		<?php wp_custom_footer_columns(); ?>
 	</footer><!-- .site-footer -->
 
 </div><!-- .site --><?php /* opens in header.php */ ?>
