@@ -384,7 +384,6 @@
 		var tpl = paths.templates.php;
 		gulp.src(tpl.src)
 		.pipe(inject_string.replace('@@theme_version@@', info.version))
-		.pipe(inject_string.replace('@@filename_base@@', project_info.assets.filename_base))
 		.pipe(inject_string.replace('@@css@@', '/' + paths.sass.dest))
 		.pipe(inject_string.replace('@@js_lib@@', '/' + paths.js.dest.lib))
 		.pipe(inject_string.replace('@@js_vendor@@', '/' + paths.js.dest.vendor))

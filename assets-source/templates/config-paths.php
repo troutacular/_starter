@@ -15,9 +15,6 @@ function _starter_get_config() {
 	// Set the default project configurations.
 	$config = array(
 		'version' => '@@theme_version@@',
-		'assets' => array(
-			'filename_base' => '@@filename_base@@',
-		),
 		'paths' => array(
 			'assets' => array(
 				'css' => '@@css@@',
