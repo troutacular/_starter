@@ -10,17 +10,20 @@ This is a starting point to create a new theme template.  You should not use thi
 
 Download `_starter` and change the project to reflect the name of the theme you will be developing. You'll need to do a multi-step find and replace on the name in all the templates (yes this was based off of [underscores] at one point).
 
+__CAUTION:__ Search and replace the theme name references in the order listed below to avoid naming conflicts and potential PHP errors.
+
 1. Search for `'_starter'` (inside single quotations) to capture the text domain.
 2. Search for `_starter_` to capture all the function names.
-3. Search for `Text Domain: _starter` in style.css.
 4. Search for `starter-` to capture sprite filename references.
 
 OR
 
 - Search for: `'_starter'` and replace with: `'theme-name'`
 - Search for: `_starter_` and replace with: `theme_name_`
-- Search for: `Text Domain: _starter` and replace with: `Text Domain: theme-name` in style.css.
 - Search for: `_starter-` and replace with: `theme-name-` for sprite renaming.
+
+__NOTE:__ `Text Domain: _starter` in style.css will be updated automatically from the config settings in `gulpfile.js` when the project is compiled.
+
 
 #### Filenames
 
