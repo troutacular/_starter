@@ -15,10 +15,17 @@
 --------------------------------------------------------------*/
 
 $sprite-icons: (
-	sprite: (width: 36px, height: 36px, pngPath: image-url('_starter-sprite
-
-.png?ver=#{$version__project}'), svgPath: image-url('_starter-sprite
-
-.svg?ver=#{$version__project}')),
-	wordpress-logo: (width: 16px, height: 16px, backgroundX: 0px, backgroundY: 0px, padT: 10px, padR: 10px, padB: 10px, padL: 10px),
+	sprite: (
+		width: 36px,
+		height: 36px,
+		pngPath: image-url('starter-sprite.png?ver=#{$version__project}'),
+		svgPath: image-url('starter-sprite.svg?ver=#{$version__project}')),
+		 wordpress-logo: (width: 16px,
+		height: 16px,
+		backgroundX: 0px,
+		backgroundY: 0px,
+		padT: 10px,
+		padR: 10px,
+		padB: 10px,
+		padL: 10px),
 );
