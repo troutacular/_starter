@@ -135,6 +135,8 @@ CSS Maps will be compiled per stylesheet in `assets/css/maps/[filename].css.map`
 
 The stylesheets are only compiled to their respective destination directories and are _not_ auto loaded to the theme output.  This is intended to use the `functions.php` file to load the scripts with [wp_enqueue_style][] and allow for the use of dependency requirements.
 
+__NOTE:__ `rtl.css` will compile to the theme root `./` for WordPress support.
+
 
 ### Images
 
