@@ -31,7 +31,7 @@ __NOTE:__ `Text Domain: _starter` in style.css will be updated automatically fro
 
 - Rename the SASS partial `starter.scss` to `theme-name.scss` located `assets-source/sass/`.
 	- If you completed the search and replace options above, the reference to this file will be updated in `functions.php` under section _2.1 - CSS_.
-- Rename the JS file `starter.js` to `theme-name.js` located in `assets-source/js/lib`.
+- The JS minified file under `/assets/js/lib` will be concatenated and renamed to the value in
 	- If you completed the search and replace options above, the reference to this file will be updated in `functions.php` under section _2.2 - Javascript_.
 
 ### Installing Node, NPM, and Gulp
@@ -67,6 +67,8 @@ In this file is the `project_info` variable object.  This object controls and se
 - Sets the stylesheet theme information in `style.css` from the template in `assets-source/templates/tpl-style.css`.
 - Sets the php information for the project version and asset paths for `css`, `js/lib`, `js/vendor`, `js/admin`.
 
+__NOTE:__  You do not need to edit below section 2.2 of `gulpfile.js` unless adding additional functions/dependencies.
+
 
 ## Project Compiling
 
@@ -95,16 +97,20 @@ __NOTE:__ This will only change `js`, `css`, and `images` assets.  You will need
 
 ### Javascript
 
-Javascript files can be found in `assets-source/js` and have three sub directories for script types of Library, Vendor, and Admin.
+Javascript files can be found in `assets-source/js` and have three sub directories for script types of Library: `lib`, Vendor: `vendor`, and Admin: `admin`.
 
-The scripts are only compiled to their respective destination directories and are _not_ auto loaded to the theme output.  This is intended to use the `functions.php` file to load the scripts with [wp_enqueue_script][] and allow for the use of dependency scripts.
+The `lib` files will compile automatically and be renamed to the value in the `gulpfile.js` under `project_info.assets.filename_base`.
+
+The `admin` and `vendor` scripts are only compiled to their respective destination directories and are _not_ auto loaded to the theme output.  This is intended to use the `functions.php` file to load the scripts with [wp_enqueue_script][] and allow for the use of dependency scripts.
 
 
 #### Library Scripts
 
-Javascript files in `assets-source/js/lib` will run jshint on the file and compile to `assets/js/lib/[paths.js.output.basename].min.js`.  
+Javascript files in `assets-source/js/lib` will run jshint on the file and compile to `assets/js/lib/[paths.js.output.basename].min.js`.
 
-These files will be combined (concatenated), minified, and renamed to the value in the `gulpfile.js` variable `paths.js.output.basename` with the extension `.min.js` attached.
+__NOTE:__ `paths.js.output.basename` maps to `project_info.assets.filename_base`.
+
+These files will be combined (concatenated), minified, and renamed to the value in the `gulpfile.js` variable `project_info.assets.filename_base` with the extension `.min.js` attached.
 
 
 #### Vendor Scripts
@@ -125,9 +131,9 @@ _These files will not run jshint or be concatenated or minified._
 
 This project uses SCSS to compile a theme stylesheet.  SCSS files withou an underscore `_` prefix in `assets-source/sass/` will be compiled with an autoprefixer (based on project settings) to `assets/css/[filename].css`.
 
-CSS Maps will be compiled per stylesheet in `assets/css/maps`.
+CSS Maps will be compiled per stylesheet in `assets/css/maps/[filename].css.map`.
 
-The stylesheets are only compiled to their respective destination directories and are _not_ auto loaded to the theme output.  This is intended to use the `functions.php` file to load the scripts with [wp_enqueue_style][] and allow for the use of dependency scripts.
+The stylesheets are only compiled to their respective destination directories and are _not_ auto loaded to the theme output.  This is intended to use the `functions.php` file to load the scripts with [wp_enqueue_style][] and allow for the use of dependency requirements.
 
 
 ### Images
