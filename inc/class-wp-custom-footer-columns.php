@@ -189,7 +189,7 @@ if ( ! function_exists( 'wp_custom_footer_columns_register' ) ) {
 	}
 }
 
-if ( ! function_exists( 'wp_custom_footer_columns_init' ) ) {
+if ( ! function_exists( 'wp_custom_footer_columns' ) ) {
 	/**
 	 * Register the amount of footer columns.
 	 *
