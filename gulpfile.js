@@ -22,6 +22,7 @@
 		7.3 - Default
 		7.4 - Watch
 
+	NOTE: You do not need to edit below section 2.2 unless adding additional functions/dependencies.
 **/
 
 
@@ -102,7 +103,7 @@
 				url: 'https://github.com/troutacular/_starter/issues'},
 		},
 		assets: {
-			filename_base: '_starter',
+			filename_base: 'starter',
 		},
 	};
 
