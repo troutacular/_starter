@@ -95,6 +95,16 @@ function _starter_get_version() {
 }
 
 /**
+ * Get the theme asset filename base from the config.
+ *
+ * @return  string  Filename base.
+ */
+function _starter_get_filename_base() {
+	$config = _starter_get_config();
+	return $config['assets']['filename_base'];
+}
+
+/**
  * Get the path of the assets.
  *
  * @param   string $type  Type of assets to get the path.
