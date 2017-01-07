@@ -84,7 +84,7 @@
 	 */
 	var project_info = {
 		theme: {
-			version: '2.2.0',
+			version: '3.0.0',
 			name: '_starter',
 			uri: 'https://github.com/troutacular/_starter',
 			author: '@troutacular',
