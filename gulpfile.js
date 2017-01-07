@@ -354,7 +354,7 @@
 	}
 
 	gulp.task('theme_styles_primary', function() {
-		sass_build('Main Theme', 'starter', [paths.sass.src + 'theme-primary.scss'], paths.sass.dest, paths.sass.maps, '../');
+		sass_build('Main Theme', project_info.assets.filename_base, [paths.sass.src + 'theme-primary.scss'], paths.sass.dest, paths.sass.maps, '../');
 	});
 
 	gulp.task('theme_styles_additional', function() {
@@ -395,7 +395,7 @@
 		var tpl = paths.templates.php;
 		gulp.src(tpl.src)
 		.pipe(inject_string.replace('@@theme_version@@', info.version))
-		.pipe(inject_string.replace('@@filename_base@@', project_info.assets.g))
+		.pipe(inject_string.replace('@@filename_base@@', project_info.assets.filename_base))
 		.pipe(inject_string.replace('@@css@@', '/' + paths.sass.dest))
 		.pipe(inject_string.replace('@@js_lib@@', '/' + paths.js.dest.lib))
 		.pipe(inject_string.replace('@@js_vendor@@', '/' + paths.js.dest.vendor))

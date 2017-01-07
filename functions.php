@@ -95,6 +95,16 @@ function _starter_get_version() {
 }
 
 /**
+ * Get the theme version from the build.
+ *
+ * @return  string  Theme version.
+ */
+function _starter_get_filename_base() {
+	$config = _starter_get_config();
+	return $config['assets']['filename_base'];
+}
+
+/**
  * Get the path of the assets.
  *
  * @param   string $type  Type of assets to get the path.
@@ -422,7 +432,7 @@ if ( ! function_exists( '_starter_enqueue_css' ) ) {
 	 */
 	function _starter_enqueue_css() {
 
-		wp_enqueue_style( '_starter-style', get_stylesheet_directory_uri() . _starter_get_asset_path( 'css' ) . 'starter.css', false, _starter_get_version(), 'screen,print' );
+		wp_enqueue_style( '_starter-style', get_stylesheet_directory_uri() . _starter_get_asset_path( 'css' ) . _starter_get_filename_base() . '.css', false, _starter_get_version(), 'screen,print' );
 
 	}
 }
@@ -461,7 +471,7 @@ if ( ! function_exists( '_starter_scripts' ) ) {
 		/**
 		 * Load individual scripts.
 		 */
-		wp_enqueue_script( 'starter', get_stylesheet_directory_uri() . _starter_get_asset_path( 'js-lib' ) . 'starter.min.js', array(), _starter_get_version(), true );
+		wp_enqueue_script( 'starter', get_stylesheet_directory_uri() . _starter_get_asset_path( 'js-lib' ) . _starter_get_filename_base() . '.min.js', array(), _starter_get_version(), true );
 
 		/**
 		 * Load comments reply script.
