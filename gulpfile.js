@@ -326,7 +326,13 @@
 5.0 - Styles
 --------------------------------------------------------------*/
 
-	function sass_build(style_name, src, dest, map, asset_relation) {
+	function rename_sass(filename, src) {
+		if (filename===false) {
+			return src;
+		}
+		return filename + '.css';
+	}
+	function sass_build(style_name, filename, src, dest, map, asset_relation) {
 		return pump([
 			gulp.src(src),
 			sourcemaps.init(),
@@ -340,6 +346,7 @@
 				console.error('Error!', error.message);
 			}),
 			autoprefixer(config.autoprefixer),
+			rename(rename_sass(filename, src)),
 			sourcemaps.write(map),
 			gulp.dest(dest),
 		])
@@ -347,12 +354,16 @@
 		.pipe(notify({ message: style_name + ' map written to ' + map }));
 	}
 
-	gulp.task('theme_styles', function() {
-		sass_build('Main Theme', [paths.sass.src + '*.scss', '!' + paths.sass.src + 'rtl.scss'], paths.sass.dest, paths.sass.maps, '../');
+	gulp.task('theme_styles_primary', function() {
+		sass_build('Main Theme', paths.sass.output.filename, [paths.sass.src + 'theme-primary.scss'], paths.sass.dest, paths.sass.maps, '../');
+	});
+
+	gulp.task('theme_styles_additional', function() {
+		sass_build('Additional Theme', false, [paths.sass.src + '*.scss', '!' + paths.sass.src + 'rtl.scss', '!' + paths.sass.src + 'theme-primary.scss'], paths.sass.dest, paths.sass.maps, '../');
 	});
 
 	gulp.task('theme_styles_rtl', function() {
-		sass_build('RTL', paths.sass.src + 'rtl.scss', base_paths.root, paths.sass.dest + paths.sass.maps, base_paths.dest);
+		sass_build('RTL', 'rtl', paths.sass.src + 'rtl.scss', base_paths.root, paths.sass.dest + paths.sass.maps, base_paths.dest);
 	});
 
 
@@ -385,6 +396,7 @@
 		var tpl = paths.templates.php;
 		gulp.src(tpl.src)
 		.pipe(inject_string.replace('@@theme_version@@', info.version))
+		.pipe(inject_string.replace('@@filename_base@@', project_info.assets.filename_base))
 		.pipe(inject_string.replace('@@css@@', '/' + paths.sass.dest))
 		.pipe(inject_string.replace('@@js_lib@@', '/' + paths.js.dest.lib))
 		.pipe(inject_string.replace('@@js_vendor@@', '/' + paths.js.dest.vendor))
@@ -488,7 +500,7 @@
 	});
 
 	gulp.task('styles', function(cb) {
-		run_sequence('clean:stylesheet', 'clean:rtl', 'theme_styles', 'theme_styles_rtl', cb);
+		run_sequence('clean:stylesheet', 'clean:rtl', 'theme_styles_primary', 'theme_styles_additional', 'theme_styles_rtl', cb);
 	});
 
 	gulp.task('set_theme_info', function(cb) {
