@@ -119,8 +119,8 @@ a {
 	/* only include the link on external sites that do not have
 	 * 'starter.com' in the link
 	 *
-	 * exclude any non-theme site: &:not([href*='starter.com']):after
-	 * exclude any site starting with: &:not([href^='siteurl']):after
+	 * exclude any non-theme site: &:not([href*='site-url.com']):after
+	 * exclude any site starting with: &:not([href^='site-url']):after
 	 */
 
 	&:not([href*='#{$no-print-url}']):after {
