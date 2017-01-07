@@ -1,12 +1,21 @@
 # Version Releases
 
-## 2.2.0
+## 3.0.0
 
 - Update PHP and JS functions to remove `starter` and `Starter` from function names to more generic function descriptors.
 	- `/assets-source/js/lib/starter.js`
 		- Renamed `starterAcronymClass` to `siteAcronymClass`
 	- `/inc/footer-columns.php`
 		- Renamed `Starter_Footer_Columns` to `WP_Custom_Footer_Columns`
+
+### __Deprecation:__
+
+Replaced the following function calls:
+
+- `_starter_footer_columns_arguments` with `wp_custom_footer_columns_arguments`
+- `_starter_footer_columns_register` with `wp_custom_footer_columns_register`
+- `_starter_footer_columns` with `wp_custom_footer_columns`
+
 
 ## 2.1.0
 
