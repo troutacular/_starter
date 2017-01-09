@@ -83,6 +83,7 @@
 	 * @type  {Object}
 	 */
 	var project_info = {
+		// This section provides the information for the 'style.css' file in the root of the theme.
 		theme: {
 			version: '3.0.0',
 			name: '_starter',
@@ -96,14 +97,16 @@
 			domain_path: '/languages',
 			tags: 'custom-menu, editor-style, featured-images, footer-widgets, full-width-template, one-column, post-formats, sticky-post, theme-options',
 		},
+		// The git repository for this project.
 		repository: {
 			type: 'git',
 			url: 'git+https://github.com/troutacular/_starter.git',
 			bugs: {
 				url: 'https://github.com/troutacular/_starter/issues'},
 		},
+		// The filename base for the output theme stylesheet, compiled javascript for `/lib`, and sprite name.
 		assets: {
-			filename_base: 'starter',
+			filename_base: '_starter',
 		},
 	};
 
@@ -341,6 +344,8 @@
 				VERSION: project_info.theme.version,
 				// Set the assets path in relation to the compiled css file.
 				ASSET_RELATION_TO_CSS: asset_relation,
+				// Set the filename base for sprite generation.
+				ASSET_FILENAME_BASE: project_info.assets.filename_base,
 			}})
 			.on('error', function (error) {
 				console.error('Error!', error.message);
