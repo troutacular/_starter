@@ -22,6 +22,11 @@ Replaced the following function calls:
 - `_starter_footer_columns_register` with `wp_custom_footer_columns_register`
 - `_starter_footer_columns` with `wp_custom_footer_columns`
 
+Updated the following SCSS variables:
+
+- `$path__assets-base` to `$assets__path-base`
+- `$filename__assets-base` to `$assets__filename-base`
+
 
 ## 2.1.0
 
