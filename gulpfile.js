@@ -187,6 +187,9 @@
 				filename: project_info.assets.filename_base,
 				ext: '.css',
 			},
+			stylesheets: {
+				primary: 'theme-stylesheet.scss',
+			},
 		},
 		sprite: {
 			src: base_paths.src + 'images/sprite/*',
@@ -361,7 +364,7 @@
 
 	// Primary theme stylsheet.
 	gulp.task('theme_styles_primary', function() {
-		sass_build('Main Theme', paths.sass.output.filename, [paths.sass.src + 'theme-stylesheet.scss'], paths.sass.dest, paths.sass.maps, '../');
+		sass_build('Main Theme', paths.sass.output.filename, [paths.sass.src + paths.sass.stylesheets.primary], paths.sass.dest, paths.sass.maps, '../');
 	});
 
 	// Right to Left stylesheet.
@@ -371,7 +374,7 @@
 
 	// All other stylesheets in /assets-source/sass/.
 	gulp.task('theme_styles_additional', function() {
-		sass_build('Additional Theme', false, [paths.sass.src + '*.scss', '!' + paths.sass.src + 'rtl.scss', '!' + paths.sass.src + 'theme-stylesheet.scss'], paths.sass.dest, paths.sass.maps, '../');
+		sass_build('Additional Theme', false, [paths.sass.src + '*.scss', '!' + paths.sass.src + 'rtl.scss', '!' + paths.sass.src + paths.sass.stylesheets.primary], paths.sass.dest, paths.sass.maps, '../');
 	});
 
 
