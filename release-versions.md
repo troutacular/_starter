@@ -14,6 +14,10 @@
 - Renamed `editor-styles.css` to `admin-content-editor-styles.css` for declaring type of stylesheet.
 - Updated Read Me instructions for cloning.
 
+### __Bug:__
+
+- Fixed `$ gulp clean` function to add `clean:theme_info_php` to function `clean`.  This prevents default `$ gulp` compiling errors from before.
+
 ### __Deprecation:__
 
 Replaced the following function calls:
