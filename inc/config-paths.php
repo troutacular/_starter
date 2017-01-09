@@ -16,7 +16,7 @@ function _starter_get_config() {
 	$config = array(
 		'version' => '3.0.0',
 		'assets' => array(
-			'filename_base' => 'starter',
+			'filename_base' => '_starter',
 		),
 		'paths' => array(
 			'assets' => array(
