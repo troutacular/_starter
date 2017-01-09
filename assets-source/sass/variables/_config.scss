@@ -44,7 +44,7 @@ $path__assets-base: '/* @echo ASSET_RELATION_TO_CSS */';
  * @access public
  * @type string
  */
-$filename__assets-base: '/* @echo ASSET_FILENAME_BASE */';
+$assets__filename-base: '/* @echo ASSET_FILENAME_BASE */';
 
 /**
  * Base font size for setting typography and media queries.

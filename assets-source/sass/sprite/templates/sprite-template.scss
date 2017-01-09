@@ -18,8 +18,8 @@ $sprite-icons: (
 	sprite: (
 		width: {{spriteWidth}}px,
 		height: {{spriteHeight}}px,
-		pngPath: image-url('#{$filename__assets-base}-sprite.png?ver=#{$version__project}'),
-		svgPath: image-url('#{$filename__assets-base}-sprite.svg?ver=#{$version__project}')),
+		pngPath: image-url('#{$assets__filename-base}-sprite.png?ver=#{$version__project}'),
+		svgPath: image-url('#{$assets__filename-base}-sprite.svg?ver=#{$version__project}')),
 		{{#shapes}} {{base}}: (width: {{width.inner}}px,
 		height: {{height.inner}}px,
 		backgroundX: {{position.absolute.x}}px,
