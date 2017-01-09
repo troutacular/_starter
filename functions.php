@@ -825,6 +825,6 @@ if ( ! function_exists( 'wpdocs_starter_add_editor_styles' ) ) {
 	 * Registers an editor stylesheet for the theme.
 	 */
 	function wpdocs_starter_add_editor_styles() {
-		add_editor_style( get_stylesheet_directory_uri() . _starter_get_asset_path( 'css' ) . 'editor-styles.css' );
+		add_editor_style( get_stylesheet_directory_uri() . _starter_get_asset_path( 'css' ) . 'admin-content-editor-styles.css' );
 	}
 }
