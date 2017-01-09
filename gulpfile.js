@@ -359,16 +359,19 @@
 		.pipe(notify({ message: style_name + ' map written to ' + map }));
 	}
 
+	// Primary theme stylsheet.
 	gulp.task('theme_styles_primary', function() {
-		sass_build('Main Theme', paths.sass.output.filename, [paths.sass.src + 'theme-primary.scss'], paths.sass.dest, paths.sass.maps, '../');
+		sass_build('Main Theme', paths.sass.output.filename, [paths.sass.src + 'theme-stylesheet.scss'], paths.sass.dest, paths.sass.maps, '../');
 	});
 
-	gulp.task('theme_styles_additional', function() {
-		sass_build('Additional Theme', false, [paths.sass.src + '*.scss', '!' + paths.sass.src + 'rtl.scss', '!' + paths.sass.src + 'theme-primary.scss'], paths.sass.dest, paths.sass.maps, '../');
-	});
-
+	// Right to Left stylesheet.
 	gulp.task('theme_styles_rtl', function() {
 		sass_build('RTL', 'rtl', paths.sass.src + 'rtl.scss', base_paths.root, paths.sass.dest + paths.sass.maps, base_paths.dest);
+	});
+
+	// All other stylesheets in /assets-source/sass/.
+	gulp.task('theme_styles_additional', function() {
+		sass_build('Additional Theme', false, [paths.sass.src + '*.scss', '!' + paths.sass.src + 'rtl.scss', '!' + paths.sass.src + 'theme-stylesheet.scss'], paths.sass.dest, paths.sass.maps, '../');
 	});
 
 
