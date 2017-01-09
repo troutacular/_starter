@@ -15,24 +15,21 @@ __CAUTION:__ Search and replace the theme name references in the order listed be
 1. Search for `'_starter'` (inside single quotations) to capture the text domain.
 2. Search for `_starter_` to capture all the function names.
 4. Search for `starter-` to capture sprite filename references.
-5. Search for `starter.` to capture asset filename references.
 
 OR
 
 - Search for: `'_starter'` and replace with: `'theme-name'`
 - Search for: `_starter_` and replace with: `theme_name_`
 - Search for: `_starter-` and replace with: `theme-name-` for sprite renaming.
-- Search for: `starter.` and replace with: `theme-name.` for asset filename renaming.
 
 __NOTE:__ `Text Domain: _starter` in style.css will be updated automatically from the config settings in `gulpfile.js` when the project is compiled.
 
 
 #### Filenames
 
-- Rename the SASS partial `starter.scss` to `theme-name.scss` located `assets-source/sass/`.
-	- If you completed the search and replace options above, the reference to this file will be updated in `functions.php` under section _2.1 - CSS_.
-- The JS minified file under `/assets/js/lib` will be concatenated and renamed to the value in
-	- If you completed the search and replace options above, the reference to this file will be updated in `functions.php` under section _2.2 - Javascript_.
+- The JS files under `/assets-source/js/lib` will be concatenated and renamed to the value in `project_info.assets.filename_base`.
+- The SCSS file `/assets-source/sass/theme-stylesheet.scss` will be renamed to the value in `project_info.assets.filename_base`.
+
 
 ### Installing Node, NPM, and Gulp
 
@@ -59,6 +56,7 @@ In this file is the `project_info` variable object.  This object controls and se
 - Sets the following variables in `assets-source/sass/variables/config.scss`:
   - `$version__project` for sprite image version reference.
   - `$path__assets-base` for sprite image path reference.
+  - `$filename__assets-base` for sprite filename creation.
 - Sets the following information for the package manager file in `package.json`:
   - Package Information: `version`, `description`, `author`, `license`
   - Repository Information: `repository:type`, `repository:url`
@@ -66,6 +64,7 @@ In this file is the `project_info` variable object.  This object controls and se
   - Asset Paths Information: `css`, `images`, `js:amdin`, `js:lib`, `js:vendor`
 - Sets the stylesheet theme information in `style.css` from the template in `assets-source/templates/tpl-style.css`.
 - Sets the php information for the project version and asset paths for `css`, `js/lib`, `js/vendor`, `js/admin`.
+- The CSS, JS, and sprite filenames are generated automatically from the Gulp build process using the value `project_info.assets.filename_base`.
 
 __NOTE:__  You do not need to edit below section 2.2 of `gulpfile.js` unless adding additional functions/dependencies.
 
@@ -99,43 +98,62 @@ __NOTE:__ This will only change `js`, `css`, and `images` assets.  You will need
 
 Javascript files can be found in `assets-source/js` and have three sub directories for script types of Library: `lib`, Vendor: `vendor`, and Admin: `admin`.
 
-The `lib` files will compile automatically and be renamed to the value in the `gulpfile.js` under `project_info.assets.filename_base`.
+_The `lib` files will compile automatically and be renamed to the value in the `gulpfile.js` under `project_info.assets.filename_base`._
 
 The `admin` and `vendor` scripts are only compiled to their respective destination directories and are _not_ auto loaded to the theme output.  This is intended to use the `functions.php` file to load the scripts with [wp_enqueue_script][] and allow for the use of dependency scripts.
 
 
 #### Library Scripts
 
-Javascript files in `assets-source/js/lib` will run jshint on the file and compile to `assets/js/lib/[paths.js.output.basename].min.js`.
+Javascript files in `assets-source/js/lib` will run jshint on the files, concatenate, minify and rename into a single file `assets/js/lib/[paths.js.output.basename].min.js`.
 
 __NOTE:__ `paths.js.output.basename` maps to `project_info.assets.filename_base`.
-
-These files will be combined (concatenated), minified, and renamed to the value in the `gulpfile.js` variable `project_info.assets.filename_base` with the extension `.min.js` attached.
 
 
 #### Vendor Scripts
 
-Javascript files in `assets-source/js/vendor` will run jshint on the file and compile to `assets/js/vendor`.  These are third party scripts maintained by other developers/organizations.
+These are third party scripts maintained by other developers/organizations.
+
+Javascript files in `assets-source/js/vendor` will run jshint on the file and compile to `assets/js/vendor`.
 
 _These files will not run jshint or be concatenated or minified._
 
 
 #### Admin Scripts
 
-Javascript files in `assets-source/js/admin` will run jshint on the file and compile to `assets/js/admin`.  These are intended to be individual scripts for WP-Admin.
+These are intended to be individual scripts for WP-Admin.
+
+Javascript files in `assets-source/js/admin` will run jshint on the file and compile to `assets/js/admin`.
 
 _These files will not run jshint or be concatenated or minified._
 
 
 ### CSS
 
-This project uses SCSS to compile a theme stylesheet.  SCSS files withou an underscore `_` prefix in `assets-source/sass/` will be compiled with an autoprefixer (based on project settings) to `assets/css/[filename].css`.
+#### Compiling
+
+All stylesheets compiled will use an auto prefix generator based on the project settings under `config.autorprefixer`.
 
 CSS Maps will be compiled per stylesheet in `assets/css/maps/[filename].css.map`.
 
-The stylesheets are only compiled to their respective destination directories and are _not_ auto loaded to the theme output.  This is intended to use the `functions.php` file to load the scripts with [wp_enqueue_style][] and allow for the use of dependency requirements.
+
+#### Primary stylesheet
+
+The theme's stylesheet SCSS file `/assets-source/sass/theme-stylesheet.scss` will be compiled and renamed to the value in `project_info.assets.filename_base`.
+
+
+#### Right to Left
+
+The theme's RTL SCSS file `/assets-source/sass/rtl.scss` will be compiled and output to the theme's root directory.
 
 __NOTE:__ `rtl.css` will compile to the theme root `./` for WordPress support.
+
+
+#### All other stylesheets
+
+Other SCSS files without an underscore `_` prefix in `assets-source/sass/` will be compiled to `assets/css/[filename].css`.
+
+These stylesheets are only compiled to their respective destination directories and are _not_ auto loaded to the theme output.  This is intended to use the `functions.php` file to load the scripts with [wp_enqueue_style][] and allow for the use of dependency requirements.
 
 
 ### Images
@@ -149,6 +167,8 @@ Images are optimized based on project settings in `config.images.minification`. 
 SVGs in `assets-source/images/sprite` will be optimized, combined, and created into a sprite in `assets/images`.
 
 Associative classes will be created in the SCSS files and compiled for usage as CSS classes in the format `.icon-[filename]{}` and `.icon-only-[filename]{}`.
+
+__NOTE:__ The sprite filename is generated automatically from the value `project_info.assets.filename_base`.
 
 
 #### PNG
