@@ -8,7 +8,11 @@
 	- `/inc/footer-columns.php`
 		- Renamed `Starter_Footer_Columns` to `WP_Custom_Footer_Columns`
 - More automated asset outputs using config settings.
-- Updated readme instructions for cloning.
+	- `/assets-source/js/lib/` contents compile to filename set in `gulpfile.js` under `project_info.assets.filename_base`.
+	- `/assets-source/sass/theme-stylesheet.scss` compile to filename set in `gulpfile.js` under `project_info.assets.filename_base`.
+	- Sprite filename and references are updated automatically from value `project_info.assets.filename_base`.
+- Renamed `editor-styles.css` to `admin-content-editor-styles.css` for declaring type of stylesheet.
+- Updated Read Me instructions for cloning.
 
 ### __Deprecation:__
 
