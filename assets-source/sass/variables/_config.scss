@@ -37,7 +37,7 @@ $ie8: false;
  * @access public
  * @type string
  */
-$path__assets-base: '/* @echo ASSET_RELATION_TO_CSS */';
+$assets__path-base: '/* @echo ASSET_RELATION_TO_CSS */';
 
 /**
  * Base filename for assets (sprites).
