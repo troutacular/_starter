@@ -14,13 +14,13 @@ __CAUTION:__ Search and replace the theme name references in the order listed be
 
 1. Search for `'_starter'` *(inside single quotations)* to capture the text domain.
 2. Search for `_starter_` to capture all the function names.
-4. Search for `starter-` to capture sprite filename references.
+3. Search for `_starter` to capture sprite filename references.
 
 OR
 
 - Search for: `'_starter'` and replace with: `'theme-name'`
 - Search for: `_starter_` and replace with: `theme_name_`
-- Search for: `_starter-` and replace with: `theme-name-` for sprite renaming.
+- Search for: `_starter` and replace with: `theme-name-` for sprite renaming.
 
 __NOTE:__ `Text Domain: _starter` in style.css will be updated automatically from the config settings in `gulpfile.js` when the project is compiled.
 
