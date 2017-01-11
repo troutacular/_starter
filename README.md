@@ -94,6 +94,8 @@ $sidebars = array(
 
 ### Compile Project
 
+__NOTE:__ Be sure to update the theme version appropriately using [Semantic Versioning][] in `gulpfile.js` under `project_info.theme.version` before compiling.
+
 When you are ready to compile your project, open the project folder in the CLI and run the following command:
 
 ```
@@ -101,8 +103,6 @@ $ gulp
 ```
 
 This will compile the Javascript, Images, CSS, and set the Theme Information.
-
-__NOTE:__ Be sure to update the theme version appropriately using [Semantic Versioning][] in `gulpfile.js` under `project_info.theme.version`.
 
 
 #### Watch Project
