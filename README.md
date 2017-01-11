@@ -102,7 +102,7 @@ $ gulp
 
 This will compile the Javascript, Images, CSS, and set the Theme Information.
 
-__NOTE:__ If you encounter a `directory not empty` error running the default Gulp function: `$ gulp`, run `$ gulp clean` to clear the destination directories and then run the default Gulp task `$ gulp`.
+__NOTE:__ Be sure to update the theme version appropriately using [Semantic Versioning][] in `gulpfile.js` under `project_info.theme.version`.
 
 
 #### Watch Project
@@ -344,6 +344,7 @@ Functions: See individual functions.
 [Sass]: http://sass-lang.com
 [Sass-Font-Icon]: http://github.com/troutacular/sass-font-icon
 [Sass-Heading-Sizes]: http://github.com/troutacular/sass-heading-sizes
+[Semantic Versioning]: http://semver.org
 [Susy]: http://susy.oddbird.net/
 [troutacular]: https://github.com/troutacular/
 [underscores]: http://www.underscores.me
