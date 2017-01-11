@@ -1,6 +1,5 @@
 # `_starter`
 
-
 This is a starting point to create a new theme template.  You should not use this theme for a project as it will be updated with elements.  You should, however, take a snapshot and use it to create a new theme for your project.
 
 
@@ -30,12 +29,14 @@ __Update the following:__
   - `readme.md`
   - `release-versions.md`
 - Update the following information in `gulpfile.js`:
-  - Theme version in `project_info.theme.version`
   - Git repository URL:
     - `project_info.package.repository.url`
     - `project_info.package.repository.bugs.url`
     - `project_info.theme.uri`
   - Author URI in `project_info.theme.author_uri`
+  - Check and update the theme information in `project_info.theme`:
+    - `version`, `name`, `uri`, `author`, `author_uri`, `description`, `tags`
+
 
 __NOTES:__
 
