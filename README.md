@@ -24,10 +24,20 @@ OR
 - Search for: `_starter` and replace with: `theme-name` for asset output renaming.
 - Search for: `wp-theme-starter` and replace with: `wp-theme-theme-name` for gulp and package configurations.
 
-__NOTES:__
-- Be sure to clear the contents and restart the documentation and versioning for the following files as needed:
+__Update the following:__
+
+- Clear the contents and restart the documentation and versioning for the following files as needed:
   - `readme.md`
   - `release-versions.md`
+- Update the following information in `gulpfile.js`:
+  - Git repository URL:
+    - `project_info.package.repository.url`
+    - `project_info.package.repository.bugs.url`
+    - `project_info.theme.uri`
+  - Author URI in `project_info.theme.author_uri` 
+
+__NOTES:__
+
 - `Text Domain: _starter` in style.css will be updated automatically from the config settings in `gulpfile.js` when the project is compiled.
 
 
