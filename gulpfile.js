@@ -83,6 +83,10 @@
 	 * @type  {Object}
 	 */
 	var project_info = {
+		// The filename base for the output theme stylesheet, compiled javascript for `/lib`, and sprite name.
+		assets: {
+			filename_base: '_starter',
+		},
 		// Sets information in package.json
 		package: {
 			// See https://docs.npmjs.com/files/package.json for naming rules.
@@ -95,10 +99,6 @@
 				bugs: {
 					url: 'https://github.com/troutacular/_starter/issues'},
 			},
-		},
-		// The filename base for the output theme stylesheet, compiled javascript for `/lib`, and sprite name.
-		assets: {
-			filename_base: '_starter',
 		},
 		// This section provides the information for the 'style.css' file in the root of the theme.
 		theme: {
