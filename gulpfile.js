@@ -83,6 +83,23 @@
 	 * @type  {Object}
 	 */
 	var project_info = {
+		// Sets information in package.json
+		package: {
+			// See https://docs.npmjs.com/files/package.json for naming rules.
+			name: 'starter',
+			license: 'GPL-2.0',
+			// The git repository for this project.
+			repository: {
+				type: 'git',
+				url: 'git+https://github.com/troutacular/_starter.git',
+				bugs: {
+					url: 'https://github.com/troutacular/_starter/issues'},
+			},
+		},
+		// The filename base for the output theme stylesheet, compiled javascript for `/lib`, and sprite name.
+		assets: {
+			filename_base: '_starter',
+		},
 		// This section provides the information for the 'style.css' file in the root of the theme.
 		theme: {
 			version: '3.0.0',
@@ -91,22 +108,11 @@
 			author: '@troutacular',
 			author_uri: 'https://github.com/troutacular/',
 			description: 'WordPress _starter theme is based off of the _s (underscores) theme and is intended to clone and use as you see fit.  It is not intended to be used as a Parent or Child theme.',
-			license: 'GNU General Public License v2',
+			license: 'GNU General Public License v2 or later',
 			license_uri: 'LICENSE.txt',
 			text_domain: '_starter',
 			domain_path: '/languages',
 			tags: 'custom-menu, editor-style, featured-images, footer-widgets, full-width-template, one-column, post-formats, sticky-post, theme-options',
-		},
-		// The git repository for this project.
-		repository: {
-			type: 'git',
-			url: 'git+https://github.com/troutacular/_starter.git',
-			bugs: {
-				url: 'https://github.com/troutacular/_starter/issues'},
-		},
-		// The filename base for the output theme stylesheet, compiled javascript for `/lib`, and sprite name.
-		assets: {
-			filename_base: '_starter',
 		},
 	};
 
@@ -421,16 +427,17 @@
 		var info = project_info;
 		gulp.src('./package.json')
 		.pipe(json_editor({
+			'name': info.package.name,
 			'version': info.theme.version,
 			'description': info.theme.description,
 			'author': info.theme.author,
-			'license': info.theme.license,
+			'license': info.package.license,
 			'repository': {
-				'type': info.repository.type,
-				'url': info.repository.url,
+				'type': info.package.repository.type,
+				'url': info.package.repository.url,
 			},
 			'bugs': {
-				'url': info.repository.bugs.url
+				'url': info.package.repository.bugs.url
 			},
 			'paths': {
 				'assets': {
