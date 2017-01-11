@@ -12,7 +12,7 @@ Download `_starter` and change the project to reflect the name of the theme you 
 
 __CAUTION:__ Search and replace the theme name references in the order listed below to avoid naming conflicts and potential PHP errors.
 
-1. Search for `'_starter'` (inside single quotations) to capture the text domain.
+1. Search for `'_starter'` *(inside single quotations)* to capture the text domain.
 2. Search for `_starter_` to capture all the function names.
 4. Search for `starter-` to capture sprite filename references.
 
@@ -25,15 +25,9 @@ OR
 __NOTE:__ `Text Domain: _starter` in style.css will be updated automatically from the config settings in `gulpfile.js` when the project is compiled.
 
 
-#### Filenames
-
-- The JS files under `/assets-source/js/lib` will be concatenated and renamed to the value in `project_info.assets.filename_base`.
-- The SCSS file `/assets-source/sass/theme-stylesheet.scss` will be renamed to the value in `project_info.assets.filename_base`.
-
-
 ### Installing Node, NPM, and Gulp
 
-You will need to install [Node][], [NPM][] and [Gulp][] to use this theme's compiling functions.  Please see the individual installation documentations for installing these on your system.
+You will need to install [Node][] (includes [NPM][]) and [Gulp][] to use this theme's compiling functions.  Please see the individual installation documentations for installing these on your system.
 
 
 ### Installing Dependencies
@@ -51,7 +45,7 @@ Upon completion, you will now have the project dependencies installed in the dir
 
 This project's settings are controlled by the Gulp config file `gulpfile.js` in the root directory.
 
-In this file is the `project_info` variable object.  This object controls and sets the following information on compiling:
+In this file is the `project_info`, `config`, and `paths` variable objects.  These objects control and sets the following information on compiling:
 
 - Sets the following variables in `assets-source/sass/variables/config.scss`:
   - `$version__project` for sprite image version reference.
@@ -59,14 +53,41 @@ In this file is the `project_info` variable object.  This object controls and se
   - `$filename__assets-base` for sprite filename creation.
 - Sets the following information for the package manager file in `package.json`:
   - Package Information: `version`, `description`, `author`, `license`
-  - Repository Information: `repository:type`, `repository:url`
-  - Bugs URL: `bugs:url`
-  - Asset Paths Information: `css`, `images`, `js:amdin`, `js:lib`, `js:vendor`
-- Sets the stylesheet theme information in `style.css` from the template in `assets-source/templates/tpl-style.css`.
-- Sets the php information for the project version and asset paths for `css`, `js/lib`, `js/vendor`, `js/admin`.
+  - Repository Information: `repository.type`, `repository.url`
+  - Bugs URL: `bugs.url`
+  - Asset Paths Information: `css`, `images`, `js.amdin`, `js.lib`, `js.vendor`
+- Uses the information from `project_info.theme` to set the stylesheet theme information in `style.css` from the template in `assets-source/templates/tpl-style.css`.
+- Sets the php information:
+  - Project version from `project_info.theme.version`
+  - Asset paths for `css`, `js/lib`, `js/vendor`, `js/admin`.
 - The CSS, JS, and sprite filenames are generated automatically from the Gulp build process using the value `project_info.assets.filename_base`.
 
 __NOTE:__  You do not need to edit below section 2.2 of `gulpfile.js` unless adding additional functions/dependencies.
+
+
+## PHP Functions
+
+- Core elements exist in the `functions.php` file
+- Optional elements (including common) reside in the `/inc` folder and can be commented out to remove.
+
+
+## Theme Templates
+
+Theme templates should be created under the `/page-templates` according to [WordPress Theme Organization][] standards.
+
+
+### Theme Templates: Dynamic Sidebars
+
+If you want to have a custom sidebar for the page template type, add the sidebar information to the the `_starter_widgets_init` function's `$sidebars` array:
+
+```
+$sidebars = array(
+  array(
+    'name' => 'Name',
+    'slug' => 'template-name',
+    'description' => 'Items placed here will appear in the sidebar on pages assigned to the page template page [template-name].',
+  ),
+```
 
 
 ## Project Compiling
@@ -98,62 +119,98 @@ __NOTE:__ This will only change `js`, `css`, and `images` assets.  You will need
 
 Javascript files can be found in `assets-source/js` and have three sub directories for script types of Library: `lib`, Vendor: `vendor`, and Admin: `admin`.
 
-_The `lib` files will compile automatically and be renamed to the value in the `gulpfile.js` under `project_info.assets.filename_base`._
+*The `lib` files will compile automatically and be renamed to the value in the `gulpfile.js` under `project_info.assets.filename_base`.*
 
-The `admin` and `vendor` scripts are only compiled to their respective destination directories and are _not_ auto loaded to the theme output.  This is intended to use the `functions.php` file to load the scripts with [wp_enqueue_script][] and allow for the use of dependency scripts.
+The `admin` and `vendor` scripts are only compiled to their respective destination directories and are *not* auto loaded to the theme output.  This is intended to use the `functions.php` file to load the scripts with [wp_enqueue_script][] and allow for the use of dependency scripts.
 
 
-#### Library Scripts
+#### JS: Library Scripts
 
 Javascript files in `assets-source/js/lib` will run jshint on the files, concatenate, minify and rename into a single file `assets/js/lib/[paths.js.output.basename].min.js`.
 
 __NOTE:__ `paths.js.output.basename` maps to `project_info.assets.filename_base`.
 
 
-#### Vendor Scripts
+#### JS: Vendor Scripts
 
 These are third party scripts maintained by other developers/organizations.
 
 Javascript files in `assets-source/js/vendor` will run jshint on the file and compile to `assets/js/vendor`.
 
-_These files will not run jshint or be concatenated or minified._
+*These files will not run jshint or be concatenated or minified.*
 
 
-#### Admin Scripts
+#### JS: Admin Scripts
 
 These are intended to be individual scripts for WP-Admin.
 
 Javascript files in `assets-source/js/admin` will run jshint on the file and compile to `assets/js/admin`.
 
-_These files will not run jshint or be concatenated or minified._
+*These files will not run jshint or be concatenated or minified.*
 
 
-### CSS
+### Stylesheets
 
-#### Compiling
+This theme uses SASS to compile one stylesheet with compression and uses Gulp for compiling.  Feel free to modify and import the individual elements as needed.
+
+Currently, this theme is simplified in it's structure to allow customization to be added, rather than stripped out / overridden.  However, there are some example elements in the files than illustrate how to build the theme.
+
+#### CSS Compiling
 
 All stylesheets compiled will use an auto prefix generator based on the project settings under `config.autorprefixer`.
 
 CSS Maps will be compiled per stylesheet in `assets/css/maps/[filename].css.map`.
 
 
-#### Primary stylesheet
+#### Stylesheet Types
+
+##### Primary stylesheet
 
 The theme's stylesheet SCSS file `/assets-source/sass/theme-stylesheet.scss` will be compiled and renamed to the value in `project_info.assets.filename_base`.
 
 
-#### Right to Left
+###### Vendor Inclusions
+
+- [Sass] for compiling CSS
+- [Susy] for the grid structure
+- [Sass-Heading-Sizes] is available for percentage or fixed interval heading sizes
+
+
+###### Custom Mixins
+
+There are some additional mixins included:
+
+- align-horizontal
+- align-vertical
+- asset-url-helpers
+- center-block
+- clearfix-after
+- clearfix
+- fill-absolute
+- font-size
+- font-style
+- media-queries
+- [Sass-Heading-Sizes]
+  - heading-decrement
+  - heading-decrement-fixed
+  - heading-increment
+  - heading-increment-fixed
+
+
+##### Right to Left
+
+Use the SCSS base stylesheet `/assets-source/sass/rtl.scss` to set styles to support additional languages in right-to-left format.
 
 The theme's RTL SCSS file `/assets-source/sass/rtl.scss` will be compiled and output to the theme's root directory.
 
 __NOTE:__ `rtl.css` will compile to the theme root `./` for WordPress support.
 
 
-#### All other stylesheets
+##### All other stylesheets
 
 Other SCSS files without an underscore `_` prefix in `assets-source/sass/` will be compiled to `assets/css/[filename].css`.
 
-These stylesheets are only compiled to their respective destination directories and are _not_ auto loaded to the theme output.  This is intended to use the `functions.php` file to load the scripts with [wp_enqueue_style][] and allow for the use of dependency requirements.
+These stylesheets are only compiled to their respective destination directories and are *not* auto loaded to the theme output.  This is intended to use the `functions.php` file to load the scripts with [wp_enqueue_style][] and allow for the use of dependency requirements.
 
 
 ### Images
@@ -173,7 +230,7 @@ __NOTE:__ The sprite filename is generated automatically from the value `project
 
 #### PNG
 
-Any SVG files in `assets-source/images` will have a copy saved and converted to a PNG format in `assets/images`.
+Any SVG files in `assets-source/images` will have a copy converted and saved to a PNG format in `assets/images`.
 
 
 ## Naming Conventions
@@ -257,47 +314,6 @@ function foo ($x) {
 ```
 
 
-## Functions
-
-- Core elements exist in the `functions.php` file
-- Optional elements (including common) reside in the `/inc` folder and can be commented out to remove.
-
-
-## Stylesheets
-
-This theme uses SASS to compile one stylesheet with compression and uses Gulp for compiling.  Feel free to modify and import the individual elements as needed.
-
-Currently, this theme is simplified in it's structure to allow customization to be added, rather than stripped out / overridden.  However, there are some example elements in the files than illustrate how to build the theme.
-
-
-### Vendor Inclusions
-
-- [Sass] for compiling CSS
-- [Susy] for the grid structure
-- [Sass-Heading-Sizes] is available for percentage or fixed interval heading sizes
-
-
-### Custom Mixins
-
-There are some additional mixins included:
-
-- align-horizontal
-- align-vertical
-- asset-url-helpers
-- center-block
-- clearfix
-- clearfix-after
-- fill-absolute
-- font-size
-- Font-style
-- media-queries
-- [Sass-Heading-Sizes]
-  - heading-decrement
-  - heading-decrement-fixed
-  - heading-increment
-  - heading-increment-fixed
-
-
 ## Notable Items
 
 ### Accesibility
@@ -333,3 +349,4 @@ Functions: See individual functions.
 [underscores]: http://www.underscores.me
 [wp_enqueue_script]: https://developer.wordpress.org/reference/functions/wp_enqueue_script/
 [wp_enqueue_style]: https://developer.wordpress.org/reference/functions/wp_enqueue_style/
+[WordPress Theme Organization]: https://developer.wordpress.org/themes/basics/organizing-theme-files/
