@@ -49,24 +49,37 @@ Upon completion, you will now have the project dependencies installed in the dir
 
 This project's settings are controlled by the Gulp config file `gulpfile.js` in the root directory.
 
-In this file is the `project_info`, `config`, and `paths` variable objects.  These objects control and sets the following information on compiling:
+In this file is the `project_info`, `config`, and `paths` variable objects.  These objects control and sets the version, paths and asset relation information when compiling.
+
+The CSS, JS, and sprite filenames are generated automatically from the Gulp build process using the value `project_info.assets.filename_base`.
+
+__NOTE:__  You do not need to edit below section 2.1 of `gulpfile.js` unless adding additional functions/dependencies or changing output settings in `config`.
+
+
+### NPM Package
+
+- `project_info.package` sets the following information for the package manager file in `package.json`:
+  - Package Information: `name`, `version`, `description`, `author`, `license`
+  - Repository Information: `repository.type`, `repository.url`
+  - Bugs URL: `bugs.url`
+  - Asset Paths Information: `css`, `images`, `js.amdin`, `js.lib`, `js.vendor`
+
+
+### WordPress Theme Information
+
+- `package_info.theme` sets the stylesheet theme information in `style.css` from the template in `assets-source/templates/tpl-style.css`.
+
+### Stylesheets
 
 - Sets the following variables in `assets-source/sass/variables/config.scss`:
   - `$version__project` for sprite image version reference.
   - `$path__assets-base` for sprite image path reference.
   - `$filename__assets-base` for sprite filename creation.
-- Sets the following information for the package manager file in `package.json`:
-  - Package Information: `version`, `description`, `author`, `license`
-  - Repository Information: `repository.type`, `repository.url`
-  - Bugs URL: `bugs.url`
-  - Asset Paths Information: `css`, `images`, `js.amdin`, `js.lib`, `js.vendor`
-- Uses the information from `project_info.theme` to set the stylesheet theme information in `style.css` from the template in `assets-source/templates/tpl-style.css`.
+
+### PHP Variables
 - Sets the php information:
   - Project version from `project_info.theme.version`
   - Asset paths for `css`, `js/lib`, `js/vendor`, `js/admin`.
-- The CSS, JS, and sprite filenames are generated automatically from the Gulp build process using the value `project_info.assets.filename_base`.
-
-__NOTE:__  You do not need to edit below section 2.2 of `gulpfile.js` unless adding additional functions/dependencies.
 
 
 ## PHP Functions
