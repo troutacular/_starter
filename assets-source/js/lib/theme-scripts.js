@@ -1,21 +1,5 @@
 ( function() {
 
-	// wrap the first word of the site title matching 'string' in a span to apply highlight color
-		function siteAcronymClass(acronym) {
-
-			var strTitle = document.getElementsByClassName('site-branding-title')[0].innerHTML;
-
-			var newStrTitle = strTitle.replace(acronym, '<span class="site-branding-acronym">' + acronym + '</span>');
-
-			if ( strTitle !== null ) {
-				document.getElementsByClassName('site-branding-title')[0].innerHTML = newStrTitle;
-			}
-		}
-
-		// Replace string value with acronym you want to wrap with a span class.
-		siteAcronymClass('Starter');
-	// end
-
 	// skip link focus fix
 		var is_webkit = navigator.userAgent.toLowerCase().indexOf( 'webkit' ) > -1,
 			is_opera  = navigator.userAgent.toLowerCase().indexOf( 'opera' )  > -1,

@@ -1,6 +1,5 @@
 # `_starter`
 
-
 This is a starting point to create a new theme template.  You should not use this theme for a project as it will be updated with elements.  You should, however, take a snapshot and use it to create a new theme for your project.
 
 
@@ -14,15 +13,34 @@ __CAUTION:__ Search and replace the theme name references in the order listed be
 
 1. Search for `'_starter'` *(inside single quotations)* to capture the text domain.
 2. Search for `_starter_` to capture all the function names.
-3. Search for `_starter` to capture sprite filename references.
+3. Search for `_starter` to capture filename references.
+4. Search for `wp-theme-starter` to capture package compiling information.
 
 OR
 
 - Search for: `'_starter'` and replace with: `'theme-name'`
 - Search for: `_starter_` and replace with: `theme_name_`
-- Search for: `_starter` and replace with: `theme-name-` for sprite renaming.
+- Search for: `_starter` and replace with: `theme-name` for asset output renaming.
+- Search for: `wp-theme-starter` and replace with: `wp-theme-theme-name` for gulp and package configurations.
 
-__NOTE:__ `Text Domain: _starter` in style.css will be updated automatically from the config settings in `gulpfile.js` when the project is compiled.
+__Update the following:__
+
+- Clear the contents and restart the documentation and versioning for the following files as needed:
+  - `readme.md`
+  - `release-versions.md`
+- Update the following information in `gulpfile.js`:
+  - Git repository URL:
+    - `project_info.package.repository.url`
+    - `project_info.package.repository.bugs.url`
+    - `project_info.theme.uri`
+  - Author URI in `project_info.theme.author_uri`
+  - Check and update the theme information in `project_info.theme`:
+    - `version`, `name`, `uri`, `author`, `author_uri`, `description`, `tags`
+
+
+__NOTES:__
+
+- `Text Domain: _starter` in style.css will be updated automatically from the config settings in `gulpfile.js` when the project is compiled.
 
 
 ### Installing Node, NPM, and Gulp
@@ -45,24 +63,37 @@ Upon completion, you will now have the project dependencies installed in the dir
 
 This project's settings are controlled by the Gulp config file `gulpfile.js` in the root directory.
 
-In this file is the `project_info`, `config`, and `paths` variable objects.  These objects control and sets the following information on compiling:
+In this file is the `project_info`, `config`, and `paths` variable objects.  These objects control and sets the version, paths and asset relation information when compiling.
+
+The CSS, JS, and sprite filenames are generated automatically from the Gulp build process using the value `project_info.assets.filename_base`.
+
+__NOTE:__  You do not need to edit below section 2.1 of `gulpfile.js` unless adding additional functions/dependencies or changing output settings in `config`.
+
+
+### NPM Package
+
+- `project_info.package` sets the following information for the package manager file in `package.json`:
+  - Package Information: `name`, `version`, `description`, `author`, `license`
+  - Repository Information: `repository.type`, `repository.url`
+  - Bugs URL: `bugs.url`
+  - Asset Paths Information: `css`, `images`, `js.amdin`, `js.lib`, `js.vendor`
+
+
+### WordPress Theme Information
+
+- `package_info.theme` sets the stylesheet theme information in `style.css` from the template in `assets-source/templates/tpl-style.css`.
+
+### Stylesheets
 
 - Sets the following variables in `assets-source/sass/variables/config.scss`:
   - `$version__project` for sprite image version reference.
   - `$path__assets-base` for sprite image path reference.
   - `$filename__assets-base` for sprite filename creation.
-- Sets the following information for the package manager file in `package.json`:
-  - Package Information: `version`, `description`, `author`, `license`
-  - Repository Information: `repository.type`, `repository.url`
-  - Bugs URL: `bugs.url`
-  - Asset Paths Information: `css`, `images`, `js.amdin`, `js.lib`, `js.vendor`
-- Uses the information from `project_info.theme` to set the stylesheet theme information in `style.css` from the template in `assets-source/templates/tpl-style.css`.
+
+### PHP Variables
 - Sets the php information:
   - Project version from `project_info.theme.version`
   - Asset paths for `css`, `js/lib`, `js/vendor`, `js/admin`.
-- The CSS, JS, and sprite filenames are generated automatically from the Gulp build process using the value `project_info.assets.filename_base`.
-
-__NOTE:__  You do not need to edit below section 2.2 of `gulpfile.js` unless adding additional functions/dependencies.
 
 
 ## PHP Functions
