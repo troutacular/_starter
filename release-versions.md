@@ -21,6 +21,7 @@
 
 ### __Deprecation:__
 
+- NPM Package renamed using naming convention: `wp-theme-[theme-name]`
 - Replaced the following function names:
   - `_starter_footer_columns_arguments` with `wp_custom_footer_columns_arguments`
   - `_starter_footer_columns_register` with `wp_custom_footer_columns_register`
