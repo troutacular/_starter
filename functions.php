@@ -261,7 +261,7 @@ if ( ! function_exists( '_starter_widgets_init' ) ) {
 	 *
 	 * This will set up sidebars in the admin for each page template type in the admin.
 	 *
-	 * Note: To add custom page template sidebars, a page template will need to be created for each type (templates/tpl-[slug].php).
+	 * Note: To add custom page template sidebars, a page template will need to be created for each type (page-templates/tpl-[slug].php).
 	 * The [slug] will be used in the sidebar to check if that template type exists.
 	 *
 	 * @return void
