@@ -21,10 +21,10 @@ $template = '';
  * Check if we have a single post.
  */
 if ( ! empty( $post ) ) {
-	/** Get the page template slug (templates/tpl-slug.php) and remove
-	 * 'template-', 'templates/tpl-' and '.php' to set as a variable $template.
+	/** Get the page template slug (page-templates/tpl-slug.php) and remove
+	 * 'page-', 'tpl-', 'template-' and '.php' to set as a variable $template.
 	 */
-	$template = str_replace( array( 'page-', 'templates/tpl-', '.php' ), '', get_page_template_slug( $post->ID ) );
+	$template = str_replace( array( 'page-', 'tpl-', 'template-', '.php' ), '', get_page_template_slug( $post->ID ) );
 }
 
 /**
