@@ -471,7 +471,7 @@ if ( ! function_exists( '_starter_scripts' ) ) {
 		/**
 		 * Load individual scripts.
 		 */
-		wp_enqueue_script( 'starter', get_stylesheet_directory_uri() . _starter_get_asset_path( 'js-lib' ) . _starter_get_filename_base() . '.min.js', array(), _starter_get_version(), true );
+		wp_enqueue_script( 'theme-scripts', get_stylesheet_directory_uri() . _starter_get_asset_path( 'js-lib' ) . _starter_get_filename_base() . '.min.js', array(), _starter_get_version(), true );
 
 		/**
 		 * Load comments reply script.
