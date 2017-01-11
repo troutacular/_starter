@@ -20,7 +20,7 @@ OR
 
 - Search for: `'_starter'` and replace with: `'theme-name'`
 - Search for: `_starter_` and replace with: `theme_name_`
-- Search for: `_starter` and replace with: `theme-name-` for sprite renaming.
+- Search for: `_starter` and replace with: `theme-name` for sprite renaming.
 
 __NOTES:__
 - `Text Domain: _starter` in style.css will be updated automatically from the config settings in `gulpfile.js` when the project is compiled.
