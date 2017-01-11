@@ -12,6 +12,7 @@
 	- `/assets-source/sass/theme-stylesheet.scss` compile to filename set in `gulpfile.js` under `project_info.assets.filename_base`.
 	- Sprite filename and references are updated automatically from value `project_info.assets.filename_base`.
 - Renamed `editor-styles.css` to `admin-content-editor-styles.css` for declaring type of stylesheet.
+- Include `templates/tpl-sample.php` sample template.
 - Updated Read Me instructions for cloning.
 
 ### __Bug:__
