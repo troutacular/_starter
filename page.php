@@ -29,7 +29,7 @@ get_header(); ?>
 			if ( comments_open() || '0' !== get_comments_number() ) {
 				comments_template();
 			}
-		} // End of the loop.
+		}
 		?>
 
 		</main><!-- #main -->
