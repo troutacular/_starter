@@ -86,7 +86,7 @@
 		// Sets information in package.json
 		package: {
 			// See https://docs.npmjs.com/files/package.json for naming rules.
-			name: 'starter',
+			name: 'wp-theme-starter',
 			license: 'GPL-2.0',
 			// The git repository for this project.
 			repository: {

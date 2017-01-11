@@ -14,19 +14,21 @@ __CAUTION:__ Search and replace the theme name references in the order listed be
 
 1. Search for `'_starter'` *(inside single quotations)* to capture the text domain.
 2. Search for `_starter_` to capture all the function names.
-3. Search for `_starter` to capture sprite filename references.
+3. Search for `_starter` to capture filename references.
+4. Search for `wp-theme-starter` to capture package compiling information.
 
 OR
 
 - Search for: `'_starter'` and replace with: `'theme-name'`
 - Search for: `_starter_` and replace with: `theme_name_`
-- Search for: `_starter` and replace with: `theme-name` for sprite renaming.
+- Search for: `_starter` and replace with: `theme-name` for asset output renaming.
+- Search for: `wp-theme-starter` and replace with: `wp-theme-theme-name` for gulp and package configurations.
 
 __NOTES:__
-- `Text Domain: _starter` in style.css will be updated automatically from the config settings in `gulpfile.js` when the project is compiled.
 - Be sure to clear the contents and restart the documentation and versioning for the following files as needed:
   - `readme.md`
   - `release-versions.md`
+- `Text Domain: _starter` in style.css will be updated automatically from the config settings in `gulpfile.js` when the project is compiled.
 
 
 ### Installing Node, NPM, and Gulp
