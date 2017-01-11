@@ -47,7 +47,7 @@
   "bugs": {
     "url": "https://github.com/troutacular/_starter/issues"
   },
-  "homepage": "https://github.com/troutacular/_starter#readme",
+  "homepage": "https://github.com/troutacular/_starter/",
   "paths": {
     "assets": {
       "css": "/assets/css/",

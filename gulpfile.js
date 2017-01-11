@@ -92,6 +92,7 @@
 			// See https://docs.npmjs.com/files/package.json for naming rules.
 			name: 'wp-theme-starter',
 			license: 'GPL-2.0',
+			homepage: 'https://github.com/troutacular/_starter/',
 			// The git repository for this project.
 			repository: {
 				type: 'git',
@@ -432,6 +433,7 @@
 			'description': info.theme.description,
 			'author': info.theme.author,
 			'license': info.package.license,
+			'homepage': info.package.homepage,
 			'repository': {
 				'type': info.package.repository.type,
 				'url': info.package.repository.url,
