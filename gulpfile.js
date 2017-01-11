@@ -22,6 +22,7 @@
 		7.3 - Default
 		7.4 - Watch
 
+	NOTE: You do not need to edit below section 2.2 unless adding additional functions/dependencies.
 **/
 
 
@@ -82,8 +83,9 @@
 	 * @type  {Object}
 	 */
 	var project_info = {
+		// This section provides the information for the 'style.css' file in the root of the theme.
 		theme: {
-			version: '2.2.0',
+			version: '3.0.0',
 			name: '_starter',
 			uri: 'https://github.com/troutacular/_starter',
 			author: '@troutacular',
@@ -95,12 +97,14 @@
 			domain_path: '/languages',
 			tags: 'custom-menu, editor-style, featured-images, footer-widgets, full-width-template, one-column, post-formats, sticky-post, theme-options',
 		},
+		// The git repository for this project.
 		repository: {
 			type: 'git',
 			url: 'git+https://github.com/troutacular/_starter.git',
 			bugs: {
 				url: 'https://github.com/troutacular/_starter/issues'},
 		},
+		// The filename base for the output theme stylesheet, compiled javascript for `/lib`, and sprite name.
 		assets: {
 			filename_base: '_starter',
 		},
@@ -171,7 +175,7 @@
 				vendor: base_paths.dest + 'js/vendor/',
 			},
 			output: {
-				filename: project_info.assets.filename,
+				filename: project_info.assets.filename_base,
 				ext: '.js',
 			},
 		},
@@ -182,6 +186,9 @@
 			output: {
 				filename: project_info.assets.filename_base,
 				ext: '.css',
+			},
+			stylesheets: {
+				primary: 'theme-stylesheet.scss',
 			},
 		},
 		sprite: {
@@ -325,7 +332,13 @@
 5.0 - Styles
 --------------------------------------------------------------*/
 
-	function sass_build(style_name, src, dest, map, asset_relation) {
+	function rename_sass(filename, src) {
+		if (filename===false) {
+			return src;
+		}
+		return filename + '.css';
+	}
+	function sass_build(style_name, filename, src, dest, map, asset_relation) {
 		return pump([
 			gulp.src(src),
 			sourcemaps.init(),
@@ -334,11 +347,14 @@
 				VERSION: project_info.theme.version,
 				// Set the assets path in relation to the compiled css file.
 				ASSET_RELATION_TO_CSS: asset_relation,
+				// Set the filename base for sprite generation.
+				ASSET_FILENAME_BASE: project_info.assets.filename_base,
 			}})
 			.on('error', function (error) {
 				console.error('Error!', error.message);
 			}),
 			autoprefixer(config.autoprefixer),
+			rename(rename_sass(filename, src)),
 			sourcemaps.write(map),
 			gulp.dest(dest),
 		])
@@ -346,12 +362,19 @@
 		.pipe(notify({ message: style_name + ' map written to ' + map }));
 	}
 
-	gulp.task('theme_styles', function() {
-		sass_build('Main Theme', [paths.sass.src + '*.scss', '!' + paths.sass.src + 'rtl.scss'], paths.sass.dest, paths.sass.maps, '../');
+	// Primary theme stylsheet.
+	gulp.task('theme_styles_primary', function() {
+		sass_build('Main Theme', paths.sass.output.filename, [paths.sass.src + paths.sass.stylesheets.primary], paths.sass.dest, paths.sass.maps, '../');
 	});
 
+	// Right to Left stylesheet.
 	gulp.task('theme_styles_rtl', function() {
-		sass_build('RTL', paths.sass.src + 'rtl.scss', base_paths.root, paths.sass.dest + paths.sass.maps, base_paths.dest);
+		sass_build('RTL', 'rtl', paths.sass.src + 'rtl.scss', base_paths.root, paths.sass.dest + paths.sass.maps, base_paths.dest);
+	});
+
+	// All other stylesheets in /assets-source/sass/.
+	gulp.task('theme_styles_additional', function() {
+		sass_build('Additional Theme', false, [paths.sass.src + '*.scss', '!' + paths.sass.src + 'rtl.scss', '!' + paths.sass.src + paths.sass.stylesheets.primary], paths.sass.dest, paths.sass.maps, '../');
 	});
 
 
@@ -384,6 +407,7 @@
 		var tpl = paths.templates.php;
 		gulp.src(tpl.src)
 		.pipe(inject_string.replace('@@theme_version@@', info.version))
+		.pipe(inject_string.replace('@@filename_base@@', project_info.assets.filename_base))
 		.pipe(inject_string.replace('@@css@@', '/' + paths.sass.dest))
 		.pipe(inject_string.replace('@@js_lib@@', '/' + paths.js.dest.lib))
 		.pipe(inject_string.replace('@@js_vendor@@', '/' + paths.js.dest.vendor))
@@ -487,7 +511,7 @@
 	});
 
 	gulp.task('styles', function(cb) {
-		run_sequence('clean:stylesheet', 'clean:rtl', 'theme_styles', 'theme_styles_rtl', cb);
+		run_sequence('clean:stylesheet', 'clean:rtl', 'theme_styles_primary', 'theme_styles_additional', 'theme_styles_rtl', cb);
 	});
 
 	gulp.task('set_theme_info', function(cb) {

@@ -38,7 +38,7 @@
  * @return string		A `url()` function leading to the asset.
  */
 @function asset($type, $file) {
-	@return url($path__assets-base + $type + '/' + $file);
+	@return url($assets__path-base + $type + '/' + $file);
 }
 
 /**

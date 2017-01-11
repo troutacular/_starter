@@ -13,10 +13,19 @@
 <?php
 
 /**
- * Get the page template slug (templates/tpl-slug.php) and remove
- * 'template-', 'templates/tpl-' and '.php' to set as a variable $template.
+ * Default value for $template to empty value.
  */
-$template = str_replace( array( 'page-', 'templates/tpl-', '.php' ), '', get_page_template_slug( $post->ID ) );
+$template = '';
+
+/**
+ * Check if we have a single post.
+ */
+if ( ! empty( $post ) ) {
+	/** Get the page template slug (page-templates/tpl-slug.php) and remove
+	 * 'page-', 'tpl-', 'template-' and '.php' to set as a variable $template.
+	 */
+	$template = str_replace( array( 'page-', 'tpl-', 'template-', '.php' ), '', get_page_template_slug( $post->ID ) );
+}
 
 /**
  * Check if on the homepage and if there is content in
@@ -31,7 +40,7 @@ if ( is_home() || is_front_page() && is_dynamic_sidebar( 'homepage' ) ) {
  * 1. $template has a value
  * 2. has widgets in '{dynamic}' sidebar
  */
-if ( '' !== $template && is_dynamic_sidebar( $template ) ) {
+if ( ! empty( $template ) && is_dynamic_sidebar( $template ) ) {
 	dynamic_sidebar( $template );
 }
 
@@ -41,7 +50,7 @@ if ( '' !== $template && is_dynamic_sidebar( $template ) ) {
  * 2. is a single page
  * 3. has widgets in 'template-default-content'
  */
-if ( ! $template && is_page() && is_dynamic_sidebar( 'template-default-content' ) ) {
+if ( empty( $template ) && is_page() && is_dynamic_sidebar( 'template-default-content' ) ) {
 	dynamic_sidebar( 'template-default-content' );
 }
 

@@ -1,12 +1,37 @@
 # Version Releases
 
-## 2.2.0
+## 3.0.0
 
 - Update PHP and JS functions to remove `starter` and `Starter` from function names to more generic function descriptors.
 	- `/assets-source/js/lib/starter.js`
 		- Renamed `starterAcronymClass` to `siteAcronymClass`
 	- `/inc/footer-columns.php`
 		- Renamed `Starter_Footer_Columns` to `WP_Custom_Footer_Columns`
+- More automated asset outputs using config settings.
+	- `/assets-source/js/lib/` contents compile to filename set in `gulpfile.js` under `project_info.assets.filename_base`.
+	- `/assets-source/sass/theme-stylesheet.scss` compile to filename set in `gulpfile.js` under `project_info.assets.filename_base`.
+	- Sprite filename and references are updated automatically from value `project_info.assets.filename_base`.
+- Renamed `editor-styles.css` to `admin-content-editor-styles.css` for declaring type of stylesheet.
+- Include `templates/tpl-sample.php` sample template.
+- Updated Read Me instructions for cloning.
+
+### __Bug:__
+
+- Fixed `$ gulp clean` function to add `clean:theme_info_php` to function `clean`.  This prevents default `$ gulp` compiling errors from before.
+
+### __Deprecation:__
+
+Replaced the following function calls:
+
+- `_starter_footer_columns_arguments` with `wp_custom_footer_columns_arguments`
+- `_starter_footer_columns_register` with `wp_custom_footer_columns_register`
+- `_starter_footer_columns` with `wp_custom_footer_columns`
+
+Updated the following SCSS variables:
+
+- `$path__assets-base` to `$assets__path-base`
+- `$filename__assets-base` to `$assets__filename-base`
+
 
 ## 2.1.0
 

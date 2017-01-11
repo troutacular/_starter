@@ -1,13 +1,12 @@
 <?php
 /**
- * The template for displaying all pages.
+ * Template Name: Sample Template
  *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
+ * The template for displaying a Custom Page Template.
  *
- * @link https://codex.wordpress.org/Template_Hierarchy
+ * Templates should be named 'tpl-[template-name].php' in order to use the
+ * option in sidebar.php to load a dyanmic_sidebar based on the template
+ * filename.
  *
  * @package _starter
  */

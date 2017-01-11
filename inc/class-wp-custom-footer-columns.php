@@ -189,13 +189,13 @@ if ( ! function_exists( 'wp_custom_footer_columns_register' ) ) {
 	}
 }
 
-if ( ! function_exists( 'wp_custom_footer_columns_init' ) ) {
+if ( ! function_exists( 'wp_custom_footer_columns' ) ) {
 	/**
 	 * Register the amount of footer columns.
 	 *
 	 * @return  void
 	 */
-	function wp_custom_footer_columns_init() {
+	function wp_custom_footer_columns() {
 		$footer = new WP_Custom_Footer_Columns( wp_custom_footer_columns_arguments() );
 		$footer->footer_columns();
 	}
