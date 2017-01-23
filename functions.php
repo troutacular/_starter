@@ -191,7 +191,6 @@ if ( ! function_exists( '_starter_setup' ) ) {
 		if ( function_exists( 'register_nav_menus' ) ) {
 			register_nav_menus( array(
 				'primary' => esc_html__( 'Primary Menu', '_starter' ),
-				'secondary' => esc_html__( 'Secondary Menu', '_starter' ),
 			) );
 		}
 
