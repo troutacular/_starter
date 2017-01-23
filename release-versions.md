@@ -1,5 +1,9 @@
 # Version Releases
 
+## 3.0.1
+
+- Remove `secondary` menu initialization.  There is no setting of the menu in the templates.
+
 ## 3.0.0
 
 - Update PHP and JS functions to remove `starter` and `Starter` from function names to more generic function descriptors.
