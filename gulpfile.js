@@ -269,6 +269,13 @@
 							scss: {
 								dest: paths.sprite.scss,
 								template: paths.sprite.template
+							},
+							// Admin example output.
+							css: {
+								// relative to current working directory
+								template: 'path/to/template.html',
+								// relative to current output directory
+								dest: 'path/to/demo.html'
 							}
 						}
 					}
