@@ -1,5 +1,9 @@
 # Version Releases
 
+## 3.0.2
+
+- Set functions.php doc comment with capital and theme name at the end (prevents phpcs error when replacing with theme-name).
+
 ## 3.0.1
 
 - Remove `secondary` menu initialization.  There is no setting of the menu in the templates.

@@ -1,6 +1,6 @@
 <?php
 /**
- * _starter functions and definitions.
+ * Functions and definitions for _starter theme.
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
