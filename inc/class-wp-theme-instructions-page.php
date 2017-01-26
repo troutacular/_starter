@@ -32,8 +32,8 @@ if ( ! class_exists( 'WP_Theme_Instructions_Admin_Page' ) ) {
 		 */
 		function admin_menu() {
 			add_menu_page(
-				'Starter Theme Instructions',
-				'Starter Theme',
+				'Using Starter',
+				'Using Starter',
 				'manage_options',
 				'theme_information',
 				array(
