@@ -156,6 +156,7 @@
 	 */
 	var base_paths = {
 		root: './',
+		root_from_asset: '../',
 		src: 'assets-source/',
 		dest: 'assets/',
 		sass: 'assets-source/sass/',
@@ -207,6 +208,11 @@
 			svg: 'images/' + project_info.assets.filename_base + '-sprite.svg',
 			scss: '../' + base_paths.sass + 'sprite/_sprite-map.scss',
 			template: base_paths.src + 'sass/sprite/templates/sprite-template.scss',
+			admin: {
+				template: base_paths.src + 'templates/sprite-samples.php',
+				dest: base_paths.root_from_asset + 'theme-instructions/sprite-samples.php',
+				clean: base_paths.root + 'theme-instructions/sprite-samples.php',
+			}
 		},
 		templates: {
 			src: base_paths.src + 'templates/',
@@ -270,16 +276,16 @@
 								dest: paths.sprite.scss,
 								template: paths.sprite.template
 							},
-							// Admin example output.
-							css: {
-								// relative to current working directory
-								template: 'path/to/template.html',
-								// relative to current output directory
-								dest: 'path/to/demo.html'
-							}
-						}
+						},
+						// Admin output for theme usage.
+						example: {
+							// relative to current working directory
+							template: paths.sprite.admin.template,
+							// relative to current output directory
+							dest: paths.sprite.admin.dest,
+						},
 					}
-				}
+				},
 			}))
 			.pipe(imagemin(config.images.minification))
 			.pipe(gulp.dest(base_paths.dest));
@@ -492,6 +498,12 @@
 	gulp.task('clean:theme_info_php', function(){
 		del([
 			paths.templates.php.dest + paths.templates.php.filename
+		]);
+	});
+
+	gulp.task('clean:theme_sprites', function(){
+		del([
+			paths.sprite.admin.clean
 		]);
 	});
 
