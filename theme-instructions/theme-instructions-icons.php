@@ -13,5 +13,9 @@
 <p>Included with this theme are the following icons and their associative classes.</p>
 
 <?php
-// insert template.
+/**
+ * Theme sprites.
+ */
+require_once get_template_directory() . '/theme-instructions/sprite-samples.php';
+
 ?>
