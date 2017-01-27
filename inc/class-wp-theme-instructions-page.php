@@ -51,7 +51,7 @@ if ( ! class_exists( 'WP_Theme_Instructions_Admin_Page' ) ) {
 		 * @return  void
 		 */
 		function settings_page() {
-			require get_template_directory() . '/theme-instructions/theme-instructions-main.php';
+			require get_template_directory() . '/theme-instructions/main.php';
 		}
 	}
 } // End if().

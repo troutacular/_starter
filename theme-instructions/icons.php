@@ -8,7 +8,7 @@
 
 ?>
 
-<h3 id="theme-instructions-theme-icons">Icons</h3>
+<h2 id="theme-instructions-theme-icons">Icons</h2>
 
 <p>Included with this theme are the following icons and their associative classes.</p>
 
@@ -16,6 +16,6 @@
 /**
  * Theme sprites.
  */
-require_once get_template_directory() . '/theme-instructions/sprite-samples.php';
+require_once get_template_directory() . '/theme-instructions/sprite-classes.php';
 
 ?>

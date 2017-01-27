@@ -209,9 +209,9 @@
 			scss: '../' + base_paths.sass + 'sprite/_sprite-map.scss',
 			template: base_paths.src + 'sass/sprite/templates/sprite-template.scss',
 			admin: {
-				template: base_paths.src + 'templates/sprite-samples.php',
-				dest: base_paths.root_from_asset + 'theme-instructions/sprite-samples.php',
-				clean: base_paths.root + 'theme-instructions/sprite-samples.php',
+				template: base_paths.src + 'templates/sprite-classes.php',
+				dest: base_paths.root_from_asset + 'theme-instructions/sprite-classes.php',
+				clean: base_paths.root + 'theme-instructions/sprite-classes.php',
 			}
 		},
 		templates: {
