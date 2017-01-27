@@ -71,8 +71,8 @@ function _starter_theme_instructions_class( $tab_name ) {
 
 <?php
 if ( 'setup' === _starter_theme_instructions() ) {
-	require_once get_template_directory() . '/admin/theme-instructions-setup.php';
+	require_once get_template_directory() . '/theme-instructions/theme-instructions-setup.php';
 }
 if ( 'icons' === _starter_theme_instructions() ) {
-	require_once get_template_directory() . '/admin/theme-instructions-icons.php';
+	require_once get_template_directory() . '/theme-instructions/theme-instructions-icons.php';
 }
