@@ -19,15 +19,16 @@ $sprite-icons: (
 		width: {{spriteWidth}}px,
 		height: {{spriteHeight}}px,
 		pngPath: image-url('#{$assets__filename-base}-sprite.png?ver=#{$version__project}'),
-		svgPath: image-url('#{$assets__filename-base}-sprite.svg?ver=#{$version__project}')),
-		{{#shapes}}
-			{{base}}: (
-				width: {{width.inner}}px,
-				height: {{height.inner}}px,
-				backgroundX: {{position.absolute.x}}px,
-				backgroundY: {{position.absolute.y}}px,
-				padT: {{padding.top}}px,
-				padR: {{padding.right}}px,
-				padB: {{padding.bottom}}px,
-				padL: {{padding.left}}px),
-		{{/shapes}});
+		svgPath: image-url('#{$assets__filename-base}-sprite.svg?ver=#{$version__project}')
+	),
+	{{#shapes}}
+		{{base}}: (
+			width: {{width.inner}}px,
+			height: {{height.inner}}px,
+			backgroundX: {{position.absolute.x}}px,
+			backgroundY: {{position.absolute.y}}px,
+			padT: {{padding.top}}px,
+			padR: {{padding.right}}px,
+			padB: {{padding.bottom}}px,
+			padL: {{padding.left}}px),
+	{{/shapes}});
