@@ -9,14 +9,14 @@
 ?>
 
 <h3 id="title-icon">Icon</h3>
-<ul>
+<ul class="sprite-icon-samples">
 {{#shapes}}
 	<li class="icon-{{base}}">icon-{{base}}</li>
 {{/shapes}}
 </ul>
 
 <h3 id="title-icon-only">Icon Only</h3>
-<ul>
+<ul class="sprite-icon-samples">
 {{#shapes}}
 	<li><span class="icon-only-{{base}}"></span>icon-only-{{base}}</li>
 {{/shapes}}
