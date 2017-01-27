@@ -276,8 +276,9 @@ $icon__margin--right: .5em !default;
 
 	// Outputs background position in em
 	@if $type == all or $type == bg {
-		//background-position: mq-px2em(map-get($icon-map, x)) mq-px2em(map-get($icon-map, y));
-		background-position: (mq-px2em(map-get($icon-map, x)) - mq-px2em(map-get($icon-map, padL)))(mq-px2em(map-get($icon-map, y)) - mq-px2em(map-get($icon-map, padT)));
+		// Original without padding allowance.
+		// background-position: mq-px2em(map-get($icon-map, x)) mq-px2em(map-get($icon-map, y));
+		background-position: (mq-px2em(map-get($icon-map, x )) - mq-px2em(map-get($icon-map, padL))) (mq-px2em(map-get( $icon-map, y)) - mq-px2em(map-get($icon-map, padT)));
 	}
 
 	// Add ie fallback if requested
@@ -305,7 +306,7 @@ $icon__margin--right: .5em !default;
 %theme-sprite {
 	display: inline-block;
 	background-image: map-get($sprite, svgPath);
-	background-size: mq-px2em(map-get($sprite, width)) mq-px2em(map-get($sprite, height));
+	background-size: mq-px2em(map-get($sprite, width) + 1) mq-px2em(map-get($sprite, height) + 1);
 }
 
 // Assign the correct PNG background image and dimensions to the element.
