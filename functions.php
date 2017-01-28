@@ -835,16 +835,10 @@ require get_template_directory() . '/inc/template-tags.php';
 11.1 - TinyMCE
 ----------------------------------------------------------------*/
 
-add_action( 'admin_init', 'wpdocs_starter_add_editor_styles' );
-if ( ! function_exists( 'wpdocs_starter_add_editor_styles' ) ) {
-
-	/**
-	 * Registers an editor stylesheet for the theme.
-	 */
-	function wpdocs_starter_add_editor_styles() {
-		add_editor_style( get_stylesheet_directory_uri() . _starter_get_asset_path( 'css' ) . 'admin-content-editor-styles.css' );
-	}
-}
+/**
+ * Tiny MCE custom styles.
+ */
+require get_template_directory() . '/inc/tiny-mce-classes.php';
 
 
 /** --------------------------------------------------------------
