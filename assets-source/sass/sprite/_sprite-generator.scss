@@ -1,0 +1,341 @@
+/**
+
+	SVG Sprite Generator
+	===========
+
+	1.0 - Maps
+	2.0 - Variables
+	3.0 - Mixins
+	4.0 - Placeholders
+
+	=========
+
+	NOTE
+
+	Do not modify the generated partial '_sprite.scss' - the code
+	that controls this partial is generated from the template
+	'_sprite_template.scss'
+
+
+	USAGE
+	=========
+
+	.class {
+		 &:before {
+			 @include sprite(twitter);
+			 content: '';
+			 float: left;
+			 margin-right: 0.5em;
+		 }
+
+		 &:hover {
+			 &:before {
+				 @include sprite(twitterHover, bg);
+			 }
+		 }
+	}
+
+	CREDIT
+	=========
+	@author Mike Street
+	@modified: @troutacular
+
+**/
+
+
+
+/*--------------------------------------------------------------
+1.0 - Maps
+--------------------------------------------------------------*/
+@import 'sprite-map';
+
+
+/*--------------------------------------------------------------
+2.0 - Variables
+--------------------------------------------------------------*/
+
+/**
+ * Media query base font size.
+ * @type  {string}
+ */
+$mq-base-font-size: $site__font-size + 'px';
+
+/**
+ * IE8 Support
+ * @type  {boolean}
+ */
+$ie8: false !default;
+
+/**
+ * Add class for <IE9 sprite fallback
+ *
+ * @group sprite
+ * @type string
+ */
+$ie-sprite: '.lt-ie9' !default;
+
+/**
+ * Set the `$sprite` map.
+ * @group sprite
+ */
+$sprite: map-get($sprite-icons, sprite) !default;
+
+/**
+ * Set the size of the icon in relation to the text.
+ * @type  {string}
+ */
+$icon__size: 1rem !default;
+
+/**
+ * Set the size of the icon in relation to the text.
+ * @type  {string}
+ */
+$icon__size-only: 2rem !default;
+
+/**
+ * Set the padding for the icon only element from the text.
+ * @type  {string}
+ */
+$icon__margin--right: .5em !default;
+
+
+/*--------------------------------------------------------------
+3.0 - Mixins
+--------------------------------------------------------------*/
+
+/**
+ *  Convert pixels to ems.
+ *
+ * @param integer $px 				Value to convert.
+ * @param integer $base-font-size   ($mq-base-font-size) - `<body>` font size.
+ *
+ * @example scss
+ *  $font-size-in-ems: mq-px2em(16px);
+ *  p { font-size: mq-px2em(16px); }
+ *
+ * @requires $mq-base-font-size
+ * @returns {integer}
+ */
+@function mq-px2em($px, $base-font-size: $mq-base-font-size) {
+	@if unitless($px) {
+		@warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels.";
+		@return mq-px2em($px + 0); // That may fail.
+	}
+	@else if unit($px) == em {
+		@return $px;
+	}
+	@return ($px / $base-font-size) * 1em;
+}
+
+/**
+ * Retrive an attributes value for a specific icon in the sprite map.
+ *
+ * @param string $icon  The name of the icon.
+ * @param string $attr  The attribute you wish to retrieve (e.g. width).
+ */
+@function sprite-attr($icon, $attr) {
+	$new-icon: map-get($sprite-icons, $icon);
+	@if $new-icon == null {
+		@warn "Can't find an icon with the name #{$icon}";
+	}
+	@return map-get($new-icon, $attr);
+}
+
+/**
+ * Create a map with the specified icon of attributes.
+ *
+ * @param string $icon  The name of the icon.
+ */
+@function icon-attr($icon) {
+	$attr: (
+		width: sprite-attr($icon, width),
+		height: sprite-attr($icon, height),
+		x: sprite-attr($icon, backgroundX),
+		y: sprite-attr($icon, backgroundY),
+		padT: sprite-attr($icon, padT),
+		padR: sprite-attr($icon, padR),
+		padB: sprite-attr($icon, padB),
+		padL: sprite-attr($icon, padL),
+	);
+
+	@return $attr;
+}
+
+/**
+ * Add a Sprite for IE support.
+ *
+ * @type  string $icon  The name of the icon.
+ * @type  string $type  The properties wanted {
+ * 					- `all` ensures the icon has the background, position and size.
+ * 					- `size` is just for dimensions.
+ * 					- `bg` just  applies the backgrounds to an element}.
+ * 				}
+ *
+ * @usage
+ * .class {
+ * 		@include ie-sprite(arrow);
+ * 		&:hover {
+ * 			@include ie-sprite(arrowDown, bg)
+ * 		}
+ * }
+ *
+ * @example css - Output
+ * .lt-ie9 .class {
+ *	 	background-image: url("../img/sprite.png");
+ * }
+ * .lt-ie9 .class {
+ *	 	width: 20px;
+ *	 	height: 20px;
+ *	 	background-position: -5px -5px;
+ * }
+ * .lt-ie9 .class:hover {
+ * 		background-position: -36px -36px;
+ * }
+ */
+@mixin ie-sprite($icon, $type: all) {
+	$icon-map: icon-attr($icon);
+
+	@if $ie-sprite {
+		#{$ie-sprite} & {
+			@if $type == all {
+				// Shares the PNG background
+				@extend %theme-sprite-ie;
+			}
+			// Outputs dimensions of icon
+			@if $type == all or $type == size {
+				width: map-get($icon-map, width);
+				height: map-get($icon-map, height);
+			}
+			// Outputs background position
+			@if $type == all or $type == bg {
+				background-position: (map-get($icon-map, x)) (map-get($icon-map, y));
+			}
+		}
+	}
+}
+
+/**
+ * Add an SVG sprite icon using em positioning, with a PNG icon for browsers with the `$ie-sprite` class using px positioning.
+ *
+ * @type  string $icon  The name of the icon.
+ * @type  string $type  The properties wanted {
+ * 					- `all` ensures the icon has the background, position and size.
+ * 					- `size` is just for dimensions.
+ * 					- `bg` just  applies the backgrounds to an element}.
+ * 				}
+ *
+ * @usage
+ * .class {
+ * 	@include sprite(arrow);
+ * 	&:hover {
+ * 		@include sprite(arrowDown, bg)
+ * 	}
+ * }
+ *
+ * @example css - Output
+ * .class {
+ * 	display: inline-block;
+ * 	background-image: url("../img/sprite.svg");
+ * 	background-size: 34.25em 32.1875em;
+ * }
+ *
+ * .lt-ie9 .class {
+ * 	background-image: url("../img/sprite.png");
+ * }
+ *
+ * .class {
+ * 	width: 1.3125em;
+ * 	height: 1.3125em;
+ * 	background-position: -0.3125em -0.3125em;
+ * }
+ * .lt-ie9 .class {
+ * 	width: 20px;
+ * 	height: 20px;
+ * 	background-position: -5px -5px;
+ * }
+ * .class:hover {
+ * 	background-position: -2.25em -2.25em;
+ * }
+ * .lt-ie9 .class:hover {
+ * 	background-position: -36px -36px;
+ * }
+ */
+@mixin sprite($icon, $type: all, $png: $ie8) {
+	@if $type == all {
+		// Shares the backgrounds
+		@extend %theme-sprite;
+	}
+
+	$icon-map: icon-attr($icon);
+
+	// Outputs dimensions in em
+	@if $type == all or $type == size {
+		width: mq-px2em(map-get($icon-map, width) + 1);
+		height: mq-px2em(map-get($icon-map, height) + 1);
+	}
+
+	// Outputs background position in em
+	@if $type == all or $type == bg {
+		// Original without padding allowance.
+		// background-position: mq-px2em(map-get($icon-map, x)) mq-px2em(map-get($icon-map, y));
+		background-position: (mq-px2em(map-get($icon-map, x )) - mq-px2em(map-get($icon-map, padL))) (mq-px2em(map-get( $icon-map, y)) - mq-px2em(map-get($icon-map, padT)));
+	}
+
+	// Add ie fallback if requested
+	@if $png == true {
+		@include ie-sprite($icon, $type);
+	}
+
+}
+
+@mixin icon-only-size($icon) {
+
+	$icon-map: icon-attr($icon);
+
+	width: mq-px2em(map-get($icon-map, width) + 1);
+	height: mq-px2em(map-get($icon-map, height) + 1);
+
+}
+
+
+/*--------------------------------------------------------------
+4.0 - Placeholders
+--------------------------------------------------------------*/
+
+// Assign the correct SVG background image and dimensions to the element.
+%theme-sprite {
+	display: inline-block;
+	background-image: map-get($sprite, svgPath);
+	background-size: mq-px2em(map-get($sprite, width) + 1) mq-px2em(map-get($sprite, height) + 1);
+}
+
+// Assign the correct PNG background image and dimensions to the element.
+%theme-sprite-ie {
+	background-image: map-get($sprite, pngPath);
+}
+
+// Set the link within an icon only class to be transparent with no interaction states visible.
+%icon-only-link {
+	color: transparent;
+
+	&:hover,
+	&:focus {
+		color: transparent;
+	}
+}
+
+%icon-style {
+	margin-right: $icon__margin--right;
+	content: '';
+}
+
+%icon-only-style {
+	@extend %icon-only-link;
+	display: inline-block;
+	position: relative;
+	margin: 0;
+	overflow: hidden;
+	font-size: $icon__size-only;
+
+
+}

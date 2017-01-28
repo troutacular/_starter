@@ -53,6 +53,7 @@ Table of Contents
 	9.2.5 - Post
 11.0 - Admin
 	11.1 - TinyMCE
+	11.2 - Theme Instructions
 
 ----------------------------------------------------------------*/
 
@@ -420,7 +421,7 @@ if ( ! function_exists( '_starter_create_new_taxonomies' ) ) {
 ----------------------------------------------------------------*/
 
 /**
- * Add action to enqueue CSS stylesheets
+ * Add action to enqueue CSS stylesheets.
  */
 add_action( 'wp_enqueue_scripts', '_starter_enqueue_css' );
 
@@ -432,6 +433,23 @@ if ( ! function_exists( '_starter_enqueue_css' ) ) {
 	function _starter_enqueue_css() {
 
 		wp_enqueue_style( '_starter-style', get_stylesheet_directory_uri() . _starter_get_asset_path( 'css' ) . _starter_get_filename_base() . '.css', false, _starter_get_version(), 'screen,print' );
+
+	}
+}
+
+/**
+ * Add action to enqueue CSS stylesheet for admin pages.
+ */
+add_action( 'admin_enqueue_scripts', '_starter_enqueue_admin_css' );
+
+if ( ! function_exists( '_starter_enqueue_admin_css' ) ) {
+
+	/**
+	 * Enqueue css file(s).
+	 */
+	function _starter_enqueue_admin_css() {
+
+		wp_enqueue_style( '_starter-style-admin', get_stylesheet_directory_uri() . _starter_get_asset_path( 'css' ) . 'admin-styles.css', false, _starter_get_version(), 'screen,print' );
 
 	}
 }
@@ -827,3 +845,13 @@ if ( ! function_exists( 'wpdocs_starter_add_editor_styles' ) ) {
 		add_editor_style( get_stylesheet_directory_uri() . _starter_get_asset_path( 'css' ) . 'admin-content-editor-styles.css' );
 	}
 }
+
+
+/** --------------------------------------------------------------
+11.2 - Theme Instructions
+----------------------------------------------------------------*/
+
+/**
+ * Theme insstructions page.
+ */
+require get_template_directory() . '/inc/class-wp-theme-instructions-page.php';

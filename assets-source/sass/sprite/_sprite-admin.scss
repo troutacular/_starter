@@ -1,0 +1,72 @@
+/**
+
+	SVG Sprites for Admin Display
+	===========
+
+	1.0 - Sprite Includes
+	2.0 - Icons
+	3.0 - Icon Only
+	4.0 - Individual Icons
+
+	=========
+
+	NOTE
+
+	Do not modify the generated partial '_sprite-generator.scss' - the code
+	that controls this partial is generated from the template
+	'_sprite_template.scss'
+
+**/
+
+
+/*--------------------------------------------------------------
+1.0 - Sprite Includes
+--------------------------------------------------------------*/
+@import 'sprite-generator';
+
+
+/*--------------------------------------------------------------
+2.0 - Icon
+--------------------------------------------------------------*/
+
+// Target icon items with classes starting with 'icon'
+.sprite-icon-samples *[class*='icon'] {
+	&::before {
+		@extend %icon-style;
+	}
+
+}
+
+
+/*--------------------------------------------------------------
+3.0 - Icon Only
+--------------------------------------------------------------*/
+
+.sprite-icon-samples *[class*='icon-only'] {
+	@extend %icon-only-style;
+}
+
+/*--------------------------------------------------------------
+4.0 - Individual Icons
+--------------------------------------------------------------*/
+
+@each $icon, $value in $sprite-icons {
+
+	@if $icon == sprite {
+		// don't do anything
+	}
+	@else {
+		.icon-only-#{$icon} {
+			@include icon-only-size($icon);
+			&::before {
+				@include sprite($icon);
+			}
+		}
+
+		.icon-#{$icon} {
+			&::before {
+				@include sprite($icon);
+			}
+		}
+	}
+}

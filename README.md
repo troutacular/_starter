@@ -15,6 +15,7 @@ __CAUTION:__ Search and replace the theme name references in the order listed be
 2. Search for `_starter_` to capture all the function names.
 3. Search for `_starter` to capture filename references.
 4. Search for `wp-theme-starter` to capture package compiling information.
+4. Search for `Starter` to capture admin page titles.
 
 OR
 
@@ -22,6 +23,7 @@ OR
 - Search for: `_starter_` and replace with: `theme_name_`
 - Search for: `_starter` and replace with: `theme-name` for asset output renaming.
 - Search for: `wp-theme-starter` and replace with: `wp-theme-theme-name` for gulp and package configurations.
+- Search for: `Starter` and replace with: `Theme Name` for admin page titles and theme name references.
 
 __Update the following:__
 
