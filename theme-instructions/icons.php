@@ -11,6 +11,13 @@
  */
 require_once get_template_directory() . '/inc/sprite-classes.php';
 
+/**
+ * Sprite classes as list.
+ *
+ * @since 3.1.0
+ * @param   string $type  Choose [icon] or [icon-only] list to display.
+ * @return  void
+ */
 function _starter_sprite_classes_list( $type = 'icon' ) {
 
 	$icons = _starter_sprite_classes();
