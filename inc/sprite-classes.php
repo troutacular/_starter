@@ -16,14 +16,10 @@ function _starter_sprite_classes() {
 	// Set the default project configurations.
 	$classes = array(
 		'icon' => array(
-		{{#shapes}}
-			'icon-{{base}}',
-		{{/shapes}}
+			'icon-wordpress-logo',
 		),
 		'icon-only' => array(
-		{{#shapes}}
-			'icon-only-{{base}}',
-		{{/shapes}}
+			'icon-only-wordpress-logo',
 		),
 	);
 
