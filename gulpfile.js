@@ -210,8 +210,8 @@
 			template: base_paths.src + 'sass/sprite/templates/sprite-template.scss',
 			admin: {
 				template: base_paths.src + 'templates/sprite-classes.php',
-				dest: base_paths.root_from_asset + 'theme-instructions/sprite-classes.php',
-				clean: base_paths.root + 'theme-instructions/sprite-classes.php',
+				dest: base_paths.root_from_asset + 'inc/sprite-classes.php',
+				clean: base_paths.root + 'inc/sprite-classes.php',
 			}
 		},
 		templates: {
