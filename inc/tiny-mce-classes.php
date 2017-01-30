@@ -18,7 +18,7 @@ if ( ! function_exists( 'wpdocs_starter_add_editor_styles' ) ) {
 }
 
 // Register function callback to mce_buttons_2.
-add_filter( 'mce_buttons_3', '_starter_tiny_mce_buttons' );
+add_filter( 'mce_buttons_2', '_starter_tiny_mce_buttons' );
 if ( ! function_exists( '_starter_tiny_mce_buttons' ) ) {
 	/**
 	 * Callback function to insert 'styleselect' into the $buttons array.
@@ -57,9 +57,6 @@ function _starter_tiny_mce_icon_classes( $type = 'icon' ) {
 					'classes' => $icon,
 					'exact' => true,
 					'icon' => $icon,
-					'styles' => array(
-						'fontSize' => '1rem',
-					),
 				);
 			}
 		}
