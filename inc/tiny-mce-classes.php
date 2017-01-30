@@ -18,7 +18,7 @@ if ( ! function_exists( 'wpdocs_starter_add_editor_styles' ) ) {
 }
 
 // Register function callback to mce_buttons_2.
-add_filter( 'mce_buttons_2', '_starter_tiny_mce_buttons' );
+add_filter( 'mce_buttons_3', '_starter_tiny_mce_buttons' );
 if ( ! function_exists( '_starter_tiny_mce_buttons' ) ) {
 	/**
 	 * Callback function to insert 'styleselect' into the $buttons array.
@@ -56,6 +56,10 @@ function _starter_tiny_mce_icon_classes( $type = 'icon' ) {
 					'inline' => 'span',
 					'classes' => $icon,
 					'exact' => true,
+					'icon' => $icon,
+					'styles' => array(
+						'fontSize' => '1rem',
+					),
 				);
 			}
 		}
@@ -82,33 +86,19 @@ if ( ! function_exists( '_starter_tiny_mce_before_init_insert_formats' ) ) {
 		// Get icon only list.
 		$icon_only = _starter_tiny_mce_icon_classes( 'icon-only' );
 
-		// Merge icon lists.
-		$icon_formats = array_merge( $icon, $icon_only );
-
 		// Define the style_formats array.
-		$custom_formats = array(
+		$style_formats = array(
 
 			// Insert custom child array formats.
 			array(
-				'title' => 'Horizontal Rule',
-				'block' => 'hr',
+				'title' => 'Icon',
+				'items' => $icon,
 			),
 			array(
-				'title' => 'Content Block: Divider',
-				'block' => 'div',
-				'classes' => 'inline-content-block-divider',
-				'wrapper' => 'div',
-			),
-			array(
-				'title' => 'Content Block',
-				'block' => 'div',
-				'classes' => 'inline-content-block',
-				'wrapper' => 'div',
+				'title' => 'Icon Only',
+				'items' => $icon_only,
 			),
 		);
-
-		// Merge icon and custom style lists.
-		$style_formats = array_merge( $custom_formats, $icon_formats );
 
 		// Insert the json encoded array into 'style_formats'.
 		$init_array['style_formats'] = wp_json_encode( $style_formats );
