@@ -30,7 +30,8 @@
 --------------------------------------------------------------*/
 
 // Target icon items with classes starting with 'icon'
-.sprite-icon-samples *[class*='icon'] {
+.sprite-icon-samples *[class*='icon'],
+*[class*='mce-i-icon'] {
 	&::before {
 		@extend %icon-style;
 	}
@@ -42,7 +43,8 @@
 3.0 - Icon Only
 --------------------------------------------------------------*/
 
-.sprite-icon-samples *[class*='icon-only'] {
+.sprite-icon-samples *[class*='icon-only'],
+*[class*='mce-i-icon-only'] {
 	@extend %icon-only-style;
 }
 
@@ -56,14 +58,16 @@
 		// don't do anything
 	}
 	@else {
-		.icon-only-#{$icon} {
+		.icon-only-#{$icon},
+		.mce-i-icon-only-#{$icon} {
 			@include icon-only-size($icon);
 			&::before {
 				@include sprite($icon);
 			}
 		}
 
-		.icon-#{$icon} {
+		.icon-#{$icon},
+		.mce-i-icon-#{$icon} {
 			&::before {
 				@include sprite($icon);
 			}

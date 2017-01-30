@@ -7,11 +7,6 @@
  */
 
 /**
- * Theme sprites.
- */
-require_once get_template_directory() . '/inc/sprite-classes.php';
-
-/**
  * Sprite classes as list.
  *
  * @since 3.1.0
