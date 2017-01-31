@@ -256,7 +256,7 @@ Images are optimized based on project settings in `config.images.minification`. 
 
 SVGs in `assets-source/images/sprite` will be optimized, combined, and created into a sprite in `assets/images`.
 
-Associative classes will be created in the SCSS files and compiled for usage as CSS classes in the format `.icon-[filename]{}` and `.icon-only-[filename]{}`.
+Associative classes will be created in the SCSS files and compiled for usage as CSS classes in the format `.icon-[filename]{}` and `.icon-only-[filename]{}`.  These classes will display in the TinyMCE editor in the WP Admin content section under the `Formats` dropdown as separate `Icon` and `Icon Only` lists.  They will insert the icon with a span tag to allow editors to add the icon to content easily without remembering classes.
 
 __NOTE:__ The sprite filename is generated automatically from the value `project_info.assets.filename_base`.
 
