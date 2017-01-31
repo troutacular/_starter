@@ -15,6 +15,7 @@ __CAUTION:__ Search and replace the theme name references in the order listed be
 2. Search for `_starter_` to capture all the function names.
 3. Search for `_starter` to capture filename references.
 4. Search for `wp-theme-starter` to capture package compiling information.
+4. Search for `Starter` to capture admin page titles.
 
 OR
 
@@ -22,6 +23,7 @@ OR
 - Search for: `_starter_` and replace with: `theme_name_`
 - Search for: `_starter` and replace with: `theme-name` for asset output renaming.
 - Search for: `wp-theme-starter` and replace with: `wp-theme-theme-name` for gulp and package configurations.
+- Search for: `Starter` and replace with: `Theme Name` for admin page titles and theme name references.
 
 __Update the following:__
 
@@ -254,7 +256,7 @@ Images are optimized based on project settings in `config.images.minification`. 
 
 SVGs in `assets-source/images/sprite` will be optimized, combined, and created into a sprite in `assets/images`.
 
-Associative classes will be created in the SCSS files and compiled for usage as CSS classes in the format `.icon-[filename]{}` and `.icon-only-[filename]{}`.
+Associative classes will be created in the SCSS files and compiled for usage as CSS classes in the format `.icon-[filename]{}` and `.icon-only-[filename]{}`.  These classes will display in the TinyMCE editor in the WP Admin content section under the `Formats` dropdown as separate `Icon` and `Icon Only` lists.  They will insert the icon with a span tag to allow editors to add the icon to content easily without remembering classes.
 
 __NOTE:__ The sprite filename is generated automatically from the value `project_info.assets.filename_base`.
 

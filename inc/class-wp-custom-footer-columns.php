@@ -15,7 +15,6 @@ if ( ! class_exists( 'WP_Custom_Footer_Columns' ) ) {
 	 *
 	 * @since 1.0.0
 	 * @package _starter
-	 * @subpackage inc
 	 */
 	class WP_Custom_Footer_Columns {
 

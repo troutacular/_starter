@@ -1,0 +1,128 @@
+/**
+
+	SVG Sprites
+	===========
+
+	1.0 - Icon
+	2.0 - Icon Only
+	3.0 - Individual Icons
+
+	=========
+
+	NOTE
+
+	Do not modify the generated partial '_sprite.scss' - the code
+	that controls this partial is generated from the template
+	'_sprite_template.scss'
+
+
+	USAGE
+	=========
+
+	.class {
+		 &:before {
+			 @include sprite(twitter);
+			 content: '';
+			 float: left;
+			 margin-right: 0.5em;
+		 }
+
+		 &:hover {
+			 &:before {
+				 @include sprite(twitterHover, bg);
+			 }
+		 }
+	}
+
+	CREDIT
+	=========
+	@author Mike Street
+	@modified: @troutacular
+
+**/
+
+
+/*--------------------------------------------------------------
+1.0 - Icon
+--------------------------------------------------------------*/
+
+// Target icon items with classes starting with 'icon'
+*[class*='icon'] {
+
+	// Exclude menu items.
+	&:not(.menu-icon) {
+		&::before {
+			@extend %icon-style;
+		}
+	}
+
+	&.menu-item {
+		> a::before {
+			@extend %icon-style;
+		}
+	}
+
+}
+
+
+/*--------------------------------------------------------------
+2.0 - Icon Only
+--------------------------------------------------------------*/
+
+*[class*='icon-only'] {
+
+	// Exclude menus items.
+	&:not(.menu-item) {
+		@extend %icon-only-style;
+	}
+
+	&.menu-item {
+		> a {
+			@extend %icon-only-style;
+		}
+	}
+}
+
+/*--------------------------------------------------------------
+3.0 - Individual Icons
+--------------------------------------------------------------*/
+
+@each $icon, $value in $sprite-icons {
+
+	@if $icon == sprite {
+		// don't do anything
+	}
+	@else {
+		.icon-only-#{$icon} {
+			&:not(.menu-item) {
+				@include icon-only-size($icon);
+				&::before {
+					@include sprite($icon);
+				}
+			}
+
+			&.menu-item {
+				> a {
+					@include icon-only-size($icon);
+					&::before {
+						@include sprite($icon);
+					}
+				}
+			}
+		}
+
+		.icon-#{$icon} {
+			&:not(.menu-item) {
+				&::before {
+					@include sprite($icon);
+				}
+			}
+
+			&.menu-item {
+				> a::before {
+					@include sprite($icon);
+				}
+			}
+		}
+	}
+}
