@@ -9,15 +9,18 @@
 
 ### __Bug:__
 
-	- Pixel dimension settings for sprite generator updated to work for font sizes below `$base-font-size`.
+- Pixel dimension settings for sprite generator updated to work for font sizes below `$base-font-size`
+
 
 ## 3.0.2
 
 - Set functions.php doc comment with capital and theme name at the end (prevents phpcs error when replacing with theme-name).
 
+
 ## 3.0.1
 
 - Remove `secondary` menu initialization.  There is no setting of the menu in the templates.
+
 
 ## 3.0.0
 
