@@ -8,6 +8,7 @@
 - Theme sprite icons automatically generated in WP Admin Tiny MCE `Formats` section for ease of user usage.
 
 ### __Bug:__
+
 	- Pixel dimension settings for sprite generator updated to work for font sizes below `$base-font-size`.
 
 ## 3.0.2
