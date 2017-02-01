@@ -1,5 +1,15 @@
 # Version Releases
 
+## 3.1.1
+
+- Updated language support:
+  - Updated references to footer column files.
+  - Added language support for icons in admin.
+
+### __Bug:__
+
+- Removed duplicate footer processing from `WP_Custom_Footer_Columns::footer_columns_class`
+
 ## 3.1.0
 
 - Added Theme Usage section in WP Admin under __Using [Theme]__:
