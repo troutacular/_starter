@@ -142,14 +142,14 @@ msgstr ""
 msgid "Primary Menu"
 msgstr ""
 
-#: inc/footer-columns.php:50
+#: inc/class-wp-custom-footer-columns.php:49
 #, php-format
 #@ _starter
 msgctxt "name"
 msgid "Footer Column %d"
 msgstr ""
 
-#: inc/footer-columns.php:52
+#: inc/class-wp-custom-footer-columns.php:51
 #, php-format
 #@ _starter
 msgctxt "description"
@@ -168,13 +168,6 @@ msgstr ""
 #@ _starter
 msgctxt "post author"
 msgid "by %s"
-msgstr ""
-
-#. translators: used between list items, there is a space after the comma
-#: inc/template-tags.php:58
-#: inc/template-tags.php:64
-#@ _starter
-msgid ", "
 msgstr ""
 
 #: inc/template-tags.php:59
@@ -202,14 +195,6 @@ msgstr ""
 #: inc/template-tags.php:73
 #@ _starter
 msgid "% Comments"
-msgstr ""
-
-#. translators: %s: Name of current post
-#: inc/template-tags.php:79
-#: template-parts/content-page.php:38
-#, php-format
-#@ _starter
-msgid "Edit %s"
 msgstr ""
 
 #: search.php:17
@@ -249,6 +234,58 @@ msgstr ""
 #: template-parts/content.php:44
 #@ _starter
 msgid "Pages:"
+msgstr ""
+
+#: theme-instructions/icons.php.php:32
+#@ _starter
+msgid "Included with this theme are the following icons and their associative classes."
+msgstr ""
+
+#: theme-instructions/icons.php.php:30
+#: theme-instructions/icons.php.php:35
+#: theme-instructions/main.php.php:69
+#@ _starter
+msgid "Icons"
+msgstr ""
+
+#: theme-instructions/icons.php.php:37
+#@ _starter
+msgid "Icon Only"
+msgstr ""
+
+#: theme-instructions/main.php.php:65
+#@ _starter
+msgid "Starter Theme"
+msgstr ""
+
+#: theme-instructions/main.php.php:68
+#@ _starter
+msgid "Theme Setup"
+msgstr ""
+
+#: theme-instructions/setup.php.php:11
+#@ _starter
+msgid "Setup"
+msgstr ""
+
+#: theme-instructions/setup.php.php:13
+#@ _starter
+msgid "Use this section to add content about how the theme is set up and/or automated functions that were performed on activation."
+msgstr ""
+
+#. translators: %s: Name of current post
+#: inc/template-tags.php:79
+#: template-parts/content-page.php:38
+#, php-format
+#@ _starter
+msgid "Edit %s"
+msgstr ""
+
+#. translators: used between list items, there is a space after the comma
+#: inc/template-tags.php:58
+#: inc/template-tags.php:64
+#@ _starter
+msgid ", "
 msgstr ""
 
 #. translators: %s: Name of current post.
