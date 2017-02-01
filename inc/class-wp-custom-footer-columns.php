@@ -66,22 +66,7 @@ if ( ! class_exists( 'WP_Custom_Footer_Columns' ) ) {
 		public function footer_columns_class() {
 
 			// Set the default to 0.
-			$count = $counter = 0;
-
-			if ( is_active_sidebar( 'site-footer-column' ) ) {
-				$count++;
-			}
-
-			if ( is_active_sidebar( 'site-footer-column-2' ) ) {
-				$count++;
-			}
-
-			if ( is_active_sidebar( 'site-footer-column-3' ) ) {
-				$count++;
-			}
-			if ( is_active_sidebar( 'site-footer-column-4' ) ) {
-				$count++;
-			}
+			$counter = 0;
 
 			$columns = $this->params['columns'];
 
@@ -98,7 +83,7 @@ if ( ! class_exists( 'WP_Custom_Footer_Columns' ) ) {
 				}
 			}
 
-			return 'site-footer-columns-' . esc_attr( $count );
+			return 'site-footer-columns-' . esc_attr( $counter );
 		}
 
 		/**
