@@ -1,5 +1,10 @@
 # Version Releases
 
+## 3.2.0
+
+- Added gulp processing for creating `[text-domain].pot` language translator template in `/languages` directory.
+
+
 ## 3.1.2
 
 - Updated `_starter.pot` template from WordPress i18n tools generator.
