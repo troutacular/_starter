@@ -76,12 +76,6 @@
 2.0 - Variables
 --------------------------------------------------------------*/
 
-	/**
-	 * The current user compiling the project.
-	 * @type  {string}
-	 */
-	var user = process.env.USER;
-
 
 /*--------------------------------------------------------------
 2.1 - Project Information
@@ -493,7 +487,6 @@ gulp.task('languages', function () {
 		.pipe(wpPot( {
 			domain: project_info.theme.text_domain,
 			package: project_info.theme.name,
-			lastTranslator: user,
 		} ))
 		.pipe(gulp.dest(paths.languages.dest + paths.languages.filename))
 		.pipe(notify({ message: 'Language POT file generated' }));
