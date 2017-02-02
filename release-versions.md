@@ -1,5 +1,10 @@
 # Version Releases
 
+## 3.1.2
+
+- Updated `_starter.pot` template from WordPress i18n tools generator.
+
+
 ## 3.1.1
 
 - Updated language support:
