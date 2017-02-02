@@ -1,16 +1,18 @@
-# Copyright (C) 2017 @troutacular
-# This file is distributed under the GNU General Public License v2 or later.
+# Copyright (C) 2017 _starter
+# This file is distributed under the same license as the _starter package.
 msgid ""
 msgstr ""
-"Project-Id-Version: _starter 3.1.1\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/_starter\n"
-"POT-Creation-Date: 2017-02-02 18:51:33+00:00\n"
+"Project-Id-Version: _starter\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"Last-Translator: jasoncauwels\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: 404.php:17
 msgid "Oops! That page can&rsquo;t be found."
@@ -24,8 +26,6 @@ msgstr ""
 msgid "Most Used Categories"
 msgstr ""
 
-#. translators: %1$s: smiley
-
 #: 404.php:51
 msgid "Try looking in the monthly archives. %1$s"
 msgstr ""
@@ -37,15 +37,15 @@ msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
 
-#: comments.php:48 comments.php:69
+#: comments.php:48, comments.php:69
 msgid "Comment navigation"
 msgstr ""
 
-#: comments.php:51 comments.php:72
+#: comments.php:51, comments.php:72
 msgid "Older Comments"
 msgstr ""
 
-#: comments.php:52 comments.php:73
+#: comments.php:52, comments.php:73
 msgid "Newer Comments"
 msgstr ""
 
@@ -53,7 +53,7 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: functions.php:197 header.php:45
+#: functions.php:197, header.php:45
 msgid "Primary Menu"
 msgstr ""
 
@@ -83,6 +83,18 @@ msgstr ""
 msgid "Skip to secondary content"
 msgstr ""
 
+#: search.php:17
+msgid "Search Results for: %s"
+msgstr ""
+
+#: searchform.php:11
+msgid "Search for:"
+msgstr ""
+
+#: searchform.php:12, searchform.php:14
+msgid "Search"
+msgstr ""
+
 #: inc/class-wp-custom-footer-columns.php:49
 msgid "Site Footer Column %d"
 msgstr ""
@@ -101,9 +113,7 @@ msgctxt "post author"
 msgid "by %s"
 msgstr ""
 
-#. translators: used between list items, there is a space after the comma
-
-#: inc/template-tags.php:58 inc/template-tags.php:64
+#: inc/template-tags.php:58, inc/template-tags.php:64
 msgid ", "
 msgstr ""
 
@@ -116,27 +126,12 @@ msgid "Tagged %1$s"
 msgstr ""
 
 #. translators: %s: post title
-
 #: inc/template-tags.php:73
 msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
 msgstr ""
 
-#. translators: %s: Name of current post
-
-#: inc/template-tags.php:80 template-parts/content-page.php:38
+#: inc/template-tags.php:80, template-parts/content-page.php:38
 msgid "Edit %s"
-msgstr ""
-
-#: search.php:17
-msgid "Search Results for: %s"
-msgstr ""
-
-#: searchform.php:11
-msgid "Search for:"
-msgstr ""
-
-#: searchform.php:12 searchform.php:14
-msgid "Search"
 msgstr ""
 
 #: template-parts/content-none.php:14
@@ -155,18 +150,15 @@ msgstr ""
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
 msgstr ""
 
-#: template-parts/content-page.php:27 template-parts/content.php:44
+#: template-parts/content-page.php:27, template-parts/content.php:44
 msgid "Pages:"
 msgstr ""
-
-#. translators: %s: Name of current post.
 
 #: template-parts/content.php:39
 msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#: theme-instructions/icons.php:30 theme-instructions/icons.php:35
-#: theme-instructions/main.php:69
+#: theme-instructions/icons.php:30, theme-instructions/icons.php:35, theme-instructions/main.php:69
 msgid "Icons"
 msgstr ""
 
@@ -192,27 +184,4 @@ msgstr ""
 
 #: theme-instructions/setup.php:13
 msgid "Use this section to add content about how the theme is set up and/or automated functions that were performed on activation."
-msgstr ""
-#. Theme Name of the plugin/theme
-msgid "_starter"
-msgstr ""
-
-#. Theme URI of the plugin/theme
-msgid "https://github.com/troutacular/_starter"
-msgstr ""
-
-#. Description of the plugin/theme
-msgid "WordPress _starter theme is based off of the _s (underscores) theme and is intended to clone and use as you see fit.  It is not intended to be used as a Parent or Child theme."
-msgstr ""
-
-#. Author of the plugin/theme
-msgid "@troutacular"
-msgstr ""
-
-#. Author URI of the plugin/theme
-msgid "https://github.com/troutacular/"
-msgstr ""
-
-#. Template Name of the plugin/theme
-msgid "Sample Template"
 msgstr ""
