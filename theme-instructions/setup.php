@@ -8,6 +8,6 @@
 
 ?>
 
-<h2 id="theme-instructions-main-theme-setup">Setup</h2>
+<h2 id="theme-instructions-main-theme-setup"><?php esc_html_e( 'Setup', '_starter' ); ?></h2>
 
-<p>Use this section to add content about how the theme is set up and/or automated functions that were performed on activation.</p>
+<p><?php esc_html_e( 'Use this section to add content about how the theme is set up and/or automated functions that were performed on activation.', '_starter' ); ?></p>

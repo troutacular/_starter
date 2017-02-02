@@ -27,13 +27,13 @@ function _starter_sprite_classes_list( $type = 'icon' ) {
 }
 ?>
 
-<h2 id="theme-instructions-theme-icons">Icons</h2>
+<h2 id="theme-instructions-theme-icons"><?php esc_html_e( 'Icons', '_starter' ); ?></h2>
 
-<p>Included with this theme are the following icons and their associative classes.</p>
+<p><?php esc_html__( 'Included with this theme are the following icons and their associative classes.', '_starter' ); ?></p>
 
 <div class="sprite-icon-samples">
-<h3 id="title-icon">Icon</h3>
+<h3 id="title-icon"><?php esc_html_e( 'Icons', '_starter' ); ?></h3>
 <?php _starter_sprite_classes_list( 'icon' ); ?>
-<h3 id="title-icon-only">Icon Only</h3>
+<h3 id="title-icon-only"><?php esc_html_e( 'Icon Only', '_starter' ); ?></h3>
 <?php _starter_sprite_classes_list( 'icon-only' ); ?>
 </div>

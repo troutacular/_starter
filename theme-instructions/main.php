@@ -62,11 +62,11 @@ function _starter_theme_instructions_class( $tab_name ) {
 </style>
 <div class="usc_lfwp_wrap">
 
-	<h1 id="settings-bookmark-theme-instructions">Starter Theme</h1>
+	<h1 id="settings-bookmark-theme-instructions"><?php esc_html_e( 'Starter Theme', '_starter' ); ?></h1>
 
 	<div class="nav-tab-wrapper">
-		<a href="?page=theme_information&tab=setup" class="nav-tab <?php _starter_theme_instructions_class( 'setup' ); ?>">Theme Setup</a>
-		<a href="?page=theme_information&tab=icons" class="nav-tab <?php _starter_theme_instructions_class( 'icons' ); ?>">Icons</a>
+		<a href="?page=theme_information&tab=setup" class="nav-tab <?php _starter_theme_instructions_class( 'setup' ); ?>"><?php esc_html_e( 'Theme Setup', '_starter' ); ?></a>
+		<a href="?page=theme_information&tab=icons" class="nav-tab <?php _starter_theme_instructions_class( 'icons' ); ?>"><?php esc_html_e( 'Icons', '_starter' ); ?></a>
 	</div>
 
 <?php
