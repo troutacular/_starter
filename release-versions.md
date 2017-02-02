@@ -5,6 +5,7 @@
 - Updated language support:
   - Updated references to footer column files.
   - Added language support for icons in admin.
+- Add note in read me file about renaming pot file to text domain.
 
 ### __Bug:__
 

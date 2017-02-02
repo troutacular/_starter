@@ -38,6 +38,7 @@ __Update the following:__
   - Author URI in `project_info.theme.author_uri`
   - Check and update the theme information in `project_info.theme`:
     - `version`, `name`, `uri`, `author`, `author_uri`, `description`, `tags`
+- Rename `/languages/_starter.pot` to `/languages/[text-domain].pot`.
 
 
 __NOTES:__
