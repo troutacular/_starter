@@ -16,11 +16,12 @@
 	4.0 - Scripts
 	5.0 - Styles
 	6.0 - Theme Information
-	7.0 - Build
-		7.1 - Clean
-		7.2 - Build Types
-		7.3 - Default
-		7.4 - Watch
+	7.0 - Languages
+	8.0 - Build
+		8.1 - Clean
+		8.2 - Build Types
+		8.3 - Default
+		8.4 - Watch
 
 	NOTE: You do not need to edit below section 2.2 unless adding additional functions/dependencies.
 **/
@@ -65,7 +66,10 @@
 		// SVG
 		svg_sprite = require('gulp-svg-sprite'),
 		svg2png = require('gulp-svg2png'),
-		svgmin = require('gulp-svgmin');
+		svgmin = require('gulp-svgmin'),
+
+		// Language support
+		wpPot = require('gulp-wp-pot');
 
 
 /*--------------------------------------------------------------
@@ -103,7 +107,7 @@
 		},
 		// This section provides the information for the 'style.css' file in the root of the theme.
 		theme: {
-			version: '3.1.2',
+			version: '3.2.0',
 			name: '_starter',
 			uri: 'https://github.com/troutacular/_starter',
 			author: '@troutacular',
@@ -227,6 +231,10 @@
 				dest: './inc/',
 			},
 		},
+		languages: {
+			dest: 'languages/',
+			filename: project_info.assets.filename_base + '.pot',
+		}
 	};
 
 
@@ -471,16 +479,30 @@
 
 
 /*--------------------------------------------------------------
-7.0 - Build
+7.0 - Languages
+--------------------------------------------------------------*/
+
+gulp.task('languages', function () {
+	return gulp.src('**/*.php')
+		.pipe(wpPot( {
+			domain: project_info.theme.text_domain,
+			package: project_info.theme.name,
+		} ))
+		.pipe(gulp.dest(paths.languages.dest + paths.languages.filename))
+		.pipe(notify({ message: 'Language POT file generated' }));
+});
+
+/*--------------------------------------------------------------
+8.0 - Build
 --------------------------------------------------------------*/
 
 
 /*--------------------------------------------------------------
-7.1 - Clean
+8.1 - Clean
 --------------------------------------------------------------*/
 
 	// Master clean function.
-	gulp.task('clean', ['clean:stylesheet', 'clean:rtl', 'clean:images', 'clean:js', 'clean:theme_info', 'clean:theme_info_php']);
+	gulp.task('clean', ['clean:stylesheet', 'clean:rtl', 'clean:images', 'clean:js', 'clean:theme_info', 'clean:theme_info_php', 'clean:languages']);
 
 	// Individual clean functions for streams.
 	gulp.task('clean:stylesheet', function(){
@@ -498,6 +520,12 @@
 	gulp.task('clean:theme_info_php', function(){
 		del([
 			paths.templates.php.dest + paths.templates.php.filename
+		]);
+	});
+
+	gulp.task('clean:languages', function(){
+		del([
+			paths.languages.dest + paths.languages.filename
 		]);
 	});
 
@@ -527,7 +555,7 @@
 
 
 /*--------------------------------------------------------------
-7.2 - Build Types
+8.2 - Build Types
 --------------------------------------------------------------*/
 
 	gulp.task('images', function(cb) {
@@ -548,7 +576,7 @@
 
 
 /*--------------------------------------------------------------
-7.3 - Default
+8.3 - Default
 --------------------------------------------------------------*/
 
 	/**
@@ -556,12 +584,12 @@
 	 * $ gulp
 	 */
 	gulp.task('default', function(){
-		run_sequence('clean', 'scripts', 'images', 'styles', 'set_theme_info');
+		run_sequence('clean', 'scripts', 'images', 'styles', 'set_theme_info', 'languages');
 	});
 
 
 /*--------------------------------------------------------------
-7.4 - Watch
+8.4 - Watch
 --------------------------------------------------------------*/
 
 	/**
