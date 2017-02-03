@@ -24,7 +24,7 @@
     "gulp-svgmin": "^1.2.3",
     "gulp-uglify": "^2.0.0",
     "gulp-wp-pot": "^2.0.3",
-    "jshint": "^2.9.3",
+    "jshint": "^2.9.4",
     "path": "^0.12.7",
     "pump": "^1.0.1",
     "run-sequence": "^1.2.2",
