@@ -14,6 +14,7 @@
     "gulp-inject-string": "^1.1.0",
     "gulp-jshint": "^2.0.1",
     "gulp-json-editor": "^2.2.1",
+    "gulp-modernizr": "^1.0.0-alpha",
     "gulp-notify": "^2.2.0",
     "gulp-preprocess": "^2.0.0",
     "gulp-rename": "^1.2.2",
