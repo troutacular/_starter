@@ -94,11 +94,11 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: inc/class-wp-custom-footer-columns.php:49
+#: inc/class-wp-custom-footer-columns.php:48
 msgid "Site Footer Column %d"
 msgstr ""
 
-#: inc/class-wp-custom-footer-columns.php:51
+#: inc/class-wp-custom-footer-columns.php:50
 msgid "Drag widgets here to show in the corresponding column of the footer. The columns are dynamic and they will split their width's evenly between Footer Column areas that have active widgets."
 msgstr ""
 

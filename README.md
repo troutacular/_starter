@@ -2,6 +2,33 @@
 
 This is a starting point to create a new theme template.  You should not use this theme for a project as it will be updated with elements.  You should, however, take a snapshot and use it to create a new theme for your project.
 
+<!-- MDTOC maxdepth:2 firsth1:0 numbering:0 flatten:0 bullets:1 updateOnSave:1 -->
+
+- [Installing](#installing)   
+   - [Naming the Theme](#naming-the-theme)   
+   - [Installing Node, NPM, and Gulp](#installing-node-npm-and-gulp)   
+   - [Installing Dependencies](#installing-dependencies)   
+- [Configuration](#configuration)   
+   - [NPM Package](#npm-package)   
+   - [WordPress Theme Information](#wordpress-theme-information)   
+   - [Stylesheets](#stylesheets)   
+   - [PHP Variables](#php-variables)   
+- [PHP Functions](#php-functions)   
+- [Theme Templates](#theme-templates)   
+   - [Theme Templates: Dynamic Sidebars](#theme-templates-dynamic-sidebars)   
+- [Project Compiling](#project-compiling)   
+   - [Compile Project](#compile-project)   
+   - [Javascript](#javascript)   
+   - [Stylesheets](#stylesheets-1)   
+   - [Images](#images)   
+- [Naming Conventions](#naming-conventions)   
+   - [SASS Variables](#sass-variables)   
+- [File Commenting](#file-commenting)   
+- [Notable Items](#notable-items)   
+   - [Accesibility](#accesibility)   
+- [Credits](#credits)   
+
+<!-- /MDTOC -->
 
 ## Installing
 
@@ -163,6 +190,13 @@ The `admin` and `vendor` scripts are only compiled to their respective destinati
 Javascript files in `assets-source/js/lib` will run jshint on the files, concatenate, minify and rename into a single file `assets/js/lib/[paths.js.output.basename].min.js`.
 
 __NOTE:__ `paths.js.output.basename` maps to `project_info.assets.filename_base`.
+
+
+##### Modernizr
+
+As of Version 3.3.0, Modernizr has been included in the build of the Library scripts.  The settings for these are under `config.modernizr`.  
+
+The options for the output can be found at [Modernizr Options][] and the full documentation at [Modernizr][].  The `config.modernizr` values for  `options` are from the __Options__ section and the `tests` are from the __Browser Features__.
 
 
 #### JS: Vendor Scripts
@@ -373,6 +407,8 @@ Functions: See individual functions.
 
 
 [Gulp]: http://gulpjs.com
+[Modernizr Options]: https://modernizr.com/download#
+[Modernizr]: https://modernizr.com/docs
 [Node]: https://nodejs.org/en/
 [NPM]: https://www.npmjs.com/
 [Sass]: http://sass-lang.com
