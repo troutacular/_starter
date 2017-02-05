@@ -2,16 +2,30 @@
 
 This is a starting point to create a new theme template.  You should not use this theme for a project as it will be updated with elements.  You should, however, take a snapshot and use it to create a new theme for your project.
 
-<!-- MDTOC maxdepth:1 firsth1:0 numbering:0 flatten:0 bullets:1 updateOnSave:1 -->
+<!-- MDTOC maxdepth:2 firsth1:0 numbering:0 flatten:0 bullets:1 updateOnSave:1 -->
 
 - [Installing](#installing)   
+   - [Naming the Theme](#naming-the-theme)   
+   - [Installing Node, NPM, and Gulp](#installing-node-npm-and-gulp)   
+   - [Installing Dependencies](#installing-dependencies)   
 - [Configuration](#configuration)   
+   - [NPM Package](#npm-package)   
+   - [WordPress Theme Information](#wordpress-theme-information)   
+   - [Stylesheets](#stylesheets)   
+   - [PHP Variables](#php-variables)   
 - [PHP Functions](#php-functions)   
 - [Theme Templates](#theme-templates)   
+   - [Theme Templates: Dynamic Sidebars](#theme-templates-dynamic-sidebars)   
 - [Project Compiling](#project-compiling)   
+   - [Compile Project](#compile-project)   
+   - [Javascript](#javascript)   
+   - [Stylesheets](#stylesheets-1)   
+   - [Images](#images)   
 - [Naming Conventions](#naming-conventions)   
+   - [SASS Variables](#sass-variables)   
 - [File Commenting](#file-commenting)   
 - [Notable Items](#notable-items)   
+   - [Accesibility](#accesibility)   
 - [Credits](#credits)   
 
 <!-- /MDTOC -->
