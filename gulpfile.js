@@ -52,6 +52,7 @@
 		sourcemaps = require('gulp-sourcemaps'),
 
 		// Javascript
+		modernizr = require('gulp-modernizr'),
 		concat = require('gulp-concat'),
 		jshint = require('gulp-jshint'),
 		uglify = require('gulp-uglify'),
@@ -107,7 +108,7 @@
 		},
 		// This section provides the information for the 'style.css' file in the root of the theme.
 		theme: {
-			version: '3.2.0',
+			version: '3.3.0',
 			name: '_starter',
 			uri: 'https://github.com/troutacular/_starter',
 			author: '@troutacular',
@@ -147,6 +148,27 @@
 			outputStyle: 'compressed',
 			includePaths: ['node_modules/susy/sass']
 		},
+		modernizr: {
+			'crawl': false,
+			'options': [
+				'domPrefixes',
+				'html5shiv',
+				'mq',
+				'prefixed',
+				'prefixedCSS',
+				'prefixes',
+				'setClasses',
+				'testAllProps',
+				'testProp',
+				'testStyles',
+			],
+			'tests': [
+				'csstransforms',
+				'csstransforms3d',
+				'csstransitions',
+				'svg',
+			],
+		}
 	};
 
 
@@ -329,6 +351,7 @@
 		return pump([
 			gulp.src(paths.js.src.lib + '**/*.js'),
 			jshint(),
+			modernizr(config.modernizr),
 			jshint.reporter('default'),
 			concat(paths.js.output.filename + paths.js.output.ext),
 			uglify(),
