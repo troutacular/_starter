@@ -2,48 +2,17 @@
 
 This is a starting point to create a new theme template.  You should not use this theme for a project as it will be updated with elements.  You should, however, take a snapshot and use it to create a new theme for your project.
 
-<!-- MDTOC maxdepth:6 firsth1:1 numbering:0 flatten:0 bullets:1 updateOnSave:1 -->
+<!-- MDTOC maxdepth:1 firsth1:0 numbering:0 flatten:0 bullets:1 updateOnSave:1 -->
 
-- [`_starter`](#_starter)   
-   - [Installing](#installing)   
-      - [Naming the Theme](#naming-the-theme)   
-      - [Installing Node, NPM, and Gulp](#installing-node-npm-and-gulp)   
-      - [Installing Dependencies](#installing-dependencies)   
-   - [Configuration](#configuration)   
-      - [NPM Package](#npm-package)   
-      - [WordPress Theme Information](#wordpress-theme-information)   
-      - [Stylesheets](#stylesheets)   
-      - [PHP Variables](#php-variables)   
-   - [PHP Functions](#php-functions)   
-   - [Theme Templates](#theme-templates)   
-      - [Theme Templates: Dynamic Sidebars](#theme-templates-dynamic-sidebars)   
-   - [Project Compiling](#project-compiling)   
-      - [Compile Project](#compile-project)   
-         - [Watch Project](#watch-project)   
-      - [Javascript](#javascript)   
-         - [JS: Library Scripts](#js-library-scripts)   
-            - [Modernizr](#modernizr)   
-         - [JS: Vendor Scripts](#js-vendor-scripts)   
-         - [JS: Admin Scripts](#js-admin-scripts)   
-      - [Stylesheets](#stylesheets-1)   
-         - [CSS Compiling](#css-compiling)   
-         - [Stylesheet Types](#stylesheet-types)   
-            - [Primary stylesheet](#primary-stylesheet)   
-               - [Vendor Inclusions](#vendor-inclusions)   
-               - [Custom Mixins](#custom-mixins)   
-            - [Right to Left](#right-to-left)   
-            - [All other stylesheets](#all-other-stylesheets)   
-      - [Images](#images)   
-         - [Optimization](#optimization)   
-         - [Sprites](#sprites)   
-         - [PNG](#png)   
-   - [Naming Conventions](#naming-conventions)   
-      - [SASS Variables](#sass-variables)   
-         - [Examples:](#examples)   
-   - [File Commenting](#file-commenting)   
-   - [Notable Items](#notable-items)   
-      - [Accesibility](#accesibility)   
-   - [Credits](#credits)   
+- [Installing](#installing)   
+- [Configuration](#configuration)   
+- [PHP Functions](#php-functions)   
+- [Theme Templates](#theme-templates)   
+- [Project Compiling](#project-compiling)   
+- [Naming Conventions](#naming-conventions)   
+- [File Commenting](#file-commenting)   
+- [Notable Items](#notable-items)   
+- [Credits](#credits)   
 
 <!-- /MDTOC -->
 
@@ -424,7 +393,7 @@ Functions: See individual functions.
 
 
 [Gulp]: http://gulpjs.com
-[Modernizr Output]: https://modernizr.com/download#
+[Modernizr Options]: https://modernizr.com/download#
 [Modernizr]: https://modernizr.com/docs
 [Node]: https://nodejs.org/en/
 [NPM]: https://www.npmjs.com/
