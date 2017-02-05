@@ -14,7 +14,7 @@ function _starter_get_config() {
 
 	// Set the default project configurations.
 	$config = array(
-		'version' => '3.2.0',
+		'version' => '3.3.0',
 		'assets' => array(
 			'filename_base' => '_starter',
 		),
