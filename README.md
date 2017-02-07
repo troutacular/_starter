@@ -210,10 +210,10 @@ As of Version 3.3.0, Modernizr can be included in the build of the Library scrip
 		<td>Option to include the modernizr file in your project.  If `true`, uses `wp_enqueue_script` to load the script.</td>
 	</tr>
 	<tr>
-		<td>`config.modernizr.in_head`</td>
+		<td>`config.modernizr.in_footer`</td>
 		<td>`boolean`</td>
-		<td>`false`</td>
-		<td>Sets the option to load modernizr in the head.  Default `false` enqueues the script just before the closing `</html>`.</td>
+		<td>`true`</td>
+		<td>Sets the option to load modernizr in the footer.  Default `false` enqueues the script just before the closing `</html>`.</td>
 	</tr>
 	<tr>
 		<td>`config.modernizr.filename`</td>

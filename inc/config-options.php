@@ -19,8 +19,8 @@ function _starter_get_config() {
 			'filename_base' => '_starter',
 			'modernizr' => array(
 				'include' => false,
-				'in_head' => false,
-				'asset' => 'modernizr.js',
+				'in_footer' => false,
+				'filename' => 'modernizr.js',
 			),
 		),
 		'paths' => array(

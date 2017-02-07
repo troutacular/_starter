@@ -150,7 +150,7 @@
 		},
 		modernizr: {
 			include: false,
-			in_head: false,
+			in_footer: false,
 			filename: 'modernizr.js',
 			settings: {
 				'crawl': false,
@@ -474,7 +474,7 @@
 		.pipe(inject_string.replace('@@js_vendor@@', '/' + paths.js.dest.vendor))
 		.pipe(inject_string.replace('@@js_admin@@', '/' + paths.js.dest.admin))
 		.pipe(inject_string.replace('modernizr_include', config.modernizr.include))
-		.pipe(inject_string.replace('modernizr_in_head', config.modernizr.in_head))
+		.pipe(inject_string.replace('modernizr_in_footer', config.modernizr.in_footer))
 		.pipe(inject_string.replace('@@modernizr_filename@@', config.modernizr.filename))
 		.pipe(rename(tpl.filename))
 		.pipe(gulp.dest(tpl.dest))
