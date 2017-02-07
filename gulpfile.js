@@ -160,7 +160,6 @@
 					'prefixed',
 					'prefixedCSS',
 					'prefixes',
-					'setClasses',
 					'testAllProps',
 					'testProp',
 					'testStyles',
