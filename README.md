@@ -238,6 +238,27 @@ As of Version 3.3.0, Modernizr can be included in the build of the Vendor script
 	</tr>
 </table>
 
+Default [`options`](https://modernizr.com/docs#):
+
+- [`mq`](https://modernizr.com/docs#modernizr-mq)
+
+__NOTE:__ Any options with underscores like `_domPrefixes` need to be added to the options list without the underscore:
+
+```
+modernizr: {
+  settings: {
+    'options': [
+      '_domPrefixes' // will not work
+      'domPrefixes' // works
+    ]
+  }
+}
+```
+
+Default [`settings`](https://modernizr.com/docs#features):
+
+- `svg`
+
 The options for the output can be found at [Modernizr Options][] and the full documentation at [Modernizr][].  The `config.modernizr` values for  `options` are from the __Options__ section and the `tests` are from the __Browser Features__.
 
 
