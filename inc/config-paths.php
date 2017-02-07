@@ -17,6 +17,11 @@ function _starter_get_config() {
 		'version' => '3.3.0',
 		'assets' => array(
 			'filename_base' => '_starter',
+			'modernizr' => array(
+				'include' => 'false',
+				'in_head' => 'false',
+				'asset' => 'modernizr.js',
+			),
 		),
 		'paths' => array(
 			'assets' => array(
