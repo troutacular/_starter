@@ -489,6 +489,16 @@ if ( ! function_exists( '_starter_scripts' ) ) {
 		 */
 
 		/**
+		 * Add HTML5 Shiv in header.
+		 */
+		wp_enqueue_script( 'html5-shiv', get_stylesheet_directory_uri() . _starter_get_asset_path( 'js-vendor' ) . 'html5shiv.min.js', array(), _starter_get_version(), false );
+
+		/**
+		 * Add metadata to script to load only for IE less than 9.
+		 */
+		wp_script_add_data( 'html5-shiv', 'conditional', 'lte IE 9' );
+
+		/**
 		 * Set primary theme script dependencies.
 		 */
 		$script_dependencies = array();
@@ -504,16 +514,16 @@ if ( ! function_exists( '_starter_scripts' ) ) {
 		$modernizr = $config['assets']['modernizr'];
 
 		if ( $modernizr['include']  && ! empty( $modernizr['filename'] ) ) {
-			wp_register_script( 'modernizr', get_stylesheet_directory_uri() . _starter_get_asset_path( 'js-vendor' ) . $modernizr['filename'], array(), _starter_get_version(), $modernizr['in_footer'] );
+			wp_enqueue_script( 'modernizr', get_stylesheet_directory_uri() . _starter_get_asset_path( 'js-vendor' ) . $modernizr['filename'], array(), _starter_get_version(), $modernizr['in_footer'] );
 
 			// Add modernizr as a dependency.
 			$script_dependencies[] = 'modernizr';
 		}
 
 		/**
-		 * Load individual scripts.
+		 * Load theme scripts.
 		 */
-		wp_register_script( 'theme-scripts', get_stylesheet_directory_uri() . _starter_get_asset_path( 'js-lib' ) . _starter_get_filename_base() . '.min.js', $script_dependencies, _starter_get_version(), true );
+		wp_enqueue_script( 'theme-scripts', get_stylesheet_directory_uri() . _starter_get_asset_path( 'js-lib' ) . _starter_get_filename_base() . '.min.js', $script_dependencies, _starter_get_version(), true );
 
 		/**
 		 * Load comments reply script.
