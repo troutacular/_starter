@@ -2,6 +2,33 @@
 
 This is a starting point to create a new theme template.  You should not use this theme for a project as it will be updated with elements.  You should, however, take a snapshot and use it to create a new theme for your project.
 
+<!-- MDTOC maxdepth:2 firsth1:0 numbering:0 flatten:0 bullets:1 updateOnSave:1 -->
+
+- [Installing](#installing)   
+   - [Naming the Theme](#naming-the-theme)   
+   - [Installing Node, NPM, and Gulp](#installing-node-npm-and-gulp)   
+   - [Installing Dependencies](#installing-dependencies)   
+- [Configuration](#configuration)   
+   - [NPM Package](#npm-package)   
+   - [WordPress Theme Information](#wordpress-theme-information)   
+   - [Stylesheets](#stylesheets)   
+   - [PHP Variables](#php-variables)   
+- [PHP Functions](#php-functions)   
+- [Theme Templates](#theme-templates)   
+   - [Theme Templates: Dynamic Sidebars](#theme-templates-dynamic-sidebars)   
+- [Project Compiling](#project-compiling)   
+   - [Compile Project](#compile-project)   
+   - [Javascript](#javascript)   
+   - [Stylesheets](#stylesheets-1)   
+   - [Images](#images)   
+- [Naming Conventions](#naming-conventions)   
+   - [SASS Variables](#sass-variables)   
+- [File Commenting](#file-commenting)   
+- [Notable Items](#notable-items)   
+   - [Accesibility](#accesibility)   
+- [Credits](#credits)   
+
+<!-- /MDTOC -->
 
 ## Installing
 
@@ -172,6 +199,67 @@ These are third party scripts maintained by other developers/organizations.
 Javascript files in `assets-source/js/vendor` will run jshint on the file and compile to `assets/js/vendor`.
 
 *These files will not run jshint or be concatenated or minified.*
+
+
+##### Modernizr
+
+As of Version 3.3.0, Modernizr can be included in the build of the Vendor scripts.  The settings for these are under `config.modernizr`.
+
+<table>
+	<tr>
+		<th>Configuration</th>
+		<th>Type</th>
+		<th>Default</th>
+		<th>Option</th>
+	</tr>
+	<tr>
+		<td>`config.modernizr.include`</td>
+		<td>`boolean`</td>
+		<td>`false`</td>
+		<td>Option to include the modernizr file in your project.  If `true`, uses `wp_enqueue_script` to load the script and adds modernizr as a dependency for the primary theme script.</td>
+	</tr>
+	<tr>
+		<td>`config.modernizr.in_footer`</td>
+		<td>`boolean`</td>
+		<td>`true`</td>
+		<td>Sets the option to load modernizr in the footer.  Default `false` enqueues the script just before the closing `</html>`.</td>
+	</tr>
+	<tr>
+		<td>`config.modernizr.filename`</td>
+		<td>`string`</td>
+		<td>`modernizr.js`</td>
+		<td>The filename to be used.</td>
+	</tr>
+	<tr>
+		<td>`config.modernizr.settings`</td>
+		<td>`array`</td>
+		<td></td>
+		<td>See [Modernizr Options][] for `options` and the `tests` using the browser features.</td>
+	</tr>
+</table>
+
+Default [`options`](https://modernizr.com/docs#):
+
+- [`mq`](https://modernizr.com/docs#modernizr-mq)
+
+__NOTE:__ Any options with underscores like `_domPrefixes` need to be added to the options list without the underscore:
+
+```
+modernizr: {
+  settings: {
+    'options': [
+      '_domPrefixes' // will not work
+      'domPrefixes' // works
+    ]
+  }
+}
+```
+
+Default [`settings`](https://modernizr.com/docs#features):
+
+- `svg`
+
+The options for the output can be found at [Modernizr Options][] and the full documentation at [Modernizr][].  The `config.modernizr` values for  `options` are from the __Options__ section and the `tests` are from the __Browser Features__.
 
 
 #### JS: Admin Scripts
@@ -373,6 +461,8 @@ Functions: See individual functions.
 
 
 [Gulp]: http://gulpjs.com
+[Modernizr Options]: https://modernizr.com/download#
+[Modernizr]: https://modernizr.com/docs
 [Node]: https://nodejs.org/en/
 [NPM]: https://www.npmjs.com/
 [Sass]: http://sass-lang.com
