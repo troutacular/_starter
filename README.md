@@ -192,9 +192,18 @@ Javascript files in `assets-source/js/lib` will run jshint on the files, concate
 __NOTE:__ `paths.js.output.basename` maps to `project_info.assets.filename_base`.
 
 
+#### JS: Vendor Scripts
+
+These are third party scripts maintained by other developers/organizations.
+
+Javascript files in `assets-source/js/vendor` will run jshint on the file and compile to `assets/js/vendor`.
+
+*These files will not run jshint or be concatenated or minified.*
+
+
 ##### Modernizr
 
-As of Version 3.3.0, Modernizr can be included in the build of the Library scripts.  The settings for these are under `config.modernizr`.
+As of Version 3.3.0, Modernizr can be included in the build of the Vendor scripts.  The settings for these are under `config.modernizr`.
 
 <table>
 	<tr>
@@ -207,7 +216,7 @@ As of Version 3.3.0, Modernizr can be included in the build of the Library scrip
 		<td>`config.modernizr.include`</td>
 		<td>`boolean`</td>
 		<td>`false`</td>
-		<td>Option to include the modernizr file in your project.  If `true`, uses `wp_enqueue_script` to load the script.</td>
+		<td>Option to include the modernizr file in your project.  If `true`, uses `wp_enqueue_script` to load the script and adds modernizr as a dependency for the primary theme script.</td>
 	</tr>
 	<tr>
 		<td>`config.modernizr.in_footer`</td>
@@ -230,15 +239,6 @@ As of Version 3.3.0, Modernizr can be included in the build of the Library scrip
 </table>
 
 The options for the output can be found at [Modernizr Options][] and the full documentation at [Modernizr][].  The `config.modernizr` values for  `options` are from the __Options__ section and the `tests` are from the __Browser Features__.
-
-
-#### JS: Vendor Scripts
-
-These are third party scripts maintained by other developers/organizations.
-
-Javascript files in `assets-source/js/vendor` will run jshint on the file and compile to `assets/js/vendor`.
-
-*These files will not run jshint or be concatenated or minified.*
 
 
 #### JS: Admin Scripts
