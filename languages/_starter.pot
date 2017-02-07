@@ -56,21 +56,21 @@ msgstr ""
 msgid "Primary Menu"
 msgstr ""
 
-#: functions.php:622
+#: functions.php:654
 msgid "Post navigation"
 msgstr ""
 
-#: functions.php:625
+#: functions.php:657
 msgctxt "Previous post link"
 msgid "<span class=\"meta-nav\">&larr;</span> %title"
 msgstr ""
 
-#: functions.php:626
+#: functions.php:658
 msgctxt "Next post link"
 msgid "%title <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#: functions.php:667
+#: functions.php:699
 msgid "Read more"
 msgstr ""
 

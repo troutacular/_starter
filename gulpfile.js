@@ -108,7 +108,7 @@
 		},
 		// This section provides the information for the 'style.css' file in the root of the theme.
 		theme: {
-			version: '3.3.0',
+			version: '3.3.1',
 			name: '_starter',
 			uri: 'https://github.com/troutacular/_starter',
 			author: '@troutacular',
@@ -149,25 +149,16 @@
 			includePaths: ['node_modules/susy/sass']
 		},
 		modernizr: {
-			'crawl': false,
-			'options': [
-				'domPrefixes',
-				'html5shiv',
-				'mq',
-				'prefixed',
-				'prefixedCSS',
-				'prefixes',
-				'setClasses',
-				'testAllProps',
-				'testProp',
-				'testStyles',
-			],
-			'tests': [
-				'csstransforms',
-				'csstransforms3d',
-				'csstransitions',
-				'svg',
-			],
+			include: true,
+			in_footer: true,
+			filename: 'modernizr.js',
+			settings: {
+				'crawl': false,
+				'options': [],
+				'tests': [
+					'svg',
+				],
+			}
 		}
 	};
 
@@ -248,8 +239,8 @@
 				dest: './',
 			},
 			php: {
-				filename: 'config-paths.php',
-				src: base_paths.src + 'templates/config-paths.php',
+				filename: 'config-options.php',
+				src: base_paths.src + 'templates/config-options.php',
 				dest: './inc/',
 			},
 		},
@@ -347,11 +338,17 @@
 4.0 - Scripts
 --------------------------------------------------------------*/
 
+	gulp.task('modernizr', function() {
+		gulp.src(paths.js.src.lib + '/*.js')
+		.pipe(modernizr(config.modernizr.filename, config.modernizr.settings))
+		.pipe(uglify())
+		.pipe(gulp.dest(paths.js.dest.vendor));
+	});
+
 	gulp.task('site_scripts', function() {
 		return pump([
 			gulp.src(paths.js.src.lib + '**/*.js'),
 			jshint(),
-			modernizr(config.modernizr),
 			jshint.reporter('default'),
 			concat(paths.js.output.filename + paths.js.output.ext),
 			uglify(),
@@ -463,6 +460,9 @@
 		.pipe(inject_string.replace('@@js_lib@@', '/' + paths.js.dest.lib))
 		.pipe(inject_string.replace('@@js_vendor@@', '/' + paths.js.dest.vendor))
 		.pipe(inject_string.replace('@@js_admin@@', '/' + paths.js.dest.admin))
+		.pipe(inject_string.replace('modernizr_include', config.modernizr.include))
+		.pipe(inject_string.replace('modernizr_in_footer', config.modernizr.in_footer))
+		.pipe(inject_string.replace('@@modernizr_filename@@', config.modernizr.filename))
 		.pipe(rename(tpl.filename))
 		.pipe(gulp.dest(tpl.dest))
 		.pipe(notify({ message: 'Theme Info: ' + tpl.filename + ' written to ' + tpl.dest }));
@@ -586,7 +586,7 @@ gulp.task('languages', function () {
 	});
 
 	gulp.task('scripts', function(cb) {
-		run_sequence('clean:js', 'site_scripts', 'vendor_scripts', 'admin_scripts', cb);
+		run_sequence('clean:js', 'modernizr', 'site_scripts', 'vendor_scripts', 'admin_scripts', cb);
 	});
 
 	gulp.task('styles', function(cb) {
