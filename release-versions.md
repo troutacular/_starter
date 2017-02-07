@@ -5,6 +5,11 @@
 - Added Modernizr build with option to include it and option to include in head or footer.  See [Documentation](./README.md#modernizr) for support.
 - Included HTML5shiv Javascript with Conditional IE loading.
 
+### __Bug:__
+
+- Modernizr script was overwriting `lib` compiled scripts.  Set to output in `assets/js/vendor` directory as separate file.
+
+
 ### __Deprecation:__
 
 - Changed config filename from `config-paths.php` to `config-options.php`.
