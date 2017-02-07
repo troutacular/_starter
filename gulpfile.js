@@ -149,25 +149,28 @@
 			includePaths: ['node_modules/susy/sass']
 		},
 		modernizr: {
-			'crawl': false,
-			'options': [
-				'domPrefixes',
-				'html5shiv',
-				'mq',
-				'prefixed',
-				'prefixedCSS',
-				'prefixes',
-				'setClasses',
-				'testAllProps',
-				'testProp',
-				'testStyles',
-			],
-			'tests': [
-				'csstransforms',
-				'csstransforms3d',
-				'csstransitions',
-				'svg',
-			],
+			include: false,
+			filename: 'modernizr.js',
+			settings: {
+				'crawl': false,
+				'options': [
+					'domPrefixes',
+					'mq',
+					'prefixed',
+					'prefixedCSS',
+					'prefixes',
+					'setClasses',
+					'testAllProps',
+					'testProp',
+					'testStyles',
+				],
+				'tests': [
+					'csstransforms',
+					'csstransforms3d',
+					'csstransitions',
+					'svg',
+				],
+			}
 		}
 	};
 
@@ -349,7 +352,8 @@
 
 	gulp.task('modernizr', function() {
 		gulp.src(paths.js.src.lib + '/*.js')
-		.pipe(modernizr(config.modernizer))
+		.pipe(modernizr(config.modernizr.filename, config.modernizr.settings))
+		.pipe(uglify())
 		.pipe(gulp.dest(paths.js.dest.vendor));
 	});
 
@@ -468,6 +472,8 @@
 		.pipe(inject_string.replace('@@js_lib@@', '/' + paths.js.dest.lib))
 		.pipe(inject_string.replace('@@js_vendor@@', '/' + paths.js.dest.vendor))
 		.pipe(inject_string.replace('@@js_admin@@', '/' + paths.js.dest.admin))
+		.pipe(inject_string.replace('@@modernizr_include@@', config.modernizr.include))
+		.pipe(inject_string.replace('@@modernizr_filename@@', config.modernizr.filename))
 		.pipe(rename(tpl.filename))
 		.pipe(gulp.dest(tpl.dest))
 		.pipe(notify({ message: 'Theme Info: ' + tpl.filename + ' written to ' + tpl.dest }));
