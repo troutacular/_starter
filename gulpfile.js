@@ -149,8 +149,8 @@
 			includePaths: ['node_modules/susy/sass']
 		},
 		modernizr: {
-			include: false,
-			in_footer: false,
+			include: true,
+			in_footer: true,
 			filename: 'modernizr.js',
 			settings: {
 				'crawl': false,

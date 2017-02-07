@@ -18,8 +18,8 @@ function _starter_get_config() {
 		'assets' => array(
 			'filename_base' => '_starter',
 			'modernizr' => array(
-				'include' => false,
-				'in_footer' => false,
+				'include' => true,
+				'in_footer' => true,
 				'filename' => 'modernizr.js',
 			),
 		),
