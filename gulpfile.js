@@ -347,11 +347,16 @@
 4.0 - Scripts
 --------------------------------------------------------------*/
 
+	gulp.task('modernizr', function() {
+		gulp.src(paths.js.src.lib + '/*.js')
+		.pipe(modernizr(config.modernizer))
+		.pipe(gulp.dest(paths.js.dest.vendor));
+	});
+
 	gulp.task('site_scripts', function() {
 		return pump([
 			gulp.src(paths.js.src.lib + '**/*.js'),
 			jshint(),
-			modernizr(config.modernizr),
 			jshint.reporter('default'),
 			concat(paths.js.output.filename + paths.js.output.ext),
 			uglify(),
@@ -586,7 +591,7 @@ gulp.task('languages', function () {
 	});
 
 	gulp.task('scripts', function(cb) {
-		run_sequence('clean:js', 'site_scripts', 'vendor_scripts', 'admin_scripts', cb);
+		run_sequence('clean:js', 'modernizr', 'site_scripts', 'vendor_scripts', 'admin_scripts', cb);
 	});
 
 	gulp.task('styles', function(cb) {
