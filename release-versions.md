@@ -2,7 +2,12 @@
 
 ## 3.3.0
 
-- Added Modernizr build into primary theme javascript `[filename_base].min.js` file. See [Documentation](./README.md#modernizr) for support.
+- Added Modernizr build with option to include it and option to include in head or footer.  See [Documentation](./README.md#modernizr) for support.
+- Included HTML5shiv Javascript with Conditional IE loading.
+
+### __Deprecation:__
+
+- Changed config filename from `config-paths.php` to `config-options.php`.
 
 
 ## 3.2.0
