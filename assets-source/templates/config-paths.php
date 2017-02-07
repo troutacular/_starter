@@ -17,6 +17,11 @@ function _starter_get_config() {
 		'version' => '@@theme_version@@',
 		'assets' => array(
 			'filename_base' => '@@filename_base@@',
+			'modernizr' => array(
+				'include' => '@@modernizr_include@@',
+				'in_head' => '@@modernizr_in_head@@',
+				'asset' => '@@modernizr_filename@@',
+			),
 		),
 		'paths' => array(
 			'assets' => array(
