@@ -252,8 +252,8 @@
 				dest: './',
 			},
 			php: {
-				filename: 'config-paths.php',
-				src: base_paths.src + 'templates/config-paths.php',
+				filename: 'config-options.php',
+				src: base_paths.src + 'templates/config-options.php',
 				dest: './inc/',
 			},
 		},
