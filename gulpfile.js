@@ -154,20 +154,8 @@
 			filename: 'modernizr.js',
 			settings: {
 				'crawl': false,
-				'options': [
-					'domPrefixes',
-					'mq',
-					'prefixed',
-					'prefixedCSS',
-					'prefixes',
-					'testAllProps',
-					'testProp',
-					'testStyles',
-				],
+				'options': [],
 				'tests': [
-					'csstransforms',
-					'csstransforms3d',
-					'csstransitions',
 					'svg',
 				],
 			}
