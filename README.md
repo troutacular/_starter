@@ -222,7 +222,7 @@ As of Version 3.3.0, Modernizr can be included in the build of the Vendor script
 		<td><code>config.modernizr.in_footer</code></td>
 		<td><code>boolean</code></td>
 		<td><code>true<c/ode></td>
-		<td>Sets the option to load modernizr in the footer.  Default <code>false</code> enqueues the script just before the closing <code></html></code>.</td>
+		<td>Sets the option to load modernizr in the footer.  Default <code>false</code> enqueues the script just before the closing <code>&lt;/html&gt;</code>.</td>
 	</tr>
 	<tr>
 		<td><code>config.modernizr.filename</code></td>
@@ -234,7 +234,7 @@ As of Version 3.3.0, Modernizr can be included in the build of the Vendor script
 		<td><code>config.modernizr.settings</code></td>
 		<td><code>array</code></td>
 		<td></td>
-		<td>See [Modernizr Options][] for <code>options</code> and the <code>tests</code> using the browser features.</td>
+		<td>See <a href="https://modernizr.com/docs#modernizr-api">Modernizr Options</a> for <code>options</code> and the <code>tests</code> using the browser features.</td>
 	</tr>
 </table>
 
@@ -461,7 +461,7 @@ Functions: See individual functions.
 
 
 [Gulp]: http://gulpjs.com
-[Modernizr Options]: https://modernizr.com/download#
+[Modernizr Options]: https://modernizr.com/docs#modernizr-api
 [Modernizr]: https://modernizr.com/docs
 [Node]: https://nodejs.org/en/
 [NPM]: https://www.npmjs.com/
