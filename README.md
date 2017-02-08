@@ -213,32 +213,32 @@ As of Version 3.3.0, Modernizr can be included in the build of the Vendor script
 		<th>Option</th>
 	</tr>
 	<tr>
-		<td>`config.modernizr.include`</td>
-		<td>`boolean`</td>
-		<td>`false`</td>
-		<td>Option to include the modernizr file in your project.  If `true`, uses `wp_enqueue_script` to load the script and adds modernizr as a dependency for the primary theme script.</td>
+		<td><code>config.modernizr.include</code></td>
+		<td><code>boolean<c/ode></td>
+		<td><code>false</code></td>
+		<td>Option to include the modernizr file in your project.  If <code>true</code>, uses <code>wp_enqueue_script</code> to load the script and adds modernizr as a dependency for the primary theme script.</td>
 	</tr>
 	<tr>
-		<td>`config.modernizr.in_footer`</td>
-		<td>`boolean`</td>
-		<td>`true`</td>
-		<td>Sets the option to load modernizr in the footer.  Default `false` enqueues the script just before the closing `</html>`.</td>
+		<td><code>config.modernizr.in_footer</code></td>
+		<td><code>boolean</code></td>
+		<td><code>true<c/ode></td>
+		<td>Sets the option to load modernizr in the footer.  Default <code>false</code> enqueues the script just before the closing <code>&lt;/html&gt;</code>.</td>
 	</tr>
 	<tr>
-		<td>`config.modernizr.filename`</td>
-		<td>`string`</td>
-		<td>`modernizr.js`</td>
+		<td><code>config.modernizr.filename</code></td>
+		<td><code>string</code></td>
+		<td><code>modernizr.js</code></td>
 		<td>The filename to be used.</td>
 	</tr>
 	<tr>
-		<td>`config.modernizr.settings`</td>
-		<td>`array`</td>
+		<td><code>config.modernizr.settings</code></td>
+		<td><code>array</code></td>
 		<td></td>
-		<td>See [Modernizr Options][] for `options` and the `tests` using the browser features.</td>
+		<td>See <a href="https://modernizr.com/docs#modernizr-api">Modernizr Options</a> for <code>options</code> and the <code>tests</code> using the browser features.</td>
 	</tr>
 </table>
 
-Default [`options`](https://modernizr.com/docs#):
+Default [`options`](https://modernizr.com/docs#modernizr-api):
 
 - [`mq`](https://modernizr.com/docs#modernizr-mq)
 
@@ -461,7 +461,7 @@ Functions: See individual functions.
 
 
 [Gulp]: http://gulpjs.com
-[Modernizr Options]: https://modernizr.com/download#
+[Modernizr Options]: https://modernizr.com/docs#modernizr-api
 [Modernizr]: https://modernizr.com/docs
 [Node]: https://nodejs.org/en/
 [NPM]: https://www.npmjs.com/
