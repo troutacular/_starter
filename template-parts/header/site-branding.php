@@ -2,7 +2,7 @@
 /**
  * The template for displaying the site branding.
  *
- * @since 4.0.0
+ * @since 3.4.0
  * @package _starter
  */
 
