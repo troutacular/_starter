@@ -108,7 +108,7 @@
 		},
 		// This section provides the information for the 'style.css' file in the root of the theme.
 		theme: {
-			version: '4.0.0',
+			version: '3.4.0',
 			name: '_starter',
 			uri: 'https://github.com/troutacular/_starter',
 			author: '@troutacular',
@@ -342,7 +342,8 @@
 		gulp.src(paths.js.src.lib + '/*.js')
 		.pipe(modernizr(config.modernizr.filename, config.modernizr.settings))
 		.pipe(uglify())
-		.pipe(gulp.dest(paths.js.dest.vendor));
+		.pipe(gulp.dest(paths.js.dest.vendor))
+		.pipe(notify({ message: 'Modernizr script task complete' }));
 	});
 
 	gulp.task('site_scripts', function() {
@@ -586,7 +587,7 @@ gulp.task('languages', function () {
 	});
 
 	gulp.task('scripts', function(cb) {
-		run_sequence('clean:js', 'modernizr', 'site_scripts', 'vendor_scripts', 'admin_scripts', cb);
+		run_sequence('clean:js', 'site_scripts', 'vendor_scripts', 'modernizr', 'admin_scripts', cb);
 	});
 
 	gulp.task('styles', function(cb) {
