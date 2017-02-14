@@ -52,7 +52,7 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: functions.php:197, header.php:45
+#: functions.php:197, template-parts/navigation/navigation-site.php:12
 msgid "Primary Menu"
 msgstr ""
 
@@ -72,14 +72,6 @@ msgstr ""
 
 #: functions.php:699
 msgid "Read more"
-msgstr ""
-
-#: header.php:31
-msgid "Skip to content"
-msgstr ""
-
-#: header.php:32
-msgid "Skip to secondary content"
 msgstr ""
 
 #: search.php:17
@@ -129,32 +121,8 @@ msgstr ""
 msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
 msgstr ""
 
-#: inc/template-tags.php:80, template-parts/content-page.php:38
+#: inc/template-tags.php:80, template-parts/page/content-page.php:38
 msgid "Edit %s"
-msgstr ""
-
-#: template-parts/content-none.php:14
-msgid "Nothing Found"
-msgstr ""
-
-#: template-parts/content-none.php:21
-msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
-msgstr ""
-
-#: template-parts/content-none.php:26
-msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
-msgstr ""
-
-#: template-parts/content-none.php:32
-msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
-msgstr ""
-
-#: template-parts/content-page.php:27, template-parts/content.php:44
-msgid "Pages:"
-msgstr ""
-
-#: template-parts/content.php:39
-msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
 #: theme-instructions/icons.php:30, theme-instructions/icons.php:35, theme-instructions/main.php:69
@@ -183,4 +151,36 @@ msgstr ""
 
 #: theme-instructions/setup.php:13
 msgid "Use this section to add content about how the theme is set up and/or automated functions that were performed on activation."
+msgstr ""
+
+#: template-parts/navigation/navigation-skip-links.php:11
+msgid "Skip to content"
+msgstr ""
+
+#: template-parts/navigation/navigation-skip-links.php:12
+msgid "Skip to secondary content"
+msgstr ""
+
+#: template-parts/page/content-page.php:27, template-parts/post/content.php:44
+msgid "Pages:"
+msgstr ""
+
+#: template-parts/post/content-none.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#: template-parts/post/content-none.php:21
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: template-parts/post/content-none.php:26
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr ""
+
+#: template-parts/post/content-none.php:32
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr ""
+
+#: template-parts/post/content.php:39
+msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""

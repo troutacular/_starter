@@ -22,7 +22,7 @@ get_header(); ?>
 			// Iterate the post index in The Loop.
 			the_post();
 
-			get_template_part( 'template-parts/content', 'page' );
+			get_template_part( 'template-parts/page/content', 'page' );
 
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || '0' !== get_comments_number() ) {

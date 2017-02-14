@@ -28,23 +28,26 @@ if ( function_exists( 'noindex' ) ) {
 <body <?php body_class(); ?>>
 
 <div class="site"><?php /* closes in footer.php */ ?>
-	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', '_starter' ); ?></a>
-	<a class="skip-link screen-reader-text" href="#secondary"><?php esc_html_e( 'Skip to secondary content', '_starter' ); ?></a>
+	<?php
+		/**
+		 * Skip link navigation.
+		 */
+		get_template_part( '/template-parts/navigation/navigation', 'skip-links' );
+	?>
 
 	<header id="masthead" class="site-header" role="banner">
-		<div class="site-branding">
-			<h1 class="site-branding-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<?php
-			$description = get_bloginfo( 'description', 'display' );
-			if ( $description || is_customize_preview() ) { ?>
-				<p class="site-branding-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-			<?php } ?>
-		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="site-navigation" role="navigation">
-			<h2 class="site-navigation-title"><?php esc_html_e( 'Primary Menu', '_starter' ); ?></h2>
-			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu-id' => 'primary-menu', 'menu_class' => 'site-navigation-menu' ) ); ?>
-		</nav><!-- .site-navigation -->
+		<?php
+			/**
+			 * Site branding.
+			 */
+			get_template_part( '/template-parts/header/site', 'branding' );
+
+			/**
+			 * Site navigation.
+			 */
+			get_template_part( '/template-parts/navigation/navigation', 'site' );
+		?>
 
 	</header><!-- #masthead -->
 
