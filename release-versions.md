@@ -1,6 +1,6 @@
 # Version Releases
 
-## 4.0.0
+## 3.4.0
 
 - Organize `template-parts` by content type:
   - `/footer`
@@ -10,6 +10,11 @@
   - `/post`
 - Moved page template sample to directory `/page-templates`
   - WordPress support as part of the [File Organization of Page Templates](https://developer.wordpress.org/themes/template-files-section/page-templates/#file-organization-of-page-templates)
+
+### __Bug:__
+
+- Deferred `modernizr` Gulp task to after `vendor_scripts` task to avoid _Unhandled promise rejection: Error: ENOTEMPTY: directory not empty_ warning on build.
+
 
 ## 3.3.1
 
