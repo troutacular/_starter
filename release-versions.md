@@ -1,5 +1,9 @@
 # Version Releases
 
+## 3.4.0
+
+- Organize `template-parts` by content type.
+
 ## 3.3.1
 
 - Added Modernizr build with option to include it and option to include in head or footer.  See [Documentation](./README.md#modernizr) for support.

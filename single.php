@@ -18,7 +18,7 @@ get_header(); ?>
 			// Iterate the post index in The Loop.
 			the_post();
 
-			get_template_part( 'template-parts/content', get_post_format() );
+			get_template_part( 'template-parts/post/content', get_post_format() );
 
 			// Post navigation.
 			_starter_post_nav();
