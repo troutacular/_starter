@@ -1,8 +1,15 @@
 # Version Releases
 
-## 3.4.0
+## 4.0.0
 
-- Organize `template-parts` by content type.
+- Organize `template-parts` by content type:
+  - `/footer`
+  - `/header`
+  - `/navigation`
+  - `/page`
+  - `/post`
+- Moved page template sample to directory `/page-templates`
+  - WordPress support as part of the [File Organization of Page Templates](https://developer.wordpress.org/themes/template-files-section/page-templates/#file-organization-of-page-templates)
 
 ## 3.3.1
 
