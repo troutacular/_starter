@@ -19,7 +19,7 @@ Table of Contents
 	1.3 - Dependencies
 	1.4 - Theme Setup
 		1.4.1 - Sidebar Registration
-		1.4.2 - Customizations
+		1.4.2 - Customizer
 		1.4.3 - Taxonomy Creation
 		1.4.4 - Custom Post Types
 2.0 - Scripts
@@ -324,7 +324,7 @@ if ( ! function_exists( '_starter_widgets_init' ) ) {
 
 
 /** --------------------------------------------------------------
-1.4.2 - Customizations
+1.4.2 - Customizer
 ----------------------------------------------------------------*/
 
 /**
