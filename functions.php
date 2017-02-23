@@ -734,11 +734,15 @@ if ( ! function_exists( '_starter_post_image' ) ) {
 	 * @param  array $params  [image_size {sting}] and [caption {boolean}].
 	 * @return void
 	 */
-	function _starter_post_image( $params ) {
+	function _starter_post_image( $args = array() ) {
 
 		// Defaults.
-		$image_size = isset( $params['image_size'] ) ? $params['image_size'] : 'single-post-image';
-		$caption = isset( $params['caption'] ) ? $params['caption'] : false;
+		$defaults = array(
+			'image_size' => 'single-post-image',
+			'caption' => false,
+		);
+
+		$args = wp_parse_args( $args, $defaults );
 
 		// Check that a post thumbnail exists.
 		if ( has_post_thumbnail() ) {
@@ -747,10 +751,10 @@ if ( ! function_exists( '_starter_post_image' ) ) {
 			echo '<figure class="entry-image">';
 
 			// The image.
-			the_post_thumbnail( $image_size );
+			the_post_thumbnail( $args['image_size'] );
 
 			// Check if the caption is enabled.
-			if ( $caption ) {
+			if ( $args['caption'] ) {
 
 				echo '<figcaption class="entry-figcaption">';
 
