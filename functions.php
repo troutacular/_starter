@@ -731,7 +731,7 @@ if ( ! function_exists( '_starter_post_image' ) ) {
 	 * @todo Add WP Core 4.4+ responsive image handling.
 	 * @link https://make.wordpress.org/core/2015/11/10/responsive-images-in-wordpress-4-4/
 	 *
-	 * @param  array $params  [image_size {sting}] and [caption {boolean}].
+	 * @param  array $args  [image_size {sting}] and [caption {boolean}].
 	 * @return void
 	 */
 	function _starter_post_image( $args = array() ) {
