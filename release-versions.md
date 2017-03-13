@@ -6,6 +6,10 @@
 - Change function `_starter_post_image` to use `wp_parse_args` for default values.
 - Move theme information admin page under __Appearances__ using `add_theme_page`.
 
+### __Bug:__
+
+- Attach sass error reporting to sass function in pump for correct error reporting.
+
 
 ## 3.4.0
 

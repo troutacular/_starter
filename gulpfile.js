@@ -391,17 +391,16 @@
 		return pump([
 			gulp.src(src),
 			sourcemaps.init(),
-			sass(config.sass),
+			sass(config.sass).on('error', function (error) {
+				console.error('Error! ' + style_name + ': ', error.message);
+			}),
 			preprocess({context: {
 				VERSION: project_info.theme.version,
 				// Set the assets path in relation to the compiled css file.
 				ASSET_RELATION_TO_CSS: asset_relation,
 				// Set the filename base for sprite generation.
 				ASSET_FILENAME_BASE: project_info.assets.filename_base,
-			}})
-			.on('error', function (error) {
-				console.error('Error!', error.message);
-			}),
+			}}),
 			autoprefixer(config.autoprefixer),
 			rename(rename_sass(filename, src)),
 			sourcemaps.write(map),
