@@ -52,25 +52,25 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: functions.php:197, template-parts/navigation/navigation-site.php:12
+#: functions.php:194, template-parts/navigation/navigation-site.php:12
 msgid "Primary Menu"
 msgstr ""
 
-#: functions.php:654
+#: functions.php:651
 msgid "Post navigation"
 msgstr ""
 
-#: functions.php:657
+#: functions.php:654
 msgctxt "Previous post link"
 msgid "<span class=\"meta-nav\">&larr;</span> %title"
 msgstr ""
 
-#: functions.php:658
+#: functions.php:655
 msgctxt "Next post link"
 msgid "%title <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#: functions.php:699
+#: functions.php:696
 msgid "Read more"
 msgstr ""
 
