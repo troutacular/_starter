@@ -9,6 +9,7 @@
 ### __Bug:__
 
 - Attach sass error reporting to sass function in pump for correct error reporting.
+- Fix double icon output on menu items.
 
 
 ## 3.4.0
