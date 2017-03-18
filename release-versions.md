@@ -5,6 +5,7 @@
 - Simply `functions.php` sections and change `Customizer` label.
 - Change function `_starter_post_image` to use `wp_parse_args` for default values.
 - Move theme information admin page under __Appearances__ using `add_theme_page`.
+- Added responsive image support for `_starter_get_the_post_figure_thumbnail`
 
 ### __Bug:__
 

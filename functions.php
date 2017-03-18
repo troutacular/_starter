@@ -722,7 +722,7 @@ if ( function_exists( 'add_image_size' ) ) {
 /**
  * Standard Image output for posts.
  */
-if ( ! function_exists( '_starter_post_image' ) ) {
+if ( ! function_exists( '_starter_get_the_post_figure_thumbnail' ) ) {
 	/**
 	 * Post Image
 	 *
@@ -731,15 +731,25 @@ if ( ! function_exists( '_starter_post_image' ) ) {
 	 * @todo Add WP Core 4.4+ responsive image handling.
 	 * @link https://make.wordpress.org/core/2015/11/10/responsive-images-in-wordpress-4-4/
 	 *
-	 * @param  array $args  [image_size {sting}] and [caption {boolean}].
-	 * @return void
+	 * @param  array $args  [image_size {sting}], [attr {array}] [caption {boolean}], [caption_before{string}], [link {boolean}], [echo {boolean}].
+	 * @return string
 	 */
-	function _starter_post_image( $args = array() ) {
+	function _starter_get_the_post_figure_thumbnail( $args = array() ) {
+
+		$figcaption = $figcaption_before = '';
+
+		$allowed_tags = wp_kses_allowed_html( 'post' );
+
+		$post_id = get_the_ID();
 
 		// Defaults.
 		$defaults = array(
 			'image_size' => 'single-post-image',
+			'attr' => array(),
 			'caption' => false,
+			'caption_before' => '',
+			'link' => false,
+			'analytics' => array(),
 		);
 
 		$args = wp_parse_args( $args, $defaults );
@@ -747,36 +757,67 @@ if ( ! function_exists( '_starter_post_image' ) ) {
 		// Check that a post thumbnail exists.
 		if ( has_post_thumbnail() ) {
 
-			// Wrapper open.
-			echo '<figure class="entry-image">';
+			/**
+			 * Figcaption.
+			 */
 
-			// The image.
-			the_post_thumbnail( $args['image_size'] );
+			// Get the image caption (excerpt).
+			$image_caption = get_the_post_thumbnail_caption( $post_id );
 
-			// Check if the caption is enabled.
-			if ( $args['caption'] ) {
-
-				echo '<figcaption class="entry-figcaption">';
-
-				// Get the image caption (excerpt).
-				$image_caption = get_post( get_post_thumbnail_id() )->post_excerpt;
-
-				// If we have a caption, print out language supported caption.
-				if ( $image_caption ) {
-					printf(
-						esc_html( $image_caption )
-					);
-				}
-
-				echo '</figcaption>';
-
+			if ( ! empty( $args['caption_before'] ) ) {
+				$figcaption_before = '<span class="figcaption_before">' . esc_attr( $args['caption_before'] ) . '</span>';
 			}
 
-			echo '</figure>';
+			if ( $args['caption'] && $image_caption ) {
 
-		}
+				$figcaption = sprintf(
+					'<figcaption class="entry-figcaption">%1$s%2$s</figcaption>',
+					wp_kses( $figcaption_before, $allowed_tags ),
+					esc_html( $image_caption )
+				);
+			}
+
+			/**
+			 * Image.
+			 */
+
+			// Get the image.
+			$image = get_the_post_thumbnail( $post_id, $args['image_size'], $args['attr'] );
+
+			if ( $args['link'] ) {
+				$image = sprintf(
+					'<a class="entry-image-link" href="%1$s" %2$s>%3$s</a>',
+					get_the_permalink( $post_id ),
+					_starter_set_analytics_data( $args['analytics'] ),
+					get_the_post_thumbnail( $post_id, $args['image_size'], $args['attr'] )
+				);
+			}
+
+			/**
+			 * Figure.
+			 */
+			$figure = sprintf(
+				'<figure class="entry-image">%1$s%2$s</figure>',
+				$image,
+				$figcaption
+			);
+
+			return $figure;
+		} // End if().
 	}
 } // End if().
+
+if ( ! function_exists( '_starter_the_post_figure_thumbnail' ) ) {
+	/**
+	 * Echoes _starter_get_the_post_figure_thumbnail with passed $args.
+	 *
+	 * @param   array $args  Passed arguments.
+	 * @return  void
+	 */
+	function _starter_the_post_figure_thumbnail( $args = array() ) {
+		echo _starter_get_the_post_figure_thumbnail( $args );
+	}
+}
 
 /** --------------------------------------------------------------
 7.2 - Video
