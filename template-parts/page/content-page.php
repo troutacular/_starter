@@ -16,7 +16,7 @@
 
 	<div class="entry-content">
 		<?php
-			_starter_post_image( array(
+			_starter_the_post_figure_thumbnail( array(
 				'image_size' => 'medium',
 				'caption' => true,
 			) );
