@@ -26,6 +26,7 @@ function _starter_get_config() {
 		'paths' => array(
 			'assets' => array(
 				'css' => '@@css@@',
+				'images' => '@@images@@',
 				'js' => array(
 					'lib' => '@@js_lib@@',
 					'vendor' => '@@js_vendor@@',

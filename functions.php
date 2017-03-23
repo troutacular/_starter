@@ -127,6 +127,10 @@ function _starter_get_asset_path( $type ) {
 			return $config['paths']['assets']['js']['vendor'];
 			break;
 
+		case 'images':
+			return $config['paths']['assets']['images'];
+			break;
+
 		// Default CSS.
 		default:
 			return $config['paths']['assets']['css'];
