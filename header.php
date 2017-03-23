@@ -22,7 +22,7 @@ if ( function_exists( 'noindex' ) ) {
 ?>
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-<link rel="shortcut icon" href="<?php echo esc_url( get_stylesheet_directory_uri() . _starter_get_asset_path( 'images' ) ); ?>/favicon.ico" />
+<link rel="shortcut icon" href="<?php echo esc_url( get_stylesheet_directory_uri() . _starter_get_asset_path( 'images' ) ); ?>favicon.ico" />
 
 <?php wp_head(); ?>
 </head>
