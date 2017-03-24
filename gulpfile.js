@@ -109,7 +109,7 @@
 		// This section provides the information for the 'style.css' file in the root of the theme.
 		theme: {
 			version: '3.4.0',
-			name: '_starter',
+			name: 'Starter',
 			uri: 'https://github.com/troutacular/_starter',
 			author: '@troutacular',
 			author_uri: 'https://github.com/troutacular/',
