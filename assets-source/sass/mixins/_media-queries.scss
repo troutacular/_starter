@@ -12,17 +12,17 @@
 	Usage
 	=========
 
-	@include min-screen(width);
-	@include max-screen(width);
-	@include screen(min-width, max-width);
+	@include min-screen(width){};
+	@include max-screen(width){};
+	@include screen(min-width, max-width){};
 
-	@include min-screen-height(height);
-	@include max-screen-height(height);
-	@include screen-height(min-height, max-height);
+	@include min-screen-height(height){};
+	@include max-screen-height(height){};
+	@include screen-height(min-height, max-height){};
 
-	@include orientation(orientation);
+	@include orientation(orientation){};
 
-	@include hdpi(ratio);
+	@include hdpi(ratio){};
 
 	Note
 	=========

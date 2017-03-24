@@ -1,5 +1,24 @@
 # Version Releases
 
+## 3.5.0
+
+- Simply `functions.php` sections and change `Customizer` label.
+- Change function `_starter_post_image` to use `wp_parse_args` for default values.
+- Move theme information admin page under __Appearances__ using `add_theme_page`.
+- Added responsive image support for `_starter_get_the_post_figure_thumbnail`.
+- Added favicon image.
+- Added image asset paths to `config-options.php` with Gulp build for use with `_starter_get_asset_path( 'images' )`.
+
+### __Bug:__
+
+- Attach sass error reporting to sass function in pump for correct error reporting.
+- Fix double icon output on menu items.
+- Omit `assets-source/templates/sprite-classes.php` from Language POT build.
+	- Throwing errors for NPM package hash `#` settings to build sprite with `gulp-svg-sprite`.
+- PHPCS Lint ignore declaration on `assets-source/templates/sprite-classes.php`
+	- Gulp declarations needed that throw errors on template but not output.
+
+
 ## 3.4.0
 
 - Organize `template-parts` by content type:

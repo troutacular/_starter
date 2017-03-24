@@ -108,8 +108,8 @@
 		},
 		// This section provides the information for the 'style.css' file in the root of the theme.
 		theme: {
-			version: '3.4.0',
-			name: '_starter',
+			version: '3.5.0',
+			name: 'Starter',
 			uri: 'https://github.com/troutacular/_starter',
 			author: '@troutacular',
 			author_uri: 'https://github.com/troutacular/',
@@ -391,17 +391,16 @@
 		return pump([
 			gulp.src(src),
 			sourcemaps.init(),
-			sass(config.sass),
+			sass(config.sass).on('error', function (error) {
+				console.error('Error! ' + style_name + ': ', error.message);
+			}),
 			preprocess({context: {
 				VERSION: project_info.theme.version,
 				// Set the assets path in relation to the compiled css file.
 				ASSET_RELATION_TO_CSS: asset_relation,
 				// Set the filename base for sprite generation.
 				ASSET_FILENAME_BASE: project_info.assets.filename_base,
-			}})
-			.on('error', function (error) {
-				console.error('Error!', error.message);
-			}),
+			}}),
 			autoprefixer(config.autoprefixer),
 			rename(rename_sass(filename, src)),
 			sourcemaps.write(map),
@@ -458,6 +457,7 @@
 		.pipe(inject_string.replace('@@theme_version@@', info.version))
 		.pipe(inject_string.replace('@@filename_base@@', project_info.assets.filename_base))
 		.pipe(inject_string.replace('@@css@@', '/' + paths.sass.dest))
+		.pipe(inject_string.replace('@@images@@', '/' + paths.images.dest))
 		.pipe(inject_string.replace('@@js_lib@@', '/' + paths.js.dest.lib))
 		.pipe(inject_string.replace('@@js_vendor@@', '/' + paths.js.dest.vendor))
 		.pipe(inject_string.replace('@@js_admin@@', '/' + paths.js.dest.admin))
@@ -507,7 +507,7 @@
 --------------------------------------------------------------*/
 
 gulp.task('languages', function () {
-	return gulp.src('**/*.php')
+	return gulp.src(['**/*.php', '!/**/sprite-classes.php'])
 		.pipe(wpPot( {
 			domain: project_info.theme.text_domain,
 			package: project_info.theme.name,

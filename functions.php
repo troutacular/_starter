@@ -19,7 +19,7 @@ Table of Contents
 	1.3 - Dependencies
 	1.4 - Theme Setup
 		1.4.1 - Sidebar Registration
-		1.4.2 - Customizations
+		1.4.2 - Customizer
 		1.4.3 - Taxonomy Creation
 		1.4.4 - Custom Post Types
 2.0 - Scripts
@@ -45,15 +45,12 @@ Table of Contents
 	9.2 - Template Types
 		9.2.1 - Posts
 		9.2.2 - Pages
-10.0 - Templates
-	9.2.1 - Archive
-	9.2.2 - Author
-	9.2.3 - Home
-	9.2.4 - Page
-	9.2.5 - Post
-11.0 - Admin
-	11.1 - TinyMCE
-	11.2 - Theme Instructions
+		9.2.3 - Media
+		9.2.4 - Archive / Category
+		9.2.5 - Search
+10.0 - Admin
+	10.1 - TinyMCE
+	10.2 - Theme Instructions
 
 ----------------------------------------------------------------*/
 
@@ -128,6 +125,10 @@ function _starter_get_asset_path( $type ) {
 
 		case 'js-vendor':
 			return $config['paths']['assets']['js']['vendor'];
+			break;
+
+		case 'images':
+			return $config['paths']['assets']['images'];
 			break;
 
 		// Default CSS.
@@ -327,7 +328,7 @@ if ( ! function_exists( '_starter_widgets_init' ) ) {
 
 
 /** --------------------------------------------------------------
-1.4.2 - Customizations
+1.4.2 - Customizer
 ----------------------------------------------------------------*/
 
 /**
@@ -725,7 +726,7 @@ if ( function_exists( 'add_image_size' ) ) {
 /**
  * Standard Image output for posts.
  */
-if ( ! function_exists( '_starter_post_image' ) ) {
+if ( ! function_exists( '_starter_get_the_post_figure_thumbnail' ) ) {
 	/**
 	 * Post Image
 	 *
@@ -734,48 +735,93 @@ if ( ! function_exists( '_starter_post_image' ) ) {
 	 * @todo Add WP Core 4.4+ responsive image handling.
 	 * @link https://make.wordpress.org/core/2015/11/10/responsive-images-in-wordpress-4-4/
 	 *
-	 * @param  array $params  [image_size {sting}] and [caption {boolean}].
-	 * @return void
+	 * @param  array $args  [image_size {sting}], [attr {array}] [caption {boolean}], [caption_before{string}], [link {boolean}], [echo {boolean}].
+	 * @return string
 	 */
-	function _starter_post_image( $params ) {
+	function _starter_get_the_post_figure_thumbnail( $args = array() ) {
+
+		$figcaption = $figcaption_before = '';
+
+		$allowed_tags = wp_kses_allowed_html( 'post' );
+
+		$post_id = get_the_ID();
 
 		// Defaults.
-		$image_size = isset( $params['image_size'] ) ? $params['image_size'] : 'single-post-image';
-		$caption = isset( $params['caption'] ) ? $params['caption'] : false;
+		$defaults = array(
+			'image_size' => 'single-post-image',
+			'attr' => array(),
+			'caption' => false,
+			'caption_before' => '',
+			'link' => false,
+			'analytics' => array(),
+		);
+
+		$args = wp_parse_args( $args, $defaults );
 
 		// Check that a post thumbnail exists.
 		if ( has_post_thumbnail() ) {
 
-			// Wrapper open.
-			echo '<figure class="entry-image">';
+			/**
+			 * Figcaption.
+			 */
 
-			// The image.
-			the_post_thumbnail( $image_size );
+			// Get the image caption (excerpt).
+			$image_caption = get_the_post_thumbnail_caption( $post_id );
 
-			// Check if the caption is enabled.
-			if ( $caption ) {
-
-				echo '<figcaption class="entry-figcaption">';
-
-				// Get the image caption (excerpt).
-				$image_caption = get_post( get_post_thumbnail_id() )->post_excerpt;
-
-				// If we have a caption, print out language supported caption.
-				if ( $image_caption ) {
-					printf(
-						esc_html( $image_caption )
-					);
-				}
-
-				echo '</figcaption>';
-
+			if ( ! empty( $args['caption_before'] ) ) {
+				$figcaption_before = '<span class="figcaption_before">' . esc_attr( $args['caption_before'] ) . '</span>';
 			}
 
-			echo '</figure>';
+			if ( $args['caption'] && $image_caption ) {
 
-		}
+				$figcaption = sprintf(
+					'<figcaption class="entry-figcaption">%1$s%2$s</figcaption>',
+					wp_kses( $figcaption_before, $allowed_tags ),
+					esc_html( $image_caption )
+				);
+			}
+
+			/**
+			 * Image.
+			 */
+
+			// Get the image.
+			$image = get_the_post_thumbnail( $post_id, $args['image_size'], $args['attr'] );
+
+			if ( $args['link'] ) {
+				$image = sprintf(
+					'<a class="entry-image-link" href="%1$s" %2$s>%3$s</a>',
+					get_the_permalink( $post_id ),
+					_starter_set_analytics_data( $args['analytics'] ),
+					get_the_post_thumbnail( $post_id, $args['image_size'], $args['attr'] )
+				);
+			}
+
+			/**
+			 * Figure.
+			 */
+			$figure = sprintf(
+				'<figure class="entry-image">%1$s%2$s</figure>',
+				$image,
+				$figcaption
+			);
+
+			return $figure;
+		} // End if().
 	}
 } // End if().
+
+if ( ! function_exists( '_starter_the_post_figure_thumbnail' ) ) {
+	/**
+	 * Echoes _starter_get_the_post_figure_thumbnail with passed $args.
+	 *
+	 * @param   array $args  Passed arguments.
+	 * @return  void
+	 */
+	function _starter_the_post_figure_thumbnail( $args = array() ) {
+		echo _starter_get_the_post_figure_thumbnail( $args );
+	}
+}
 
 /** --------------------------------------------------------------
 7.2 - Video
@@ -802,7 +848,7 @@ if ( ! function_exists( '_starter_post_image' ) ) {
 
 
 /** --------------------------------------------------------------
-9.0 - Templates
+9.1 - Template Tags
 ----------------------------------------------------------------*/
 
 
@@ -832,42 +878,27 @@ require get_template_directory() . '/inc/template-tags.php';
 
 
 /** --------------------------------------------------------------
-10.0 - Templates
+9.2.3 - Media
 ----------------------------------------------------------------*/
 
 
 /** --------------------------------------------------------------
-10.1 - Acrhive
+9.2.4 - Archive / Category
 ----------------------------------------------------------------*/
 
 
 /** --------------------------------------------------------------
-10.2 - Author
+9.2.5 - Search
 ----------------------------------------------------------------*/
 
 
 /** --------------------------------------------------------------
-10.3 - Home
+10.0 - Admin
 ----------------------------------------------------------------*/
 
 
 /** --------------------------------------------------------------
-10.4 - Page
-----------------------------------------------------------------*/
-
-
-/** --------------------------------------------------------------
-10.5 - Post
-----------------------------------------------------------------*/
-
-
-/** --------------------------------------------------------------
-11.0 - Admin
-----------------------------------------------------------------*/
-
-
-/** --------------------------------------------------------------
-11.1 - TinyMCE
+10.1 - TinyMCE
 ----------------------------------------------------------------*/
 
 /**
@@ -877,7 +908,7 @@ require get_template_directory() . '/inc/tiny-mce-classes.php';
 
 
 /** --------------------------------------------------------------
-11.2 - Theme Instructions
+10.2 - Theme Instructions
 ----------------------------------------------------------------*/
 
 /**

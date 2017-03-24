@@ -45,7 +45,7 @@ if ( ! function_exists( '_starter_posted_on' ) ) {
 }
 
 
-if ( ! function_exists( '_s_entry_footer' ) ) {
+if ( ! function_exists( '_starter_entry_footer' ) ) {
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
 	 *

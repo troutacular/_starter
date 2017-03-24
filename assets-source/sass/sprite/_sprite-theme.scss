@@ -50,7 +50,7 @@
 *[class*='icon'] {
 
 	// Exclude menu items.
-	&:not(.menu-icon) {
+	&:not(.menu-item) {
 		&::before {
 			@extend %icon-style;
 		}
