@@ -1,6 +1,6 @@
 # Version Releases
 
-## 3.4.1
+## 3.5.0
 
 - Simply `functions.php` sections and change `Customizer` label.
 - Change function `_starter_post_image` to use `wp_parse_args` for default values.
