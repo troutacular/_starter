@@ -13,6 +13,10 @@
 
 - Attach sass error reporting to sass function in pump for correct error reporting.
 - Fix double icon output on menu items.
+- Omit `assets-source/templates/sprite-classes.php` from Language POT build.
+	- Throwing errors for NPM package hash `#` settings to build sprite with `gulp-svg-sprite`.
+- PHPCS Lint ignore declaration on `assets-source/templates/sprite-classes.php`
+	- Gulp declarations needed that throw errors on template but not output.
 
 
 ## 3.4.0

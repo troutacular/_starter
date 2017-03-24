@@ -6,6 +6,7 @@
  * @author  @troutacular <troutacular@gmail.com>
  */
 
+// @codingStandardsIgnoreStart
 /**
  * _starter sprite classes.
  *
@@ -22,6 +23,6 @@ function _starter_sprite_classes() {
 			'icon-only-wordpress-logo',
 		),
 	);
-
 	return $classes;
 }
+// @codingStandardsIgnoreEnd

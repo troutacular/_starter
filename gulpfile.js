@@ -507,7 +507,7 @@
 --------------------------------------------------------------*/
 
 gulp.task('languages', function () {
-	return gulp.src('**/*.php')
+	return gulp.src(['**/*.php', '!/**/sprite-classes.php'])
 		.pipe(wpPot( {
 			domain: project_info.theme.text_domain,
 			package: project_info.theme.name,
