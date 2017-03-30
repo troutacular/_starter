@@ -1,5 +1,12 @@
 # Version Releases
 
+## 3.5.1
+
+### __Bug:__
+
+- Fix class mapping in `customizer.js`
+
+
 ## 3.5.0
 
 - Simply `functions.php` sections and change `Customizer` label.
