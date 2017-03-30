@@ -60,18 +60,16 @@ h1 {
 	margin-bottom: 1em;
 }
 
-.brand-title {
+.site-branding-title {
 	border: 0 none;
 
 	.site-header & {}
 
-	a {}
+	a {
+		clear: both;
+		color: $heading__font-color--print !important;
+	}
 
-}
-
-.site-title a {
-	clear: both;
-	color: $heading__font-color--print !important;
 }
 
 
