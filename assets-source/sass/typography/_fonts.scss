@@ -54,9 +54,9 @@
 
 	Usage: Proxima Nova
 
-	light:			@include font-style($font-proxima-nova-light, normal, 300);
-	regular:		@include font-style($font-proxima-nova-regular, normal, 400);
-	bold:			@include font-style($font-proxima-nova-bold, normal, 700);
-	extrabold:		@include font-style($font-proxima-nova-extrabold, normal, 800);
+	light:			@include font-style($font-proxima-nova-light, 300, normal);
+	regular:		@include font-style($font-proxima-nova-regular, 400, normal);
+	bold:			@include font-style($font-proxima-nova-bold, 700, normal);
+	extrabold:		@include font-style($font-proxima-nova-extrabold, 800, normal);
 
 **/

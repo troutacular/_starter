@@ -1,10 +1,17 @@
 # Version Releases
 
+## 3.5.2
+
+### __Bug:__
+
+- `font-style` mixin ordering updated.
+
+
 ## 3.5.1
 
 ### __Bug:__
 
-- Fix class mapping in `customizer.js`
+- Fix class mapping in `customizer.js`, `_print.scss`, and `_grid.scss`
 
 
 ## 3.5.0
