@@ -2,6 +2,8 @@
 
 ## 3.5.2
 
+- Admin styles added margin for TinyMCE editor.
+
 ### __Bug:__
 
 - `font-style` mixin ordering updated.

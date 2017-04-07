@@ -14,7 +14,7 @@ function _starter_get_config() {
 
 	// Set the default project configurations.
 	$config = array(
-		'version' => '3.5.1',
+		'version' => '3.5.2',
 		'assets' => array(
 			'filename_base' => '_starter',
 			'modernizr' => array(
