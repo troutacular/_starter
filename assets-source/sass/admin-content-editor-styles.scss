@@ -11,6 +11,7 @@
 	3.0 - Mixins
 	4.0 - Vendor
 	5.0 - Theme
+	6.0 - Editor Styles
 
 **/
 
@@ -44,7 +45,6 @@
 --------------------------------------------------------------*/
 // Layout specific.
 @import 'layout/alignments';
-@import 'layout/grid';
 
 @import 'typography/typography';
 @import 'elements/elements';
@@ -55,3 +55,9 @@
 @import 'navigation/links';
 
 @import 'sprite/sprite';
+
+
+/*--------------------------------------------------------------
+6.0 - Editor Styles
+--------------------------------------------------------------*/
+@import 'admin/content-editor-styles';

@@ -5,28 +5,18 @@
 
 	This stylesheet is used to add styles to all WP Admin pages.
 
-	1.0 - Variables
-	2.0 - Mixins
-	3.0 - Content
+	1.0 - Content
+	2.0 - Instructions
 
 **/
 
 
 
 /*--------------------------------------------------------------
-1.0 - Variables
+1.0 - Content
 --------------------------------------------------------------*/
-@import 'variables/variables';
 
 
 /*--------------------------------------------------------------
-2.0 - Mixins
+2.0 - Instructions
 --------------------------------------------------------------*/
-@import 'mixins/mixins';
-
-
-/*--------------------------------------------------------------
-3.0 - Content
---------------------------------------------------------------*/
-@import 'sprite/sprite-admin';
-@import 'admin/styles';
