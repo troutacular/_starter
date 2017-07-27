@@ -145,8 +145,7 @@
 			}
 		},
 		sass: {
-			outputStyle: 'compressed',
-			includePaths: ['node_modules/susy/sass']
+			outputStyle: 'compressed'
 		},
 		modernizr: {
 			include: true,
