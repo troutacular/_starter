@@ -39,7 +39,6 @@
 .site-content,
 .site-footer,
 .site-contact {
-	@include container;
 	padding: 0 $body__padding--mobile;
 
 	@include min-screen(48em) {
