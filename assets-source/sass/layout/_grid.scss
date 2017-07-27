@@ -27,25 +27,6 @@
 1.0 - Grid Settings
 --------------------------------------------------------------*/
 
-/**
-
-	Use Susy (http://susy.oddbird.net/) for grid structures.
-
-	Import for Susy resides in sass/_vendor.scss file
-
-**/
-
-$susy: (
-	columns: 12,
-	gutters: 1 / 4,
-	math: fluid,
-	output: float,
-	gutter-position: after,
-	use-custom: (
-		box-sizing: false,
-	),
-);
-
 
 
 /*--------------------------------------------------------------
@@ -125,66 +106,6 @@ $susy: (
 /*--------------------------------------------------------------
 1.5.1 - Site Footer Columns
 --------------------------------------------------------------*/
-
-.site-footer-columns-1 {
-
-	.footer-column {
-		@include span(12 of 12);
-	}
-}
-
-.site-footer-columns-2 {
-
-	.footer-column {
-		@include span(12 of 12);
-
-		@include min-screen(30em) {
-			@include span(6 of 12);
-
-			&:last-of-type {
-				@include omega;
-			}
-		}
-	}
-}
-
-.site-footer-columns-3 {
-
-	.footer-column {
-		@include span(12 of 12);
-
-		@include min-screen(48em) {
-			@include span(4 of 12);
-
-			&:last-of-type {
-				@include omega;
-			}
-		}
-	}
-}
-
-.site-footer-columns-4 {
-
-	.footer-column {
-		@include span(12 of 12);
-
-		@include screen(30em, 58em) {
-			@include span(6 of 12);
-
-			&:nth-of-type(2n+2) {
-				@include omega;
-			}
-		}
-
-		@include min-screen(58em) {
-			@include span(3 of 12);
-
-			&:last-of-type {
-				@include omega;
-			}
-		}
-	}
-}
 
 
 
