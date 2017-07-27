@@ -1,12 +1,16 @@
 # Version Releases
 
-## 3.5.2
+## 4.0.0
 
 - Admin styles added margin for TinyMCE editor.
 
 ### __Bug:__
 
 - `font-style` mixin ordering updated.
+
+### __Deprecation:__
+
+- `Susy` grid removed in favor of `flexbox` and/or `grid`.
 
 
 ## 3.5.1
