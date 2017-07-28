@@ -294,7 +294,6 @@ The theme's stylesheet SCSS file `/assets-source/sass/theme-stylesheet.scss` wil
 ###### Vendor Inclusions
 
 - [Sass] for compiling CSS
-- [Susy] for the grid structure
 - [Sass-Heading-Sizes] is available for percentage or fixed interval heading sizes
 
 
@@ -469,7 +468,6 @@ Functions: See individual functions.
 [Sass-Font-Icon]: http://github.com/troutacular/sass-font-icon
 [Sass-Heading-Sizes]: http://github.com/troutacular/sass-heading-sizes
 [Semantic Versioning]: http://semver.org
-[Susy]: http://susy.oddbird.net/
 [troutacular]: https://github.com/troutacular/
 [underscores]: http://www.underscores.me
 [wp_enqueue_script]: https://developer.wordpress.org/reference/functions/wp_enqueue_script/
