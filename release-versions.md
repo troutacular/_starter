@@ -11,6 +11,7 @@
 ### __Deprecation:__
 
 - `Susy` grid removed in favor of `flexbox` and/or `grid`.
+- Removed numbered `footer-column-[x]` class - opt for CSS nth-type targeting.
 
 
 ## 3.5.1
