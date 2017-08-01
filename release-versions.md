@@ -1,10 +1,24 @@
 # Version Releases
 
+## 4.0.0
+
+- Admin styles added margin for TinyMCE editor.
+
+### __Bug:__
+
+- `font-style` mixin ordering updated.
+
+### __Deprecation:__
+
+- `Susy` grid removed in favor of `flexbox` and/or `grid`.
+- Removed numbered `footer-column-[x]` class - opt for CSS nth-type targeting.
+
+
 ## 3.5.1
 
 ### __Bug:__
 
-- Fix class mapping in `customizer.js`
+- Fix class mapping in `customizer.js`, `_print.scss`, and `_grid.scss`
 
 
 ## 3.5.0

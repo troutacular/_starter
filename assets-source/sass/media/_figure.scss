@@ -4,7 +4,7 @@
 	=====
 
 	1.0 - Figure
-	2.0 - Fig Caption
+	2.0 - Figcaption
 
 **/
 
@@ -26,9 +26,10 @@ figure {
 
 
 /*--------------------------------------------------------------
-2.0 - Fig Caption
+2.0 - Figcaption
 --------------------------------------------------------------*/
 
+// Also see _captions.scss.
 figcaption {
 	background-color: $figcaption__background-color;
 	color: $figcaption__font-color;

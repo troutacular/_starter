@@ -56,36 +56,6 @@ if ( ! class_exists( 'WP_Custom_Footer_Columns' ) ) {
 		}
 
 		/**
-		 * Footer column class
-		 *
-		 * Counts the number of footer sidebars that have widgets and returns a class.
-		 *
-		 * @return  string		Column class
-		 */
-		public function footer_columns_class() {
-
-			// Set the default to 0.
-			$counter = 0;
-
-			$columns = $this->params['columns'];
-
-			for ( $i = 1; $i <= $columns; $i++ ) {
-
-				$sidebar = 'site-footer-column';
-
-				if ( $i > 1 ) {
-					$sidebar .= '-' . $i;
-				}
-
-				if ( is_active_sidebar( $sidebar ) ) {
-					$counter++;
-				}
-			}
-
-			return 'site-footer-columns-' . esc_attr( $counter );
-		}
-
-		/**
 		 * Footer Column Output
 		 *
 		 * @return  void
@@ -97,7 +67,7 @@ if ( ! class_exists( 'WP_Custom_Footer_Columns' ) ) {
 			// Defaults.
 			$columns = $params['columns'];
 			$element = $params['wrapper'];
-			$base_class = $this->footer_columns_class() . ' site-info';
+			$base_class = 'site-footer-columns site-info';
 			$element_class = ! empty( $params['class'] ) ? $base_class . ' ' . $params['class'] : '';
 
 			// Begin element wrapper.
@@ -107,7 +77,7 @@ if ( ! class_exists( 'WP_Custom_Footer_Columns' ) ) {
 
 				// Set default variables.
 				$sidebar = 'site-footer-column';
-				$class = 'footer-column footer-column-' . $i;
+				$class = 'footer-column';
 
 				// Add the column number past first instance for sidebar reference.
 				if ( $i > 1 ) {

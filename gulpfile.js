@@ -108,7 +108,7 @@
 		},
 		// This section provides the information for the 'style.css' file in the root of the theme.
 		theme: {
-			version: '3.5.1',
+			version: '4.0.0',
 			name: 'Starter',
 			uri: 'https://github.com/troutacular/_starter',
 			author: '@troutacular',
@@ -145,8 +145,7 @@
 			}
 		},
 		sass: {
-			outputStyle: 'compressed',
-			includePaths: ['node_modules/susy/sass']
+			outputStyle: 'compressed'
 		},
 		modernizr: {
 			include: true,

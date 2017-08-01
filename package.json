@@ -1,6 +1,6 @@
 {
   "name": "wp-theme-starter",
-  "version": "3.5.1",
+  "version": "4.0.0",
   "description": "WordPress _starter theme is based off of the _s (underscores) theme and is intended to clone and use as you see fit.  It is not intended to be used as a Parent or Child theme.",
   "main": "gulpfile.js",
   "dependencies": {},
@@ -28,8 +28,7 @@
     "jshint": "^2.9.4",
     "path": "^0.12.7",
     "pump": "^1.0.1",
-    "run-sequence": "^1.2.2",
-    "susy": "^2.2.12"
+    "run-sequence": "^1.2.2"
   },
   "scripts": {
     "test": "gulp"

@@ -6,13 +6,13 @@
  */
 
 // Register function callback to admin_init.
-add_action( 'admin_init', 'wpdocs_starter_add_editor_styles' );
-if ( ! function_exists( 'wpdocs_starter_add_editor_styles' ) ) {
+add_action( 'admin_init', '_starter_add_editor_styles' );
+if ( ! function_exists( '_starter_add_editor_styles' ) ) {
 
 	/**
 	 * Registers an editor stylesheet for the theme.
 	 */
-	function wpdocs_starter_add_editor_styles() {
+	function _starter_add_editor_styles() {
 		add_editor_style( get_stylesheet_directory_uri() . _starter_get_asset_path( 'css' ) . 'admin-content-editor-styles.css' );
 	}
 }
